@@ -1,134 +1,154 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>ORION STAR GAMING</title>
+  <title>Gaming Hub</title>
 
   <style>
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
     }
 
     body {
       font-family: Arial, sans-serif;
-      background: #0b1020;
+      background: #080b12;
       color: white;
-      line-height: 1.6;
     }
 
     header {
-      background: #111a33;
-      padding: 20px;
-      text-align: center;
-      border-bottom: 2px solid #27345c;
+      height: 70px;
+      background: #111722;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 22px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
-    header h1 {
-      font-size: 32px;
-      margin-bottom: 8px;
+    .logo {
+      font-size: 22px;
+      font-weight: bold;
+      color: #ff9d18;
     }
 
-    header p {
-      color: #cbd3e8;
-    }
-
-    nav {
-      background: #080d19;
-      padding: 12px;
-      text-align: center;
-    }
-
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin: 0 10px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      text-decoration: underline;
+    .menu {
+      font-size: 30px;
+      cursor: pointer;
     }
 
     .hero {
+      min-height: 650px;
+      padding: 70px 25px;
       text-align: center;
-      padding: 70px 20px;
-      background: linear-gradient(135deg, #111a33, #18264a);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      background:
+        linear-gradient(rgba(5,8,14,.78), rgba(5,8,14,.95)),
+        radial-gradient(circle at center, #26334d, #080b12 70%);
     }
 
-    .hero h2 {
-      font-size: 40px;
-      margin-bottom: 15px;
+    .badge {
+      display: inline-block;
+      margin: 0 auto 25px;
+      padding: 10px 18px;
+      border-radius: 25px;
+      background: #ff9418;
+      color: #111;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 42px;
+      line-height: 1.15;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: #ff9a19;
     }
 
     .hero p {
-      max-width: 650px;
-      margin: auto;
-      color: #d4dbed;
+      color: #c8ccd4;
+      font-size: 17px;
+      line-height: 1.7;
+      max-width: 600px;
+      margin: 0 auto 30px;
     }
 
-    .container {
-      max-width: 1000px;
+    .btn {
+      display: inline-block;
       margin: auto;
-      padding: 40px 20px;
+      padding: 16px 55px;
+      background: #ff9418;
+      color: #111;
+      text-decoration: none;
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .players {
+      margin-top: 35px;
+      color: #bfc4cd;
     }
 
     .section {
-      background: #111a33;
-      padding: 25px;
-      margin-bottom: 25px;
-      border-radius: 14px;
-      border: 1px solid #27345c;
+      padding: 55px 22px;
+      max-width: 1000px;
+      margin: auto;
     }
 
     .section h2 {
+      text-align: center;
+      font-size: 30px;
+      margin-bottom: 30px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 18px;
+    }
+
+    .card {
+      background: #151b27;
+      padding: 25px;
+      border-radius: 15px;
+      border: 1px solid #293141;
+    }
+
+    .card h3 {
+      color: #ff9a19;
       margin-bottom: 12px;
     }
 
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 15px;
-      margin-top: 20px;
-    }
-
-    .game-card {
-      background: #18264a;
-      padding: 25px;
-      border-radius: 12px;
-      text-align: center;
-    }
-
-    .game-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .notice {
-      background: #211d12;
-      border: 1px solid #665522;
-      padding: 20px;
-      border-radius: 12px;
+    .card p {
+      color: #b8bec9;
+      line-height: 1.6;
     }
 
     footer {
       text-align: center;
-      padding: 25px;
-      background: #080d19;
-      color: #aeb7cc;
-      font-size: 14px;
+      padding: 30px;
+      background: #111722;
+      color: #8f96a3;
     }
 
     @media (max-width: 600px) {
-      .hero h2 {
-        font-size: 30px;
+      h1 {
+        font-size: 35px;
       }
 
-      nav a {
-        display: inline-block;
-        margin: 5px;
+      .hero {
+        min-height: 620px;
       }
     }
   </style>
@@ -137,109 +157,263 @@
 <body>
 
   <header>
-    <h1>⭐ ORION STAR GAMING ⭐</h1>
-    <p>Online Gaming Information Center</p>
+    <div class="logo">GAMING HUB</div>
+    <div class="menu">☰</div>
   </header>
 
-  <nav>
-    <a href="#games">Games</a>
-    <a href="#how">How It Works</a>
-    <a href="#security">Security</a>
-    <a href="#responsible">Responsible Gaming</a>
-    <a href="#legal">Legal Information</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
   <section class="hero">
-    <h2>Welcome to ORION STAR GAMING</h2>
+
+    <div class="badge">🎮 GAMING INFORMATION</div>
+
+    <h1>
+      Discover Amazing<br>
+      <span>Gaming Experiences</span>
+    </h1>
+
     <p>
-      Explore gaming information, featured games and helpful resources
-      in one place.
+      Explore games, gaming news, features and useful information
+      all in one simple and mobile-friendly gaming hub.
     </p>
+
+    <a href="#games" class="btn">Explore Games</a>
+
+    <div class="players">
+      🎮 Gaming community • New content regularly
+    </div>
+
   </section>
 
-  <main class="container">
+  <section class="section" id="games">
 
-    <section class="section" id="games">
-      <h2>🎮 Featured Games</h2>
-      <p>Explore our featured gaming categories.</p>
+    <h2>Featured Gaming Categories</h2>
 
-      <div class="games">
-        <div class="game-card">
-          <h3>🎰 Casino Games</h3>
-          <p>Gaming information and guides.</p>
-        </div>
+    <div class="cards">
 
-        <div class="game-card">
-          <h3>🃏 Card Games</h3>
-          <p>Learn about different card games.</p>
-        </div>
-
-        <div class="game-card">
-          <h3>🎯 Arcade Games</h3>
-          <p>Discover entertaining game categories.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="section">
-      <h2>⭐ Popular Games</h2>
-      <p>
-        Browse popular gaming categories and learn how different games work.
-      </p>
-    </section>
-
-    <section class="section" id="how">
-      <h2>📖 How Gaming Works</h2>
-      <p>
-        Learn the basic rules, features and terminology used in different
-        types of online games.
-      </p>
-    </section>
-
-    <section class="section" id="security">
-      <h2>🔐 Security & Privacy</h2>
-      <p>
-        Protect your personal information and use strong passwords.
-        Always check the privacy and security information of any service
-        before using it.
-      </p>
-    </section>
-
-    <section class="section" id="responsible">
-      <h2>⚠️ Responsible Gaming</h2>
-      <p>
-        Gaming involving money can carry financial risks. Never spend money
-        you cannot afford to lose, and take breaks when needed.
-      </p>
-    </section>
-
-    <section class="section" id="legal">
-      <h2>📍 Legal Information</h2>
-
-      <div class="notice">
+      <div class="card">
+        <h3>🎯 Action Games</h3>
         <p>
-          Gaming and gambling laws vary by U.S. state and jurisdiction.
-          Availability and legal requirements may differ by location.
-          Check applicable local laws and licensing requirements before
-          participating in any real-money gaming activity.
+          Discover exciting action games and learn about
+          their features and gameplay.
         </p>
       </div>
-    </section>
 
-    <section class="section" id="contact">
-      <h2>📞 Contact Us</h2>
-      <p>
-        For general website and gaming-information questions, contact us
-        through your official support channel.
-      </p>
-    </section>
+      <div class="card">
+        <h3>🏎️ Racing Games</h3>
+        <p>
+          Explore racing titles, cars, tracks and
+          different gaming experiences.
+        </p>
+      </div>
 
-  </main>
+      <div class="card">
+        <h3>⚔️ Adventure</h3>
+        <p>
+          Find adventure games with interesting worlds,
+          missions and challenges.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🧩 Strategy</h3>
+        <p>
+          Learn about strategy games that focus on
+          planning, skills and decision-making.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <section class="section">
+
+    <h2>Why Gaming Hub?</h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>📱 Mobile Friendly</h3>
+        <p>
+          Designed to look clean and work smoothly on
+          phones, tablets and computers.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>📰 Gaming Updates</h3>
+        <p>
+          Keep your visitors informed about gaming news,
+          releases and useful information.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>⭐ Easy Navigation</h3>
+        <p>
+          Simple sections make it easy for visitors to
+          find the information they need.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
 
   <footer>
-    © 2026 ORION STAR GAMING — Online Gaming Information Center
+    © 2026 Gaming Hub — Gaming Information Website
   </footer>
+<!-- ORION STAR GAMING CHAT -->
+<style>
+#orion-chat-button {
+  position: fixed;
+  right: 18px;
+  bottom: 20px;
+  z-index: 9999;
+  background: #16c784;
+  color: #071426;
+  border: none;
+  border-radius: 28px;
+  padding: 14px 20px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 4px 15px #0005;
+}
 
+#orion-chat-box {
+  display: none;
+  position: fixed;
+  right: 15px;
+  bottom: 82px;
+  width: min(340px, calc(100vw - 30px));
+  height: 420px;
+  max-height: 70vh;
+  z-index: 9999;
+  background: #101a30;
+  color: white;
+  border: 1px solid #334565;
+  border-radius: 16px;
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 5px 25px #0008;
+}
+
+#orion-chat-header {
+  background: #172747;
+  padding: 15px;
+  font-weight: bold;
+  display: flex;
+  justify-content: space-between;
+}
+
+#orion-chat-messages {
+  height: calc(100% - 130px);
+  overflow-y: auto;
+  padding: 12px;
+  font-size: 14px;
+}
+
+.orion-message {
+  padding: 10px;
+  margin: 8px 0;
+  background: #1e3152;
+  border-radius: 10px;
+  overflow-wrap: anywhere;
+}
+
+#orion-chat-form {
+  display: flex;
+  gap: 6px;
+  padding: 10px;
+}
+
+#orion-chat-input {
+  width: 100%;
+  min-width: 0;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #405779;
+  background: #071426;
+  color: white;
+}
+
+#orion-chat-form button {
+  border: none;
+  border-radius: 8px;
+  padding: 10px;
+  background: #16c784;
+  cursor: pointer;
+  font-weight: bold;
+}
+</style>
+
+<button id="orion-chat-button" type="button">
+  💬 Chat with Us
+</button>
+
+<section id="orion-chat-box" aria-label="Customer chat">
+  <div id="orion-chat-header">
+    <span>ORION STAR SUPPORT</span>
+    <button id="orion-chat-close"
+      type="button"
+      aria-label="Close chat"
+      style="background:none;border:none;color:white;font-size:20px;">
+      ×
+    </button>
+  </div>
+
+  <div id="orion-chat-messages" aria-live="polite">
+    <div class="orion-message">
+      Welcome! Please type your message below.
+    </div>
+  </div>
+
+  <form id="orion-chat-form">
+    <input
+      id="orion-chat-input"
+      type="text"
+      maxlength="1000"
+      placeholder="Type your message..."
+      aria-label="Your message"
+      required
+    >
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<script>
+(function () {
+  const button = document.getElementById("orion-chat-button");
+  const box = document.getElementById("orion-chat-box");
+  const close = document.getElementById("orion-chat-close");
+  const form = document.getElementById("orion-chat-form");
+  const input = document.getElementById("orion-chat-input");
+  const messages = document.getElementById("orion-chat-messages");
+
+  button.addEventListener("click", function () {
+    box.style.display = "block";
+    input.focus();
+  });
+
+  close.addEventListener("click", function () {
+    box.style.display = "none";
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const value = input.value.trim();
+    if (!value) return;
+
+    const message = document.createElement("div");
+    message.className = "orion-message";
+    message.textContent = value;
+    messages.appendChild(message);
+
+    input.value = "";
+    messages.scrollTop = messages.scrollHeight;
+  });
+})();
+</script>
 </body>
 </html>
+. 
