@@ -3,279 +3,547 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080b10">
-<meta name="description" content="Premium Gaming Lounge - Explore gaming platforms and contact support.">
+<meta name="description" content="Premium Gaming Lounge - Explore your favorite gaming platforms.">
 <title>Premium Gaming Lounge</title>
 
+<!-- PWA manifest: upload manifest.webmanifest separately to GitHub -->
+<link rel="manifest" href="./manifest.webmanifest">
+
 <style>
-:root{--gold:#f5c451;--bg:#080b10;--panel:#121923;--green:#20d477}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}
-a{color:inherit;text-decoration:none}
-header{position:sticky;top:0;z-index:10;background:#080b10ee;border-bottom:1px solid #3d3421}
-.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px}
-.brand{display:flex;align-items:center;gap:9px;color:var(--gold);font-weight:900}
-.brand img{width:42px;height:42px;object-fit:contain;border-radius:50%}
-.brand-mark{width:42px;height:42px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:21px}
-nav{display:flex;gap:13px;flex-wrap:wrap;font-size:13px}
-nav a:hover{color:var(--gold)}
-.ticker{overflow:hidden;white-space:nowrap;border-top:1px solid #292b2d;border-bottom:1px solid #292b2d;background:#10151d;padding:8px 0}
-.ticker-track{display:flex;width:max-content;animation:move 35s linear infinite;align-items:center;gap:24px}
-.ticker-track.second{animation-direction:reverse;animation-duration:42s}
-.ticker-item{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;font-weight:bold}
-.ticker-item img{width:28px;height:28px;object-fit:contain;background:#fff;border-radius:50%;padding:2px}
-@keyframes move{to{transform:translateX(-50%)}}
-.hero{text-align:center;padding:35px 15px 26px;background:radial-gradient(ellipse at top,#3b2c0c 0%,#10141c 48%,#080b10 85%)}
-.hero-logo{width:86px;height:86px;margin:0 auto 10px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:42px;color:var(--gold);box-shadow:0 0 25px #f5c45133}
-h1{margin:8px 0;color:var(--gold);font-size:clamp(26px,5vw,42px)}
-.hero p{color:#d2d4d9;line-height:1.6}
-.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
-.btn{display:inline-block;border:0;border-radius:9px;padding:12px 17px;background:var(--gold);color:#111;font-weight:900;cursor:pointer}
-.btn.dark{background:#1b2430;color:#fff;border:1px solid #424b56}
-.btn.green{background:var(--green);color:#07120b}
-main{max-width:1200px;margin:auto;padding:20px 13px}
-.section-title{color:var(--gold);margin:10px 0 16px}
-.search{width:100%;padding:14px;border-radius:10px;border:1px solid #3a424c;background:#101721;color:white;font-size:16px;margin-bottom:17px}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
-.game{background:linear-gradient(150deg,#17202c,#10141b);border:1px solid #303a46;border-radius:13px;padding:14px 10px;text-align:center;min-width:0}
-.game-logo{height:75px;width:75px;margin:0 auto 10px;border:1px solid #5b4a25;border-radius:16px;background:#fff;display:grid;place-items:center;overflow:hidden}
-.game-logo img{width:100%;height:100%;object-fit:contain;padding:5px}
-.game-logo span{font-size:23px;font-weight:900;color:#141414}
-.game h3{font-size:14px;min-height:34px;margin:7px 0;color:#fff;overflow-wrap:anywhere}
-.status{color:var(--green);font-size:11px;font-weight:bold;margin:9px 0}
-.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:5px}
-.play{display:block;width:100%;padding:11px 5px;border-radius:8px;background:var(--gold);color:#111;font-weight:900;font-size:12px}
-.play:hover,.btn:hover{filter:brightness(1.08)}
-.info{background:var(--panel);border:1px solid #2d3743;border-radius:12px;padding:17px;margin:20px 0;line-height:1.7;color:#d8dce2}
-.info h2{color:var(--gold)}
-footer{text-align:center;padding:24px 12px;color:#aab0b9;border-top:1px solid #29313b;font-size:13px}
-.floating{position:fixed;right:13px;bottom:15px;z-index:15;display:flex;flex-direction:column;gap:9px}
-.floating button{border:0;border-radius:50px;padding:12px 15px;font-weight:bold;box-shadow:0 3px 15px #0008;cursor:pointer}
-.chat{background:var(--gold);color:#111}
-.whatsapp{background:#20c76a;color:#07150b}
-.modal{position:fixed;inset:0;background:#000d;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}
-.modal-box{max-width:360px;background:#151c26;border:1px solid var(--gold);border-radius:15px;padding:23px;text-align:center}
-.modal-box h2{color:var(--gold)}
-.modal-box p{line-height:1.6;color:#ddd}
-@media(max-width:480px){nav{gap:9px;font-size:12px}.brand{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:26px}}
+:root {
+  --gold: #f5c451;
+  --gold2: #ffdf85;
+  --bg: #080b10;
+  --panel: #111722;
+  --line: #30303a;
+  --text: #ffffff;
+  --muted: #a9b0bd;
+  --green: #24e477;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+}
+a { color: inherit; text-decoration: none; }
+button { font-family: inherit; cursor: pointer; }
+.topbar {
+  padding: 10px 14px;
+  text-align: center;
+  background: #15120a;
+  border-bottom: 1px solid #4a3b18;
+  color: var(--gold2);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+header {
+  padding: 25px 16px 20px;
+  text-align: center;
+  background: radial-gradient(ellipse at top, #29200d 0%, #0b0d12 65%);
+  border-bottom: 1px solid #29251b;
+}
+.brand-mark {
+  width: 76px;
+  height: 76px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 12px;
+  border-radius: 50%;
+  border: 2px solid var(--gold);
+  background: linear-gradient(145deg, #2c220e, #090b10);
+  box-shadow: 0 0 24px #f5c45130;
+  color: var(--gold);
+  font-size: 29px;
+  font-weight: 900;
+}
+h1 {
+  margin: 0;
+  font-size: clamp(25px, 6vw, 39px);
+  letter-spacing: 1px;
+  color: var(--gold2);
+  text-shadow: 0 0 18px #f5c45124;
+}
+.subtitle {
+  margin: 10px 0 17px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.actions {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 14px;
+}
+.action-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 11px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 9px;
+  background: linear-gradient(135deg, #f5c451, #b88320);
+  color: #151008;
+  font-size: 13px;
+  font-weight: 800;
+}
+.action-btn.secondary {
+  color: var(--gold2);
+  background: #111722;
+  border-color: #5a4926;
+}
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #11151c;
+  border-top: 1px solid #272b32;
+  border-bottom: 1px solid #272b32;
+  padding: 11px 0;
+}
+.ticker-track {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  min-width: max-content;
+  animation: scroll-left 38s linear infinite;
+}
+.ticker.reverse .ticker-track {
+  animation-name: scroll-right;
+  animation-duration: 46s;
+}
+.ticker-item {
+  color: var(--gold2);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: .6px;
+}
+.ticker-item span { color: var(--green); margin-right: 6px; }
+@keyframes scroll-left {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+@keyframes scroll-right {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+main {
+  width: min(1200px, 100%);
+  margin: auto;
+  padding: 22px 13px 100px;
+}
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 7px 2px 16px;
+}
+.section-heading h2 {
+  margin: 0;
+  color: var(--gold2);
+  font-size: 21px;
+}
+.count {
+  color: var(--muted);
+  font-size: 12px;
+}
+.search-box {
+  width: 100%;
+  padding: 13px 14px;
+  margin-bottom: 17px;
+  border: 1px solid #333844;
+  border-radius: 10px;
+  outline: none;
+  background: #10151e;
+  color: white;
+  font-size: 15px;
+}
+.search-box:focus { border-color: var(--gold); }
+.games-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.game-card {
+  min-width: 0;
+  padding: 14px 10px 12px;
+  border: 1px solid #302b20;
+  border-radius: 13px;
+  background: linear-gradient(155deg, #171b24, #0d1016);
+  box-shadow: 0 5px 15px #00000025;
+  text-align: center;
+  transition: transform .18s, border-color .18s;
+}
+.game-card:hover {
+  transform: translateY(-2px);
+  border-color: #b9913b;
+}
+.game-logo {
+  width: 62px;
+  height: 62px;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 11px;
+  border: 1px solid #8b6c2e;
+  border-radius: 15px;
+  background: radial-gradient(circle at top, #3b2c11, #12151b 72%);
+  color: var(--gold2);
+  font-size: 19px;
+  font-weight: 900;
+  overflow: hidden;
+  box-shadow: inset 0 0 16px #f5c4510b;
+}
+.game-name {
+  min-height: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: anywhere;
+  margin-bottom: 9px;
+  font-size: 14px;
+  font-weight: 800;
+}
+.status {
+  margin-bottom: 10px;
+  color: var(--green);
+  font-size: 10px;
+  font-weight: bold;
+  letter-spacing: .6px;
+}
+.status::before {
+  content: "";
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: var(--green);
+  box-shadow: 0 0 7px #24e47780;
+}
+.play-btn {
+  display: block;
+  width: 100%;
+  padding: 11px 5px;
+  border: 0;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #f8d66e, #c18a27);
+  color: #161006;
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: .8px;
+}
+.play-btn:active { transform: scale(.98); }
+.empty {
+  display: none;
+  padding: 25px 10px;
+  color: var(--muted);
+  text-align: center;
+}
+.notice {
+  margin-top: 26px;
+  padding: 14px;
+  border: 1px solid #33313a;
+  border-radius: 10px;
+  color: #b8bec8;
+  background: #10131a;
+  font-size: 12px;
+  line-height: 1.7;
+  text-align: center;
+}
+footer {
+  padding: 24px 14px;
+  border-top: 1px solid #29251b;
+  color: #8f96a2;
+  font-size: 12px;
+  text-align: center;
+}
+.floating-buttons {
+  position: fixed;
+  z-index: 99;
+  right: 13px;
+  bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.float-btn {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #ffffff24;
+  border-radius: 50%;
+  box-shadow: 0 4px 16px #0008;
+  font-size: 23px;
+}
+.whatsapp { background: #20c968; color: white; }
+.chat { background: #f5c451; color: #151008; }
+@media (min-width: 600px) {
+  .games-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  main { padding-left: 20px; padding-right: 20px; }
+}
+@media (min-width: 900px) {
+  .games-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+}
 </style>
 </head>
 
 <body>
-<header>
-  <div class="nav">
-    <a class="brand" href="#">
-      <span class="brand-mark">★</span>
-      <span>PREMIUM<br>GAMING LOUNGE</span>
-    </a>
-    <nav>
-      <a href="#games">Games</a>
-      <a href="#about">About</a>
-      <a href="#faq">FAQ</a>
-    </nav>
-  </div>
+<div class="topbar">★ PREMIUM GAMING LOUNGE ★ &nbsp; • &nbsp; YOUR GAMING DESTINATION</div>
 
-  <div class="ticker"><div class="ticker-track" id="ticker1"></div></div>
-  <div class="ticker"><div class="ticker-track second" id="ticker2"></div></div>
+<header>
+  <div class="brand-mark">PGL</div>
+  <h1>Premium Gaming Lounge</h1>
+  <p class="subtitle">Explore Your Favorite Gaming Platforms</p>
+
+  <div class="actions">
+    <button class="action-btn" id="installBtn" type="button" onclick="installApp()">
+      ⬇ INSTALL APP
+    </button>
+    <button class="action-btn secondary" type="button" onclick="openLiveChat()">
+      💬 LIVE CHAT
+    </button>
+    <a class="action-btn secondary"
+       href="https://wa.me/14482414979"
+       target="_blank" rel="noopener noreferrer">
+       ☎ WHATSAPP
+    </a>
+  </div>
 </header>
 
-<section class="hero">
-  <div class="hero-logo">★</div>
-  <h1>PREMIUM GAMING LOUNGE</h1>
-  <p>Explore your favorite gaming platforms in one place.</p>
-  <div class="actions">
-    <a class="btn" href="#games">EXPLORE GAMES</a>
-    <button class="btn dark" onclick="installApp()">📲 INSTALL APP</button>
-    <button class="btn dark" onclick="openLiveChat()">💬 LIVE CHAT</button>
-  </div>
-</section>
+<div class="ticker">
+  <div class="ticker-track" id="tickerOne"></div>
+</div>
+<div class="ticker reverse">
+  <div class="ticker-track" id="tickerTwo"></div>
+</div>
 
 <main>
-  <h2 class="section-title" id="games">🎮 ALL GAMING PLATFORMS</h2>
-  <input id="search" class="search" type="search" placeholder="Search games..." aria-label="Search games">
-  <div class="grid" id="gameGrid"></div>
+  <div class="section-heading">
+    <h2>🎮 All Gaming Platforms</h2>
+    <span class="count" id="gameCount"></span>
+  </div>
 
-  <section class="info" id="about">
-    <h2>Welcome to Premium Gaming Lounge</h2>
-    Browse the available gaming platforms and select PLAY to open a game's website.
-    Game logos are loaded from the platforms' website icons where available.
-    Some external sites may not provide a logo.
-  </section>
+  <input
+    class="search-box"
+    id="searchBox"
+    type="search"
+    placeholder="🔎 Search your favorite game..."
+    aria-label="Search games">
 
-  <section class="info" id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <p><strong>How do I open a game?</strong><br>Find the game and tap its PLAY button.</p>
-    <p><strong>How do I contact support?</strong><br>Tap LIVE CHAT or WhatsApp.</p>
-    <p><strong>How do I install this website?</strong><br>Tap INSTALL APP. If installation is not available, open Chrome's menu and select Add to Home screen.</p>
-    <p><strong>Do I need to share my Gmail?</strong><br>No Gmail address is displayed on this website.</p>
-  </section>
+  <div class="games-grid" id="gamesGrid"></div>
+  <div class="empty" id="emptyMessage">No games found. Try another name.</div>
 
-  <section class="info" id="contact">
-    <h2>Customer Support</h2>
-    <p>For assistance, use the Live Chat or WhatsApp buttons.</p>
-    <button class="btn" onclick="openLiveChat()">OPEN LIVE CHAT</button>
-    <a class="btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener">WHATSAPP SUPPORT</a>
-  </section>
+  <div class="notice">
+    <strong style="color:#f5c451">PLEASE NOTE</strong><br>
+    You will be redirected to the selected third-party gaming platform.
+    Premium Gaming Lounge does not control external websites or their services.
+    Please check local laws and each platform's terms before use.
+    18+ only where legally permitted. Play responsibly.
+  </div>
 </main>
 
 <footer>
-  Premium Gaming Lounge · Please follow the laws and age requirements applicable in your location.
+  © <span id="year"></span> Premium Gaming Lounge. All rights reserved.
 </footer>
 
-<div class="floating">
-  <button class="chat" onclick="openLiveChat()">💬 LIVE CHAT</button>
-  <a class="whatsapp" style="text-align:center;padding:12px 15px;border-radius:50px;font-weight:bold" href="https://wa.me/14482414979" target="_blank" rel="noopener">WhatsApp</a>
-</div>
-
-<div class="modal" id="ageModal">
-  <div class="modal-box">
-    <h2>Age Notice</h2>
-    <p>Please continue only if you meet the legal age requirements applicable to you and your location.</p>
-    <button class="btn" onclick="closeAgeModal()">CONTINUE</button>
-  </div>
+<div class="floating-buttons">
+  <button class="float-btn chat" type="button"
+    aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
+  <a class="float-btn whatsapp"
+    aria-label="Contact on WhatsApp"
+    href="https://wa.me/14482414979"
+    target="_blank" rel="noopener noreferrer">☏</a>
 </div>
 
 <script>
 const games = [
-["Orion Star","http://start.orionstars.vip:8580/"],
-["Milkyway","https://milkywayapp.xyz/"],
-["Juwa","https://dl.juwa777.com/"],
-["Vblink","https://www.vblink777.club/"],
-["Juwa 2.0","https://thejuwa.com/juwa-2-0/"],
-["Firekirin","https://firekirin.com/download-fire-kirin-app.html"],
-["Vegas X","https://www.vegas-x.org"],
-["Game Vault","http://download.gamevault999.com/"],
-["Egame","https://www.egame99.club"],
-["Moolah","https://moolah.vip:8888/"],
-["RiverSweep","https://bet777.eu/play/"],
-["Noble777","http://www.noble777.com"],
-["Highstake","https://dl.highstakesweeps.com/"],
-["Casino Royal","http://m.casinoroyale07.com"],
-["Vegas Sweep","http://m.lasvegassweeps.com"],
-["Ultrapanda","http://www.ultrapanda.mobi"],
-["Orion Power","http://download.orionpower.games:8008/"],
-["Winstar","https://www.winstar99999.com"],
-["Mafia 777","https://www.mafia77777.com"],
-["Paracasino","https://download.paracasino.net"],
-["Vegas Roll","http://www.vegas-roll.com/m"],
-["Mr. All in One","http://www.mrallinone777.com"],
-["Yolo 777","https://yolo777.game"],
-["Cash Machine","https://www.cashmachine777.com"],
-["Game Room","https://www.gameroom777.com/"],
-["Vegas Luck","https://start.vegasluck777.com/"],
-["Cash Frenzy","https://www.cashfrenzy777.com/"],
-["Panda Master","https://pandamaster.vip:8888/"],
-["River Pay","https://river777.net/build.30/index.html"],
-["Casino Ignite","https://h5.casinoignitee.vip/?"],
-["Loot Game","https://m.lootgame777.com"],
-["Para Casino","https://h5.paracasino.net/"],
-["Allinone Agent","http://agentserver.mrallinone777.com"],
-["Winstar Server","http://server.winstar99999.com:8009/"],
-["Winwin","https://winwinvegas777.com"],
-["Hukum","https://hukum777.online/"],
-["Mob.com","https://fpc-mob.com/"],
-["Highroller","https://www.highroller.com/casino"],
-["Dragon Crown","https://atlus.com/dragonscrown/"],
-["Lucky Master","https://lucky-master.net/"],
-["King of Pop","https://kingofpop777.com/"],
-["Firefonix","https://fpc-mob.com/AD/index.html"],
-["Bigwin","https://bigwplay.com"],
-["Thunderseven","https://thunderseven.com/"],
-["Gem Slots","https://www.gem77777.com/m"],
-["Winner Club","https://www.winnersclub777.com"],
-["Joker 777","https://www.joker777.win"],
-["Orion Strike","https://start.orionstrike777.com"],
-["Big Bang","https://www.bigbangcasino.vegas"],
-["Lucky Star","https://www.luckystars.games"],
-["Stars Galaxy","https://www.starsgalaxy777.com"],
-["Gem777","https://www.gem77777.com"],
-["Lucky Paradise","https://www.luckyparadise777.com"],
-["River Monster","https://rm777.net/"],
-["Mega Spin","https://megaspinpay.com/default.aspx"],
-["Sharks Secret 77","https://www.sharksecret777.com"]
+  ["Orion Star","http://start.orionstars.vip:8580/"],
+  ["Milkyway","https://milkywayapp.xyz/"],
+  ["Juwa","https://dl.juwa777.com/"],
+  ["Vblink","https://www.vblink777.club/"],
+  ["Juwa 2.0","https://thejuwa.com/juwa-2-0/"],
+  ["Firekirin","https://firekirin.com/download-fire-kirin-app.html"],
+  ["Vegas X","https://www.vegas-x.org"],
+  ["Game Vault","http://download.gamevault999.com/"],
+  ["Egame","https://www.egame99.club"],
+  ["Moolah","https://moolah.vip:8888/"],
+  ["RiverSweep","https://bet777.eu/play/"],
+  ["Noble777","http://www.noble777.com"],
+  ["Highstake","https://dl.highstakesweeps.com/"],
+  ["Casino Royal","http://m.casinoroyale07.com"],
+  ["Vegas Sweep","http://m.lasvegassweeps.com"],
+  ["Ultrapanda","http://www.ultrapanda.mobi"],
+  ["Orion Power","http://download.orionpower.games:8008/"],
+  ["Winstar","https://www.winstar99999.com"],
+  ["Mafia 777","https://www.mafia77777.com"],
+  ["Paracasino","https://download.paracasino.net"],
+  ["Vegas Roll","http://www.vegas-roll.com/m"],
+  ["Mr. All in One","http://www.mrallinone777.com"],
+  ["Yolo 777","https://yolo777.game"],
+  ["Cash Machine","https://www.cashmachine777.com"],
+  ["Game Room","https://www.gameroom777.com/"],
+  ["Vegas Luck","https://start.vegasluck777.com/"],
+  ["Cash Frenzy","https://www.cashfrenzy777.com/"],
+  ["Panda Master","https://pandamaster.vip:8888/"],
+  ["River Pay","https://river777.net/build.30/index.html"],
+  ["Casino Ignite","https://h5.casinoignitee.vip/?"],
+  ["Loot Game","https://m.lootgame777.com"],
+  ["Para Casino","https://h5.paracasino.net/"],
+  ["Allinone Agent","http://agentserver.mrallinone777.com"],
+  ["Winstar Server","http://server.winstar99999.com:8009/"],
+  ["Winwin","https://winwinvegas777.com"],
+  ["Hukum","https://hukum777.online/"],
+  ["Mob.com","https://fpc-mob.com/"],
+  ["Highroller","https://www.highroller.com/casino"],
+  ["Dragon Crown","https://atlus.com/dragonscrown/"],
+  ["Lucky Master","https://lucky-master.net/"],
+  ["King of Pop","https://kingofpop777.com/"],
+  ["Firefonix","https://fpc-mob.com/AD/index.html"],
+  ["Bigwin","https://bigwplay.com"],
+  ["Thunderseven","https://thunderseven.com/"],
+  ["Gem Slots","https://www.gem77777.com/m"],
+  ["Winner Club","https://www.winnersclub777.com"],
+  ["Joker 777","https://www.joker777.win"],
+  ["Orion Strike","https://start.orionstrike777.com"],
+  ["Big Bang","https://www.bigbangcasino.vegas"],
+  ["Lucky Star","https://www.luckystars.games"],
+  ["Stars Galaxy","https://www.starsgalaxy777.com"],
+  ["Gem777","https://www.gem77777.com"],
+  ["Lucky Paradise","https://www.luckyparadise777.com"],
+  ["River Monster","https://rm777.net/"],
+  ["Mega Spin","https://megaspinpay.com/default.aspx"],
+  ["Sharks Secret 77","https://www.sharksecret777.com"]
 ];
 
-function logoURL(url){
-  try {
-    return "https://www.google.com/s2/favicons?domain=" +
-      encodeURIComponent(new URL(url).hostname) + "&sz=128";
-  } catch(e) { return ""; }
+const grid = document.getElementById("gamesGrid");
+const searchBox = document.getElementById("searchBox");
+const emptyMessage = document.getElementById("emptyMessage");
+
+function initials(name) {
+  const words = name.replace(/[^a-zA-Z0-9 ]/g, "").trim().split(/\s+/);
+  if (words.length > 1) return (words[0][0] + words[1][0]).toUpperCase();
+  return name.replace(/[^a-zA-Z0-9]/g, "").slice(0, 3).toUpperCase();
 }
 
-function logoHTML(name,url){
-  const initials = name.split(/\s+/).map(w=>w[0]).join("").slice(0,3);
-  return '<div class="game-logo"><img loading="lazy" src="'+logoURL(url)+
-    '" alt="'+name+' logo" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">'+
-    '<span style="display:none">'+initials+'</span></div>';
-}
+function renderGames(filter = "") {
+  grid.innerHTML = "";
+  const filtered = games.filter(game =>
+    game[0].toLowerCase().includes(filter.toLowerCase())
+  );
 
-function renderGames(list){
-  const grid=document.getElementById("gameGrid");
-  grid.innerHTML="";
-  list.forEach(([name,url])=>{
-    const card=document.createElement("article");
-    card.className="game";
-    card.innerHTML=logoHTML(name,url)+
-      '<h3></h3><div class="status"><span class="dot"></span>PLAY NOW</div>'+
-      '<a class="play" target="_blank" rel="noopener noreferrer">▶ PLAY</a>';
-    card.querySelector("h3").textContent=name;
-    const link=card.querySelector(".play");
-    link.href=url;
-    link.setAttribute("aria-label","Play "+name);
+  filtered.forEach(([name, url]) => {
+    const card = document.createElement("article");
+    card.className = "game-card";
+
+    const logo = document.createElement("div");
+    logo.className = "game-logo";
+    logo.textContent = initials(name);
+    logo.setAttribute("aria-label", name + " logo");
+
+    const title = document.createElement("div");
+    title.className = "game-name";
+    title.textContent = name;
+
+    const status = document.createElement("div");
+    status.className = "status";
+    status.textContent = "PLAY NOW";
+
+    const link = document.createElement("a");
+    link.className = "play-btn";
+    link.textContent = "▶ PLAY";
+    link.href = url;
+    link.target = "_blank";
+    link.rel = "noopener noreferrer";
+    link.setAttribute("aria-label", "Open " + name);
+
+    card.append(logo, title, status, link);
     grid.appendChild(card);
   });
+
+  document.getElementById("gameCount").textContent =
+    filtered.length + " platforms";
+  emptyMessage.style.display = filtered.length ? "none" : "block";
 }
 
-function renderTicker(id){
-  const track=document.getElementById(id);
-  const items=[...games,...games];
-  track.innerHTML=items.map(([name,url])=>
-    '<span class="ticker-item"><img loading="lazy" src="'+logoURL(url)+
-    '" alt="" onerror="this.style.visibility=\'hidden\'"><span>'+name+'</span></span>'
+searchBox.addEventListener("input", () => renderGames(searchBox.value));
+
+function makeTicker(id) {
+  const track = document.getElementById(id);
+  const items = [...games, ...games];
+  track.innerHTML = items.map(([name]) =>
+    '<span class="ticker-item"><span>◆</span>' +
+    name.replace(/&/g, "&amp;").replace(/</g, "&lt;") +
+    '</span>'
   ).join("");
 }
-renderGames(games);
-renderTicker("ticker1");
-renderTicker("ticker2");
+makeTicker("tickerOne");
+makeTicker("tickerTwo");
+renderGames();
+document.getElementById("year").textContent = new Date().getFullYear();
 
-document.getElementById("search").addEventListener("input",function(){
-  const term=this.value.trim().toLowerCase();
-  renderGames(games.filter(g=>g[0].toLowerCase().includes(term)));
-});
-
-function openLiveChat(){
-  window.$crisp=window.$crisp||[];
-  window.$crisp.push(["do","chat:open"]);
-}
-function installApp(){
-  if(window.deferredInstallPrompt){
-    window.deferredInstallPrompt.prompt();
-    window.deferredInstallPrompt.userChoice.then(()=>{window.deferredInstallPrompt=null;});
-  } else {
-    alert("To add this website to your phone: open Chrome menu ⋮ and tap 'Add to Home screen' or 'Install app' if available.");
-  }
-}
-window.addEventListener("beforeinstallprompt",function(e){
-  e.preventDefault();
-  window.deferredInstallPrompt=e;
-});
-
-function closeAgeModal(){
-  document.getElementById("ageModal").style.display="none";
-}
-</script>
-
-<!-- Existing Crisp Live Chat connection. No Gmail address is shown. -->
-<script type="text/javascript">
-window.$crisp=window.$crisp||[];
-window.CRISP_WEBSITE_ID="cc20bafe-6ade-442e-80d7-bd00bbbc733e";
-(function(){
-  var d=document,s=d.createElement("script");
-  s.src="https://client.crisp.chat/l.js";
-  s.async=1;
+/* Crisp Live Chat */
+window.$crisp = window.$crisp || [];
+window.CRISP_WEBSITE_ID = "cc20bafe-6ade-442e-80d7-bd00bbbc733e";
+(function () {
+  const d = document;
+  const s = d.createElement("script");
+  s.src = "https://client.crisp.chat/l.js";
+  s.async = true;
   d.getElementsByTagName("head")[0].appendChild(s);
 })();
+
+function openLiveChat() {
+  window.$crisp = window.$crisp || [];
+  window.$crisp.push(["do", "chat:open"]);
+}
+
+/* Install App button */
+let deferredInstallPrompt = null;
+const installBtn = document.getElementById("installBtn");
+
+window.addEventListener("beforeinstallprompt", event => {
+  event.preventDefault();
+  deferredInstallPrompt = event;
+  installBtn.textContent = "⬇ INSTALL APP";
+});
+
+window.addEventListener("appinstalled", () => {
+  installBtn.textContent = "✓ APP INSTALLED";
+  deferredInstallPrompt = null;
+});
+
+async function installApp() {
+  if (deferredInstallPrompt) {
+    deferredInstallPrompt.prompt();
+    await deferredInstallPrompt.userChoice;
+    deferredInstallPrompt = null;
+    return;
+  }
+
+  alert(
+    "To install this website on Android:\n\n" +
+    "1. Open this website in Google Chrome.\n" +
+    "2. Tap the three dots (⋮) in the top corner.\n" +
+    "3. Choose Install app or Add to Home screen.\n\n" +
+    "If the install option does not appear, make sure the PWA files have been added to GitHub."
+  );
+}
+
+/* Service worker file must exist separately in your GitHub repository */
+if ("serviceWorker" in navigator && location.protocol === "https:") {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./service-worker.js")
+      .catch(error => console.log("Service worker registration failed:", error));
+  });
+}
 </script>
 </body>
 </html>
