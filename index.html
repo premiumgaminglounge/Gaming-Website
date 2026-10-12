@@ -3,100 +3,141 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080609">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#080b10">
+<meta name="description" content="Premium Gaming Lounge - Explore gaming platforms and contact support.">
 <title>Premium Gaming Lounge</title>
 
-<!-- Crisp Live Chat -->
-<script type="text/javascript">
-window.$crisp=[];
-window.CRISP_WEBSITE_ID="cc20bafe-6ade-442e-80d7-bd00bbbc733e";
-(function(){
-  d=document;
-  s=d.createElement("script");
-  s.src="https://client.crisp.chat/l.js";
-  s.async=1;
-  d.getElementsByTagName("head")[0].appendChild(s);
-})();
-</script>
-<!-- End Crisp Live Chat -->
-
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#050505;color:white;font-family:Arial,Helvetica,sans-serif}
-header{text-align:center;padding:22px 8px;background:linear-gradient(120deg,#100817,#493000,#100817);border-bottom:2px solid #ffda64}
-.brand{font-size:clamp(23px,5vw,40px);font-weight:900;color:#ffdf73;text-shadow:0 0 15px #d38b00}
-.tagline{font-size:12px;letter-spacing:2px;margin-top:8px;color:#fff0bd}
-.ticker{overflow:hidden;white-space:nowrap;background:#100e08;border-bottom:1px solid #d5a72b;padding:12px 0}
-.track{display:flex;width:max-content;animation:marquee 45s linear infinite}
-.track span{padding:0 19px;color:#ffe58b;font-size:14px;font-weight:900}
-@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.hero{text-align:center;padding:32px 12px;background:radial-gradient(ellipse at top,#79500c,#241606 48%,#050505 90%);border-bottom:1px solid #b58a28}
-.hero h1{color:#ffdf75;font-size:clamp(27px,6vw,44px);text-shadow:0 0 12px #8b5700;margin:8px 0}
-.hero p{color:#eee;line-height:1.7}
-.bonus{display:inline-block;margin:20px 0;padding:14px 28px;border:2px solid #fff0a5;border-radius:10px;background:linear-gradient(120deg,#a66a00,#ffe58b,#b47a05);color:#211400;font-size:clamp(24px,5vw,32px);font-weight:1000;box-shadow:0 0 22px #b78321}
-.contact{display:inline-block;margin-top:12px;padding:13px 20px;background:#078c49;color:white;text-decoration:none;font-weight:bold;border-radius:8px}
-main{max-width:1250px;margin:auto;padding:24px 12px 35px}
-.heading{text-align:center;color:#ffdc70;font-size:clamp(23px,5vw,30px);margin:12px 0 20px}
-.search{display:block;width:100%;max-width:550px;margin:0 auto 20px;padding:14px 17px;background:#151515;color:white;border:1px solid #d4a62f;border-radius:30px;font-size:16px}
-.promo{overflow:hidden;white-space:nowrap;padding:13px 0;margin:18px 0;border:1px solid #b88a20;border-radius:30px;background:#11100b}
-.promo-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
-.promo-track span{padding:0 22px;color:#ffdf76;font-weight:bold;font-size:14px}
-.games{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.card{min-width:0;text-align:center;padding:9px 7px;border:1px solid #a78023;border-radius:11px;background:linear-gradient(145deg,#1c1720,#090909);box-shadow:inset 0 0 12px #29200c}
-.logo{height:88px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle,#30213e,#090909)}
-.logo img{width:100%;height:100%;object-fit:contain;padding:7px}
-.logo-text{font-size:13px;font-weight:900;color:#ffe28b;padding:5px}
-.name{color:#fff1bc;font-size:12px;font-weight:900;min-height:33px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-.player-count{display:block;color:#00ff99;font-size:12px;font-weight:900;margin:-2px 0 9px}
-.play{display:block;padding:10px 3px;border-radius:20px;text-decoration:none;color:#211400;background:linear-gradient(120deg,#fff0a4,#d79c20);font-weight:1000;font-size:12px}
-.play:hover{filter:brightness(1.15)}
-.community{margin:24px 0 0;padding:22px 10px;text-align:center;border:1px solid #b98c27;border-radius:12px;background:linear-gradient(120deg,#171109,#090909,#171109)}
-.community h2{color:#ffe18a;font-size:23px;margin-bottom:8px}
-.community p{color:#ddd;font-size:14px;line-height:1.8}
-footer{text-align:center;padding:20px 10px;border-top:1px solid #b58b2b;color:#ffdf78;font-weight:bold}
-@media(max-width:900px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:600px){.games{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.logo{height:72px}.card{padding:8px 5px}.name{font-size:11px}.play{font-size:11px}}
-@media(max-width:360px){.games{grid-template-columns:repeat(2,minmax(0,1fr))}}
+:root{--gold:#f5c451;--bg:#080b10;--panel:#121923;--green:#20d477}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}
+a{color:inherit;text-decoration:none}
+header{position:sticky;top:0;z-index:10;background:#080b10ee;border-bottom:1px solid #3d3421}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 15px}
+.brand{display:flex;align-items:center;gap:9px;color:var(--gold);font-weight:900}
+.brand img{width:42px;height:42px;object-fit:contain;border-radius:50%}
+.brand-mark{width:42px;height:42px;border:2px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:21px}
+nav{display:flex;gap:13px;flex-wrap:wrap;font-size:13px}
+nav a:hover{color:var(--gold)}
+.ticker{overflow:hidden;white-space:nowrap;border-top:1px solid #292b2d;border-bottom:1px solid #292b2d;background:#10151d;padding:8px 0}
+.ticker-track{display:flex;width:max-content;animation:move 35s linear infinite;align-items:center;gap:24px}
+.ticker-track.second{animation-direction:reverse;animation-duration:42s}
+.ticker-item{display:flex;align-items:center;gap:7px;color:var(--gold);font-size:12px;font-weight:bold}
+.ticker-item img{width:28px;height:28px;object-fit:contain;background:#fff;border-radius:50%;padding:2px}
+@keyframes move{to{transform:translateX(-50%)}}
+.hero{text-align:center;padding:35px 15px 26px;background:radial-gradient(ellipse at top,#3b2c0c 0%,#10141c 48%,#080b10 85%)}
+.hero-logo{width:86px;height:86px;margin:0 auto 10px;border:3px solid var(--gold);border-radius:50%;display:grid;place-items:center;font-size:42px;color:var(--gold);box-shadow:0 0 25px #f5c45133}
+h1{margin:8px 0;color:var(--gold);font-size:clamp(26px,5vw,42px)}
+.hero p{color:#d2d4d9;line-height:1.6}
+.actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:18px}
+.btn{display:inline-block;border:0;border-radius:9px;padding:12px 17px;background:var(--gold);color:#111;font-weight:900;cursor:pointer}
+.btn.dark{background:#1b2430;color:#fff;border:1px solid #424b56}
+.btn.green{background:var(--green);color:#07120b}
+main{max-width:1200px;margin:auto;padding:20px 13px}
+.section-title{color:var(--gold);margin:10px 0 16px}
+.search{width:100%;padding:14px;border-radius:10px;border:1px solid #3a424c;background:#101721;color:white;font-size:16px;margin-bottom:17px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:13px}
+.game{background:linear-gradient(150deg,#17202c,#10141b);border:1px solid #303a46;border-radius:13px;padding:14px 10px;text-align:center;min-width:0}
+.game-logo{height:75px;width:75px;margin:0 auto 10px;border:1px solid #5b4a25;border-radius:16px;background:#fff;display:grid;place-items:center;overflow:hidden}
+.game-logo img{width:100%;height:100%;object-fit:contain;padding:5px}
+.game-logo span{font-size:23px;font-weight:900;color:#141414}
+.game h3{font-size:14px;min-height:34px;margin:7px 0;color:#fff;overflow-wrap:anywhere}
+.status{color:var(--green);font-size:11px;font-weight:bold;margin:9px 0}
+.dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--green);margin-right:5px}
+.play{display:block;width:100%;padding:11px 5px;border-radius:8px;background:var(--gold);color:#111;font-weight:900;font-size:12px}
+.play:hover,.btn:hover{filter:brightness(1.08)}
+.info{background:var(--panel);border:1px solid #2d3743;border-radius:12px;padding:17px;margin:20px 0;line-height:1.7;color:#d8dce2}
+.info h2{color:var(--gold)}
+footer{text-align:center;padding:24px 12px;color:#aab0b9;border-top:1px solid #29313b;font-size:13px}
+.floating{position:fixed;right:13px;bottom:15px;z-index:15;display:flex;flex-direction:column;gap:9px}
+.floating button{border:0;border-radius:50px;padding:12px 15px;font-weight:bold;box-shadow:0 3px 15px #0008;cursor:pointer}
+.chat{background:var(--gold);color:#111}
+.whatsapp{background:#20c76a;color:#07150b}
+.modal{position:fixed;inset:0;background:#000d;z-index:30;display:none;align-items:center;justify-content:center;padding:20px}
+.modal-box{max-width:360px;background:#151c26;border:1px solid var(--gold);border-radius:15px;padding:23px;text-align:center}
+.modal-box h2{color:var(--gold)}
+.modal-box p{line-height:1.6;color:#ddd}
+@media(max-width:480px){nav{gap:9px;font-size:12px}.brand{font-size:13px}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hero{padding-top:26px}}
 </style>
 </head>
 
 <body>
-
 <header>
- <div class="brand">👑 PREMIUM GAMING LOUNGE 👑</div>
- <div class="tagline">YOUR GAMING PLATFORMS IN ONE PLACE</div>
+  <div class="nav">
+    <a class="brand" href="#">
+      <span class="brand-mark">★</span>
+      <span>PREMIUM<br>GAMING LOUNGE</span>
+    </a>
+    <nav>
+      <a href="#games">Games</a>
+      <a href="#about">About</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+
+  <div class="ticker"><div class="ticker-track" id="ticker1"></div></div>
+  <div class="ticker"><div class="ticker-track second" id="ticker2"></div></div>
 </header>
 
-<div class="ticker"><div class="track" id="topTicker"></div></div>
-
 <section class="hero">
- <h1>WELCOME TO YOUR</h1>
- <h1>GAMING LOUNGE</h1>
- <p>EXPLORE YOUR FAVORITE GAMING PLATFORMS</p>
- <div class="bonus">🎁 150% BONUS 🎁</div>
- <br>
- <a class="contact" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">
- 💬 CONTACT US ON WHATSAPP
- </a>
+  <div class="hero-logo">★</div>
+  <h1>PREMIUM GAMING LOUNGE</h1>
+  <p>Explore your favorite gaming platforms in one place.</p>
+  <div class="actions">
+    <a class="btn" href="#games">EXPLORE GAMES</a>
+    <button class="btn dark" onclick="installApp()">📲 INSTALL APP</button>
+    <button class="btn dark" onclick="openLiveChat()">💬 LIVE CHAT</button>
+  </div>
 </section>
 
 <main>
- <h2 class="heading">✨ ALL GAMES AVAILABLE ✨</h2>
- <input class="search" id="search" type="search" placeholder="🔎 Search any game..." aria-label="Search games">
- <div class="promo"><div class="promo-track" id="bonusTicker"></div></div>
- <div class="games" id="games"></div>
+  <h2 class="section-title" id="games">🎮 ALL GAMING PLATFORMS</h2>
+  <input id="search" class="search" type="search" placeholder="Search games..." aria-label="Search games">
+  <div class="grid" id="gameGrid"></div>
 
- <section class="community">
-  <h2>WELCOME TO OUR GAMING COMMUNITY</h2>
-  <p>Find your preferred platform and select PLAY NOW.</p>
- </section>
+  <section class="info" id="about">
+    <h2>Welcome to Premium Gaming Lounge</h2>
+    Browse the available gaming platforms and select PLAY to open a game's website.
+    Game logos are loaded from the platforms' website icons where available.
+    Some external sites may not provide a logo.
+  </section>
+
+  <section class="info" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <p><strong>How do I open a game?</strong><br>Find the game and tap its PLAY button.</p>
+    <p><strong>How do I contact support?</strong><br>Tap LIVE CHAT or WhatsApp.</p>
+    <p><strong>How do I install this website?</strong><br>Tap INSTALL APP. If installation is not available, open Chrome's menu and select Add to Home screen.</p>
+    <p><strong>Do I need to share my Gmail?</strong><br>No Gmail address is displayed on this website.</p>
+  </section>
+
+  <section class="info" id="contact">
+    <h2>Customer Support</h2>
+    <p>For assistance, use the Live Chat or WhatsApp buttons.</p>
+    <button class="btn" onclick="openLiveChat()">OPEN LIVE CHAT</button>
+    <a class="btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener">WHATSAPP SUPPORT</a>
+  </section>
 </main>
 
-<footer>👑 PREMIUM GAMING LOUNGE 👑</footer>
+<footer>
+  Premium Gaming Lounge · Please follow the laws and age requirements applicable in your location.
+</footer>
+
+<div class="floating">
+  <button class="chat" onclick="openLiveChat()">💬 LIVE CHAT</button>
+  <a class="whatsapp" style="text-align:center;padding:12px 15px;border-radius:50px;font-weight:bold" href="https://wa.me/14482414979" target="_blank" rel="noopener">WhatsApp</a>
+</div>
+
+<div class="modal" id="ageModal">
+  <div class="modal-box">
+    <h2>Age Notice</h2>
+    <p>Please continue only if you meet the legal age requirements applicable to you and your location.</p>
+    <button class="btn" onclick="closeAgeModal()">CONTINUE</button>
+  </div>
+</div>
 
 <script>
-const gameData = [
+const games = [
 ["Orion Star","http://start.orionstars.vip:8580/"],
 ["Milkyway","https://milkywayapp.xyz/"],
 ["Juwa","https://dl.juwa777.com/"],
@@ -155,102 +196,86 @@ const gameData = [
 ["Sharks Secret 77","https://www.sharksecret777.com"]
 ];
 
-const playerCounts = [200,300,400,50,60];
-
-function domainOf(url){
- try{return new URL(url).hostname.replace(/^www\./,"")}
- catch(e){return ""}
+function logoURL(url){
+  try {
+    return "https://www.google.com/s2/favicons?domain=" +
+      encodeURIComponent(new URL(url).hostname) + "&sz=128";
+  } catch(e) { return ""; }
 }
 
-function esc(text){
- return String(text).replace(/[&<>"']/g,c=>({
-  "&":"&amp;","<":"&lt;",">":"&gt;",
-  '"':"&quot;","'":"&#39;"
- }[c]));
+function logoHTML(name,url){
+  const initials = name.split(/\s+/).map(w=>w[0]).join("").slice(0,3);
+  return '<div class="game-logo"><img loading="lazy" src="'+logoURL(url)+
+    '" alt="'+name+' logo" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'block\'">'+
+    '<span style="display:none">'+initials+'</span></div>';
 }
 
-function makeTicker(){
- return gameData.map((g,i)=>
-  `<span>🎮 ${esc(g[0])} — ${playerCounts[i%playerCounts.length]} Players</span>`
- ).join("");
+function renderGames(list){
+  const grid=document.getElementById("gameGrid");
+  grid.innerHTML="";
+  list.forEach(([name,url])=>{
+    const card=document.createElement("article");
+    card.className="game";
+    card.innerHTML=logoHTML(name,url)+
+      '<h3></h3><div class="status"><span class="dot"></span>PLAY NOW</div>'+
+      '<a class="play" target="_blank" rel="noopener noreferrer">▶ PLAY</a>';
+    card.querySelector("h3").textContent=name;
+    const link=card.querySelector(".play");
+    link.href=url;
+    link.setAttribute("aria-label","Play "+name);
+    grid.appendChild(card);
+  });
 }
 
-const ticker=makeTicker();
-document.getElementById("topTicker").innerHTML=ticker+ticker;
-
-const promoText =
- '<span>🎁 150% BONUS</span>' +
- '<span>⭐ EXPLORE ALL GAMES</span>' +
- '<span>🎮 CHOOSE YOUR PLATFORM</span>' +
- '<span>✨ FIND YOUR FAVORITE GAME</span>';
-
-document.getElementById("bonusTicker").innerHTML=promoText+promoText;
-
-const container=document.getElementById("games");
-const search=document.getElementById("search");
-
-function createCard(game,index){
- const name=game[0],url=game[1];
- const card=document.createElement("article");
- card.className="card";
-
- const logo=document.createElement("div");
- logo.className="logo";
-
- const img=document.createElement("img");
- img.alt=name+" logo";
- img.loading="lazy";
- img.src="https://www.google.com/s2/favicons?domain="+
- encodeURIComponent(domainOf(url))+"&sz=128";
-
- const fallback=document.createElement("div");
- fallback.className="logo-text";
- fallback.textContent=name;
- fallback.style.display="none";
-
- img.onerror=()=>{
-  img.style.display="none";
-  fallback.style.display="block";
- };
-
- logo.append(img,fallback);
-
- const title=document.createElement("div");
- title.className="name";
- title.textContent=name;
-
- const players=document.createElement("div");
- players.className="player-count";
- players.textContent=playerCounts[index%playerCounts.length]+" Players";
-
- const link=document.createElement("a");
- link.className="play";
- link.href=url;
- link.target="_blank";
- link.rel="noopener noreferrer";
- link.textContent="PLAY NOW";
-
- card.append(logo,title,players,link);
- return card;
+function renderTicker(id){
+  const track=document.getElementById(id);
+  const items=[...games,...games];
+  track.innerHTML=items.map(([name,url])=>
+    '<span class="ticker-item"><img loading="lazy" src="'+logoURL(url)+
+    '" alt="" onerror="this.style.visibility=\'hidden\'"><span>'+name+'</span></span>'
+  ).join("");
 }
+renderGames(games);
+renderTicker("ticker1");
+renderTicker("ticker2");
 
-function render(query=""){
- container.replaceChildren();
- gameData.forEach((game,index)=>{
-  if(game[0].toLowerCase().includes(query.toLowerCase())){
-   container.appendChild(createCard(game,index));
+document.getElementById("search").addEventListener("input",function(){
+  const term=this.value.trim().toLowerCase();
+  renderGames(games.filter(g=>g[0].toLowerCase().includes(term)));
+});
+
+function openLiveChat(){
+  window.$crisp=window.$crisp||[];
+  window.$crisp.push(["do","chat:open"]);
+}
+function installApp(){
+  if(window.deferredInstallPrompt){
+    window.deferredInstallPrompt.prompt();
+    window.deferredInstallPrompt.userChoice.then(()=>{window.deferredInstallPrompt=null;});
+  } else {
+    alert("To add this website to your phone: open Chrome menu ⋮ and tap 'Add to Home screen' or 'Install app' if available.");
   }
- });
- if(!container.children.length){
-  const message=document.createElement("p");
-  message.textContent="No matching games found.";
-  container.appendChild(message);
- }
 }
+window.addEventListener("beforeinstallprompt",function(e){
+  e.preventDefault();
+  window.deferredInstallPrompt=e;
+});
 
-search.addEventListener("input",()=>render(search.value));
-render();
+function closeAgeModal(){
+  document.getElementById("ageModal").style.display="none";
+}
 </script>
 
+<!-- Existing Crisp Live Chat connection. No Gmail address is shown. -->
+<script type="text/javascript">
+window.$crisp=window.$crisp||[];
+window.CRISP_WEBSITE_ID="cc20bafe-6ade-442e-80d7-bd00bbbc733e";
+(function(){
+  var d=document,s=d.createElement("script");
+  s.src="https://client.crisp.chat/l.js";
+  s.async=1;
+  d.getElementsByTagName("head")[0].appendChild(s);
+})();
+</script>
 </body>
 </html>
