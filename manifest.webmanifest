@@ -1,0 +1,11 @@
+
+{
+  "name": "Premium Gaming Lounge",
+  "short_name": "Gaming Lounge",
+  "description": "Premium Gaming Lounge",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#080b10",
+  "theme_color": "#080b10"
+}
