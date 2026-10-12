@@ -1,346 +1,234 @@
+
+  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#08152f">
 <title>Orion Star Gaming</title>
 
 <style>
-*{box-sizing:border-box}
-
-body{
- margin:0;
- font-family:Arial,sans-serif;
- background:linear-gradient(150deg,#080d20,#172747,#070a16);
- color:white;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-header{
- text-align:center;
- padding:25px 12px;
- background:linear-gradient(135deg,#080d20,#182849,#080d20);
- border-bottom:2px solid #d9ad45;
+body {
+  font-family: Arial, sans-serif;
+  background: #080808;
+  color: #fff;
 }
 
-.brand{
- display:inline-block;
- padding:12px 24px;
- border:2px solid #f8d77a;
- border-radius:17px;
- background:linear-gradient(135deg,#30210a,#111827,#44300d);
- box-shadow:0 0 22px #e9b94966;
+header {
+  text-align: center;
+  padding: 22px 12px;
+  background: linear-gradient(135deg,#080808,#252000,#080808);
+  border-bottom: 2px solid #d8ad35;
 }
 
-header h1{
- margin:0;
- font-size:clamp(25px,6vw,43px);
- font-weight:900;
- color:#ffe7a0;
- text-shadow:0 0 12px #d6a12c;
+.logo {
+  font-size: 30px;
+  font-weight: 900;
+  color: #ffd65a;
+  text-shadow: 0 0 12px #c79522;
 }
 
-.bonus-banner{
- margin:18px auto;
- max-width:900px;
- padding:25px 12px;
- text-align:center;
- border:2px solid #58d9ff;
- border-radius:20px;
- background:linear-gradient(135deg,#041b59,#0755d9,#00bfff);
- box-shadow:0 0 25px #00aaff77;
+.subtitle {
+  margin-top: 7px;
+  color: #eee;
+  font-size: 13px;
+  letter-spacing: 2px;
 }
 
-.bonus-banner .small{
- color:#d9f7ff;
- font-size:13px;
- font-weight:bold;
- letter-spacing:3px;
+.ticker {
+  overflow: hidden;
+  white-space: nowrap;
+  background: #17130a;
+  border-top: 1px solid #bd912b;
+  border-bottom: 1px solid #bd912b;
+  padding: 12px 0;
 }
 
-.bonus-banner h2{
- color:#fff;
- font-size:clamp(36px,9vw,58px);
- text-shadow:0 0 12px #00eaff,0 0 28px #00aaff;
- margin:10px 0;
+.ticker-track {
+  display: inline-flex;
+  gap: 35px;
+  width: max-content;
+  animation: moveLogos 24s linear infinite;
 }
 
-.bonus-banner p{
- color:#e2f8ff;
- margin:5px 0 0;
- font-size:13px;
+.ticker-track span {
+  color: #ffd65a;
+  font-weight: bold;
+  font-size: 15px;
 }
 
-.gaming-cover{
- display:block;
- width:calc(100% - 24px);
- max-width:900px;
- height:auto;
- aspect-ratio:16/7;
- object-fit:cover;
- margin:18px auto;
- border-radius:18px;
- border:2px solid #42caff;
- box-shadow:0 0 22px #008cff66;
+@keyframes moveLogos {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
 }
 
-.player-counter{
- width:calc(100% - 24px);
- max-width:900px;
- margin:20px auto;
- padding:22px 12px;
- text-align:center;
- border:1px solid #f8d777;
- border-radius:20px;
- background:linear-gradient(135deg,#111a30,#263858,#111a30);
- box-shadow:0 0 22px #e6b84b33;
+.hero {
+  text-align: center;
+  padding: 38px 15px;
+  background:
+    radial-gradient(ellipse at top,#624500 0%,#211700 35%,#090909 75%);
+  border-bottom: 1px solid #a98120;
 }
 
-.player-icon{font-size:32px;margin-bottom:8px}
-
-.player-number{
- font-size:clamp(34px,8vw,50px);
- font-weight:900;
- color:#ffe39a;
- text-shadow:0 0 15px #e5b94c66;
- margin:5px 0;
+.hero h1 {
+  color: #ffe08a;
+  font-size: clamp(26px,6vw,43px);
+  margin-bottom: 12px;
 }
 
-.player-label{
- color:#fff;
- font-size:15px;
- font-weight:bold;
- letter-spacing:1px;
+.hero p {
+  color: #ddd;
+  font-size: 15px;
+  line-height: 1.7;
 }
 
-.player-note{
- color:#d6deee;
- font-size:12px;
- margin-top:8px;
+.bonus {
+  display: inline-block;
+  margin: 20px auto 0;
+  padding: 14px 25px;
+  border-radius: 10px;
+  border: 2px solid #ffe27b;
+  background: linear-gradient(135deg,#b67b00,#ffe38a,#a66c00);
+  color: #170f00;
+  font-weight: 900;
+  font-size: 25px;
+  box-shadow: 0 0 22px #a67c23;
 }
 
-.dollar-ticker{
- width:100%;
- overflow:hidden;
- white-space:nowrap;
- margin:12px 0;
- padding:15px 0;
- background:linear-gradient(90deg,#10182b,#243958,#10182b);
- border-top:1px solid #f6d36f;
- border-bottom:1px solid #f6d36f;
- box-shadow:0 0 16px #e7bd5533;
+.contact {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 13px 23px;
+  background: #168b4b;
+  border-radius: 8px;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
 }
 
-.dollar-track{
- display:flex;
- width:max-content;
- animation:dollarScroll 45s linear infinite;
+main {
+  max-width: 1150px;
+  margin: auto;
+  padding: 25px 14px 40px;
 }
 
-.dollar-track span{
- display:inline-block;
- margin:0 20px;
- color:#ffe7a0;
- font-size:14px;
- font-weight:900;
- text-shadow:0 0 8px #d9ad4566;
+.section-title {
+  text-align: center;
+  font-size: 25px;
+  color: #ffd65a;
+  margin: 10px 0 22px;
 }
 
-.dollar-ticker:hover .dollar-track{
- animation-play-state:paused;
+.search {
+  display: block;
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto 25px;
+  padding: 14px;
+  border: 1px solid #b9902c;
+  border-radius: 9px;
+  background: #171717;
+  color: white;
+  font-size: 16px;
+  outline: none;
 }
 
-@keyframes dollarScroll{
- from{transform:translateX(0)}
- to{transform:translateX(-50%)}
+.games {
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
+  gap: 16px;
 }
 
-.marquee{
- overflow:hidden;
- white-space:nowrap;
- background:#090e20;
- border-top:1px solid #d9ad45;
- border-bottom:1px solid #d9ad45;
- padding:10px 0;
+.game-card {
+  background: linear-gradient(145deg,#1d1d1d,#0d0d0d);
+  border: 1px solid #755a1d;
+  border-radius: 13px;
+  text-align: center;
+  padding: 16px 10px;
+  transition: transform .2s,border-color .2s;
 }
 
-.marquee-track{
- display:flex;
- width:max-content;
- animation:scrollGames 65s linear infinite;
+.game-card:hover {
+  transform: translateY(-4px);
+  border-color: #ffda63;
 }
 
-.marquee:hover .marquee-track{
- animation-play-state:paused;
+.game-logo {
+  width: 100%;
+  height: 95px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  margin-bottom: 12px;
+  border-radius: 9px;
+  background: radial-gradient(circle,#49380e,#101010 75%);
+  border: 1px solid #554117;
 }
 
-.marquee-group{
- display:flex;
- align-items:center;
- flex-shrink:0;
+.game-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: 6px;
 }
 
-.marquee-item{
- display:flex;
- align-items:center;
- gap:9px;
- margin:0 14px;
- color:#ffe7a0;
- font-size:14px;
- font-weight:bold;
+.game-name {
+  min-height: 38px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 15px;
+  font-weight: bold;
+  color: #ffe08a;
+  margin-bottom: 12px;
 }
 
-.marquee-logo{
- width:36px;
- height:36px;
- object-fit:contain;
- background:white;
- border-radius:9px;
- padding:3px;
- border:1px solid #e8bd59;
+.play-btn {
+  display: block;
+  width: 100%;
+  padding: 12px 5px;
+  background: linear-gradient(135deg,#ffe68c,#c28c19);
+  color: #171000;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+  border: 1px solid #fff0b3;
 }
 
-.marquee-fallback{
- display:none;
- width:36px;
- height:36px;
- align-items:center;
- justify-content:center;
- background:linear-gradient(135deg,#fff1a8,#d6a12c);
- border-radius:9px;
- color:#211605;
- font-weight:bold;
+.play-btn:hover {
+  background: #fff0b3;
 }
 
-@keyframes scrollGames{
- from{transform:translateX(0)}
- to{transform:translateX(-50%)}
+footer {
+  padding: 22px 12px;
+  text-align: center;
+  color: #b8b8b8;
+  border-top: 1px solid #5b4619;
+  font-size: 13px;
+  line-height: 1.8;
 }
 
-.container{
- max-width:1200px;
- margin:auto;
- padding:18px 14px 40px;
-}
+@media(max-width:380px) {
+  .games {
+    grid-template-columns: repeat(2,minmax(0,1fr));
+    gap: 10px;
+  }
 
-.actions{
- display:flex;
- justify-content:center;
- margin:18px 0;
-}
+  .game-card {
+    padding: 11px 7px;
+  }
 
-.contact,.float-chat{
- background:#25d366;
- color:#062d14;
- padding:13px 18px;
- border-radius:30px;
- text-decoration:none;
- font-weight:bold;
- box-shadow:0 4px 15px #0005;
-}
-
-.search{
- display:block;
- width:100%;
- max-width:600px;
- margin:0 auto 10px;
- padding:15px;
- border-radius:12px;
- border:1px solid #d9ad45;
- background:#101a31;
- color:white;
- font-size:16px;
- outline:none;
-}
-
-.count{
- text-align:center;
- color:#e7d8ac;
- font-size:13px;
-}
-
-.games{
- display:grid;
- grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
- gap:14px;
- margin-top:20px;
-}
-
-.card{
- background:linear-gradient(150deg,#1d3152,#101729);
- border:1px solid #b18a3b;
- border-radius:16px;
- padding:17px 12px;
- text-align:center;
- display:flex;
- flex-direction:column;
- align-items:center;
- min-height:215px;
- box-shadow:0 6px 18px #0005;
-}
-
-.logo{
- width:78px;
- height:78px;
- object-fit:contain;
- background:white;
- border:2px solid #e8bd59;
- border-radius:17px;
- padding:5px;
-}
-
-.fallback{
- width:78px;
- height:78px;
- border-radius:17px;
- display:none;
- align-items:center;
- justify-content:center;
- background:linear-gradient(135deg,#fff1a8,#d6a12c);
- border:2px solid #fff0b5;
- color:#211605;
- font-size:23px;
- font-weight:900;
-}
-
-.card h2{
- font-size:16px;
- min-height:38px;
- margin:13px 0;
-}
-
-.play{
- display:block;
- margin-top:auto;
- width:100%;
- max-width:180px;
- padding:12px 8px;
- border-radius:10px;
- text-decoration:none;
- background:linear-gradient(90deg,#ffe7a0,#d6a12c);
- color:#211605;
- font-weight:900;
-}
-
-.float-chat{
- position:fixed;
- right:15px;
- bottom:15px;
- z-index:10;
-}
-
-@media(max-width:420px){
- .games{
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:9px;
- }
- .card{
-  padding:13px 7px;
-  min-height:205px;
- }
- .card h2{font-size:14px}
- .play{font-size:13px}
- .marquee-item{margin:0 10px}
+  .logo {
+    font-size: 25px;
+  }
 }
 </style>
 </head>
@@ -348,258 +236,217 @@ header h1{
 <body>
 
 <header>
- <div class="brand">
-  <h1>ORION STAR GAMING</h1>
- </div>
+  <div class="logo">ORION STAR GAMING</div>
+  <div class="subtitle">YOUR GAMING DESTINATION</div>
 </header>
 
-<div class="bonus-banner">
- <div class="small">SPECIAL WELCOME OFFER</div>
- <h2>150% BONUS</h2>
- <p>EXPLORE OUR GAME COLLECTION</p>
+<div class="ticker">
+  <div class="ticker-track">
+    <span>⭐ ORION STAR</span>
+    <span>🐼 PANDA MASTER</span>
+    <span>🌌 MILKYWAY</span>
+    <span>🎮 JUWA</span>
+    <span>🔥 FIRE KIRIN</span>
+    <span>💎 GAME VAULT</span>
+    <span>⭐ VBLINK</span>
+    <span>🐉 BLUE DRAGON</span>
+    <span>⭐ ORION STAR</span>
+    <span>🐼 PANDA MASTER</span>
+    <span>🌌 MILKYWAY</span>
+    <span>🎮 JUWA</span>
+    <span>🔥 FIRE KIRIN</span>
+    <span>💎 GAME VAULT</span>
+    <span>⭐ VBLINK</span>
+    <span>🐉 BLUE DRAGON</span>
+  </div>
 </div>
 
-<img
- class="gaming-cover"
- src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=85"
- alt="Gaming arena cover image"
- loading="lazy"
->
-
-<div class="player-counter">
- <div class="player-icon">🏆</div>
- <div class="player-number">15,000+</div>
- <div class="player-label">PLAYERS SERVED</div>
- <div class="player-note">Thank you for being part of our community!</div>
-</div>
-
-<div class="dollar-ticker">
- <div class="dollar-track">
-  <span>🎮 Cash Machine — $25</span>
-  <span>⭐ Orion Star — $20</span>
-  <span>🔥 Fire Kirin — $15</span>
-  <span>🐼 Panda Master — $30</span>
-  <span>💎 Milkyway — $10</span>
-  <span>🎰 Vegas Luck — $25</span>
-  <span>🏆 Game Room — $20</span>
-  <span>🃏 Highstakes — $15</span>
-  <span>🎲 Juwa 2.0 — $35</span>
-  <span>💰 Mafia 777 — $20</span>
-  <span>⭐ Noble 777 — $15</span>
-
-  <span>🎮 Cash Machine — $25</span>
-  <span>⭐ Orion Star — $20</span>
-  <span>🔥 Fire Kirin — $15</span>
-  <span>🐼 Panda Master — $30</span>
-  <span>💎 Milkyway — $10</span>
-  <span>🎰 Vegas Luck — $25</span>
-  <span>🏆 Game Room — $20</span>
-  <span>🃏 Highstakes — $15</span>
-  <span>🎲 Juwa 2.0 — $35</span>
-  <span>💰 Mafia 777 — $20</span>
-  <span>⭐ Noble 777 — $15</span>
- </div>
-</div>
-
-<div class="marquee">
- <div class="marquee-track" id="marqueeTrack"></div>
-</div>
-
-<main class="container">
- <div class="actions">
-  <a class="contact" id="topWhatsApp"
-     href="#" target="_blank" rel="noopener">
-   💬 WhatsApp Chat With Us
+<section class="hero">
+  <h1>WELCOME TO OUR GAMING LOUNGE</h1>
+  <p>Explore your favorite gaming platforms in one place.</p>
+  <div class="bonus">150% BONUS</div>
+  <br>
+  <a class="contact"
+     href="https://wa.me/14482414979"
+     target="_blank"
+     rel="noopener noreferrer">
+     CONTACT US ON WHATSAPP
   </a>
- </div>
+</section>
 
- <input class="search" id="search"
- type="search" placeholder="Search games by name..."
- aria-label="Search games">
+<main>
+  <h2 class="section-title">OUR GAMES</h2>
 
- <p class="count" id="count"></p>
- <section class="games" id="games"></section>
+  <input
+    type="search"
+    class="search"
+    id="gameSearch"
+    placeholder="Search your favorite game..."
+    aria-label="Search games">
+
+  <div class="games" id="gamesList"></div>
 </main>
 
-<a class="float-chat" id="floatWhatsApp"
- href="#" target="_blank" rel="noopener">
- 💬 WhatsApp Chat
-</a>
+<footer>
+  <div>ORION STAR GAMING</div>
+  <div>Choose a platform to visit its official player page.</div>
+  <div>Please follow the applicable laws and age requirements.</div>
+</footer>
 
 <script>
-const WHATSAPP_NUMBER = "14482414979";
-const MESSAGE = "Hello! I have a question about Orion Star Gaming.";
-
-const whatsappURL =
- "https://wa.me/" + WHATSAPP_NUMBER +
- "?text=" + encodeURIComponent(MESSAGE);
-
-document.getElementById("topWhatsApp").href = whatsappURL;
-document.getElementById("floatWhatsApp").href = whatsappURL;
-
-/* GAME LIST */
 const games = [
- ["Orion Star","http://start.orionstars.vip:8580/","orionstars.vip","OS"],
- ["Milkyway","https://milkywayapp.xyz/","milkywayapp.xyz","MW"],
- ["Juwa","https://dl.juwa777.com/","juwa777.com","JW"],
- ["VB Link","https://www.vblink777.club/","vblink777.club","VB"],
- ["Juwa 2.0","https://m.juwa2.com/","juwa2.com","J2"],
- ["Fire Kirin","https://firekirin.com/download-fire-kirin-app.ht","firekirin.com","FK"],
- ["Vegas X","https://www.vegas-x.org","vegas-x.org","VX"],
- ["Game Vault","http://download.gamevault999.com/","gamevault999.com","GV"],
- ["Egame","https://www.egame99.club","egame99.club","EG"],
- ["Moolah","https://moolah.vip:8888/","moolah.vip","ML"],
- ["RiverSweep","https://bet777.eu/play/","bet777.eu","RS"],
- ["Noble 777","http://www.noble777.com","noble777.com","N7"],
- ["Highstakes","https://dl.highstakesweeps.com/","highstakesweeps.com","HS"],
- ["Casino Royal","http://m.casinoroyale07.com","casinoroyale07.com","CR"],
- ["Vegas Sweep","http://m.lasvegassweeps.com/","lasvegassweeps.com","VS"],
- ["Ultra Panda","http://www.ultrapanda.mobi","ultrapanda.mobi","UP"],
- ["Orion Power","http://download.orionpower.games:8008/","orionpower.games","OP"],
- ["Winstar","https://www.winstar99999.com","winstar99999.com","WS"],
- ["Mafia 777","http://www.mafia77777.com","mafia77777.com","M7"],
- ["Para Casino","https://h5.paracasino.net/","paracasino.net","PC"],
- ["Vegas Roll","http://www.vegas-roll.com/m","vegas-roll.com","VR"],
- ["Mr. All In One","http://www.mrallinone777.com","mrallinone777.com","MA"],
- ["YOLO 777","https://yolo777.game","yolo777.game","YO"],
- ["Cash Machine","https://www.cashmachine777.com","cashmachine777.com","CM"],
- ["Game Room","https://www.gameroom777.com/","gameroom777.com","GR"],
- ["Vegas Luck","https://start.vegasluck777.com/","vegasluck777.com","VL"],
- ["River Pay","https://river777.net/build.30/index.html","river777.net","RP"],
- ["Loot Game","https://m.lootgame777.com","lootgame777.com","LG"],
- ["Highroller","https://www.highroller.com/casino","highroller.com","HR"],
- ["Hukum","https://hukum777.online/","hukum777.online","HK"],
- ["Mob.com","https://fpc-mob.com/","fpc-mob.com","MB"],
- ["Dragon Crown","https://atlus.com/dragonscrown/","atlus.com","DC"],
- ["Lucky Master","https://lucky-master.net/","lucky-master.net","LM"],
- ["King of Pop","https://kingofpop777.com/","kingofpop777.com","KP"],
- ["Firefonix","https://fpc-mob.com/AD/index.html","fpc-mob.com","FF"],
- ["Bigwin","https://bigwplay.com","bigwplay.com","BW"],
- ["Thunder Seven","https://thunderseven.com/","thunderseven.com","T7"],
- ["Gem Slots","https://www.gem77777.com/m","gem77777.com","GS"],
- ["Winner Club","https://www.winnersclub777.com","winnersclub777.com","WC"],
- ["Cash Frenzy","https://www.cashfrenzy777.com","cashfrenzy777.com","CF"],
- ["King of Pop Slots","https://www.slots88888.com","slots88888.com","KP"],
- ["Joker 777","https://www.joker777.win","joker777.win","J7"],
- ["Orion Strike","https://start.orionstrike777.com","orionstrike777.com","OS"],
- ["Big Bang","https://www.bigbangcasino.vegas","bigbangcasino.vegas","BB"],
- ["Lucky Star","https://www.luckystars.games","luckystars.games","LS"],
- ["Stars Galaxy","https://www.starsgalaxy777.com","starsgalaxy777.com","SG"],
- ["Gem777","https://www.gem77777.com","gem77777.com","G7"],
- ["Lucky Paradise","https://www.luckyparadise777.com","luckyparadise777.com","LP"],
- ["River Monster","https://rm777.net/","rm777.net","RM"],
- ["Mega Spin","https://megaspinpay.com/default.aspx","megaspinpay.com","MS"],
- ["Sharks Secret 77","https://www.sharksecret777.com/","sharksecret777.com","SS"],
- ["Winwin Vegas","https://winwinvegas777.com","winwinvegas777.com","WV"],
- ["Panda Master","https://pandamaster.vip:8888/","pandamaster.vip","PM"],
- ["Ding Ding","https://www.dingdinghouse.com","dingdinghouse.com","DD"],
- ["Vegas X Pro","https://vegas-x.pro","vegas-x.pro","VX"],
- ["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx","bluedragon777.com","BD"],
- ["Blue Dragon","https://bluedragon777.net/","bluedragon777.net","BD"],
- ["Game Vault 777","https://www.gamevault77777.com","gamevault77777.com","G7"],
- ["Game Vault 2","https://res.gamevault2.vip/download/","gamevault2.vip","G2"],
- ["PlayAceBook","https://www.playacebook.mobi/","playacebook.mobi","PA"]
+  {
+    name: "Orion Star",
+    url: "http://start.orionstars.vip:8580/index.html",
+    logo: ""
+  },
+  {
+    name: "Panda Master",
+    url: "https://pandamaster.vip:8888/",
+    logo: ""
+  },
+  {
+    name: "Milkyway",
+    url: "https://milkywayapp.xyz/",
+    logo: ""
+  },
+  {
+    name: "Juwa",
+    url: "http://www.juwa777.com/",
+    logo: ""
+  },
+  {
+    name: "Game Vault",
+    url: "https://gamevault999.com/",
+    logo: ""
+  },
+  {
+    name: "VBlink",
+    url: "https://www.vblink777.club/",
+    logo: ""
+  },
+  {
+    name: "Vegasweep",
+    url: "https://m.lasvegassweeps.com/",
+    logo: ""
+  },
+  {
+    name: "Fire Kirin",
+    url: "http://web.firekirin.xyz/firekirin/firekirin/",
+    logo: ""
+  },
+  {
+    name: "Ultra Panda",
+    url: "https://www.ultrapanda.mobi/",
+    logo: ""
+  },
+  {
+    name: "Egame / Xgame",
+    url: "https://www.egame99.club/",
+    logo: ""
+  },
+  {
+    name: "Blue Dragon",
+    url: "http://app.bluedragon777.com/",
+    logo: ""
+  },
+  {
+    name: "Mr All In One",
+    url: "https://www.mrallinone777.com/",
+    logo: ""
+  },
+  {
+    name: "Mafia",
+    url: "http://www.mafia77777.com",
+    logo: ""
+  },
+  {
+    name: "Riversweeps",
+    url: "https://bet777.eu/",
+    logo: ""
+  },
+  {
+    name: "Moolah",
+    url: "https://moolah.vip:8888/",
+    logo: ""
+  },
+  {
+    name: "Highstakes",
+    url: "https://www.highstakes.com/",
+    logo: ""
+  },
+  {
+    name: "Juwa 2.0",
+    url: "https://thejuwa.com/juwa-2-0/",
+    logo: ""
+  },
+  {
+    name: "Vegas X",
+    url: "https://www.vegas-x.org",
+    logo: ""
+  }
 ];
 
-function logoURL(domain){
- return "https://www.google.com/s2/favicons?domain=" +
- encodeURIComponent(domain) + "&sz=128";
+const gamesList = document.getElementById("gamesList");
+const searchInput = document.getElementById("gameSearch");
+
+function renderGames(filter = "") {
+  gamesList.replaceChildren();
+
+  const filteredGames = games.filter(game =>
+    game.name.toLowerCase().includes(filter.toLowerCase())
+  );
+
+  filteredGames.forEach(game => {
+    const card = document.createElement("article");
+    card.className = "game-card";
+
+    const logoBox = document.createElement("div");
+    logoBox.className = "game-logo";
+
+    if (game.logo) {
+      const image = document.createElement("img");
+      image.src = game.logo;
+      image.alt = game.name + " logo";
+      image.loading = "lazy";
+
+      image.onerror = () => {
+        logoBox.replaceChildren();
+        logoBox.textContent = game.name;
+        logoBox.style.color = "#ffe08a";
+        logoBox.style.fontWeight = "bold";
+      };
+
+      logoBox.appendChild(image);
+    } else {
+      logoBox.textContent = game.name;
+      logoBox.style.color = "#ffe08a";
+      logoBox.style.fontWeight = "bold";
+    }
+
+    const title = document.createElement("div");
+    title.className = "game-name";
+    title.textContent = game.name;
+
+    // IMPORTANT: Use a real link for reliable click-to-open behavior.
+    const play = document.createElement("a");
+    play.className = "play-btn";
+    play.textContent = "PLAY NOW";
+    play.href = game.url;
+    play.target = "_blank";
+    play.rel = "noopener noreferrer";
+
+    card.append(logoBox, title, play);
+    gamesList.appendChild(card);
+  });
 }
 
-function addLogo(img,fallback,domain){
- let attempt=0;
- img.onerror=function(){
-  attempt++;
-  if(attempt===1){
-   img.src="https://icons.duckduckgo.com/ip3/"+domain+".ico";
-  }else{
-   img.style.display="none";
-   fallback.style.display="flex";
-  }
- };
- img.src=logoURL(domain);
-}
-
-function createMarqueeGroup(){
- const group=document.createElement("div");
- group.className="marquee-group";
-
- games.forEach(function(game){
-  const item=document.createElement("div");
-  item.className="marquee-item";
-
-  const img=document.createElement("img");
-  img.className="marquee-logo";
-  img.alt=game[0]+" logo";
-
-  const fallback=document.createElement("span");
-  fallback.className="marquee-fallback";
-  fallback.textContent=game[3];
-
-  addLogo(img,fallback,game[2]);
-
-  const label=document.createElement("span");
-  label.textContent=game[0];
-
-  item.append(img,fallback,label);
-  group.appendChild(item);
- });
- return group;
-}
-
-const track=document.getElementById("marqueeTrack");
-track.appendChild(createMarqueeGroup());
-track.appendChild(createMarqueeGroup());
-
-const gamesBox=document.getElementById("games");
-document.getElementById("count").textContent=games.length+" Games";
-
-function createGame(game){
- const card=document.createElement("article");
- card.className="card";
- card.dataset.name=game[0].toLowerCase();
-
- const img=document.createElement("img");
- img.className="logo";
- img.alt=game[0]+" logo";
- img.loading="lazy";
-
- const fallback=document.createElement("div");
- fallback.className="fallback";
- fallback.textContent=game[3];
-
- addLogo(img,fallback,game[2]);
-
- const title=document.createElement("h2");
- title.textContent=game[0];
-
- const button=document.createElement("a");
- button.className="play";
- button.href=game[1];
- button.target="_blank";
- button.rel="noopener noreferrer";
- button.textContent="PLAY NOW";
-
- card.append(img,fallback,title,button);
- gamesBox.appendChild(card);
-}
-
-games.forEach(createGame);
-
-document.getElementById("search").addEventListener("input",function(){
- const query=this.value.trim().toLowerCase();
- let visible=0;
-
- document.querySelectorAll(".card").forEach(function(card){
-  const match=card.dataset.name.includes(query);
-  card.style.display=match?"flex":"none";
-  if(match)visible++;
- });
-
- document.getElementById("count").textContent=
-  visible+(visible===1?" Game":" Games");
+searchInput.addEventListener("input", event => {
+  renderGames(event.target.value);
 });
+
+renderGames();
 </script>
 
 </body>
-</html>.
+</html>
