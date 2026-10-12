@@ -29,23 +29,17 @@ header{
  border:2px solid #f8d77a;
  border-radius:17px;
  background:linear-gradient(135deg,#30210a,#111827,#44300d);
- box-shadow:0 0 22px #e9b94966,inset 0 0 15px #f8d77a22;
+ box-shadow:0 0 22px #e9b94966;
 }
 
 header h1{
  margin:0;
  font-size:clamp(25px,6vw,43px);
  font-weight:900;
- letter-spacing:1px;
  color:#ffe7a0;
- background:linear-gradient(180deg,#fff7ce,#f8d568,#c58a20);
- -webkit-background-clip:text;
- background-clip:text;
- -webkit-text-fill-color:transparent;
- filter:drop-shadow(0 0 8px #e6b84b66);
+ text-shadow:0 0 12px #d6a12c;
 }
 
-/* BLUE BONUS BANNER */
 .bonus-banner{
  margin:18px auto;
  max-width:900px;
@@ -55,7 +49,6 @@ header h1{
  border-radius:20px;
  background:linear-gradient(135deg,#041b59,#0755d9,#00bfff);
  box-shadow:0 0 25px #00aaff77;
- overflow:hidden;
 }
 
 .bonus-banner .small{
@@ -78,7 +71,6 @@ header h1{
  font-size:13px;
 }
 
-/* GAMING COVER */
 .gaming-cover{
  display:block;
  width:calc(100% - 24px);
@@ -92,7 +84,77 @@ header h1{
  box-shadow:0 0 22px #008cff66;
 }
 
-/* MOVING GAME LOGOS */
+.player-counter{
+ width:calc(100% - 24px);
+ max-width:900px;
+ margin:20px auto;
+ padding:22px 12px;
+ text-align:center;
+ border:1px solid #f8d777;
+ border-radius:20px;
+ background:linear-gradient(135deg,#111a30,#263858,#111a30);
+ box-shadow:0 0 22px #e6b84b33;
+}
+
+.player-icon{font-size:32px;margin-bottom:8px}
+
+.player-number{
+ font-size:clamp(34px,8vw,50px);
+ font-weight:900;
+ color:#ffe39a;
+ text-shadow:0 0 15px #e5b94c66;
+ margin:5px 0;
+}
+
+.player-label{
+ color:#fff;
+ font-size:15px;
+ font-weight:bold;
+ letter-spacing:1px;
+}
+
+.player-note{
+ color:#d6deee;
+ font-size:12px;
+ margin-top:8px;
+}
+
+.dollar-ticker{
+ width:100%;
+ overflow:hidden;
+ white-space:nowrap;
+ margin:12px 0;
+ padding:15px 0;
+ background:linear-gradient(90deg,#10182b,#243958,#10182b);
+ border-top:1px solid #f6d36f;
+ border-bottom:1px solid #f6d36f;
+ box-shadow:0 0 16px #e7bd5533;
+}
+
+.dollar-track{
+ display:flex;
+ width:max-content;
+ animation:dollarScroll 45s linear infinite;
+}
+
+.dollar-track span{
+ display:inline-block;
+ margin:0 20px;
+ color:#ffe7a0;
+ font-size:14px;
+ font-weight:900;
+ text-shadow:0 0 8px #d9ad4566;
+}
+
+.dollar-ticker:hover .dollar-track{
+ animation-play-state:paused;
+}
+
+@keyframes dollarScroll{
+ from{transform:translateX(0)}
+ to{transform:translateX(-50%)}
+}
+
 .marquee{
  overflow:hidden;
  white-space:nowrap;
@@ -304,12 +366,46 @@ header h1{
  loading="lazy"
 >
 
+<div class="player-counter">
+ <div class="player-icon">🏆</div>
+ <div class="player-number">15,000+</div>
+ <div class="player-label">PLAYERS SERVED</div>
+ <div class="player-note">Thank you for being part of our community!</div>
+</div>
+
+<div class="dollar-ticker">
+ <div class="dollar-track">
+  <span>🎮 Cash Machine — $25</span>
+  <span>⭐ Orion Star — $20</span>
+  <span>🔥 Fire Kirin — $15</span>
+  <span>🐼 Panda Master — $30</span>
+  <span>💎 Milkyway — $10</span>
+  <span>🎰 Vegas Luck — $25</span>
+  <span>🏆 Game Room — $20</span>
+  <span>🃏 Highstakes — $15</span>
+  <span>🎲 Juwa 2.0 — $35</span>
+  <span>💰 Mafia 777 — $20</span>
+  <span>⭐ Noble 777 — $15</span>
+
+  <span>🎮 Cash Machine — $25</span>
+  <span>⭐ Orion Star — $20</span>
+  <span>🔥 Fire Kirin — $15</span>
+  <span>🐼 Panda Master — $30</span>
+  <span>💎 Milkyway — $10</span>
+  <span>🎰 Vegas Luck — $25</span>
+  <span>🏆 Game Room — $20</span>
+  <span>🃏 Highstakes — $15</span>
+  <span>🎲 Juwa 2.0 — $35</span>
+  <span>💰 Mafia 777 — $20</span>
+  <span>⭐ Noble 777 — $15</span>
+ </div>
+</div>
+
 <div class="marquee">
  <div class="marquee-track" id="marqueeTrack"></div>
 </div>
 
 <main class="container">
-
  <div class="actions">
   <a class="contact" id="topWhatsApp"
      href="#" target="_blank" rel="noopener">
@@ -322,9 +418,7 @@ header h1{
  aria-label="Search games">
 
  <p class="count" id="count"></p>
-
  <section class="games" id="games"></section>
-
 </main>
 
 <a class="float-chat" id="floatWhatsApp"
@@ -343,7 +437,7 @@ const whatsappURL =
 document.getElementById("topWhatsApp").href = whatsappURL;
 document.getElementById("floatWhatsApp").href = whatsappURL;
 
-/* GAME NAME, LINK, LOGO DOMAIN, INITIALS */
+/* GAME LIST */
 const games = [
  ["Orion Star","http://start.orionstars.vip:8580/","orionstars.vip","OS"],
  ["Milkyway","https://milkywayapp.xyz/","milkywayapp.xyz","MW"],
@@ -407,121 +501,104 @@ const games = [
  ["PlayAceBook","https://www.playacebook.mobi/","playacebook.mobi","PA"]
 ];
 
-/* LOGO URL */
 function logoURL(domain){
  return "https://www.google.com/s2/favicons?domain=" +
  encodeURIComponent(domain) + "&sz=128";
 }
 
-/* LOGO WITH FALLBACK */
-function addLogo(img, fallback, domain){
- let attempt = 0;
-
- img.onerror = function(){
+function addLogo(img,fallback,domain){
+ let attempt=0;
+ img.onerror=function(){
   attempt++;
-  if(attempt === 1){
-   img.src = "https://icons.duckduckgo.com/ip3/" +
-    domain + ".ico";
+  if(attempt===1){
+   img.src="https://icons.duckduckgo.com/ip3/"+domain+".ico";
   }else{
-   img.style.display = "none";
-   fallback.style.display = "flex";
+   img.style.display="none";
+   fallback.style.display="flex";
   }
  };
-
- img.src = logoURL(domain);
+ img.src=logoURL(domain);
 }
 
-/* MOVING GAME LOGOS */
 function createMarqueeGroup(){
- const group = document.createElement("div");
- group.className = "marquee-group";
+ const group=document.createElement("div");
+ group.className="marquee-group";
 
  games.forEach(function(game){
-  const item = document.createElement("div");
-  item.className = "marquee-item";
+  const item=document.createElement("div");
+  item.className="marquee-item";
 
-  const img = document.createElement("img");
-  img.className = "marquee-logo";
-  img.alt = game[0] + " logo";
+  const img=document.createElement("img");
+  img.className="marquee-logo";
+  img.alt=game[0]+" logo";
 
-  const fallback = document.createElement("span");
-  fallback.className = "marquee-fallback";
-  fallback.textContent = game[3];
+  const fallback=document.createElement("span");
+  fallback.className="marquee-fallback";
+  fallback.textContent=game[3];
 
-  addLogo(img, fallback, game[2]);
+  addLogo(img,fallback,game[2]);
 
-  const label = document.createElement("span");
-  label.textContent = game[0];
+  const label=document.createElement("span");
+  label.textContent=game[0];
 
-  item.append(img, fallback, label);
+  item.append(img,fallback,label);
   group.appendChild(item);
  });
-
  return group;
 }
 
-const track = document.getElementById("marqueeTrack");
+const track=document.getElementById("marqueeTrack");
 track.appendChild(createMarqueeGroup());
 track.appendChild(createMarqueeGroup());
 
-/* GAME CARDS */
-const gamesBox = document.getElementById("games");
-document.getElementById("count").textContent =
- games.length + " Games";
+const gamesBox=document.getElementById("games");
+document.getElementById("count").textContent=games.length+" Games";
 
 function createGame(game){
- const name = game[0];
- const url = game[1];
- const domain = game[2];
- const initials = game[3];
+ const card=document.createElement("article");
+ card.className="card";
+ card.dataset.name=game[0].toLowerCase();
 
- const card = document.createElement("article");
- card.className = "card";
- card.dataset.name = name.toLowerCase();
+ const img=document.createElement("img");
+ img.className="logo";
+ img.alt=game[0]+" logo";
+ img.loading="lazy";
 
- const img = document.createElement("img");
- img.className = "logo";
- img.alt = name + " logo";
- img.loading = "lazy";
+ const fallback=document.createElement("div");
+ fallback.className="fallback";
+ fallback.textContent=game[3];
 
- const fallback = document.createElement("div");
- fallback.className = "fallback";
- fallback.textContent = initials;
+ addLogo(img,fallback,game[2]);
 
- addLogo(img, fallback, domain);
+ const title=document.createElement("h2");
+ title.textContent=game[0];
 
- const title = document.createElement("h2");
- title.textContent = name;
+ const button=document.createElement("a");
+ button.className="play";
+ button.href=game[1];
+ button.target="_blank";
+ button.rel="noopener noreferrer";
+ button.textContent="PLAY NOW";
 
- const button = document.createElement("a");
- button.className = "play";
- button.href = url;
- button.target = "_blank";
- button.rel = "noopener noreferrer";
- button.textContent = "PLAY NOW";
-
- card.append(img, fallback, title, button);
+ card.append(img,fallback,title,button);
  gamesBox.appendChild(card);
 }
 
 games.forEach(createGame);
 
-/* SEARCH */
-document.getElementById("search").addEventListener(
- "input", function(){
-  const query = this.value.trim().toLowerCase();
-  let visible = 0;
+document.getElementById("search").addEventListener("input",function(){
+ const query=this.value.trim().toLowerCase();
+ let visible=0;
 
-  document.querySelectorAll(".card").forEach(function(card){
-   const match = card.dataset.name.includes(query);
-   card.style.display = match ? "flex" : "none";
-   if(match) visible++;
-  });
+ document.querySelectorAll(".card").forEach(function(card){
+  const match=card.dataset.name.includes(query);
+  card.style.display=match?"flex":"none";
+  if(match)visible++;
+ });
 
-  document.getElementById("count").textContent =
-   visible + (visible === 1 ? " Game" : " Games");
- }
-);
+ document.getElementById("count").textContent=
+  visible+(visible===1?" Game":" Games");
+});
 </script>
 
 </body>
