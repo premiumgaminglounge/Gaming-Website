@@ -1,452 +1,253 @@
 
-  
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Orion Star Gaming</title>
-
+<title>Premium Gaming Lounge</title>
 <style>
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  background: #080808;
-  color: #fff;
-}
-
-header {
-  text-align: center;
-  padding: 22px 12px;
-  background: linear-gradient(135deg,#080808,#252000,#080808);
-  border-bottom: 2px solid #d8ad35;
-}
-
-.logo {
-  font-size: 30px;
-  font-weight: 900;
-  color: #ffd65a;
-  text-shadow: 0 0 12px #c79522;
-}
-
-.subtitle {
-  margin-top: 7px;
-  color: #eee;
-  font-size: 13px;
-  letter-spacing: 2px;
-}
-
-.ticker {
-  overflow: hidden;
-  white-space: nowrap;
-  background: #17130a;
-  border-top: 1px solid #bd912b;
-  border-bottom: 1px solid #bd912b;
-  padding: 12px 0;
-}
-
-.ticker-track {
-  display: inline-flex;
-  gap: 35px;
-  width: max-content;
-  animation: moveLogos 24s linear infinite;
-}
-
-.ticker-track span {
-  color: #ffd65a;
-  font-weight: bold;
-  font-size: 15px;
-}
-
-@keyframes moveLogos {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
-}
-
-.hero {
-  text-align: center;
-  padding: 38px 15px;
-  background:
-    radial-gradient(ellipse at top,#624500 0%,#211700 35%,#090909 75%);
-  border-bottom: 1px solid #a98120;
-}
-
-.hero h1 {
-  color: #ffe08a;
-  font-size: clamp(26px,6vw,43px);
-  margin-bottom: 12px;
-}
-
-.hero p {
-  color: #ddd;
-  font-size: 15px;
-  line-height: 1.7;
-}
-
-.bonus {
-  display: inline-block;
-  margin: 20px auto 0;
-  padding: 14px 25px;
-  border-radius: 10px;
-  border: 2px solid #ffe27b;
-  background: linear-gradient(135deg,#b67b00,#ffe38a,#a66c00);
-  color: #170f00;
-  font-weight: 900;
-  font-size: 25px;
-  box-shadow: 0 0 22px #a67c23;
-}
-
-.contact {
-  display: inline-block;
-  margin-top: 18px;
-  padding: 13px 23px;
-  background: #168b4b;
-  border-radius: 8px;
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
-
-main {
-  max-width: 1150px;
-  margin: auto;
-  padding: 25px 14px 40px;
-}
-
-.section-title {
-  text-align: center;
-  font-size: 25px;
-  color: #ffd65a;
-  margin: 10px 0 22px;
-}
-
-.search {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: 0 auto 25px;
-  padding: 14px;
-  border: 1px solid #b9902c;
-  border-radius: 9px;
-  background: #171717;
-  color: white;
-  font-size: 16px;
-  outline: none;
-}
-
-.games {
-  display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(145px,1fr));
-  gap: 16px;
-}
-
-.game-card {
-  background: linear-gradient(145deg,#1d1d1d,#0d0d0d);
-  border: 1px solid #755a1d;
-  border-radius: 13px;
-  text-align: center;
-  padding: 16px 10px;
-  transition: transform .2s,border-color .2s;
-}
-
-.game-card:hover {
-  transform: translateY(-4px);
-  border-color: #ffda63;
-}
-
-.game-logo {
-  width: 100%;
-  height: 95px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  margin-bottom: 12px;
-  border-radius: 9px;
-  background: radial-gradient(circle,#49380e,#101010 75%);
-  border: 1px solid #554117;
-}
-
-.game-logo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  padding: 6px;
-}
-
-.game-name {
-  min-height: 38px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  font-weight: bold;
-  color: #ffe08a;
-  margin-bottom: 12px;
-}
-
-.play-btn {
-  display: block;
-  width: 100%;
-  padding: 12px 5px;
-  background: linear-gradient(135deg,#ffe68c,#c28c19);
-  color: #171000;
-  border-radius: 7px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 900;
-  border: 1px solid #fff0b3;
-}
-
-.play-btn:hover {
-  background: #fff0b3;
-}
-
-footer {
-  padding: 22px 12px;
-  text-align: center;
-  color: #b8b8b8;
-  border-top: 1px solid #5b4619;
-  font-size: 13px;
-  line-height: 1.8;
-}
-
-@media(max-width:380px) {
-  .games {
-    grid-template-columns: repeat(2,minmax(0,1fr));
-    gap: 10px;
-  }
-
-  .game-card {
-    padding: 11px 7px;
-  }
-
-  .logo {
-    font-size: 25px;
-  }
-}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#08080c;color:#fff;font-family:Arial,sans-serif}
+header{text-align:center;padding:22px 10px;background:linear-gradient(120deg,#100c18,#352000,#100c18);border-bottom:2px solid #e7b83d}
+.brand{font-size:29px;font-weight:900;color:#ffdf78;text-shadow:0 0 15px #a36b00}
+.tagline{font-size:12px;letter-spacing:3px;margin-top:8px}
+.ticker{overflow:hidden;white-space:nowrap;background:#17120a;border-bottom:1px solid #b99136;padding:12px 0}
+.track{display:flex;width:max-content;animation:scroll 36s linear infinite}
+.track span{padding:0 23px;color:#ffdf77;font-weight:bold;font-size:14px}
+@keyframes scroll{to{transform:translateX(-50%)}}
+.hero{padding:35px 14px;text-align:center;background:radial-gradient(ellipse at top,#72500d,#211506 45%,#08080c 85%);border-bottom:1px solid #795b1e}
+.hero h1{font-size:clamp(25px,6vw,43px);color:#ffe08a;margin-bottom:13px}
+.hero p{color:#eee;line-height:1.7}
+.offer{display:inline-block;margin:17px 0;padding:13px 22px;border:2px solid #ffe59b;border-radius:9px;background:linear-gradient(135deg,#a76b00,#ffe58b,#a76b00);color:#201400;font-size:24px;font-weight:900}
+.hero-img{display:none;width:100%;max-width:900px;max-height:350px;object-fit:cover;border-radius:12px;margin:0 auto 20px}
+.contact{display:inline-block;background:#14894b;color:white;text-decoration:none;padding:13px 20px;border-radius:8px;font-weight:bold;margin-top:15px}
+main{max-width:1200px;margin:auto;padding:25px 13px 40px}
+.heading{text-align:center;color:#ffda70;font-size:25px;margin:10px 0 20px}
+.search{display:block;width:100%;max-width:550px;margin:0 auto 22px;padding:14px;border-radius:8px;border:1px solid #b28a2d;background:#171717;color:#fff;font-size:16px}
+.promo{overflow:hidden;border:1px solid #70541c;border-radius:8px;margin:18px 0;padding:13px 0;background:#16120a;white-space:nowrap}
+.promo div{display:inline-flex;gap:35px;width:max-content;animation:scroll 28s linear infinite}
+.promo span{color:#ffe08a;font-weight:bold}
+.games{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.card{min-width:0;text-align:center;padding:13px 9px;background:linear-gradient(145deg,#202027,#0d0d11);border:1px solid #69501c;border-radius:12px}
+.card:hover{border-color:#ffdb70}
+.logo{height:92px;width:100%;display:flex;align-items:center;justify-content:center;margin-bottom:10px;background:radial-gradient(circle,#302719,#0e0e10);border-radius:8px;overflow:hidden}
+.logo img{width:100%;height:100%;object-fit:contain;padding:7px}
+.logo-text{font-size:14px;font-weight:bold;color:#ffdc7b;padding:8px}
+.name{height:38px;display:flex;align-items:center;justify-content:center;color:#ffe08a;font-size:14px;font-weight:bold;margin-bottom:10px}
+.play{display:block;text-decoration:none;background:linear-gradient(120deg,#ffe89b,#d39a25);color:#201500;font-weight:900;font-size:13px;padding:12px 4px;border-radius:7px}
+.play:hover{filter:brightness(1.12)}
+.count{max-width:500px;margin:25px auto 0;text-align:center;padding:18px;border:1px solid #76591f;border-radius:10px;background:#15120c}
+.count strong{display:block;color:#ffdf77;font-size:23px;margin-bottom:7px}
+.note{text-align:center;color:#bbb;font-size:12px;line-height:1.7;margin-top:18px}
+footer{text-align:center;padding:24px 12px;border-top:1px solid #6b501e;color:#bbb;font-size:13px;line-height:1.9}
+@media(max-width:380px){.games{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.card{padding:10px 6px}.brand{font-size:24px}}
 </style>
 </head>
-
 <body>
 
 <header>
-  <div class="logo">ORION STAR GAMING</div>
-  <div class="subtitle">YOUR GAMING DESTINATION</div>
+ <div class="brand">PREMIUM GAMING LOUNGE</div>
+ <div class="tagline">YOUR GAMING PLATFORMS IN ONE PLACE</div>
 </header>
 
-<div class="ticker">
-  <div class="ticker-track">
-    <span>⭐ ORION STAR</span>
-    <span>🐼 PANDA MASTER</span>
-    <span>🌌 MILKYWAY</span>
-    <span>🎮 JUWA</span>
-    <span>🔥 FIRE KIRIN</span>
-    <span>💎 GAME VAULT</span>
-    <span>⭐ VBLINK</span>
-    <span>🐉 BLUE DRAGON</span>
-    <span>⭐ ORION STAR</span>
-    <span>🐼 PANDA MASTER</span>
-    <span>🌌 MILKYWAY</span>
-    <span>🎮 JUWA</span>
-    <span>🔥 FIRE KIRIN</span>
-    <span>💎 GAME VAULT</span>
-    <span>⭐ VBLINK</span>
-    <span>🐉 BLUE DRAGON</span>
-  </div>
-</div>
+<div class="ticker"><div class="track">
+<span>⭐ ORION STAR</span><span>🐼 PANDA MASTER</span>
+<span>🔥 FIRE KIRIN</span><span>🌌 MILKYWAY</span>
+<span>💎 GAME VAULT</span><span>🎮 JUWA</span>
+<span>⭐ VEGAS LUCK</span><span>💰 CHECK AVAILABLE OFFERS</span>
+<span>⭐ ORION STAR</span><span>🐼 PANDA MASTER</span>
+<span>🔥 FIRE KIRIN</span><span>🌌 MILKYWAY</span>
+<span>💎 GAME VAULT</span><span>🎮 JUWA</span>
+<span>⭐ VEGAS LUCK</span><span>💰 CHECK AVAILABLE OFFERS</span>
+</div></div>
 
 <section class="hero">
-  <h1>WELCOME TO OUR GAMING LOUNGE</h1>
-  <p>Explore your favorite gaming platforms in one place.</p>
-  <div class="bonus">150% BONUS</div>
-  <br>
-  <a class="contact"
-     href="https://wa.me/14482414979"
-     target="_blank"
-     rel="noopener noreferrer">
-     CONTACT US ON WHATSAPP
-  </a>
+ <!-- To add your original cover image:
+      upload the image to your website and set its URL below -->
+ <img class="hero-img" id="cover" src="" alt="Gaming cover">
+ <h1>WELCOME TO OUR GAMING LOUNGE</h1>
+ <p>Explore the available gaming platforms below.</p>
+ <div class="offer">FIRE KIRIN — $30 DEPOSIT OFFER</div>
+ <p>Confirm all promotion terms before making a deposit.</p>
+ <a class="contact" href="https://wa.me/14482414979"
+ target="_blank" rel="noopener noreferrer">CONTACT US ON WHATSAPP</a>
 </section>
 
 <main>
-  <h2 class="section-title">OUR GAMES</h2>
+ <h2 class="heading">EXPLORE ALL GAMES</h2>
+ <input class="search" id="search" type="search"
+ placeholder="Search any game..." aria-label="Search games">
 
-  <input
-    type="search"
-    class="search"
-    id="gameSearch"
-    placeholder="Search your favorite game..."
-    aria-label="Search games">
+ <div class="promo"><div>
+ <span>💵 CHECK CURRENT DEPOSIT OFFERS</span>
+ <span>⭐ ASK ABOUT ELIGIBLE BONUSES</span>
+ <span>💰 CONFIRM PAYMENT TERMS FIRST</span>
+ <span>💵 CHECK CURRENT DEPOSIT OFFERS</span>
+ <span>⭐ ASK ABOUT ELIGIBLE BONUSES</span>
+ <span>💰 CONFIRM PAYMENT TERMS FIRST</span>
+ </div></div>
 
-  <div class="games" id="gamesList"></div>
+ <div class="games" id="games"></div>
+
+ <div class="count">
+   <strong id="playerCount">Gaming Platforms</strong>
+   <span>Explore the platforms listed above.</span>
+   <p class="note">No live player count is available in this static page.
+   Add a verified count only when reliable records are available.</p>
+ </div>
+
+ <p class="note">
+ Gaming availability and offers are controlled by the respective platforms.
+ Links may change or stop working. Verify the website before sharing
+ personal information or making payments. Follow applicable laws and age limits.
+ </p>
 </main>
 
 <footer>
-  <div>ORION STAR GAMING</div>
-  <div>Choose a platform to visit its official player page.</div>
-  <div>Please follow the applicable laws and age requirements.</div>
+ <strong>PREMIUM GAMING LOUNGE</strong><br>
+ Gaming platform directory<br>
+ Please verify platform links and promotion terms before use.
 </footer>
 
 <script>
-const games = [
-  {
-    name: "Orion Star",
-    url: "http://start.orionstars.vip:8580/index.html",
-    logo: ""
-  },
-  {
-    name: "Panda Master",
-    url: "https://pandamaster.vip:8888/",
-    logo: ""
-  },
-  {
-    name: "Milkyway",
-    url: "https://milkywayapp.xyz/",
-    logo: ""
-  },
-  {
-    name: "Juwa",
-    url: "http://www.juwa777.com/",
-    logo: ""
-  },
-  {
-    name: "Game Vault",
-    url: "https://gamevault999.com/",
-    logo: ""
-  },
-  {
-    name: "VBlink",
-    url: "https://www.vblink777.club/",
-    logo: ""
-  },
-  {
-    name: "Vegasweep",
-    url: "https://m.lasvegassweeps.com/",
-    logo: ""
-  },
-  {
-    name: "Fire Kirin",
-    url: "http://web.firekirin.xyz/firekirin/firekirin/",
-    logo: ""
-  },
-  {
-    name: "Ultra Panda",
-    url: "https://www.ultrapanda.mobi/",
-    logo: ""
-  },
-  {
-    name: "Egame / Xgame",
-    url: "https://www.egame99.club/",
-    logo: ""
-  },
-  {
-    name: "Blue Dragon",
-    url: "http://app.bluedragon777.com/",
-    logo: ""
-  },
-  {
-    name: "Mr All In One",
-    url: "https://www.mrallinone777.com/",
-    logo: ""
-  },
-  {
-    name: "Mafia",
-    url: "http://www.mafia77777.com",
-    logo: ""
-  },
-  {
-    name: "Riversweeps",
-    url: "https://bet777.eu/",
-    logo: ""
-  },
-  {
-    name: "Moolah",
-    url: "https://moolah.vip:8888/",
-    logo: ""
-  },
-  {
-    name: "Highstakes",
-    url: "https://www.highstakes.com/",
-    logo: ""
-  },
-  {
-    name: "Juwa 2.0",
-    url: "https://thejuwa.com/juwa-2-0/",
-    logo: ""
-  },
-  {
-    name: "Vegas X",
-    url: "https://www.vegas-x.org",
-    logo: ""
-  }
+const gamesData = [
+["Orion Star","http://start.orionstars.vip:8580/"],
+["Milkyway","https://milkywayapp.xyz/"],
+["Juwa","https://dl.juwa777.com/"],
+["Vblink","https://www.vblink777.club/"],
+["Juwa 2.0","https://thejuwa.com/juwa-2-0/"],
+["Firekirin","https://firekirin.com/download-fire-kirin-app.html"],
+["Vegas X","https://www.vegas-x.org"],
+["Game Vault","http://download.gamevault999.com/"],
+["Egame","https://www.egame99.club"],
+["Moolah","https://moolah.vip:8888/"],
+["RiverSweep","https://bet777.eu/play/"],
+["Noble777","http://www.noble777.com"],
+["Highstake","https://dl.highstakesweeps.com/"],
+["Casino Royal","http://m.casinoroyale07.com"],
+["Vegas Sweep","http://m.lasvegassweeps.com"],
+["Ultrapanda","http://www.ultrapanda.mobi"],
+["Orion Power","http://download.orionpower.games:8008/"],
+["Winstar","https://www.winstar99999.com"],
+["Mafia 777","https://www.mafia77777.com"],
+["Paracasino","https://download.paracasino.net"],
+["Vegas Roll","http://www.vegas-roll.com/m"],
+["Mr. All in One","http://www.mrallinone777.com"],
+["Yolo 777","https://yolo777.game"],
+["Cash Machine","https://www.cashmachine777.com"],
+["Game Room","https://www.gameroom777.com/"],
+["Vegas Luck","https://start.vegasluck777.com/"],
+["Cash Frenzy","https://www.cashfrenzy777.com/"],
+["Panda Master","https://pandamaster.vip:8888/"],
+["River Pay","https://river777.net/build.30/index.html"],
+["Casino Ignite","https://h5.casinoignitee.vip/?"],
+["Loot Game","https://m.lootgame777.com"],
+["Para Casino","https://h5.paracasino.net/"],
+["Allinone Agent","http://agentserver.mrallinone777.com"],
+["Winstar Server","http://server.winstar99999.com:8009/"],
+["Winwin","https://winwinvegas777.com"],
+["Hukum","https://hukum777.online/"],
+["Mob.com","https://fpc-mob.com/"],
+["Highroller","https://www.highroller.com/casino"],
+["Dragon Crown","https://atlus.com/dragonscrown/"],
+["Lucky Master","https://lucky-master.net/"],
+["King of Pop","https://kingofpop777.com/"],
+["Firefonix","https://fpc-mob.com/AD/index.html"],
+["Bigwin","https://bigwplay.com"],
+["Thunderseven","https://thunderseven.com/"],
+["Gem Slots","https://www.gem77777.com/m"],
+["Winner Club","https://www.winnersclub777.com"],
+["Joker 777","https://www.joker777.win"],
+["Orion Strike","https://start.orionstrike777.com"],
+["Big Bang","https://www.bigbangcasino.vegas"],
+["Lucky Star","https://www.luckystars.games"],
+["Stars Galaxy","https://www.starsgalaxy777.com"],
+["Gem777","https://www.gem77777.com"],
+["Lucky Paradise","https://www.luckyparadise777.com"],
+["River Monster","https://rm777.net/"],
+["Mega Spin","https://megaspinpay.com/default.aspx"],
+["Sharks Secret 77","https://www.sharksecret777.com"],
+["Cash Machine 2","https://www.cashmachine777.com"],
+["Vegas Sweep 2","https://m.lasvegassweeps.com/"],
+["Noble 777 2","https://www.noble777.com"],
+["Game Room 2","https://www.gameroom777.com"],
+["King of Pop Slots","https://www.slots88888.com"]
 ];
 
-const gamesList = document.getElementById("gamesList");
-const searchInput = document.getElementById("gameSearch");
+const container = document.getElementById("games");
+const search = document.getElementById("search");
 
-function renderGames(filter = "") {
-  gamesList.replaceChildren();
-
-  const filteredGames = games.filter(game =>
-    game.name.toLowerCase().includes(filter.toLowerCase())
-  );
-
-  filteredGames.forEach(game => {
-    const card = document.createElement("article");
-    card.className = "game-card";
-
-    const logoBox = document.createElement("div");
-    logoBox.className = "game-logo";
-
-    if (game.logo) {
-      const image = document.createElement("img");
-      image.src = game.logo;
-      image.alt = game.name + " logo";
-      image.loading = "lazy";
-
-      image.onerror = () => {
-        logoBox.replaceChildren();
-        logoBox.textContent = game.name;
-        logoBox.style.color = "#ffe08a";
-        logoBox.style.fontWeight = "bold";
-      };
-
-      logoBox.appendChild(image);
-    } else {
-      logoBox.textContent = game.name;
-      logoBox.style.color = "#ffe08a";
-      logoBox.style.fontWeight = "bold";
-    }
-
-    const title = document.createElement("div");
-    title.className = "game-name";
-    title.textContent = game.name;
-
-    // IMPORTANT: Use a real link for reliable click-to-open behavior.
-    const play = document.createElement("a");
-    play.className = "play-btn";
-    play.textContent = "PLAY NOW";
-    play.href = game.url;
-    play.target = "_blank";
-    play.rel = "noopener noreferrer";
-
-    card.append(logoBox, title, play);
-    gamesList.appendChild(card);
-  });
+function getDomain(url) {
+  try {
+    return new URL(url).hostname.replace(/^www\./,"");
+  } catch(e) {
+    return "";
+  }
 }
 
-searchInput.addEventListener("input", event => {
-  renderGames(event.target.value);
-});
+function createCard(item) {
+  const [name,url] = item;
+  const card = document.createElement("article");
+  card.className = "card";
 
-renderGames();
+  const logo = document.createElement("div");
+  logo.className = "logo";
+
+  const img = document.createElement("img");
+  img.alt = name + " logo";
+  img.loading = "lazy";
+  img.src = "https://www.google.com/s2/favicons?domain=" +
+    encodeURIComponent(getDomain(url)) + "&sz=128";
+
+  const fallback = document.createElement("div");
+  fallback.className = "logo-text";
+  fallback.textContent = name;
+  fallback.style.display = "none";
+
+  img.onerror = () => {
+    img.style.display = "none";
+    fallback.style.display = "block";
+  };
+
+  logo.append(img,fallback);
+
+  const title = document.createElement("div");
+  title.className = "name";
+  title.textContent = name;
+
+  const button = document.createElement("a");
+  button.className = "play";
+  button.textContent = "OPEN GAME";
+  button.href = url;
+  button.target = "_blank";
+  button.rel = "noopener noreferrer";
+
+  card.append(logo,title,button);
+  return card;
+}
+
+function render(query="") {
+  container.replaceChildren();
+  const filtered = gamesData.filter(item =>
+    item[0].toLowerCase().includes(query.toLowerCase())
+  );
+  filtered.forEach(item => container.appendChild(createCard(item)));
+
+  if (!filtered.length) {
+    const message = document.createElement("p");
+    message.textContent = "No matching games found.";
+    container.appendChild(message);
+  }
+}
+
+search.addEventListener("input", () => render(search.value));
+render();
+
+/* Set the verified player count here only if you have real data.
+   Example: document.getElementById("playerCount").textContent =
+            "1,250 Verified Players";
+*/
 </script>
-
 </body>
 </html>
+
