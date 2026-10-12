@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,81 +9,39 @@
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#050505;color:white;font-family:Arial,Helvetica,sans-serif}
-header{
- text-align:center;padding:22px 8px;
- background:linear-gradient(120deg,#100817,#493000,#100817);
- border-bottom:2px solid #ffda64
-}
+header{text-align:center;padding:22px 8px;background:linear-gradient(120deg,#100817,#493000,#100817);border-bottom:2px solid #ffda64}
 .brand{font-size:clamp(23px,5vw,40px);font-weight:900;color:#ffdf73;text-shadow:0 0 15px #d38b00}
 .tagline{font-size:12px;letter-spacing:2px;margin-top:8px;color:#fff0bd}
 .ticker{overflow:hidden;white-space:nowrap;background:#100e08;border-bottom:1px solid #d5a72b;padding:12px 0}
 .track{display:flex;width:max-content;animation:marquee 45s linear infinite}
 .track span{padding:0 19px;color:#ffe58b;font-size:14px;font-weight:900}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.hero{
- text-align:center;padding:32px 12px;
- background:radial-gradient(ellipse at top,#79500c,#241606 48%,#050505 90%);
- border-bottom:1px solid #b58a28
-}
+.hero{text-align:center;padding:32px 12px;background:radial-gradient(ellipse at top,#79500c,#241606 48%,#050505 90%);border-bottom:1px solid #b58a28}
 .hero h1{color:#ffdf75;font-size:clamp(27px,6vw,44px);text-shadow:0 0 12px #8b5700;margin:8px 0}
 .hero p{color:#eee;line-height:1.7}
-.bonus{
- display:inline-block;margin:20px 0;padding:14px 28px;
- border:2px solid #fff0a5;border-radius:10px;
- background:linear-gradient(120deg,#a66a00,#ffe58b,#b47a05);
- color:#211400;font-size:clamp(24px,5vw,32px);
- font-weight:1000;box-shadow:0 0 22px #b78321
-}
-.contact{
- display:inline-block;margin-top:12px;padding:13px 20px;
- background:#078c49;color:white;text-decoration:none;
- font-weight:bold;border-radius:8px
-}
+.bonus{display:inline-block;margin:20px 0;padding:14px 28px;border:2px solid #fff0a5;border-radius:10px;background:linear-gradient(120deg,#a66a00,#ffe58b,#b47a05);color:#211400;font-size:clamp(24px,5vw,32px);font-weight:1000;box-shadow:0 0 22px #b78321}
+.contact{display:inline-block;margin-top:12px;padding:13px 20px;background:#078c49;color:white;text-decoration:none;font-weight:bold;border-radius:8px}
 main{max-width:1250px;margin:auto;padding:24px 12px 35px}
 .heading{text-align:center;color:#ffdc70;font-size:clamp(23px,5vw,30px);margin:12px 0 20px}
-.search{
- display:block;width:100%;max-width:550px;margin:0 auto 20px;
- padding:14px 17px;background:#151515;color:white;
- border:1px solid #d4a62f;border-radius:30px;font-size:16px
-}
+.search{display:block;width:100%;max-width:550px;margin:0 auto 20px;padding:14px 17px;background:#151515;color:white;border:1px solid #d4a62f;border-radius:30px;font-size:16px}
 .promo{overflow:hidden;white-space:nowrap;padding:13px 0;margin:18px 0;border:1px solid #b88a20;border-radius:30px;background:#11100b}
 .promo-track{display:flex;width:max-content;animation:marquee 32s linear infinite}
 .promo-track span{padding:0 22px;color:#ffdf76;font-weight:bold;font-size:14px}
 .games{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.card{
- min-width:0;text-align:center;padding:9px 7px;
- border:1px solid #a78023;border-radius:11px;
- background:linear-gradient(145deg,#1c1720,#090909);
- box-shadow:inset 0 0 12px #29200c
-}
-.logo{
- height:88px;border-radius:8px;margin-bottom:8px;
- display:flex;align-items:center;justify-content:center;
- overflow:hidden;background:radial-gradient(circle,#30213e,#090909)
-}
+.card{min-width:0;text-align:center;padding:9px 7px;border:1px solid #a78023;border-radius:11px;background:linear-gradient(145deg,#1c1720,#090909);box-shadow:inset 0 0 12px #29200c}
+.logo{height:88px;border-radius:8px;margin-bottom:8px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle,#30213e,#090909)}
 .logo img{width:100%;height:100%;object-fit:contain;padding:7px}
 .logo-text{font-size:13px;font-weight:900;color:#ffe28b;padding:5px}
 .name{color:#fff1bc;font-size:12px;font-weight:900;min-height:33px;display:flex;align-items:center;justify-content:center;margin-bottom:8px}
-.play{
- display:block;padding:10px 3px;border-radius:20px;text-decoration:none;
- color:#211400;background:linear-gradient(120deg,#fff0a4,#d79c20);
- font-weight:1000;font-size:12px
-}
+.player-count{display:block;color:#00ff99;font-size:12px;font-weight:900;margin:-2px 0 9px}
+.play{display:block;padding:10px 3px;border-radius:20px;text-decoration:none;color:#211400;background:linear-gradient(120deg,#fff0a4,#d79c20);font-weight:1000;font-size:12px}
 .play:hover{filter:brightness(1.15)}
-.community{
- margin:24px 0 0;padding:22px 10px;text-align:center;
- border:1px solid #b98c27;border-radius:12px;
- background:linear-gradient(120deg,#171109,#090909,#171109)
-}
+.community{margin:24px 0 0;padding:22px 10px;text-align:center;border:1px solid #b98c27;border-radius:12px;background:linear-gradient(120deg,#171109,#090909,#171109)}
 .community h2{color:#ffe18a;font-size:23px;margin-bottom:8px}
 .community p{color:#ddd;font-size:14px;line-height:1.8}
 footer{text-align:center;padding:20px 10px;border-top:1px solid #b58b2b;color:#ffdf78;font-weight:bold}
 @media(max-width:900px){.games{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(max-width:600px){
- .games{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
- .logo{height:72px}.card{padding:8px 5px}
- .name{font-size:11px}.play{font-size:11px}
-}
+@media(max-width:600px){.games{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.logo{height:72px}.card{padding:8px 5px}.name{font-size:11px}.play{font-size:11px}}
 @media(max-width:360px){.games{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
@@ -96,9 +53,7 @@ footer{text-align:center;padding:20px 10px;border-top:1px solid #b58b2b;color:#f
  <div class="tagline">YOUR GAMING PLATFORMS IN ONE PLACE</div>
 </header>
 
-<div class="ticker">
- <div class="track" id="topTicker"></div>
-</div>
+<div class="ticker"><div class="track" id="topTicker"></div></div>
 
 <section class="hero">
  <h1>WELCOME TO YOUR</h1>
@@ -106,24 +61,15 @@ footer{text-align:center;padding:20px 10px;border-top:1px solid #b58b2b;color:#f
  <p>EXPLORE YOUR FAVORITE GAMING PLATFORMS</p>
  <div class="bonus">🎁 150% BONUS 🎁</div>
  <br>
- <a class="contact"
- href="https://wa.me/14482414979"
- target="_blank" rel="noopener noreferrer">
+ <a class="contact" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">
  💬 CONTACT US ON WHATSAPP
  </a>
 </section>
 
 <main>
  <h2 class="heading">✨ ALL GAMES AVAILABLE ✨</h2>
-
- <input class="search" id="search" type="search"
- placeholder="🔎 Search any game..."
- aria-label="Search games">
-
- <div class="promo">
-  <div class="promo-track" id="bonusTicker"></div>
- </div>
-
+ <input class="search" id="search" type="search" placeholder="🔎 Search any game..." aria-label="Search games">
+ <div class="promo"><div class="promo-track" id="bonusTicker"></div></div>
  <div class="games" id="games"></div>
 
  <section class="community">
@@ -194,8 +140,8 @@ const gameData = [
 ["Sharks Secret 77","https://www.sharksecret777.com"]
 ];
 
-// Decorative amounts only; these are not verified offers.
-const amounts = [30,50,60];
+// Display labels only, not verified live player counts.
+const playerCounts = [200,300,400,50,60];
 
 function domainOf(url){
  try{return new URL(url).hostname.replace(/^www\./,"")}
@@ -211,7 +157,7 @@ function esc(text){
 
 function makeTicker(){
  return gameData.map((g,i)=>
-  `<span>🎮 ${esc(g[0])} — $${amounts[i%3]}</span>`
+  `<span>🎮 ${esc(g[0])} — ${playerCounts[i%playerCounts.length]} Players</span>`
  ).join("");
 }
 
@@ -221,8 +167,8 @@ document.getElementById("topTicker").innerHTML=ticker+ticker;
 const promoText =
  '<span>🎁 150% BONUS</span>' +
  '<span>⭐ EXPLORE ALL GAMES</span>' +
- '<span>💵 CHECK AVAILABLE OFFERS</span>' +
- '<span>🎮 CHOOSE YOUR PLATFORM</span>';
+ '<span>🎮 CHOOSE YOUR PLATFORM</span>' +
+ '<span>✨ FIND YOUR FAVORITE GAME</span>';
 
 document.getElementById("bonusTicker").innerHTML=promoText+promoText;
 
@@ -257,7 +203,11 @@ function createCard(game,index){
 
  const title=document.createElement("div");
  title.className="name";
- title.textContent=name+" • $"+amounts[index%3];
+ title.textContent=name;
+
+ const players=document.createElement("div");
+ players.className="player-count";
+ players.textContent=playerCounts[index%playerCounts.length]+" Players";
 
  const link=document.createElement("a");
  link.className="play";
@@ -266,7 +216,7 @@ function createCard(game,index){
  link.rel="noopener noreferrer";
  link.textContent="PLAY NOW";
 
- card.append(logo,title,link);
+ card.append(logo,title,players,link);
  return card;
 }
 
@@ -290,5 +240,3 @@ render();
 
 </body>
 </html>
-
-
