@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,97 +8,252 @@
 
 <style>
 *{box-sizing:border-box}
+
 body{
  margin:0;
  font-family:Arial,sans-serif;
  background:linear-gradient(150deg,#10091d,#291641,#080510);
  color:white;
 }
+
 header{
  text-align:center;
- padding:30px 12px;
- background:#0b0613;
- border-bottom:2px solid #ffd166;
+ padding:24px 12px;
+ background:linear-gradient(135deg,#10091d,#241038,#0b0613);
+ border-bottom:3px solid #ffd166;
 }
+
+.brand{
+ display:inline-block;
+ padding:8px 22px;
+ border:2px solid #ffd166;
+ border-radius:15px;
+ box-shadow:0 0 20px #ffd16655;
+}
+
 header h1{
  color:#ffd166;
  font-size:clamp(26px,6vw,43px);
  margin:0;
  text-shadow:0 0 15px #a855f7;
 }
-header p{color:#ddd;margin-bottom:0}
-.container{max-width:1200px;margin:auto;padding:20px 14px 100px}
+
+header p{margin:12px 0 0}
+
+.bonus-banner{
+ margin:18px auto;
+ max-width:900px;
+ padding:20px 10px;
+ text-align:center;
+ border:2px solid #ffe29a;
+ border-radius:18px;
+ background:linear-gradient(100deg,#7c2d12,#e99a18,#8a3b12);
+ box-shadow:0 0 24px #ffbd3655;
+}
+
+.bonus-banner .small{
+ font-size:13px;
+ font-weight:bold;
+ letter-spacing:3px;
+}
+
+.bonus-banner h2{
+ margin:6px 0;
+ font-size:clamp(30px,8vw,52px);
+ color:#fff4bd;
+}
+
+.bonus-banner p{
+ margin:5px 0 0;
+ font-size:13px;
+}
+
+.marquee{
+ overflow:hidden;
+ white-space:nowrap;
+ background:#10091d;
+ border-top:1px solid #ffd166;
+ border-bottom:1px solid #ffd166;
+ padding:10px 0;
+}
+
+.marquee-track{
+ display:flex;
+ width:max-content;
+ animation:scrollGames 38s linear infinite;
+}
+
+.marquee:hover .marquee-track{
+ animation-play-state:paused;
+}
+
+.marquee-group{
+ display:flex;
+ align-items:center;
+ flex-shrink:0;
+}
+
+.marquee-item{
+ display:flex;
+ align-items:center;
+ gap:9px;
+ margin:0 15px;
+ color:#ffe4a0;
+ font-size:14px;
+ font-weight:bold;
+}
+
+.marquee-logo{
+ width:36px;
+ height:36px;
+ object-fit:contain;
+ background:white;
+ border-radius:9px;
+ padding:3px;
+ border:1px solid #ffd166;
+}
+
+.marquee-fallback{
+ display:none;
+ width:36px;
+ height:36px;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(135deg,#ffd166,#a855f7);
+ border-radius:9px;
+ color:#160c22;
+ font-weight:bold;
+}
+
+@keyframes scrollGames{
+ from{transform:translateX(0)}
+ to{transform:translateX(-50%)}
+}
+
+.container{
+ max-width:1200px;
+ margin:auto;
+ padding:18px 14px 40px;
+}
+
 .actions{
- display:flex;justify-content:center;gap:10px;
- flex-wrap:wrap;margin-bottom:20px
+ display:flex;
+ justify-content:center;
+ margin:18px 0;
 }
-.contact{
- display:inline-block;text-decoration:none;
- padding:12px 18px;border-radius:30px;
- background:#25d366;color:#062d14;font-weight:bold
+
+.contact,.float-chat{
+ background:#25d366;
+ color:#062d14;
+ padding:13px 18px;
+ border-radius:30px;
+ text-decoration:none;
+ font-weight:bold;
+ box-shadow:0 4px 15px #0005;
 }
+
 .search{
- display:block;width:100%;max-width:600px;
- margin:0 auto 10px;padding:15px;
- border-radius:12px;border:1px solid #76539a;
- background:#1b1029;color:white;font-size:16px
+ display:block;
+ width:100%;
+ max-width:600px;
+ margin:0 auto 10px;
+ padding:15px;
+ border-radius:12px;
+ border:1px solid #b18bd2;
+ background:#1b1029;
+ color:white;
+ font-size:16px;
+ outline:none;
 }
-.count{text-align:center;color:#d8cbe8;font-size:13px}
+
+.count{
+ text-align:center;
+ color:#d8cbe8;
+ font-size:13px;
+}
+
 .games{
  display:grid;
  grid-template-columns:repeat(auto-fit,minmax(165px,1fr));
- gap:14px;margin-top:20px
+ gap:14px;
+ margin-top:20px;
 }
+
 .card{
- background:linear-gradient(150deg,#301b48,#180e26);
- border:1px solid #654381;border-radius:16px;
- padding:17px 12px;text-align:center;
- display:flex;flex-direction:column;align-items:center;
- min-height:215px;box-shadow:0 6px 18px #0005
+ background:linear-gradient(150deg,#38204f,#180e26);
+ border:1px solid #8b61a8;
+ border-radius:16px;
+ padding:17px 12px;
+ text-align:center;
+ display:flex;
+ flex-direction:column;
+ align-items:center;
+ min-height:215px;
+ box-shadow:0 6px 18px #0005;
 }
+
 .logo{
- width:78px;height:78px;object-fit:contain;
- background:white;border:2px solid #ffd166;
- border-radius:17px;padding:5px
+ width:78px;
+ height:78px;
+ object-fit:contain;
+ background:white;
+ border:2px solid #ffd166;
+ border-radius:17px;
+ padding:5px;
 }
+
 .fallback{
- width:78px;height:78px;border-radius:17px;
- display:none;align-items:center;justify-content:center;
+ width:78px;
+ height:78px;
+ border-radius:17px;
+ display:none;
+ align-items:center;
+ justify-content:center;
  background:linear-gradient(135deg,#ffd166,#a855f7);
- border:2px solid white;color:#160c22;
- font-size:23px;font-weight:900
+ border:2px solid white;
+ color:#160c22;
+ font-size:23px;
+ font-weight:900;
 }
-.card h2{font-size:17px;min-height:38px;margin:13px 0}
+
+.card h2{
+ font-size:17px;
+ min-height:38px;
+ margin:13px 0;
+}
+
 .play{
- display:block;margin-top:auto;width:100%;
- max-width:180px;padding:12px 8px;
- border-radius:10px;text-decoration:none;
+ display:block;
+ margin-top:auto;
+ width:100%;
+ max-width:180px;
+ padding:12px 8px;
+ border-radius:10px;
+ text-decoration:none;
  background:linear-gradient(90deg,#ffd166,#f4a261);
- color:#21122d;font-weight:900
+ color:#21122d;
+ font-weight:900;
 }
-.play:hover{filter:brightness(1.1)}
-.no-results{display:none;text-align:center;padding:25px}
-.note{
- margin:28px auto 0;max-width:800px;
- text-align:center;color:#cbbddd;
- font-size:13px;line-height:1.7
-}
-footer{
- text-align:center;padding:22px;
- border-top:1px solid #503666;color:#cbbddd
-}
+
 .float-chat{
- position:fixed;right:15px;bottom:15px;z-index:10;
- background:#25d366;color:#062d14;
- border-radius:40px;padding:14px 18px;
- text-decoration:none;font-weight:bold;
- box-shadow:0 4px 18px #0008
+ position:fixed;
+ right:15px;
+ bottom:15px;
+ z-index:10;
 }
+
 @media(max-width:420px){
- .games{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
- .card{padding:13px 7px;min-height:205px}
+ .games{
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:9px;
+ }
+ .card{
+  padding:13px 7px;
+  min-height:205px;
+ }
  .card h2{font-size:15px}
  .play{font-size:13px}
+ .marquee-item{margin:0 10px}
 }
 </style>
 </head>
@@ -107,48 +261,48 @@ footer{
 <body>
 
 <header>
- <h1>ORION STAR GAMING</h1>
- <p>Choose Your Favorite Game</p>
+ <div class="brand">
+  <h1>ORION STAR GAMING</h1>
+ </div>
+ <p>⭐ YOUR GAMING DESTINATION ⭐</p>
 </header>
+
+<div class="bonus-banner">
+ <div class="small">SPECIAL WELCOME OFFER</div>
+ <h2>150% BONUS</h2>
+ <p>EXPLORE OUR GAME COLLECTION</p>
+</div>
+
+<!-- MOVING GAME LOGOS -->
+<div class="marquee">
+ <div class="marquee-track" id="marqueeTrack"></div>
+</div>
 
 <main class="container">
 
  <div class="actions">
-  <a class="contact" id="topWhatsApp" href="#" target="_blank" rel="noopener">
-   WhatsApp Chat With Us
+  <a class="contact" id="topWhatsApp"
+     href="#" target="_blank" rel="noopener">
+   💬 WhatsApp Chat With Us
   </a>
  </div>
 
- <input class="search" id="search" type="search"
- placeholder="Search games by name..." aria-label="Search games">
+ <input class="search" id="search"
+ type="search" placeholder="Search games by name..."
+ aria-label="Search games">
 
  <p class="count" id="count">23 Games</p>
 
  <section class="games" id="games"></section>
 
- <div class="no-results" id="noResults">No games found.</div>
-
- <p class="note">
-  Welcome to Orion Star Gaming. Select a game using the Play Now button.
-  Game logos are loaded from available website icons. If a logo cannot
-  be loaded, a game initials badge will appear. This website is a game-link
-  directory and is not the operator of the listed games. Follow applicable
-  laws, game rules, and age restrictions.
- </p>
-
 </main>
 
-<footer>
- © <span id="year"></span> Orion Star Gaming
-</footer>
-
-<a class="float-chat" id="floatWhatsApp" href="#"
- target="_blank" rel="noopener">
+<a class="float-chat" id="floatWhatsApp"
+ href="#" target="_blank" rel="noopener">
  💬 WhatsApp Chat
 </a>
 
 <script>
-/* WhatsApp number: country code + number, digits only */
 const WHATSAPP_NUMBER = "14482414979";
 const MESSAGE = "Hello! I have a question about Orion Star Gaming.";
 
@@ -158,11 +312,10 @@ const whatsappURL =
 
 document.getElementById("topWhatsApp").href = whatsappURL;
 document.getElementById("floatWhatsApp").href = whatsappURL;
-document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Game names, game website links, logo domains, fallback initials */
+/* GAME LIST */
 const games = [
- ["Orion","http://web.orionstars.vip/play/orionstars/","orionstars.vip","OR"],
+ ["Orion","http://start.orionstars.vip:8580/index.html","orionstars.vip","OR"],
  ["Panda Master","https://pandamaster.vip:8888/","pandamaster.vip","PM"],
  ["Milkyway","https://milkywayapp.xyz/","milkywayapp.xyz","MW"],
  ["Juwa","http://www.juwa777.com/","juwa777.com","JW"],
@@ -176,7 +329,7 @@ const games = [
  ["Mr All In One","https://www.mrallinone777.com/","mrallinone777.com","MA"],
  ["Mafia","http://www.mafia77777.com","mafia77777.com","MF"],
  ["Riversweeps","https://bet777.eu/","bet777.eu","RS"],
- ["Molalla","https://moolah.vip:8888/","moolah.vip","ML"],
+ ["Moolah","https://moolah.vip:8888/","moolah.vip","ML"],
  ["Highstakes","https://www.highstakes.com/","highstakes.com","HS"],
  ["High Roller","https://highrollersweep.cc/","highrollersweep.cc","HR"],
  ["Nobel","http://www.noble777.com","noble777.com","NB"],
@@ -187,6 +340,50 @@ const games = [
  ["Game Room","https://www.gameroom777.com","gameroom777.com","GR"]
 ];
 
+/* LOGO URL */
+function logoURL(domain){
+ return "https://www.google.com/s2/favicons?domain=" +
+ encodeURIComponent(domain) + "&sz=128";
+}
+
+/* MOVING LOGO STRIP */
+function createMarqueeGroup(){
+ const group = document.createElement("div");
+ group.className = "marquee-group";
+
+ games.forEach(function(game){
+  const item = document.createElement("div");
+  item.className = "marquee-item";
+
+  const img = document.createElement("img");
+  img.className = "marquee-logo";
+  img.alt = game[0] + " logo";
+  img.src = logoURL(game[2]);
+
+  const fallback = document.createElement("span");
+  fallback.className = "marquee-fallback";
+  fallback.textContent = game[3];
+
+  img.onerror = function(){
+   img.style.display = "none";
+   fallback.style.display = "flex";
+  };
+
+  const label = document.createElement("span");
+  label.textContent = game[0];
+
+  item.append(img,fallback,label);
+  group.appendChild(item);
+ });
+
+ return group;
+}
+
+const track = document.getElementById("marqueeTrack");
+track.appendChild(createMarqueeGroup());
+track.appendChild(createMarqueeGroup());
+
+/* GAME CARDS */
 const gamesBox = document.getElementById("games");
 
 function createGame(game){
@@ -211,18 +408,18 @@ function createGame(game){
  let attempt = 0;
 
  img.onerror = function(){
-   attempt++;
-   if(attempt === 1){
-     img.src = "https://icons.duckduckgo.com/ip3/" + domain + ".ico";
-   }else{
-     img.style.display = "none";
-     fallback.style.display = "flex";
-   }
+  attempt++;
+
+  if(attempt === 1){
+   img.src = "https://icons.duckduckgo.com/ip3/" +
+   domain + ".ico";
+  }else{
+   img.style.display = "none";
+   fallback.style.display = "flex";
+  }
  };
 
- img.src =
-   "https://www.google.com/s2/favicons?domain=" +
-   encodeURIComponent(domain) + "&sz=128";
+ img.src = logoURL(domain);
 
  const title = document.createElement("h2");
  title.textContent = name;
@@ -234,33 +431,29 @@ function createGame(game){
  button.rel = "noopener noreferrer";
  button.textContent = "PLAY NOW";
 
- card.appendChild(img);
- card.appendChild(fallback);
- card.appendChild(title);
- card.appendChild(button);
-
+ card.append(img,fallback,title,button);
  gamesBox.appendChild(card);
 }
 
 games.forEach(createGame);
 
-/* Search filter */
-document.getElementById("search").addEventListener("input",function(){
- const query = this.value.trim().toLowerCase();
- let visible = 0;
+/* SEARCH */
+document.getElementById("search").addEventListener(
+ "input",function(){
 
- document.querySelectorAll(".card").forEach(function(card){
+  const query = this.value.trim().toLowerCase();
+  let visible = 0;
+
+  document.querySelectorAll(".card").forEach(function(card){
    const match = card.dataset.name.includes(query);
    card.style.display = match ? "flex" : "none";
    if(match) visible++;
- });
+  });
 
- document.getElementById("noResults").style.display =
-   visible ? "none" : "block";
-
- document.getElementById("count").textContent =
+  document.getElementById("count").textContent =
    visible + (visible === 1 ? " Game" : " Games");
-});
+ }
+);
 </script>
 
 </body>
