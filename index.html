@@ -4,120 +4,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#080b10">
-<meta name="description" content="Premium Gaming Lounge - Your favorite gaming platforms in one place.">
+<meta name="theme-color" content="#08070d">
+<meta name="description" content="Premium Gaming Lounge - Gaming platforms in one place.">
 <title>Premium Gaming Lounge</title>
 <link rel="manifest" href="./manifest.webmanifest">
 
 <style>
 :root {
-  --gold:#f5c451;
-  --gold-light:#ffe39a;
-  --bg:#080b10;
-  --panel:#141923;
-  --green:#24e477;
+  --gold:#ffcf55;
+  --light:#fff0b0;
+  --bg:#08070d;
+  --panel:#15121d;
+  --green:#32f59a;
 }
-* { box-sizing:border-box; }
+* {box-sizing:border-box}
 body {
   margin:0;
   background:var(--bg);
   color:#fff;
   font-family:Arial,Helvetica,sans-serif;
 }
-a { text-decoration:none; }
-button,input { font:inherit; }
+a {text-decoration:none}
+button,input {font:inherit}
+
 .topbar {
   padding:11px 8px;
   text-align:center;
-  background:#19150c;
-  border-bottom:1px solid #4b3b19;
-  color:var(--gold-light);
-  font-size:12px;
-  font-weight:bold;
-  letter-spacing:1px;
+  background:#241705;
+  color:var(--light);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1.5px;
+  border-bottom:1px solid #79551b;
 }
 header {
-  padding:25px 14px 22px;
+  position:relative;
+  overflow:hidden;
+  padding:29px 13px 25px;
   text-align:center;
-  background:radial-gradient(ellipse at top,#30230d,#080b10 75%);
-  border-bottom:1px solid #302819;
+  background:
+    radial-gradient(ellipse at 50% 0%,#69420e 0%,#251607 32%,#0a0910 75%);
+  border-bottom:1px solid #65451b;
+}
+header:before {
+  content:"";
+  position:absolute;
+  width:230px;height:230px;
+  left:50%;top:-175px;
+  transform:translateX(-50%);
+  border-radius:50%;
+  background:#ffce5525;
+  filter:blur(30px);
+  pointer-events:none;
 }
 .brand-logo {
+  position:relative;
   display:grid;
   place-items:center;
-  width:78px;
-  height:78px;
-  margin:0 auto 12px;
-  border:2px solid var(--gold);
+  width:91px;height:91px;
+  margin:0 auto 14px;
+  border:3px solid var(--gold);
   border-radius:50%;
-  background:linear-gradient(145deg,#35270c,#0b0d12);
-  color:var(--gold-light);
-  font-size:27px;
-  font-weight:900;
-  box-shadow:0 0 24px #f5c45130;
+  background:linear-gradient(145deg,#65400e,#100d13);
+  color:var(--light);
+  font-size:29px;
+  font-weight:1000;
+  box-shadow:0 0 15px #ffc94d55,0 0 42px #ffc94d20;
+  animation:glow 2.5s ease-in-out infinite alternate;
 }
 h1 {
+  position:relative;
   margin:0;
-  color:var(--gold-light);
-  font-size:clamp(25px,6vw,39px);
-  letter-spacing:.5px;
+  font-size:clamp(25px,6vw,42px);
+  font-weight:1000;
+  letter-spacing:.4px;
+  color:var(--light);
+  text-shadow:0 0 18px #ffb82e55;
 }
 .subtitle {
   margin:10px 0 17px;
-  color:#adb4c1;
-  font-size:14px;
+  color:#c5bfce;
+  font-size:13px;
 }
 .actions {
   display:flex;
-  flex-wrap:wrap;
   justify-content:center;
+  flex-wrap:wrap;
   gap:9px;
-  margin-top:15px;
+  margin-top:17px;
 }
 .action-btn {
   display:inline-flex;
-  align-items:center;
   justify-content:center;
-  padding:11px 14px;
-  border:1px solid var(--gold);
+  align-items:center;
+  padding:12px 15px;
+  border:1px solid #ffdf85;
   border-radius:9px;
-  background:linear-gradient(135deg,#f8d66e,#c18a27);
-  color:#171107;
+  background:linear-gradient(135deg,#ffe28a,#c38a22);
+  color:#170f03;
   font-size:12px;
   font-weight:900;
+  cursor:pointer;
+  box-shadow:0 4px 15px #0004;
 }
 .action-btn.secondary {
-  background:#111722;
-  color:var(--gold-light);
-  border-color:#655027;
+  background:#17141f;
+  color:var(--light);
+  border-color:#765b2c;
 }
+.action-btn:active,.play-btn:active {
+  transform:scale(.97);
+}
+
+/* Moving logo strips */
 .ticker {
   overflow:hidden;
   white-space:nowrap;
-  padding:11px 0;
-  background:#11151c;
-  border-top:1px solid #282d36;
-  border-bottom:1px solid #282d36;
+  padding:10px 0;
+  background:#100e17;
+  border-top:1px solid #33291a;
+  border-bottom:1px solid #33291a;
 }
+.ticker.reverse {background:#17121b}
 .ticker-track {
-  display:inline-flex;
-  min-width:max-content;
+  display:flex;
+  width:max-content;
   align-items:center;
-  gap:27px;
-  animation:moveLeft 42s linear infinite;
+  gap:15px;
+  animation:moveLeft 48s linear infinite;
 }
 .ticker.reverse .ticker-track {
   animation-name:moveRight;
-  animation-duration:48s;
+  animation-duration:58s;
+}
+.ticker:hover .ticker-track {
+  animation-play-state:paused;
 }
 .ticker-item {
-  color:var(--gold-light);
-  font-size:12px;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  padding:5px 11px 5px 6px;
+  border:1px solid #4d3a20;
+  border-radius:30px;
+  background:linear-gradient(110deg,#211a26,#100e15);
+  color:#ffe6a0;
+  font-size:11px;
   font-weight:bold;
 }
-.ticker-item span {
-  color:var(--green);
-  margin-right:6px;
+.ticker-logo {
+  display:grid;
+  place-items:center;
+  width:29px;height:29px;
+  flex-shrink:0;
+  overflow:hidden;
+  border-radius:50%;
+  background:#382910;
+  border:1px solid #9c752d;
+  color:#ffe39a;
+  font-size:10px;
+}
+.ticker-logo img {
+  width:100%;height:100%;
+  object-fit:contain;
+  padding:3px;
 }
 @keyframes moveLeft {
   from {transform:translateX(0)}
@@ -127,91 +177,143 @@ h1 {
   from {transform:translateX(-50%)}
   to {transform:translateX(0)}
 }
+@keyframes glow {
+  from {box-shadow:0 0 12px #ffc94d44}
+  to {box-shadow:0 0 30px #ffc94d88,0 0 45px #ffc94d22}
+}
+
 main {
   width:min(1200px,100%);
   margin:auto;
-  padding:23px 13px 100px;
+  padding:24px 13px 100px;
+}
+.promo-banner {
+  position:relative;
+  overflow:hidden;
+  margin-bottom:25px;
+  padding:22px 15px;
+  text-align:center;
+  border:1px solid #8d6729;
+  border-radius:15px;
+  background:
+    radial-gradient(ellipse at top,#543511,#1a111b 60%,#100d16);
+  box-shadow:0 8px 28px #0005;
+}
+.promo-banner:after {
+  content:"";
+  position:absolute;
+  top:0;left:-100%;
+  width:60%;height:100%;
+  transform:skewX(-20deg);
+  background:linear-gradient(90deg,transparent,#ffffff0b,transparent);
+  animation:shine 6s infinite;
+  pointer-events:none;
+}
+@keyframes shine {
+  0%,65% {left:-100%}
+  100% {left:160%}
+}
+.promo-banner h2 {
+  position:relative;
+  margin:0 0 8px;
+  color:var(--light);
+  font-size:clamp(20px,5vw,29px);
+}
+.promo-banner p {
+  position:relative;
+  margin:0;
+  color:#d4c8b9;
+  font-size:13px;
+  line-height:1.7;
 }
 .section-heading {
   display:flex;
   justify-content:space-between;
   align-items:center;
   gap:10px;
-  margin:6px 2px 16px;
+  margin:8px 2px 16px;
 }
 .section-heading h2 {
   margin:0;
-  color:var(--gold-light);
-  font-size:20px;
+  color:var(--light);
+  font-size:19px;
 }
-.count {
-  color:#aeb5c0;
-  font-size:12px;
-}
+.count {color:#b5adbd;font-size:11px}
 .search-box {
   display:block;
   width:100%;
-  padding:13px 14px;
+  padding:14px;
   margin-bottom:17px;
-  border:1px solid #353b47;
+  border:1px solid #403849;
   border-radius:10px;
   outline:none;
-  background:#111620;
-  color:white;
+  background:#14111b;
+  color:#fff;
 }
-.search-box:focus { border-color:var(--gold); }
+.search-box:focus {
+  border-color:var(--gold);
+  box-shadow:0 0 12px #ffc94d22;
+}
 .games-grid {
   display:grid;
   grid-template-columns:repeat(2,minmax(0,1fr));
   gap:12px;
 }
 .game-card {
+  position:relative;
   min-width:0;
-  padding:14px 10px 12px;
+  overflow:hidden;
+  padding:15px 10px 12px;
   text-align:center;
-  border:1px solid #383020;
-  border-radius:13px;
-  background:linear-gradient(150deg,#191e28,#0d1016);
-  box-shadow:0 5px 15px #0003;
-  transition:transform .2s,border-color .2s;
+  border:1px solid #403329;
+  border-radius:14px;
+  background:linear-gradient(145deg,#211a29,#100e16 75%);
+  box-shadow:0 5px 16px #0004;
+  transition:transform .2s,border-color .2s,box-shadow .2s;
+}
+.game-card:before {
+  content:"";
+  position:absolute;
+  top:0;left:15%;
+  width:70%;height:1px;
+  background:linear-gradient(90deg,transparent,#fbd775,transparent);
 }
 .game-card:hover {
-  transform:translateY(-2px);
-  border-color:#b9913b;
+  transform:translateY(-3px);
+  border-color:#c49b49;
+  box-shadow:0 7px 22px #dba63817;
 }
 .game-logo {
   display:grid;
   place-items:center;
-  width:66px;
-  height:66px;
+  width:72px;height:72px;
   margin:0 auto 11px;
   overflow:hidden;
-  border:1px solid #80652f;
-  border-radius:15px;
-  background:radial-gradient(circle at top,#392a11,#11151b 75%);
-  color:var(--gold-light);
-  font-size:19px;
-  font-weight:900;
+  border:1px solid #927036;
+  border-radius:17px;
+  background:radial-gradient(circle at top,#533c18,#14101a 78%);
+  color:var(--light);
+  font-size:20px;
+  font-weight:1000;
+  box-shadow:0 0 17px #f5c45112;
 }
 .game-logo img {
-  display:block;
-  width:100%;
-  height:100%;
-  padding:7px;
+  width:100%;height:100%;
+  padding:6px;
   object-fit:contain;
 }
 .game-name {
   display:flex;
-  align-items:center;
   justify-content:center;
-  min-height:34px;
+  align-items:center;
+  min-height:35px;
   margin-bottom:8px;
   overflow-wrap:anywhere;
-  font-size:14px;
-  font-weight:bold;
+  font-size:13px;
+  font-weight:900;
 }
 .status {
-  margin-bottom:10px;
+  margin-bottom:11px;
   color:var(--green);
   font-size:10px;
   font-weight:bold;
@@ -220,56 +322,52 @@ main {
 .status:before {
   content:"";
   display:inline-block;
-  width:7px;
-  height:7px;
+  width:7px;height:7px;
   margin-right:5px;
   border-radius:50%;
   background:var(--green);
-  box-shadow:0 0 7px #24e47780;
+  box-shadow:0 0 7px #32f59a88;
 }
 .play-btn {
   display:block;
   width:100%;
-  padding:11px 5px;
-  border:0;
+  padding:12px 4px;
+  border:1px solid #ffe08a;
   border-radius:8px;
-  background:linear-gradient(135deg,#f8d66e,#c18a27);
-  color:#171107;
-  text-align:center;
+  background:linear-gradient(135deg,#ffe18a,#bf8520);
+  color:#1c1202;
   font-size:12px;
-  font-weight:900;
-  letter-spacing:.6px;
+  font-weight:1000;
+  letter-spacing:.4px;
 }
-.play-btn:active { transform:scale(.98); }
 .empty {
   display:none;
   padding:24px 8px;
-  color:#adb4c1;
+  color:#c2bacb;
   text-align:center;
 }
 .notice {
   margin-top:26px;
-  padding:14px;
-  border:1px solid #34313a;
-  border-radius:10px;
-  background:#10131a;
-  color:#b8bec8;
+  padding:15px;
+  border:1px solid #39313f;
+  border-radius:11px;
+  background:#121019;
+  color:#bcb6c6;
   font-size:12px;
-  line-height:1.7;
+  line-height:1.8;
   text-align:center;
 }
 footer {
   padding:23px 12px;
-  border-top:1px solid #302819;
-  color:#8f96a2;
+  border-top:1px solid #3d2c17;
+  color:#96909f;
   font-size:12px;
   text-align:center;
 }
 .floating-buttons {
   position:fixed;
   z-index:99;
-  right:13px;
-  bottom:16px;
+  right:13px;bottom:16px;
   display:flex;
   flex-direction:column;
   gap:10px;
@@ -277,22 +375,16 @@ footer {
 .float-btn {
   display:grid;
   place-items:center;
-  width:51px;
-  height:51px;
+  width:51px;height:51px;
   border:1px solid #ffffff24;
   border-radius:50%;
   box-shadow:0 4px 16px #0008;
   font-size:22px;
   cursor:pointer;
 }
-.chat-float {
-  background:var(--gold);
-  color:#171107;
-}
-.whatsapp-float {
-  background:#20c968;
-  color:#fff;
-}
+.chat-float {background:var(--gold);color:#171107}
+.whatsapp-float {background:#20c968;color:#fff}
+
 @media(min-width:600px) {
   .games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
   main {padding-left:20px;padding-right:20px}
@@ -300,38 +392,51 @@ footer {
 @media(min-width:900px) {
   .games-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
 }
+@media(prefers-reduced-motion:reduce) {
+  .ticker-track,.brand-logo,.promo-banner:after {
+    animation:none;
+  }
+}
 </style>
 </head>
 
 <body>
 <div class="topbar">
-  ★ PREMIUM GAMING LOUNGE ★ &nbsp; • &nbsp; GAMING DESTINATION
+  ★ PREMIUM GAMING LOUNGE ★ &nbsp; • &nbsp; EXPLORE GAMING PLATFORMS
 </div>
 
 <header>
   <div class="brand-logo">PGL</div>
   <h1>Premium Gaming Lounge</h1>
-  <p class="subtitle">Explore Your Favorite Gaming Platforms</p>
+  <p class="subtitle">Your Favorite Gaming Platforms in One Place</p>
 
   <div class="actions">
-    <button class="action-btn" id="installBtn" type="button" onclick="installApp()">
-      ⬇ INSTALL APP
-    </button>
-    <button class="action-btn secondary" type="button" onclick="openLiveChat()">
-      💬 LIVE CHAT
-    </button>
+    <button class="action-btn" id="installBtn" type="button"
+      onclick="installApp()">⬇ INSTALL APP</button>
+
+    <button class="action-btn secondary" type="button"
+      onclick="openLiveChat()">💬 LIVE CHAT</button>
+
     <a class="action-btn secondary"
-       href="https://wa.me/14482414979"
-       target="_blank" rel="noopener noreferrer">
-      ☎ WHATSAPP
-    </a>
+      href="https://wa.me/14482414979"
+      target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
   </div>
 </header>
 
-<div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
-<div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
+<div class="ticker">
+  <div class="ticker-track" id="tickerOne"></div>
+</div>
+<div class="ticker reverse">
+  <div class="ticker-track" id="tickerTwo"></div>
+</div>
 
 <main>
+  <section class="promo-banner">
+    <h2>✦ WELCOME TO PREMIUM GAMING LOUNGE ✦</h2>
+    <p>Discover gaming platforms in one convenient place.<br>
+    Select a platform below to visit its website.</p>
+  </section>
+
   <div class="section-heading">
     <h2>🎮 All Gaming Platforms</h2>
     <span class="count" id="gameCount"></span>
@@ -342,13 +447,16 @@ footer {
     aria-label="Search games">
 
   <div class="games-grid" id="gamesGrid"></div>
-  <div class="empty" id="emptyMessage">No games found. Try another name.</div>
+  <div class="empty" id="emptyMessage">
+    No games found. Try another name.
+  </div>
 
   <div class="notice">
-    <strong style="color:#f5c451">PLEASE NOTE</strong><br>
-    You will be redirected to an external platform. Premium Gaming Lounge
-    does not control third-party websites. Check local laws and platform
-    terms before use. 18+ only where legally permitted. Play responsibly.
+    <strong style="color:#ffda79">PLEASE NOTE</strong><br>
+    You will be redirected to an external platform. Premium Gaming
+    Lounge does not control third-party websites. Check local laws,
+    age requirements and platform terms before use. 18+ only where
+    legally permitted. Play responsibly.
   </div>
 </main>
 
@@ -359,6 +467,7 @@ footer {
 <div class="floating-buttons">
   <button class="float-btn chat-float" type="button"
     aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
+
   <a class="float-btn whatsapp-float" aria-label="WhatsApp"
     href="https://wa.me/14482414979"
     target="_blank" rel="noopener noreferrer">☏</a>
@@ -430,46 +539,46 @@ const emptyMessage = document.getElementById("emptyMessage");
 
 function initials(name) {
   const words = name.replace(/[^a-zA-Z0-9 ]/g,"").trim().split(/\s+/);
-  if (words.length > 1) return (words[0][0] + words[1][0]).toUpperCase();
+  if (words.length > 1)
+    return (words[0][0] + words[1][0]).toUpperCase();
   return name.replace(/[^a-zA-Z0-9]/g,"").slice(0,3).toUpperCase();
 }
 
-function makeLogo(name, url) {
+function getDomain(url) {
+  try { return new URL(url).hostname; }
+  catch (e) { return ""; }
+}
+
+function addFavicon(container,name,url) {
+  const domain = getDomain(url);
+  if (!domain) return;
+
+  const img = document.createElement("img");
+  img.alt = name + " logo";
+  img.loading = "lazy";
+  img.referrerPolicy = "no-referrer";
+  img.src = "https://www.google.com/s2/favicons?domain=" +
+    encodeURIComponent(domain) + "&sz=128";
+
+  img.onload = () => {
+    if (img.naturalWidth > 0) {
+      container.textContent = "";
+      container.appendChild(img);
+    }
+  };
+  img.onerror = () => img.remove();
+}
+
+function makeLogo(name,url) {
   const logo = document.createElement("div");
   logo.className = "game-logo";
-  logo.setAttribute("aria-label", name + " logo");
-
-  // Show initials immediately while the website icon loads.
+  logo.setAttribute("aria-label",name + " logo");
   logo.textContent = initials(name);
-
-  try {
-    const domain = new URL(url).hostname;
-    const img = document.createElement("img");
-    img.alt = name + " logo";
-    img.loading = "lazy";
-    img.referrerPolicy = "no-referrer";
-    img.src = "https://www.google.com/s2/favicons?domain=" +
-      encodeURIComponent(domain) + "&sz=128";
-
-    img.onload = function() {
-      if (img.naturalWidth > 0) {
-        logo.textContent = "";
-        logo.appendChild(img);
-      }
-    };
-
-    img.onerror = function() {
-      img.remove();
-      logo.textContent = initials(name);
-    };
-  } catch (error) {
-    logo.textContent = initials(name);
-  }
-
+  addFavicon(logo,name,url);
   return logo;
 }
 
-function renderGames(filter = "") {
+function renderGames(filter="") {
   grid.innerHTML = "";
 
   const filtered = games.filter(game =>
@@ -488,11 +597,11 @@ function renderGames(filter = "") {
 
     const status = document.createElement("div");
     status.className = "status";
-    status.textContent = "PLAY NOW";
+    status.textContent = "VISIT PLATFORM";
 
     const link = document.createElement("a");
     link.className = "play-btn";
-    link.textContent = "▶ PLAY";
+    link.textContent = "↗ OPEN PLATFORM";
     link.href = url;
     link.target = "_blank";
     link.rel = "noopener noreferrer";
@@ -507,29 +616,37 @@ function renderGames(filter = "") {
   emptyMessage.style.display = filtered.length ? "none" : "block";
 }
 
-function makeTicker(id) {
+function makeTicker(id,reverse=false) {
   const track = document.getElementById(id);
-  const items = [...games,...games];
+  track.innerHTML = "";
 
-  items.forEach(([name]) => {
-    const item = document.createElement("span");
-    item.className = "ticker-item";
+  // Two identical sets make the animation loop smoothly.
+  for (let repeat=0; repeat<2; repeat++) {
+    games.forEach(([name,url]) => {
+      const item = document.createElement("span");
+      item.className = "ticker-item";
 
-    const diamond = document.createElement("span");
-    diamond.textContent = "◆";
+      const logo = document.createElement("span");
+      logo.className = "ticker-logo";
+      logo.textContent = initials(name);
+      addFavicon(logo,name,url);
 
-    item.append(diamond,document.createTextNode(name));
-    track.appendChild(item);
-  });
+      const label = document.createElement("span");
+      label.textContent = name;
+
+      item.append(logo,label);
+      track.appendChild(item);
+    });
+  }
 }
 
 searchBox.addEventListener("input",() => renderGames(searchBox.value));
 makeTicker("tickerOne");
-makeTicker("tickerTwo");
+makeTicker("tickerTwo",true);
 renderGames();
 document.getElementById("year").textContent = new Date().getFullYear();
 
-/* Crisp Live Chat */
+/* Existing Crisp Live Chat connection */
 window.$crisp = window.$crisp || [];
 window.CRISP_WEBSITE_ID = "cc20bafe-6ade-442e-80d7-bd00bbbc733e";
 
@@ -545,7 +662,7 @@ function openLiveChat() {
   window.$crisp.push(["do","chat:open"]);
 }
 
-/* PWA Install button */
+/* Existing PWA installation button */
 let deferredInstallPrompt = null;
 const installBtn = document.getElementById("installBtn");
 
@@ -570,17 +687,16 @@ async function installApp() {
       "1. Open this site in Google Chrome.\n" +
       "2. Tap the three dots (⋮).\n" +
       "3. Select Install app or Add to Home screen.\n\n" +
-      "If this option is unavailable, check that the manifest " +
-      "and service-worker files have been added to GitHub."
+      "Installation also depends on your manifest and service worker."
     );
   }
 }
 
-/* The service-worker.js file must exist separately in the repository. */
+/* Keep the existing service worker registration */
 if ("serviceWorker" in navigator && location.protocol === "https:") {
   window.addEventListener("load",() => {
     navigator.serviceWorker.register("./service-worker.js")
-      .catch(error => console.log("Service worker registration error:",error));
+      .catch(error => console.log("Service worker error:",error));
   });
 }
 </script>
