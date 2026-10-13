@@ -57,7 +57,29 @@ function updateDemoCounts(){document.querySelectorAll(".status").forEach(el=>{co
 function updateDemoWins(){document.querySelectorAll(".demo-amount").forEach(el=>{const base=demoAmounts[Number(el.dataset.index)%demoAmounts.length];const current=Number(el.dataset.current||base);const next=current+1;el.dataset.current=String(next);el.textContent="$"+next})}
 function toggleLiveWin(){const panel=document.getElementById("liveWinPanel"),button=document.getElementById("liveWinButton"),isOpen=panel.classList.toggle("visible");button.setAttribute("aria-expanded",String(isOpen));button.textContent=isOpen?"✕ CLOSE":"🔴 LIVE WIN"}
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));makeTicker("tickerOne");makeTicker("tickerTwo");renderGames();document.getElementById("year").textContent=new Date().getFullYear();setInterval(updateDemoCounts,12000);
-window.$crisp=window.$crisp||[];window.CRISP_WEBSITE_ID="cc20bafe-6ade-442e-80d7-bd00bbbc733e";(function(){const script=document.createElement("script");script.src="https://client.crisp.chat/l.js";script.async=true;document.head.appendChild(script)})();function openLiveChat(){window.$crisp=window.$crisp||[];window.$crisp.push(["do","chat:open"])}
+
+/* Tawk.to Live Chat */
+window.Tawk_API=window.Tawk_API||{};
+window.Tawk_LoadStart=new Date();
+function openLiveChat(){
+  if(window.Tawk_API && typeof window.Tawk_API.maximize==="function"){
+    window.Tawk_API.maximize();
+  }else{
+    window.Tawk_API.onLoad=function(){
+      if(typeof window.Tawk_API.maximize==="function")window.Tawk_API.maximize();
+    };
+  }
+}
+(function(){
+  var s1=document.createElement("script");
+  var s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src="https://embed.tawk.to/6ace6bb6de4aab34bf8c3815/default";
+  s1.charset="UTF-8";
+  s1.setAttribute("crossorigin","*");
+  s0.parentNode.insertBefore(s1,s0);
+})();
+
 let deferredInstallPrompt=null;const installBtn=document.getElementById("installBtn");window.addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event});window.addEventListener("appinstalled",()=>{installBtn.textContent="✓ APP INSTALLED";deferredInstallPrompt=null});async function installApp(){if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null}else{alert("To install this website:\n\n1. Open this site in Google Chrome.\n2. Tap the three dots (⋮).\n3. Select Install app or Add to Home screen.\n\nInstallation also depends on your manifest and service worker.")}}
 if("serviceWorker"in navigator&&location.protocol==="https:"){window.addEventListener("load",()=>{navigator.serviceWorker.register("./service-worker.js").catch(error=>console.log("Service worker error:",error))})}
 </script></body></html>
