@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -56,7 +57,7 @@ function makeTicker(id){const track=document.getElementById(id);track.innerHTML=
 function updateDemoCounts(){document.querySelectorAll(".status").forEach(el=>{const key=el.dataset.game;if(counts.has(key)){counts.set(key,counts.get(key)+1);el.textContent=counts.get(key)+" playing"}})}
 function updateDemoWins(){document.querySelectorAll(".demo-amount").forEach(el=>{const base=demoAmounts[Number(el.dataset.index)%demoAmounts.length];const current=Number(el.dataset.current||base);const next=current+1;el.dataset.current=String(next);el.textContent="$"+next})}
 function toggleLiveWin(){const panel=document.getElementById("liveWinPanel"),button=document.getElementById("liveWinButton"),isOpen=panel.classList.toggle("visible");button.setAttribute("aria-expanded",String(isOpen));button.textContent=isOpen?"✕ CLOSE":"🔴 LIVE WIN"}
-searchBox.addEventListener("input",()=>renderGames(searchBox.value));makeTicker("tickerOne");makeTicker("tickerTwo");renderGames();document.getElementById("year").textContent=new Date().getFullYear();setInterval(updateDemoCounts,12000);
+searchBox.addEventListener("input",()=>renderGames(searchBox.value));makeTicker("tickerOne");makeTicker("tickerTwo");renderGames();document.getElementById("year").textContent=new Date().getFullYear();setInterval(updateDemoCounts,12000);setInterval(updateDemoWins,5000);
 
 /* Tawk.to Live Chat */
 window.Tawk_API=window.Tawk_API||{};
