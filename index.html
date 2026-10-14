@@ -12,7 +12,7 @@
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}a{text-decoration:none}button,input{font:inherit}
 .topbar{padding:11px 8px;text-align:center;background:#102b34;color:#8ef3d4;font-size:11px;font-weight:900;letter-spacing:1.3px;border-bottom:1px solid #20505a}
 header{padding:27px 13px 24px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#24505a,#102a35 45%,#071923);border-bottom:1px solid #24505a}
-.brand-logo{display:none}.gold-brand{width:min(560px,100%);margin:0 auto 18px;padding:17px 12px 15px;border:2px solid #f7d778;border-radius:14px;background:linear-gradient(135deg,#4c2d08,#d6a43b 38%,#5a3508 70%,#171006);color:#fff2b5;box-shadow:0 0 24px #d6a43b55,inset 0 0 16px #fff4b0; text-shadow:0 2px 4px #251500}.gold-crown{font-size:28px;line-height:1.1;color:#fff0a0}.gold-brand-name{font-size:13px;font-weight:900;letter-spacing:5px;margin-top:4px}.gold-brand-main{font-size:clamp(24px,6vw,38px);font-weight:1000;letter-spacing:1px;line-height:1.2}.gold-brand-line{font-size:10px;font-weight:900;letter-spacing:1.5px;margin-top:8px;color:#fff6d1}
+.brand-logo{display:none}.gold-brand{width:min(560px,100%);margin:0 auto 18px;padding:17px 12px 15px;border:2px solid #f7d778;border-radius:14px;background:linear-gradient(135deg,#4c2d08,#d6a43b 38%,#5a3508 70%,#171006);color:#fff2b5;box-shadow:0 0 24px #d6a43b55,inset 0 0 16px #fff4b0;text-shadow:0 2px 4px #251500}.gold-crown{font-size:28px;line-height:1.1;color:#fff0a0}.gold-brand-name{font-size:13px;font-weight:900;letter-spacing:5px;margin-top:4px}.gold-brand-main{font-size:clamp(24px,6vw,38px);font-weight:1000;letter-spacing:1px;line-height:1.2}.gold-brand-line{font-size:10px;font-weight:900;letter-spacing:1.5px;margin-top:8px;color:#fff6d1}
 h1{margin:0;font-size:clamp(25px,6vw,42px);font-weight:1000;color:var(--light);text-shadow:0 0 18px #ffb82e33}.subtitle{margin:10px 0 17px;color:#c5d6dc;font-size:13px}
 .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:17px}.action-btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 15px;border:1px solid #ffe08a;border-radius:9px;background:linear-gradient(135deg,#ffe28a,#c38a22);color:#170f03;font-size:12px;font-weight:900;cursor:pointer}.action-btn.secondary{background:#122a34;color:var(--light);border-color:#37616a}
 .ticker-row{display:flex;align-items:center;gap:7px;padding-right:7px;background:#0c222c;border-top:1px solid #1d414c;border-bottom:1px solid #1d414c}.ticker{flex:1;min-width:0;overflow:hidden;white-space:nowrap;padding:10px 0;background:#0c222c}.ticker.reverse{background:#102832}.ticker-track{display:flex;width:max-content;align-items:center;gap:12px;animation:moveLeft 95s linear infinite}.ticker.reverse .ticker-track{animation-name:moveRight;animation-duration:105s}.ticker:hover .ticker-track{animation-play-state:paused}
@@ -82,4 +82,18 @@ function openLiveChat(){
 
 let deferredInstallPrompt=null;const installBtn=document.getElementById("installBtn");window.addEventListener("beforeinstallprompt",event=>{event.preventDefault();deferredInstallPrompt=event});window.addEventListener("appinstalled",()=>{installBtn.textContent="✓ APP INSTALLED";deferredInstallPrompt=null});async function installApp(){if(deferredInstallPrompt){deferredInstallPrompt.prompt();await deferredInstallPrompt.userChoice;deferredInstallPrompt=null}else{alert("To install this website:\n\n1. Open this site in Google Chrome.\n2. Tap the three dots (⋮).\n3. Select Install app or Add to Home screen.\n\nInstallation also depends on your manifest and service worker.")}}
 if("serviceWorker"in navigator&&location.protocol==="https:"){window.addEventListener("load",()=>{navigator.serviceWorker.register("./service-worker.js").catch(error=>console.log("Service worker error:",error))})}
-</script></body></html>
+</script>
+
+<!-- Begin of Chaport Live Chat code -->
+<script type="text/javascript">
+(function(w,d,v3){
+w.chaportConfig = {
+appId : '6acef8d367f574f2e93a4357',
+};
+
+if(w.chaport)return;v3=w.chaport={};v3._q=[];v3._l={};v3.q=function(){v3._q.push(arguments)};v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn)};var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://app.chaport.com/javascripts/insert.js';var ss=d.getElementsByTagName('script')[0];ss.parentNode.insertBefore(s,ss)})(window, document);
+</script>
+<!-- End of Chaport Live Chat code -->
+
+</body>
+</html>
