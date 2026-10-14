@@ -48,8 +48,52 @@ const grid=document.getElementById("gamesGrid"),searchBox=document.getElementByI
 const counts=new Map();games.forEach((g,i)=>counts.set(g[0]+"|"+g[1],500+(i%8)*37));
 function initials(name){const words=name.replace(/[^a-zA-Z0-9 ]/g,"").trim().split(/\s+/);return words.length>1?(words[0][0]+words[1][0]).toUpperCase():name.replace(/[^a-zA-Z0-9]/g,"").slice(0,3).toUpperCase()}
 function getDomain(url){try{return new URL(url).hostname}catch(e){return ""}}
-function addFavicon(container,name,url){const domain=getDomain(url);if(!domain)return;const img=document.createElement("img");img.alt=name+" logo";img.loading="lazy";img.referrerPolicy="no-referrer";const sources=["https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz=128","https://icons.duckduckgo.com/ip3/"+encodeURIComponent(domain)+".ico","https://"+domain+"/favicon.ico"];let attempt=0;img.onerror=()=>{attempt++;if(attempt<sources.length)img.src=sources[attempt];else img.remove()};img.onload=()=>{if(img.naturalWidth>0){container.textContent="";container.appendChild(img)}};img.src=sources[0]}
-function makeLogo(name,url){const logo=document.createElement("div");logo.className="game-logo";logo.setAttribute("aria-label",name+" logo");logo.textContent=initials(name);addFavicon(logo,name,url);return logo}
+
+/* Game logos: Google first, DuckDuckGo second, website favicon last */
+function addFavicon(container,name,url){
+  const domain=getDomain(url);
+  if(!domain)return;
+
+  const img=document.createElement("img");
+  img.alt=name+" logo";
+  img.loading="lazy";
+  img.referrerPolicy="no-referrer";
+
+  const sources=[
+    "https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz=128",
+    "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(domain)+".ico",
+    "https://"+domain+"/favicon.ico"
+  ];
+
+  let attempt=0;
+
+  img.onerror=function(){
+    attempt++;
+    if(attempt<sources.length){
+      img.src=sources[attempt];
+    }else{
+      img.remove();
+    }
+  };
+
+  img.onload=function(){
+    if(img.naturalWidth>0 && img.naturalHeight>0){
+      container.replaceChildren(img);
+    }
+  };
+
+  img.src=sources[0];
+}
+
+function makeLogo(name,url){
+  const logo=document.createElement("div");
+  logo.className="game-logo";
+  logo.setAttribute("aria-label",name+" logo");
+  logo.textContent=initials(name);
+  addFavicon(logo,name,url);
+  return logo;
+}
+
 function renderGames(filter=""){grid.innerHTML="";const filtered=games.filter(game=>game[0].toLowerCase().includes(filter.toLowerCase()));filtered.forEach(([name,url])=>{const card=document.createElement("article");card.className="game-card";const logo=makeLogo(name,url);const title=document.createElement("div");title.className="game-name";title.textContent=name;const status=document.createElement("div");status.className="status";status.dataset.game=name+"|"+url;status.textContent=(counts.get(status.dataset.game)||500)+" playing";const link=document.createElement("a");link.className="play-btn";link.textContent="↗ OPEN PLATFORM";link.href=url;link.target="_blank";link.rel="noopener noreferrer";link.setAttribute("aria-label","Open "+name);card.append(logo,title,status,link);grid.appendChild(card)});document.getElementById("gameCount").textContent=filtered.length+" platforms";emptyMessage.style.display=filtered.length?"none":"block"}
 const demoAmounts=[100,250,500,600,750,1000,1500,2000];
 function makeTicker(id){const track=document.getElementById(id);track.innerHTML="";for(let repeat=0;repeat<2;repeat++){games.forEach(([name,url],i)=>{const item=document.createElement("span");item.className="ticker-item";const logo=document.createElement("span");logo.className="ticker-logo";logo.textContent=initials(name);addFavicon(logo,name,url);const label=document.createElement("span");if(id==="tickerOne"){const prefix=document.createElement("span");prefix.textContent="Featured amount · ";const game=document.createElement("strong");game.textContent=name+" · ";const amount=document.createElement("strong");amount.className="demo-amount";amount.dataset.index=String(i);amount.textContent="$"+demoAmounts[(i+repeat)%demoAmounts.length];label.append(prefix,game,amount)}else{label.textContent=name+" · gaming activity"}item.append(logo,label);track.appendChild(item)})}}
