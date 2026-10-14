@@ -1,11 +1,13 @@
+
 <!DOCTYPE html>
 <html lang="en">
-<head>"<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc" />"<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc" />
+<head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071923">
-<meta name="description" content="Premium Gaming Lounge - Gaming platforms in one place."><meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc" />
-<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc" />
+<meta name="description" content="Premium Gaming Lounge - Discover gaming platforms in one place.">
+<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
+<link rel="manifest" href="./manifest.webmanifest">
 <title>Premium Gaming Lounge</title>
 
 <style>
@@ -37,7 +39,6 @@ header{text-align:center;padding:24px 12px;background:radial-gradient(ellipse at
 main{max-width:1200px;margin:auto;padding:20px 13px 100px}
 .poster{margin-bottom:22px;padding:16px;text-align:center;border:1px solid #f1cf69;border-radius:14px;background:linear-gradient(135deg,#4b2e0a,#b98728 35%,#18252a 72%,#0b2029)}
 .poster h2{margin:5px;color:#fff0b0;font-size:22px}
-.poster img{width:100%;max-width:100px;max-height:90px;object-fit:contain}
 .promo{margin-bottom:24px;padding:23px 12px;text-align:center;border:1px solid #9d7838;border-radius:15px;background:radial-gradient(ellipse at top,#593817,#192a31 65%,#0b2029)}
 .pill{display:inline-block;margin-bottom:10px;padding:7px 12px;border-radius:20px;background:linear-gradient(135deg,#ffb36b,#ff8247);color:#2b150a;font-size:11px;font-weight:bold}
 .promo h2{margin:0 0 10px;color:var(--light);font-size:clamp(23px,5vw,32px)}
@@ -191,29 +192,37 @@ function domainOf(url){
   try{return new URL(url).hostname.replace(/^www\./,"");}
   catch(e){return "";}
 }
+
 function logoUrl(url){
   const domain=domainOf(url);
   return domain ? "https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz=128" : "";
 }
+
 function logoMarkup(name,url){
   const first=name.replace(/[^a-z0-9]/gi,"").slice(0,1).toUpperCase()||"G";
-  return '<div class="logo"><img loading="lazy" alt="'+name.replace(/"/g,"&quot;")+' logo" src="'+logoUrl(url)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><span class="fallback">'+first+'</span></div>';
+  const safeName=name.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;");
+  return '<div class="logo"><img loading="lazy" alt="'+safeName+' logo" src="'+logoUrl(url)+'" onerror="this.style.display=\'none\';this.nextElementSibling.style.display=\'flex\'"><span class="fallback">'+first+'</span></div>';
 }
+
 function makeCard(game){
   const name=game[0],url=game[1];
+  const safeUrl=url.replace(/&/g,"&amp;").replace(/"/g,"&quot;");
   return '<article class="card">'+logoMarkup(name,url)+
     '<h3>'+name+'</h3>'+
-    '<a class="open" href="'+url.replace(/"/g,"&quot;")+'" target="_blank" rel="noopener noreferrer">OPEN PLATFORM ↗</a></article>';
+    '<a class="open" href="'+safeUrl+'" target="_blank" rel="noopener noreferrer">OPEN PLATFORM ↗</a></article>';
 }
+
 function renderGames(filter=""){
   const list=games.filter(g=>g[0].toLowerCase().includes(filter.toLowerCase()));
   document.getElementById("gamesGrid").innerHTML=list.map(makeCard).join("");
   document.getElementById("gameCount").textContent=list.length+" platforms";
   document.getElementById("emptyMessage").style.display=list.length?"none":"block";
 }
+
 function tickerItems(){
   return games.map(g=>'<span class="ticker-item"><img loading="lazy" alt="" src="'+logoUrl(g[1])+'" onerror="this.style.visibility=\'hidden\'">'+g[0]+'</span>').join("");
 }
+
 const tickerContent=tickerItems();
 document.getElementById("tickerOne").innerHTML=tickerContent+tickerContent;
 document.getElementById("tickerTwo").innerHTML=tickerContent+tickerContent;
@@ -222,18 +231,32 @@ document.getElementById("year").textContent=new Date().getFullYear();
 renderGames();
 
 function toggleLive(){
-  const panel=document.getElementById("livePanel");
-  panel.classList.toggle("show");
+  document.getElementById("livePanel").classList.toggle("show");
 }
+
 function openLiveChat(){
   if(window.$crisp){
     window.$crisp.push(["do","chat:open"]);
   }else{
-    alert("Please wait for Live Chat to load, or refresh the page and try again.");
+    alert("Live Chat is loading. Please wait a moment and try again.");
   }
 }
-function installApp(){
-  alert('To install: open this website in Google Chrome, tap the three dots (⋮), then choose "Install app" or "Add to Home screen" if available.');
+
+let installPromptEvent=null;
+
+window.addEventListener("beforeinstallprompt",function(event){
+  event.preventDefault();
+  installPromptEvent=event;
+});
+
+async function installApp(){
+  if(installPromptEvent){
+    installPromptEvent.prompt();
+    await installPromptEvent.userChoice;
+    installPromptEvent=null;
+  }else{
+    alert('To install, open this website in Chrome, tap the three dots (⋮), then look for "Install app" or "Add to Home screen". If neither appears, the required PWA files or browser install conditions may not be ready.');
+  }
 }
 </script>
 
