@@ -17,6 +17,7 @@ button,input{font:inherit}
 .topbar{padding:11px 8px;text-align:center;background:#102b34;color:#8ef3d4;font-size:11px;font-weight:900;letter-spacing:1.3px;border-bottom:1px solid #20505a}
 header{padding:27px 13px 24px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#24505a,#102a35 45%,#071923);border-bottom:1px solid #24505a}
 .gold-brand{width:min(560px,100%);margin:0 auto 18px;padding:17px 12px 15px;border:2px solid #f7d778;border-radius:14px;background:linear-gradient(135deg,#4c2d08,#d6a43b 38%,#5a3508 70%,#171006);color:#fff2b5;box-shadow:0 0 24px #d6a43b55,inset 0 0 16px #fff4b0;text-shadow:0 2px 4px #251500}
+.header-woman{display:block;width:112px;height:112px;object-fit:cover;object-position:center 25%;border:3px solid #fff0b0;border-radius:50%;margin:0 auto 14px;box-shadow:0 0 22px #fff0b077,0 0 35px #d6a43b66;background:#102d3a}
 .gold-crown{font-size:28px;line-height:1.1;color:#fff0a0}
 .gold-brand-name{font-size:13px;font-weight:900;letter-spacing:5px;margin-top:4px}
 .gold-brand-main{font-size:clamp(24px,6vw,38px);font-weight:1000;letter-spacing:1px;line-height:1.2}
@@ -50,11 +51,9 @@ main{width:min(1200px,100%);margin:auto;padding:22px 13px 100px}
 .compact-poster{min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 10px;margin:0 0 24px;border:1px solid #d6a43b;border-radius:12px;background:radial-gradient(ellipse at center,#24505a,#071923 75%);text-align:center;box-shadow:0 5px 20px #0005}
 .compact-poster-title{color:#ffe6a0;font-weight:1000;font-size:clamp(20px,5vw,34px);letter-spacing:1.2px;text-shadow:0 0 12px #d6a43b66}
 .compact-poster-subtitle{margin-top:7px;color:#b6eadd;font-size:10px;font-weight:800;letter-spacing:2px}
-
 .promo-banner{position:relative;overflow:hidden;margin-bottom:24px;padding:23px 15px;text-align:center;border:1px solid #9d7838;border-radius:15px;background:radial-gradient(ellipse at top,#593817,#192a31 60%,#0b2029);box-shadow:0 8px 28px #0005}
 .promo-banner h2{margin:0 0 8px;color:var(--light);font-size:clamp(20px,5vw,29px)}
 .bonus-pill{display:inline-block;margin-bottom:9px;padding:6px 11px;border-radius:20px;background:linear-gradient(135deg,#ffb36b,#ff8247);color:#2b150a;font-weight:900;font-size:11px}
-
 .section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 2px 16px}
 .section-heading h2{margin:0;color:var(--light);font-size:19px}
 .count{color:#b5c8ce;font-size:11px}
@@ -66,13 +65,12 @@ main{width:min(1200px,100%);margin:auto;padding:22px 13px 100px}
 .game-card:hover{transform:translateY(-3px);border-color:#55b8a6}
 .game-logo{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 11px;overflow:hidden;border:2px solid #d6a43b;border-radius:18px;background:radial-gradient(circle at 30% 20%,#7c5a1c,#132c35 68%);color:#fff0b0;font-size:21px;font-weight:1000;letter-spacing:1px;box-shadow:0 0 18px #42ddb222,inset 0 0 15px #ffffff0b;position:relative;text-shadow:0 1px 4px #000}
 .game-logo img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:5px;background:#fff;border-radius:14px}
-.game-logo::before{content:"";position:absolute;inset:4px;border:1px solid #f3d16f;border-radius:12px;pointer-events:none}
+.game-logo::before{content:"";position:absolute;inset:4px;border:1px solid #f3d16f;border-radius:12px;pointer-events:none;z-index:2}
 .game-name{display:flex;justify-content:center;align-items:center;min-height:35px;margin-bottom:7px;overflow-wrap:anywhere;font-size:13px;font-weight:900}
 .status{display:block!important;visibility:visible!important;opacity:1!important;min-height:15px;margin-bottom:11px;color:var(--green);font-size:11px;font-weight:900;letter-spacing:.2px}
 .status:before{content:"";display:inline-block;width:7px;height:7px;margin-right:5px;border-radius:50%;background:var(--green);box-shadow:0 0 7px #42ddb288}
 .play-btn{display:block;width:100%;padding:12px 4px;border:1px solid #ffe08a;border-radius:8px;background:linear-gradient(135deg,#ffe18a,#bf8520);color:#1c1202;font-size:12px;font-weight:1000;letter-spacing:.3px}
 .empty{display:none;padding:24px 8px;color:#c2bacb;text-align:center}
-
 footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12px;text-align:center}
 .floating-buttons{position:fixed;z-index:99;right:13px;bottom:16px;display:flex;flex-direction:column;gap:10px}
 .float-btn{display:grid;place-items:center;width:51px;height:51px;border:1px solid #ffffff24;border-radius:50%;box-shadow:0 4px 16px #0008;font-size:22px;cursor:pointer}
@@ -94,7 +92,6 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 #newLogoShowcase .slideshow-window .showcase-logo{width:90px;height:90px}
 #newLogoShowcase .slide-name{color:#ffe6a0;font-weight:900;margin:8px 0;overflow-wrap:anywhere}
 @keyframes newLogoMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-
 @media(min-width:600px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding-left:20px;padding-right:20px}}
 @media(min-width:900px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(prefers-reduced-motion:reduce){.ticker-track,#newLogoShowcase .logo-track{animation:none}}
@@ -106,6 +103,7 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 
 <header>
   <div class="gold-brand">
+    <img class="header-woman" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=85" alt="Premium Gaming Lounge" onerror="this.style.display='none'">
     <div class="gold-crown">♛</div>
     <div class="gold-brand-name">PREMIUM</div>
     <div class="gold-brand-main">GAMING LOUNGE</div>
@@ -140,9 +138,7 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 
   <section id="newLogoShowcase">
     <div class="showcase-title">✦ GAMING LOGO SHOWCASE ✦</div>
-    <div class="logo-track-window">
-      <div class="logo-track" id="newLogoTrack"></div>
-    </div>
+    <div class="logo-track-window"><div class="logo-track" id="newLogoTrack"></div></div>
     <div class="showcase-controls">
       <button type="button" id="newSoundButton">🔇 SOUND OFF</button>
       <button type="button" id="newPauseButton">⏸ PAUSE</button>
@@ -173,7 +169,7 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 
 <div class="actions" style="padding:0 12px 24px;margin-top:0">
   <button class="action-btn secondary" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
-  <button class="action-btn" type="button" onclick="openLiveChat()" style="background:linear-gradient(135deg,#ffe28a,#c38a22)">💰 DEPOSIT</button>
+  <button class="action-btn" type="button" onclick="openLiveChat()">💰 DEPOSIT</button>
   <button class="action-btn" type="button" onclick="openLiveChat()" style="background:linear-gradient(135deg,#42ddb2,#168c70);color:#061c17;border-color:#8ef3d4">💸 WITHDRAW</button>
   <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
 </div>
@@ -189,23 +185,23 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 const games = [
 ["Orion Star","http://start.orionstars.vip:8580/"],
 ["Milkyway","https://milkywayapp.xyz/"],
-["Juwa","https://dl.juwa777.com/"],
+["Juwa 777","https://dl.juwa777.com/"],
 ["Vblink","https://www.vblink777.club/"],
 ["Juwa 2.0","https://m.juwa2.com/"],
-["Firekirin","https://firekirin.com/download-fire-kirin-app.html"],
+["Fire Kirin","https://firekirin.com/download-fire-kirin-app.html"],
 ["Vegas X","https://www.vegas-x.org"],
 ["Game Vault","http://download.gamevault999.com/"],
 ["Egame","https://www.egame99.club"],
 ["Moolah","https://moolah.vip:8888/"],
-["RiverSweep","https://bet777.eu/play/"],
+["River Sweep","https://bet777.eu/play/"],
 ["Noble777","https://www.noble777.com"],
 ["Highstake","https://dl.highstakesweeps.com/"],
 ["Casino Royal","http://m.casinoroyale07.com"],
 ["Vegas Sweep","https://m.lasvegassweeps.com/"],
-["Ultrapanda","http://www.ultrapanda.mobi"],
+["Ultra Panda","http://www.ultrapanda.mobi"],
 ["Orion Power","http://download.orionpower.games:8008/"],
 ["Winstar","http://www.winstar99999.com"],
-["Mafia 777","http://www.mafia77777.com"],
+["Mafia","http://www.mafia77777.com"],
 ["Paracasino","https://download.paracasino.net"],
 ["Vegas Roll","http://www.vegas-roll.com/m"],
 ["Mr. All in One","http://www.mrallinone777.com"],
@@ -222,7 +218,7 @@ const games = [
 ["Lucky Master","https://lucky-master.net/"],
 ["King of Pop","https://kingofpop777.com/"],
 ["Firefonix","https://fpc-mob.com/AD/index.html"],
-["Bigwin","https://bigwplay.com"],
+["Big Winner","https://bigwplay.com"],
 ["Thunderseven","https://thunderseven.com/"],
 ["Gem Slots","https://www.gem77777.com/m"],
 ["Winner Club","https://www.winnersclub777.com"],
@@ -241,7 +237,6 @@ const games = [
 ["Panda Master","https://pandamaster.vip:8888/"],
 ["Ding Ding","https://www.dingdinghouse.com"],
 ["Blue Dragon","https://bluedragon777.net/"],
-["Big Winner","https://bigwplay.com"],
 ["Game Vault 777","https://www.gamevault77777.com"],
 ["Game Vault 2","https://res.gamevault2.vip/download/"],
 ["Vegas X Pro","https://vegas-x.pro"],
@@ -257,47 +252,50 @@ const grid=document.getElementById("gamesGrid");
 const searchBox=document.getElementById("searchBox");
 const emptyMessage=document.getElementById("emptyMessage");
 const counts=new Map();
-
 games.forEach((g,i)=>counts.set(g[0]+"|"+g[1],500+(i%8)*37));
 
 function initials(name){
   const words=name.replace(/[^a-zA-Z0-9 ]/g,"").trim().split(/\s+/);
-  return words.length>1
-    ?(words[0][0]+words[1][0]).toUpperCase()
-    :name.replace(/[^a-zA-Z0-9]/g,"").slice(0,3).toUpperCase();
+  return words.length>1?(words[0][0]+words[1][0]).toUpperCase():name.replace(/[^a-zA-Z0-9]/g,"").slice(0,3).toUpperCase();
 }
 
 function getDomain(url){
   try{return new URL(url).hostname}catch(e){return ""}
 }
 
+/* Improved logo loading with fallback to game initials */
 function addFavicon(container,name,url){
   const domain=getDomain(url);
   if(!domain)return;
 
-  const img=document.createElement("img");
-  img.alt=name+" logo";
-  img.loading="lazy";
-  img.referrerPolicy="no-referrer";
-
   const sources=[
-    "https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz=128",
-    "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(domain)+".ico",
+    "https://icons.duckduckgo.com/ip3/"+domain+".ico",
+    "https://www.google.com/s2/favicons?domain="+domain+"&sz=128",
     "https://"+domain+"/favicon.ico"
   ];
 
   let attempt=0;
-  img.onerror=()=>{
+  const img=document.createElement("img");
+  img.alt=name+" logo";
+  img.loading="lazy";
+  img.referrerPolicy="no-referrer";
+  img.decoding="async";
+
+  img.onerror=function(){
     attempt++;
-    if(attempt<sources.length)img.src=sources[attempt];
-    else img.remove();
-  };
-  img.onload=()=>{
-    if(img.naturalWidth>0){
-      container.textContent="";
-      container.appendChild(img);
+    if(attempt<sources.length){
+      img.src=sources[attempt];
+    }else{
+      img.remove();
     }
   };
+
+  img.onload=function(){
+    if(img.naturalWidth>0&&img.naturalHeight>0){
+      container.replaceChildren(img);
+    }
+  };
+
   img.src=sources[0];
 }
 
@@ -344,7 +342,6 @@ function renderGames(filter=""){
   emptyMessage.style.display=filtered.length?"none":"block";
 }
 
-/* Existing moving ticker */
 const winAmounts=[100,250,500,600,750,1000,1500,2000];
 
 function makeTicker(id){
@@ -366,15 +363,12 @@ function makeTicker(id){
       if(id==="tickerOne"){
         const prefix=document.createElement("span");
         prefix.textContent="Featured amount · ";
-
         const game=document.createElement("strong");
         game.textContent=name+" · ";
-
         const amount=document.createElement("strong");
         amount.className="win-amount";
         amount.dataset.index=String(i);
         amount.textContent="$"+winAmounts[(i+repeat)%winAmounts.length];
-
         label.append(prefix,game,amount);
       }else{
         label.textContent=name+" · gaming activity";
@@ -410,7 +404,6 @@ function toggleLiveWin(){
   const panel=document.getElementById("liveWinPanel");
   const button=document.getElementById("liveWinButton");
   const isOpen=panel.classList.toggle("visible");
-
   button.setAttribute("aria-expanded",String(isOpen));
   button.textContent=isOpen?"✕ CLOSE":"🔴 LIVE WIN";
 
@@ -419,7 +412,7 @@ function toggleLiveWin(){
   }
 }
 
-/* New logo showcase */
+/* Logo showcase */
 (function(){
   const root=document.getElementById("newLogoShowcase");
   if(!root)return;
@@ -434,19 +427,15 @@ function toggleLiveWin(){
   let soundOn=false;
   let paused=false;
   let audioContext=null;
-  let slideTimer=null;
 
   function makeShowcaseCard(game){
     const card=document.createElement("div");
     card.className="showcase-card";
-
     const logo=document.createElement("div");
     logo.className="showcase-logo";
     logo.textContent=initials(game[0]);
-
     const name=document.createElement("div");
     name.textContent=game[0];
-
     card.append(logo,name);
     addFavicon(logo,game[0],game[1]);
     return card;
@@ -463,23 +452,15 @@ function toggleLiveWin(){
     try{
       const AudioContextClass=window.AudioContext||window.webkitAudioContext;
       if(!AudioContextClass)return;
-
       audioContext=audioContext||new AudioContextClass();
-
-      if(audioContext.state==="suspended"){
-        audioContext.resume();
-      }
-
+      if(audioContext.state==="suspended")audioContext.resume();
       const oscillator=audioContext.createOscillator();
       const gain=audioContext.createGain();
-
       oscillator.type="sine";
       oscillator.frequency.value=660;
       gain.gain.value=0.035;
-
       oscillator.connect(gain);
       gain.connect(audioContext.destination);
-
       oscillator.start();
       oscillator.stop(audioContext.currentTime+0.12);
     }catch(error){}
@@ -488,13 +469,10 @@ function toggleLiveWin(){
   function showSlide(index){
     slideIndex=(index+games.length)%games.length;
     const game=games[slideIndex];
-
     slideLogo.replaceChildren();
     slideLogo.textContent=initials(game[0]);
     slideName.textContent=game[0];
-
     addFavicon(slideLogo,game[0],game[1]);
-
     if(soundOn)playSound();
   }
 
@@ -510,33 +488,23 @@ function toggleLiveWin(){
     pauseButton.textContent=paused?"▶ PLAY":"⏸ PAUSE";
   });
 
-  document.getElementById("newPrevSlide").addEventListener("click",()=>{
-    showSlide(slideIndex-1);
-  });
-
-  document.getElementById("newNextSlide").addEventListener("click",()=>{
-    showSlide(slideIndex+1);
-  });
+  document.getElementById("newPrevSlide").addEventListener("click",()=>showSlide(slideIndex-1));
+  document.getElementById("newNextSlide").addEventListener("click",()=>showSlide(slideIndex+1));
 
   buildTrack();
   showSlide(0);
-
-  slideTimer=window.setInterval(()=>{
-    showSlide(slideIndex+1);
-  },3500);
+  window.setInterval(()=>showSlide(slideIndex+1),3500);
 })();
 
-/* Initialize existing website features */
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));
 makeTicker("tickerOne");
 makeTicker("tickerTwo");
 renderGames();
-
 document.getElementById("year").textContent=new Date().getFullYear();
 setInterval(updatePlayerCounts,12000);
 setInterval(updateAmounts,5000);
 
-/* Tawk.to live chat */
+/* Tawk.to Live Chat */
 window.Tawk_API=window.Tawk_API||{};
 window.Tawk_LoadStart=new Date();
 
@@ -545,9 +513,7 @@ function openLiveChat(){
     window.Tawk_API.maximize();
   }else{
     window.Tawk_API.onLoad=function(){
-      if(typeof window.Tawk_API.maximize==="function"){
-        window.Tawk_API.maximize();
-      }
+      if(typeof window.Tawk_API.maximize==="function")window.Tawk_API.maximize();
     };
   }
 }
@@ -594,27 +560,23 @@ if("serviceWorker" in navigator&&location.protocol==="https:"){
 }
 </script>
 
-<!-- Chaport live chat -->
+<!-- Chaport Live Chat -->
 <script type="text/javascript">
 (function(w,d,v3){
   w.chaportConfig={appId:'6acef8d367f574f2e93a4357'};
   if(w.chaport)return;
-
   v3=w.chaport={};
   v3._q=[];
   v3._l={};
-
   v3.q=function(){v3._q.push(arguments)};
   v3.on=function(e,fn){
     if(!v3._l[e])v3._l[e]=[];
     v3._l[e].push(fn);
   };
-
   var s=d.createElement('script');
   s.type='text/javascript';
   s.async=true;
   s.src='https://app.chaport.com/javascripts/insert.js';
-
   var ss=d.getElementsByTagName('script')[0];
   ss.parentNode.insertBefore(s,ss);
 })(window,document);
