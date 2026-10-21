@@ -57,7 +57,23 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 <div class="games-grid" id="gamesGrid"></div><div class="empty" id="emptyMessage">No games found. Try another name.</div>
 </main>
 <footer>© <span id="year"></span> Premium Gaming Lounge. All rights reserved.</footer>
-<div class="floating-buttons"><button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button><a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☏</a></div>
+<div class=
+<button class="action-btn secondary" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
+
+<button class="action-btn" type="button"
+onclick="openLiveChat()"
+style="background:linear-gradient(135deg,#ffe28a,#c38a22);">
+💰 DEPOSIT
+</button>
+
+<button class="action-btn" type="button"
+onclick="openLiveChat()"
+style="background:linear-gradient(135deg,#42ddb2,#168c70);color:#061c17;border-color:#8ef3d4;">
+💸 WITHDRAW
+</button>
+
+<a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
+"floating-buttons"><button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button><a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☏</a></div>
 <script>
 const games = [["Orion Star","http://start.orionstars.vip:8580/"],["Milkyway","https://milkywayapp.xyz/"],["Juwa","https://dl.juwa777.com/"],["Vblink","https://www.vblink777.club/"],["Juwa 2.0","https://m.juwa2.com/"],["Firekirin","https://firekirin.com/download-fire-kirin-app.html"],["Vegas X","https://www.vegas-x.org"],["Game Vault","http://download.gamevault999.com/"],["Egame","https://www.egame99.club"],["Moolah","https://moolah.vip:8888/"],["RiverSweep","https://bet777.eu/play/"],["Noble777","https://www.noble777.com"],["Highstake","https://dl.highstakesweeps.com/"],["Casino Royal","http://m.casinoroyale07.com"],["Vegas Sweep","https://m.lasvegassweeps.com/"],["Ultrapanda","http://www.ultrapanda.mobi"],["Orion Power","http://download.orionpower.games:8008/"],["Winstar","http://www.winstar99999.com"],["Mafia 777","http://www.mafia77777.com"],["Paracasino","https://download.paracasino.net"],["Vegas Roll","http://www.vegas-roll.com/m"],["Mr. All in One","http://www.mrallinone777.com"],["Yolo 777","https://yolo777.game"],["Cash Machine","https://www.cashmachine777.com"],["Game Room","https://www.gameroom777.com/"],["Vegas Luck","https://start.vegasluck777.com/"],["River Pay","https://river777.net/build.30/index.html"],["Loot Game","https://m.lootgame777.com"],["Hukum","https://hukum777.online/"],["Mob.com","https://fpc-mob.com/"],["Highroller","https://www.highroller.com/casino"],["Dragon Crown","https://atlus.com/dragonscrown/"],["Lucky Master","https://lucky-master.net/"],["King of Pop","https://kingofpop777.com/"],["Firefonix","https://fpc-mob.com/AD/index.html"],["Bigwin","https://bigwplay.com"],["Thunderseven","https://thunderseven.com/"],["Gem Slots","https://www.gem77777.com/m"],["Winner Club","https://www.winnersclub777.com"],["Cash Frenzy","https://www.cashfrenzy777.com"],["Joker 777","https://www.joker777.win"],["Orion Strike","https://start.orionstrike777.com"],["Big Bang","https://www.bigbangcasino.vegas"],["Lucky Star","https://www.luckystars.games"],["Stars Galaxy","https://www.starsgalaxy777.com"],["Gem777","https://www.gem77777.com"],["Lucky Paradise","https://www.luckyparadise777.com"],["River Monster","https://rm777.net/"],["Mega Spin","https://megaspinpay.com/default.aspx"],["Sharks Secret 77","https://www.sharksecret777.com/"],["Winwin Vegas","https://winwinvegas777.com"],["Panda Master","https://pandamaster.vip:8888/"],["Ding Ding","https://www.dingdinghouse.com"],["Blue Dragon","https://bluedragon777.net/"],["Big Winner","https://bigwplay.com"],["Game Vault 777","https://www.gamevault77777.com"],["Game Vault 2","https://res.gamevault2.vip/download/"],["Vegas X Pro","https://vegas-x.pro"],["Lucky Paradise H5","https://www.luckyparadise777.com"],["King of Pop Slots","https://www.slots88888.com"],["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],["Paracasino H5","https://h5.paracasino.net/"],["Mr. All in One Agent","http://agentserver.mrallinone777.com"],["Win Star Server","http://server.winstar99999.com:8009/"]];
 const grid=document.getElementById("gamesGrid"),searchBox=document.getElementById("searchBox"),emptyMessage=document.getElementById("emptyMessage");
