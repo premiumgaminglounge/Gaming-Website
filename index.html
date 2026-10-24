@@ -44,6 +44,51 @@ h1{margin:0;font-size:clamp(25px,6vw,42px);font-weight:1000;color:var(--light);t
 @keyframes moveLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @keyframes moveRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
 
+/* Animated offer strips */
+.offer-strip{
+  width:100%;
+  overflow:hidden;
+  white-space:nowrap;
+  position:relative;
+  padding:11px 0;
+  border-top:1px solid #6d5925;
+  border-bottom:1px solid #6d5925;
+  background:linear-gradient(100deg,#171006,#47300b,#171006);
+  box-shadow:0 3px 14px #0005;
+}
+.offer-strip.free{
+  margin-top:5px;
+  background:linear-gradient(100deg,#092d24,#10513c,#092d24);
+  border-color:#42ddb2;
+}
+.offer-track{
+  display:flex;
+  width:max-content;
+  align-items:center;
+  animation:offerScroll 22s linear infinite;
+}
+.offer-strip:hover .offer-track{
+  animation-play-state:paused;
+}
+.offer-track span{
+  display:inline-block;
+  padding:0 35px;
+  font-size:clamp(16px,4vw,22px);
+  font-weight:1000;
+  letter-spacing:1px;
+  text-shadow:0 0 12px currentColor;
+}
+.offer-track .bonus180{
+  color:#ffe28a;
+}
+.offer-track .free5{
+  color:#8ef3d4;
+}
+@keyframes offerScroll{
+  from{transform:translateX(0)}
+  to{transform:translateX(-50%)}
+}
+
 main{width:min(1200px,100%);margin:auto;padding:22px 13px 100px}
 .poster-section{margin:0 0 24px;padding:15px;background:linear-gradient(135deg,#4b2e0a,#b98728 35%,#18252a 72%,#0b2029);border:1px solid #f1cf69;border-radius:14px;text-align:center;box-shadow:0 5px 20px #0005}
 .poster-section h2{color:#fff0b0;font-size:clamp(18px,4vw,25px);margin:3px 0 6px;text-shadow:0 2px 5px #241400}
@@ -94,7 +139,7 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 @keyframes newLogoMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
 @media(min-width:600px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding-left:20px;padding-right:20px}}
 @media(min-width:900px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(prefers-reduced-motion:reduce){.ticker-track,#newLogoShowcase .logo-track{animation:none}}
+@media(prefers-reduced-motion:reduce){.ticker-track,#newLogoShowcase .logo-track,.offer-track{animation:none}}
 </style>
 </head>
 
@@ -124,6 +169,14 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 </div>
 <div class="live-win-panel" id="liveWinPanel"></div>
 <div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
+
+<!-- Animated offer bars: one bonus bar and one free-plays bar -->
+<div class="offer-strip" aria-label="180 percent welcome bonus">
+  <div class="offer-track" id="bonusTrack"></div>
+</div>
+<div class="offer-strip free" aria-label="5 free plays offer">
+  <div class="offer-track" id="freeTrack"></div>
+</div>
 
 <main>
   <section class="poster-section">
@@ -155,7 +208,7 @@ footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12
 
   <section class="promo-banner">
     <span class="bonus-pill">SPECIAL WELCOME OFFER</span>
-    <h2>✦ 180% WELCOME BONUS ✦</h2>
+    <h2>✦ SPECIAL GAMING OFFERS ✦</h2>
   </section>
 
   <div class="section-heading">
@@ -263,7 +316,6 @@ function getDomain(url){
   try{return new URL(url).hostname}catch(e){return ""}
 }
 
-/* Improved logo loading with fallback to game initials */
 function addFavicon(container,name,url){
   const domain=getDomain(url);
   if(!domain)return;
@@ -411,6 +463,23 @@ function toggleLiveWin(){
     panel.textContent="Welcome to Premium Gaming Lounge — choose a platform below to explore.";
   }
 }
+
+/* Build the two animated offer bars */
+function buildOfferBar(id,message,className){
+  const track=document.getElementById(id);
+  if(!track)return;
+
+  track.innerHTML="";
+  for(let i=0;i<2;i++){
+    const item=document.createElement("span");
+    item.className=className;
+    item.textContent=message;
+    track.appendChild(item);
+  }
+}
+
+buildOfferBar("bonusTrack","✨ 180% WELCOME BONUS ✨","bonus180");
+buildOfferBar("freeTrack","🎁 5 FREE PLAYS 🎁","free5");
 
 /* Logo showcase */
 (function(){
