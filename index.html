@@ -1,653 +1,500 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc" />
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071923">
-<meta name="description" content="Premium Gaming Lounge - Gaming platforms in one place.">
+<meta name="description" content="Premium Gaming Lounge - Games, offers and customer support.">
+<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
 <title>Premium Gaming Lounge</title>
 
 <style>
-:root{--gold:#d6a43b;--light:#fff0b0;--bg:#071923;--panel:#102d3a;--green:#42ddb2}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
-a{text-decoration:none}
-button,input{font:inherit}
-.topbar{padding:11px 8px;text-align:center;background:#102b34;color:#8ef3d4;font-size:11px;font-weight:900;letter-spacing:1.3px;border-bottom:1px solid #20505a}
-header{padding:27px 13px 24px;text-align:center;background:radial-gradient(ellipse at 50% 0%,#24505a,#102a35 45%,#071923);border-bottom:1px solid #24505a}
-.gold-brand{width:min(560px,100%);margin:0 auto 18px;padding:17px 12px 15px;border:2px solid #f7d778;border-radius:14px;background:linear-gradient(135deg,#4c2d08,#d6a43b 38%,#5a3508 70%,#171006);color:#fff2b5;box-shadow:0 0 24px #d6a43b55,inset 0 0 16px #fff4b0;text-shadow:0 2px 4px #251500}
-.header-woman{display:block;width:112px;height:112px;object-fit:cover;object-position:center 25%;border:3px solid #fff0b0;border-radius:50%;margin:0 auto 14px;box-shadow:0 0 22px #fff0b077,0 0 35px #d6a43b66;background:#102d3a}
-.gold-crown{font-size:28px;line-height:1.1;color:#fff0a0}
-.gold-brand-name{font-size:13px;font-weight:900;letter-spacing:5px;margin-top:4px}
-.gold-brand-main{font-size:clamp(24px,6vw,38px);font-weight:1000;letter-spacing:1px;line-height:1.2}
-.gold-brand-line{font-size:10px;font-weight:900;letter-spacing:1.5px;margin-top:8px;color:#fff6d1}
-h1{margin:0;font-size:clamp(25px,6vw,42px);font-weight:1000;color:var(--light);text-shadow:0 0 18px #ffb82e33}
-.subtitle{margin:10px 0 17px;color:#c5d6dc;font-size:13px}
-.actions{display:flex;justify-content:center;flex-wrap:wrap;gap:9px;margin-top:17px}
-.action-btn{display:inline-flex;justify-content:center;align-items:center;padding:12px 15px;border:1px solid #ffe08a;border-radius:9px;background:linear-gradient(135deg,#ffe28a,#c38a22);color:#170f03;font-size:12px;font-weight:900;cursor:pointer}
-.action-btn.secondary{background:#122a34;color:var(--light);border-color:#37616a}
-
-.ticker-row{display:flex;align-items:center;gap:7px;padding-right:7px;background:#0c222c;border-top:1px solid #1d414c;border-bottom:1px solid #1d414c}
-.ticker{flex:1;min-width:0;overflow:hidden;white-space:nowrap;padding:10px 0;background:#0c222c}
-.ticker.reverse{background:#102832}
-.ticker-track{display:flex;width:max-content;align-items:center;gap:12px;animation:moveLeft 95s linear infinite}
-.ticker.reverse .ticker-track{animation-name:moveRight;animation-duration:105s}
-.ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-item{display:inline-flex;align-items:center;gap:8px;padding:6px 12px;border:1px solid #28525b;border-radius:30px;background:linear-gradient(110deg,#173640,#0b2029);color:#e7fff7;font-size:11px;font-weight:bold}
-.ticker-item strong{color:#ffc46b}
-.ticker-logo{display:grid;place-items:center;width:27px;height:27px;flex-shrink:0;overflow:hidden;border-radius:50%;background:#23444a;border:1px solid #54817d;color:#c9fff0;font-size:9px;font-weight:900}
-.ticker-logo img{width:100%;height:100%;object-fit:contain;background:#fff}
-.live-win-btn{flex-shrink:0;padding:8px 9px;border:1px solid #42ddb2;border-radius:8px;background:#102d3a;color:#8ef3d4;font-size:10px;font-weight:900;cursor:pointer}
-.live-win-panel{display:none;padding:12px;background:#102832;border-bottom:1px solid #28525b;color:#fff0b0;text-align:center;font-size:12px;line-height:1.6}
-.live-win-panel.visible{display:block}
-@keyframes moveLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@keyframes moveRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-
-/* Animated offer strips */
-.offer-strip{
-  width:100%;
-  overflow:hidden;
-  white-space:nowrap;
-  position:relative;
-  padding:11px 0;
-  border-top:1px solid #6d5925;
-  border-bottom:1px solid #6d5925;
-  background:linear-gradient(100deg,#171006,#47300b,#171006);
-  box-shadow:0 3px 14px #0005;
+:root {
+  --bg:#071923;
+  --panel:#102d3a;
+  --gold:#d6a43b;
+  --light:#fff0b0;
+  --green:#42ddb2;
+  --blue:#0084ff;
 }
-.offer-strip.free{
-  margin-top:5px;
-  background:linear-gradient(100deg,#092d24,#10513c,#092d24);
-  border-color:#42ddb2;
+* {box-sizing:border-box}
+body {
+  margin:0;background:var(--bg);color:#fff;
+  font-family:Arial,Helvetica,sans-serif;
 }
-.offer-track{
-  display:flex;
-  width:max-content;
-  align-items:center;
-  animation:offerScroll 22s linear infinite;
+a {color:inherit;text-decoration:none}
+button,input {font:inherit}
+button {cursor:pointer}
+header {
+  text-align:center;padding:18px 12px;
+  background:linear-gradient(135deg,#102d3a,#071923);
+  border-bottom:2px solid var(--gold);
 }
-.offer-strip:hover .offer-track{
-  animation-play-state:paused;
+.brand-logo {
+  width:85px;height:85px;margin:auto auto 8px;
+  display:flex;align-items:center;justify-content:center;
+  border:3px solid var(--gold);border-radius:50%;
+  color:var(--light);font-size:26px;font-weight:bold;
+  background:radial-gradient(circle,#315567,#071923);
 }
-.offer-track span{
-  display:inline-block;
-  padding:0 35px;
-  font-size:clamp(16px,4vw,22px);
-  font-weight:1000;
-  letter-spacing:1px;
-  text-shadow:0 0 12px currentColor;
+h1 {color:var(--gold);font-size:27px;margin:8px 0}
+.subtitle {color:#d5e5ea;font-size:13px}
+nav {
+  display:flex;flex-wrap:wrap;justify-content:center;
+  gap:8px;padding:12px;background:#091f2a;
+  position:sticky;top:0;z-index:10;
 }
-.offer-track .bonus180{
-  color:#ffe28a;
+.btn {
+  border:0;border-radius:9px;padding:11px 14px;
+  font-weight:bold;display:inline-flex;align-items:center;
+  justify-content:center;gap:6px;
 }
-.offer-track .free5{
-  color:#8ef3d4;
+.gold {background:var(--gold);color:#101820}
+.green {background:#16a779;color:white}
+.blue {background:var(--blue);color:white}
+.dark {background:#203f4c;color:white;border:1px solid #42616c}
+.pink {background:#bc3f8a;color:white}
+nav .btn {font-size:12px;padding:10px}
+section {padding:14px 12px;max-width:1100px;margin:auto}
+.section-title {
+  text-align:center;color:var(--light);
+  font-size:21px;margin:8px 0 14px;
 }
-@keyframes offerScroll{
-  from{transform:translateX(0)}
-  to{transform:translateX(-50%)}
+.ticker {
+  overflow:hidden;white-space:nowrap;
+  background:#142f3b;border-block:1px solid #4d6570;
+  padding:10px 0;color:var(--light);font-weight:bold;
 }
-
-main{width:min(1200px,100%);margin:auto;padding:22px 13px 100px}
-.poster-section{margin:0 0 24px;padding:15px;background:linear-gradient(135deg,#4b2e0a,#b98728 35%,#18252a 72%,#0b2029);border:1px solid #f1cf69;border-radius:14px;text-align:center;box-shadow:0 5px 20px #0005}
-.poster-section h2{color:#fff0b0;font-size:clamp(18px,4vw,25px);margin:3px 0 6px;text-shadow:0 2px 5px #241400}
-.poster-section p{margin:0;color:#fff6d5;font-size:12px}
-.compact-poster{min-height:105px;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:18px 10px;margin:0 0 24px;border:1px solid #d6a43b;border-radius:12px;background:radial-gradient(ellipse at center,#24505a,#071923 75%);text-align:center;box-shadow:0 5px 20px #0005}
-.compact-poster-title{color:#ffe6a0;font-weight:1000;font-size:clamp(20px,5vw,34px);letter-spacing:1.2px;text-shadow:0 0 12px #d6a43b66}
-.compact-poster-subtitle{margin-top:7px;color:#b6eadd;font-size:10px;font-weight:800;letter-spacing:2px}
-.promo-banner{position:relative;overflow:hidden;margin-bottom:24px;padding:23px 15px;text-align:center;border:1px solid #9d7838;border-radius:15px;background:radial-gradient(ellipse at top,#593817,#192a31 60%,#0b2029);box-shadow:0 8px 28px #0005}
-.promo-banner h2{margin:0 0 8px;color:var(--light);font-size:clamp(20px,5vw,29px)}
-.bonus-pill{display:inline-block;margin-bottom:9px;padding:6px 11px;border-radius:20px;background:linear-gradient(135deg,#ffb36b,#ff8247);color:#2b150a;font-weight:900;font-size:11px}
-.section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:8px 2px 16px}
-.section-heading h2{margin:0;color:var(--light);font-size:19px}
-.count{color:#b5c8ce;font-size:11px}
-.search-box{display:block;width:100%;padding:14px;margin-bottom:17px;border:1px solid #31505b;border-radius:10px;outline:none;background:#102832;color:#fff}
-.search-box:focus{border-color:var(--green);box-shadow:0 0 12px #42ddb222}
-.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.game-card{position:relative;min-width:0;overflow:hidden;padding:15px 10px 12px;text-align:center;border:1px solid #294651;border-radius:14px;background:linear-gradient(145deg,#16333e,#0b2029 75%);box-shadow:0 5px 16px #0004;transition:transform .2s,border-color .2s}
-.game-card:before{content:"";position:absolute;top:0;left:15%;width:70%;height:1px;background:linear-gradient(90deg,transparent,#fbd775,transparent)}
-.game-card:hover{transform:translateY(-3px);border-color:#55b8a6}
-.game-logo{display:grid;place-items:center;width:76px;height:76px;margin:0 auto 11px;overflow:hidden;border:2px solid #d6a43b;border-radius:18px;background:radial-gradient(circle at 30% 20%,#7c5a1c,#132c35 68%);color:#fff0b0;font-size:21px;font-weight:1000;letter-spacing:1px;box-shadow:0 0 18px #42ddb222,inset 0 0 15px #ffffff0b;position:relative;text-shadow:0 1px 4px #000}
-.game-logo img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain;padding:5px;background:#fff;border-radius:14px}
-.game-logo::before{content:"";position:absolute;inset:4px;border:1px solid #f3d16f;border-radius:12px;pointer-events:none;z-index:2}
-.game-name{display:flex;justify-content:center;align-items:center;min-height:35px;margin-bottom:7px;overflow-wrap:anywhere;font-size:13px;font-weight:900}
-.status{display:block!important;visibility:visible!important;opacity:1!important;min-height:15px;margin-bottom:11px;color:var(--green);font-size:11px;font-weight:900;letter-spacing:.2px}
-.status:before{content:"";display:inline-block;width:7px;height:7px;margin-right:5px;border-radius:50%;background:var(--green);box-shadow:0 0 7px #42ddb288}
-.play-btn{display:block;width:100%;padding:12px 4px;border:1px solid #ffe08a;border-radius:8px;background:linear-gradient(135deg,#ffe18a,#bf8520);color:#1c1202;font-size:12px;font-weight:1000;letter-spacing:.3px}
-.empty{display:none;padding:24px 8px;color:#c2bacb;text-align:center}
-footer{padding:23px 12px;border-top:1px solid #294651;color:#96aab1;font-size:12px;text-align:center}
-.floating-buttons{position:fixed;z-index:99;right:13px;bottom:16px;display:flex;flex-direction:column;gap:10px}
-.float-btn{display:grid;place-items:center;width:51px;height:51px;border:1px solid #ffffff24;border-radius:50%;box-shadow:0 4px 16px #0008;font-size:22px;cursor:pointer}
-.chat-float{background:var(--gold);color:#171107}
-.whatsapp-float{background:#20c968;color:#fff}
-
-/* Gaming logo showcase */
-#newLogoShowcase{margin:18px 0 24px;padding:14px 8px;overflow:hidden;background:linear-gradient(120deg,#102d3a,#071923,#173b45);border:1px solid #d6a43b;border-radius:14px;color:white;font-family:Arial,sans-serif}
-#newLogoShowcase .showcase-title{text-align:center;color:#ffe6a0;font-weight:900;font-size:18px;margin-bottom:14px}
-#newLogoShowcase .logo-track-window{overflow:hidden;width:100%}
-#newLogoShowcase .logo-track{display:flex;width:max-content;gap:14px;animation:newLogoMove 100s linear infinite}
-#newLogoShowcase .logo-track:hover{animation-play-state:paused}
-#newLogoShowcase .showcase-card{width:90px;flex-shrink:0;text-align:center;color:#fff;font-size:11px;font-weight:bold}
-#newLogoShowcase .showcase-logo{display:grid;place-items:center;width:65px;height:65px;margin:0 auto 7px;overflow:hidden;border:2px solid #d6a43b;border-radius:15px;background:radial-gradient(circle at 30% 20%,#7c5a1c,#132c35 68%);color:#ffe6a0;font-size:18px;font-weight:900;text-align:center}
-#newLogoShowcase .showcase-logo img{width:100%;height:100%;object-fit:contain;background:white;padding:3px;border-radius:12px}
-#newLogoShowcase .showcase-controls{display:flex;justify-content:center;align-items:center;flex-wrap:wrap;gap:10px;margin-top:15px}
-#newLogoShowcase .showcase-controls button{padding:9px 14px;border:1px solid #ffe08a;border-radius:8px;background:linear-gradient(135deg,#ffe28a,#c38a22);color:#171107;font-weight:bold;cursor:pointer}
-#newLogoShowcase .slideshow-window{max-width:230px;margin:18px auto 0;padding:12px;border:1px solid #31535b;border-radius:12px;background:#0b2029;text-align:center}
-#newLogoShowcase .slideshow-window .showcase-logo{width:90px;height:90px}
-#newLogoShowcase .slide-name{color:#ffe6a0;font-weight:900;margin:8px 0;overflow-wrap:anywhere}
-@keyframes newLogoMove{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-@media(min-width:600px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}main{padding-left:20px;padding-right:20px}}
-@media(min-width:900px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
-@media(prefers-reduced-motion:reduce){.ticker-track,#newLogoShowcase .logo-track,.offer-track{animation:none}}
+.ticker-track {
+  display:inline-block;padding-left:100%;
+  animation:move 28s linear infinite;
+}
+.ticker.reverse .ticker-track {
+  animation:moveReverse 32s linear infinite;
+}
+@keyframes move {
+  from {transform:translateX(0)}
+  to {transform:translateX(-100%)}
+}
+@keyframes moveReverse {
+  from {transform:translateX(-100%)}
+  to {transform:translateX(0)}
+}
+.offer {
+  text-align:center;padding:12px 8px;margin:10px 0;
+  border:1px solid var(--gold);border-radius:12px;
+  background:linear-gradient(90deg,#172c35,#29434a,#172c35);
+  color:var(--light);font-weight:bold;
+  animation:glow 2s infinite alternate;
+}
+@keyframes glow {
+  from {box-shadow:0 0 3px #d6a43b}
+  to {box-shadow:0 0 13px #d6a43b}
+}
+.logo-showcase {
+  display:flex;gap:12px;overflow-x:auto;padding:12px 4px;
+  scrollbar-width:thin;
+}
+.logo-tile {
+  min-width:100px;height:90px;background:#102d3a;
+  border:1px solid #3c5965;border-radius:12px;
+  display:flex;flex-direction:column;align-items:center;
+  justify-content:center;gap:7px;padding:8px;
+}
+.logo-tile img {width:38px;height:38px;object-fit:contain}
+.logo-tile span {font-size:11px;text-align:center;font-weight:bold}
+.panel {
+  background:var(--panel);border:1px solid #284956;
+  border-radius:14px;padding:15px;margin:12px 0;
+}
+.actions {
+  display:flex;flex-wrap:wrap;justify-content:center;gap:9px;
+}
+input[type="search"],input[type="text"] {
+  width:100%;padding:13px;border-radius:10px;
+  border:1px solid #52717d;background:#071923;
+  color:white;outline:none;margin-bottom:12px;
+}
+.game-grid {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:11px;
+}
+.game-card {
+  background:var(--panel);border:1px solid #31515e;
+  border-radius:13px;padding:12px 8px;text-align:center;
+  min-width:0;
+}
+.game-card img {
+  width:62px;height:62px;object-fit:contain;
+  margin:5px auto 8px;display:block;
+}
+.game-name {font-weight:bold;color:var(--light);font-size:14px}
+.game-status {color:var(--green);font-size:11px;margin:7px 0}
+.game-card .btn {width:100%;font-size:12px;padding:10px 5px}
+#gameCount {text-align:center;color:#d9e9ee;font-size:13px;margin:8px}
+.small-note {font-size:12px;color:#c3d4db;line-height:1.6}
+.payment-grid {
+  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+}
+.payment-item {
+  background:#0a222e;border:1px solid #355664;
+  padding:12px 6px;border-radius:9px;text-align:center;
+  font-weight:bold;font-size:13px;
+}
+footer {
+  text-align:center;padding:22px 12px;
+  color:#bacbd1;font-size:12px;border-top:1px solid #294651;
+}
+.float-buttons {
+  position:fixed;right:13px;bottom:15px;
+  display:flex;flex-direction:column;gap:10px;z-index:30;
+}
+.float-buttons a {
+  width:49px;height:49px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:22px;box-shadow:0 3px 12px #0008;
+}
+.modal {
+  display:none;position:fixed;inset:0;z-index:50;
+  background:#000b;align-items:center;justify-content:center;
+  padding:18px;
+}
+.modal-box {
+  width:100%;max-width:390px;max-height:85vh;overflow:auto;
+  background:#102d3a;border:1px solid var(--gold);
+  border-radius:16px;padding:20px;text-align:center;
+}
+.modal-box h2 {color:var(--light)}
+.close-btn {float:right;background:#294651;color:white;border:0;
+  border-radius:7px;padding:7px 10px}
+#wheel {
+  width:220px;height:220px;max-width:75vw;max-height:75vw;
+  border-radius:50%;margin:18px auto;
+  border:5px solid var(--gold);
+  background:conic-gradient(
+    #d6a43b 0deg 60deg,#173b4a 60deg 120deg,
+    #42ddb2 120deg 180deg,#173b4a 180deg 240deg,
+    #d6a43b 240deg 300deg,#173b4a 300deg 360deg);
+  display:flex;align-items:center;justify-content:center;
+  color:white;font-weight:bold;text-shadow:1px 1px 3px #000;
+  transition:transform 3s cubic-bezier(.15,.7,.15,1);
+}
+@media(min-width:600px) {
+  .game-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+  .payment-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+}
 </style>
 </head>
 
 <body>
-<div class="topbar">★ PREMIUM GAMING LOUNGE ★ &nbsp; • &nbsp; EXPLORE GAMING PLATFORMS</div>
-
 <header>
-  <div class="gold-brand">
-    <img class="header-woman" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=500&q=85" alt="Premium Gaming Lounge" onerror="this.style.display='none'">
-    <div class="gold-crown">♛</div>
-    <div class="gold-brand-name">PREMIUM</div>
-    <div class="gold-brand-main">GAMING LOUNGE</div>
-    <div class="gold-brand-line">★ ALL PLATFORMS • ONE PLACE ★</div>
-  </div>
-  <h1>Premium Gaming Lounge</h1>
-  <p class="subtitle">Your Favorite Gaming Platforms in One Place</p>
-  <div class="actions">
-    <button class="action-btn" id="installBtn" type="button" onclick="installApp()">⬇ INSTALL APP</button>
-    <button class="action-btn secondary" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
-    <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
-  </div>
+  <div class="brand-logo">PGL</div>
+  <h1>PREMIUM GAMING LOUNGE</h1>
+  <div class="subtitle">Games • Offers • Customer Support</div>
 </header>
 
-<div class="ticker-row">
-  <div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
-  <button class="live-win-btn" type="button" onclick="toggleLiveWin()" aria-expanded="false" id="liveWinButton">🔴 LIVE WIN</button>
-</div>
-<div class="live-win-panel" id="liveWinPanel"></div>
-<div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
+<nav>
+  <a class="btn gold" href="#home">🏠 Home</a>
+  <a class="btn dark" href="#games">🎮 Games</a>
+  <button class="btn dark" onclick="openSpin()">🎡 Spin</button>
+  <a class="btn dark" href="#payments">💳 Payments</a>
+  <button class="btn green" onclick="openChat()">💬 Live Chat</button>
+  <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">Messenger</a>
+</nav>
 
-<!-- Animated offer bars: one bonus bar and one free-plays bar -->
-<div class="offer-strip" aria-label="180 percent welcome bonus">
-  <div class="offer-track" id="bonusTrack"></div>
-</div>
-<div class="offer-strip free" aria-label="5 free plays offer">
-  <div class="offer-track" id="freeTrack"></div>
-</div>
-
-<main>
-  <section class="poster-section">
-    <h2>✦ ALL GAMING PLATFORMS ✦</h2>
-    <p>Explore your favorite platforms below</p>
-  </section>
-
-  <section class="compact-poster" aria-label="Premium Gaming Lounge">
-    <div class="compact-poster-title">✦ PREMIUM GAMING LOUNGE ✦</div>
-    <div class="compact-poster-subtitle">ALL GAMING PLATFORMS IN ONE PLACE</div>
-  </section>
-
-  <section id="newLogoShowcase">
-    <div class="showcase-title">✦ GAMING LOGO SHOWCASE ✦</div>
-    <div class="logo-track-window"><div class="logo-track" id="newLogoTrack"></div></div>
-    <div class="showcase-controls">
-      <button type="button" id="newSoundButton">🔇 SOUND OFF</button>
-      <button type="button" id="newPauseButton">⏸ PAUSE</button>
-    </div>
-    <div class="slideshow-window">
-      <div class="showcase-logo" id="newSlideLogo"></div>
-      <div class="slide-name" id="newSlideName"></div>
-      <div class="showcase-controls">
-        <button type="button" id="newPrevSlide" aria-label="Previous logo">❮</button>
-        <button type="button" id="newNextSlide" aria-label="Next logo">❯</button>
-      </div>
-    </div>
-  </section>
-
-  <section class="promo-banner">
-    <span class="bonus-pill">SPECIAL WELCOME OFFER</span>
-    <h2>✦ SPECIAL GAMING OFFERS ✦</h2>
-  </section>
-
-  <div class="section-heading">
-    <h2>🎮 All Gaming Platforms</h2>
-    <span class="count" id="gameCount"></span>
+<div class="ticker">
+  <div class="ticker-track" id="tickerOne">
+    ✨ WELCOME TO PREMIUM GAMING LOUNGE ✨ CHECK OUT OUR FEATURED GAMES ✨ CONTACT SUPPORT FOR CURRENT OFFERS ✨
   </div>
-  <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite game..." aria-label="Search games">
-  <div class="games-grid" id="gamesGrid"></div>
-  <div class="empty" id="emptyMessage">No games found. Try another name.</div>
-</main>
-
-<div class="actions" style="padding:0 12px 24px;margin-top:0">
-  <button class="action-btn secondary" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
-  <button class="action-btn" type="button" onclick="openLiveChat()">💰 DEPOSIT</button>
-  <button class="action-btn" type="button" onclick="openLiveChat()" style="background:linear-gradient(135deg,#42ddb2,#168c70);color:#061c17;border-color:#8ef3d4">💸 WITHDRAW</button>
-  <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
 </div>
 
-<footer>© <span id="year"></span> Premium Gaming Lounge. All rights reserved.</footer>
+<section id="home">
+  <div class="offer">🎁 WELCOME OFFER — ASK SUPPORT FOR CURRENT PROMOTIONS</div>
+  <div class="offer">⭐ ASK ABOUT OUR 5 FREE PLAYS OFFER ⭐</div>
 
-<div class="floating-buttons">
-  <button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
-  <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☏</a>
+  <h2 class="section-title">Featured Gaming Platforms</h2>
+  <div class="logo-showcase" id="logoShowcase"></div>
+
+  <div class="panel">
+    <h2 class="section-title">🎉 Premium Gaming Lounge</h2>
+    <p style="text-align:center;line-height:1.7">
+      Explore the available gaming platforms and contact our team
+      for account assistance, current offers and payment questions.
+    </p>
+    <div class="actions">
+      <button class="btn gold" onclick="openSpin()">🎡 Spin Wheel</button>
+      <button class="btn green" onclick="openChat()">💬 Live Chat</button>
+      <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">Facebook Messenger</a>
+    </div>
+  </div>
+
+  <div class="ticker reverse">
+    <div class="ticker-track" id="tickerTwo">
+      🎮 ORION STAR • MILKYWAY • JUWA • VBLINK • FIRE KIRIN • VEGAS X • GAME VAULT • ULTRA PANDA •
+    </div>
+  </div>
+
+  <div class="panel" style="text-align:center">
+    <button class="btn gold" onclick="toggleUpdates()">🏆 LIVE WIN / UPDATES</button>
+    <div id="updatesPanel" style="display:none;margin-top:12px;line-height:1.8">
+      <p>Check current game activity and promotional details with customer support.</p>
+      <button class="btn green" onclick="openChat()">Ask Support</button>
+    </div>
+  </div>
+</section>
+
+<section id="games">
+  <h2 class="section-title">🎮 Available Games</h2>
+  <input id="searchBox" type="search" placeholder="Search games..." oninput="renderGames()">
+  <div id="gameCount"></div>
+  <div class="game-grid" id="gameGrid"></div>
+</section>
+
+<section id="payments">
+  <h2 class="section-title">💳 Payment Methods</h2>
+  <div class="panel">
+    <p class="small-note">
+      Select a payment method to ask support about availability and instructions.
+      Payment options are not processed directly by this static website.
+    </p>
+    <div class="payment-grid">
+      <button class="payment-item" onclick="paymentHelp('Cash App')">Cash App</button>
+      <button class="payment-item" onclick="paymentHelp('Venmo')">Venmo</button>
+      <button class="payment-item" onclick="paymentHelp('Zelle')">Zelle</button>
+      <button class="payment-item" onclick="paymentHelp('Chime')">Chime</button>
+      <button class="payment-item" onclick="paymentHelp('PayPal')">PayPal</button>
+      <button class="payment-item" onclick="paymentHelp('Bitcoin')">Bitcoin</button>
+      <button class="payment-item" onclick="paymentHelp('USDT')">USDT</button>
+      <button class="payment-item" onclick="paymentHelp('Other method')">Other Method</button>
+    </div>
+    <div class="actions" style="margin-top:15px">
+      <button class="btn green" onclick="paymentHelp('Deposit')">Deposit</button>
+      <button class="btn pink" onclick="paymentHelp('Withdraw')">Withdraw</button>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <h2 class="section-title">💬 Contact & Support</h2>
+  <div class="panel">
+    <div class="actions">
+      <button class="btn green" onclick="openChat()">Tawk.to Live Chat</button>
+      <button class="btn dark" onclick="openChat()">Chaport Live Chat</button>
+      <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">
+        💬 Facebook Messenger
+      </a>
+      <a class="btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener">
+        WhatsApp
+      </a>
+    </div>
+    <p class="small-note" style="text-align:center;margin-top:15px">
+      For payment assistance, account questions or current promotions,
+      contact the support team.
+    </p>
+  </div>
+</section>
+
+<footer>
+  <strong>Premium Gaming Lounge</strong>
+  <p>Please review the rules, eligibility and terms of each platform before playing.</p>
+  <p>Only use services you are legally eligible to access.</p>
+</footer>
+
+<div class="float-buttons">
+  <a style="background:#0084ff;color:white"
+     href="https://m.me/61595371058076" target="_blank" rel="noopener"
+     aria-label="Facebook Messenger">💬</a>
+  <a style="background:#25d366;color:white"
+     href="https://wa.me/14482414979" target="_blank" rel="noopener"
+     aria-label="WhatsApp">☎</a>
+  <a style="background:#d6a43b;color:#071923"
+     href="#contact" aria-label="Live chat">✉</a>
+</div>
+
+<div class="modal" id="spinModal" onclick="if(event.target===this)closeSpin()">
+  <div class="modal-box">
+    <button class="close-btn" onclick="closeSpin()">✕</button>
+    <h2>🎡 Premium Spin Wheel</h2>
+    <p class="small-note">Spin to reveal a message, then contact support to confirm available offers.</p>
+    <div id="wheel">SPIN</div>
+    <p id="spinResult">Tap the button to spin.</p>
+    <button class="btn gold" id="spinButton" onclick="spinWheel()">SPIN NOW</button>
+    <button class="btn green" onclick="openChat()">Ask Support</button>
+  </div>
 </div>
 
 <script>
 const games = [
-["Orion Star","http://start.orionstars.vip:8580/"],
-["Milkyway","https://milkywayapp.xyz/"],
-["Juwa 777","https://dl.juwa777.com/"],
-["Vblink","https://www.vblink777.club/"],
-["Juwa 2.0","https://m.juwa2.com/"],
-["Fire Kirin","https://firekirin.com/download-fire-kirin-app.html"],
-["Vegas X","https://www.vegas-x.org"],
-["Game Vault","http://download.gamevault999.com/"],
-["Egame","https://www.egame99.club"],
-["Moolah","https://moolah.vip:8888/"],
-["River Sweep","https://bet777.eu/play/"],
-["Noble777","https://www.noble777.com"],
-["Highstake","https://dl.highstakesweeps.com/"],
-["Casino Royal","http://m.casinoroyale07.com"],
-["Vegas Sweep","https://m.lasvegassweeps.com/"],
-["Ultra Panda","http://www.ultrapanda.mobi"],
-["Orion Power","http://download.orionpower.games:8008/"],
-["Winstar","http://www.winstar99999.com"],
-["Mafia","http://www.mafia77777.com"],
-["Paracasino","https://download.paracasino.net"],
-["Vegas Roll","http://www.vegas-roll.com/m"],
-["Mr. All in One","http://www.mrallinone777.com"],
-["Yolo 777","https://yolo777.game"],
-["Cash Machine","https://www.cashmachine777.com"],
-["Game Room","https://www.gameroom777.com/"],
-["Vegas Luck","https://start.vegasluck777.com/"],
-["River Pay","https://river777.net/build.30/index.html"],
-["Loot Game","https://m.lootgame777.com"],
-["Hukum","https://hukum777.online/"],
-["Mob.com","https://fpc-mob.com/"],
-["Highroller","https://www.highroller.com/casino"],
-["Dragon Crown","https://atlus.com/dragonscrown/"],
-["Lucky Master","https://lucky-master.net/"],
-["King of Pop","https://kingofpop777.com/"],
-["Firefonix","https://fpc-mob.com/AD/index.html"],
-["Big Winner","https://bigwplay.com"],
-["Thunderseven","https://thunderseven.com/"],
-["Gem Slots","https://www.gem77777.com/m"],
-["Winner Club","https://www.winnersclub777.com"],
-["Cash Frenzy","https://www.cashfrenzy777.com"],
-["Joker 777","https://www.joker777.win"],
-["Orion Strike","https://start.orionstrike777.com"],
-["Big Bang","https://www.bigbangcasino.vegas"],
-["Lucky Star","https://www.luckystars.games"],
-["Stars Galaxy","https://www.starsgalaxy777.com"],
-["Gem777","https://www.gem77777.com"],
-["Lucky Paradise","https://www.luckyparadise777.com"],
-["River Monster","https://rm777.net/"],
-["Mega Spin","https://megaspinpay.com/default.aspx"],
-["Sharks Secret 77","https://www.sharksecret777.com/"],
-["Winwin Vegas","https://winwinvegas777.com"],
-["Panda Master","https://pandamaster.vip:8888/"],
-["Ding Ding","https://www.dingdinghouse.com"],
-["Blue Dragon","https://bluedragon777.net/"],
-["Game Vault 777","https://www.gamevault77777.com"],
-["Game Vault 2","https://res.gamevault2.vip/download/"],
-["Vegas X Pro","https://vegas-x.pro"],
-["Lucky Paradise H5","https://www.luckyparadise777.com"],
-["King of Pop Slots","https://www.slots88888.com"],
-["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],
-["Paracasino H5","https://h5.paracasino.net/"],
-["Mr. All in One Agent","http://agentserver.mrallinone777.com"],
-["Win Star Server","http://server.winstar99999.com:8009/"]
+  {name:"Orion Star",url:"http://start.orionstars.vip:8580/"},
+  {name:"Milkyway",url:"https://milkywayapp.xyz/"},
+  {name:"Juwa",url:"https://dl.juwa777.com/"},
+  {name:"Vblink",url:"https://www.vblink777.club/"},
+  {name:"Juwa 2.0",url:"https://m.juwa2.com/"},
+  {name:"Firekirin",url:"https://firekirin.com/download-fire-kirin-app.html"},
+  {name:"Vegas X",url:"https://www.vegas-x.org/"},
+  {name:"Game Vault",url:"http://download.gamevault"},
+  {name:"Egame",url:"https://www.egame99.com/"},
+  {name:"Moolah",url:"https://moolah.us/"},
+  {name:"RiverSweep",url:"https://riversweeps.com/"},
+  {name:"Noble777",url:"https://noble777.com/"},
+  {name:"Highstake",url:"https://highstake.com/"},
+  {name:"Casino Royal",url:"https://www.casinoroyale.com/"},
+  {name:"Vegas Sweep",url:"https://vegassweeps.com/"},
+  {name:"Ultra Panda",url:"https://ultrapanda.mobi/"},
+  {name:"Paracasino",url:"https://paracasino.com/"},
+  {name:"Game Room",url:"https://gameroom.com/"},
+  {name:"Golden Dragon",url:"https://www.google.com/search?q=Golden+Dragon+game+platform"},
+  {name:"Panda Master",url:"https://www.google.com/search?q=Panda+Master+game+platform"},
+  {name:"Lucky Panda",url:"https://www.google.com/search?q=Lucky+Panda+game+platform"},
+  {name:"Orion",url:"https://www.google.com/search?q=Orion+Star+game+platform"},
+  {name:"Juwa Slots",url:"https://dl.juwa777.com/"},
+  {name:"Fire Kirin Slots",url:"https://firekirin.com/download-fire-kirin-app.html"}
 ];
 
-const grid=document.getElementById("gamesGrid");
-const searchBox=document.getElementById("searchBox");
-const emptyMessage=document.getElementById("emptyMessage");
-const counts=new Map();
-games.forEach((g,i)=>counts.set(g[0]+"|"+g[1],500+(i%8)*37));
-
-function initials(name){
-  const words=name.replace(/[^a-zA-Z0-9 ]/g,"").trim().split(/\s+/);
-  return words.length>1?(words[0][0]+words[1][0]).toUpperCase():name.replace(/[^a-zA-Z0-9]/g,"").slice(0,3).toUpperCase();
+function initials(name) {
+  return name.split(/\s+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
 }
-
-function getDomain(url){
-  try{return new URL(url).hostname}catch(e){return ""}
+function logoUrl(game) {
+  try {
+    return "https://www.google.com/s2/favicons?domain="+
+      new URL(game.url).hostname+"&sz=128";
+  } catch(e) {
+    return "";
+  }
 }
-
-function addFavicon(container,name,url){
-  const domain=getDomain(url);
-  if(!domain)return;
-
-  const sources=[
-    "https://icons.duckduckgo.com/ip3/"+domain+".ico",
-    "https://www.google.com/s2/favicons?domain="+domain+"&sz=128",
-    "https://"+domain+"/favicon.ico"
-  ];
-
-  let attempt=0;
+function makeLogo(game, size=38) {
   const img=document.createElement("img");
-  img.alt=name+" logo";
-  img.loading="lazy";
-  img.referrerPolicy="no-referrer";
-  img.decoding="async";
-
+  img.src=logoUrl(game);
+  img.alt=game.name+" logo";
+  img.width=size;img.height=size;
   img.onerror=function(){
-    attempt++;
-    if(attempt<sources.length){
-      img.src=sources[attempt];
-    }else{
-      img.remove();
-    }
+    const fallback=document.createElement("span");
+    fallback.textContent=initials(game.name);
+    fallback.style.cssText=
+      "width:"+size+"px;height:"+size+"px;border-radius:10px;"+
+      "background:#d6a43b;color:#071923;display:flex;"+
+      "align-items:center;justify-content:center;font-weight:bold;";
+    img.replaceWith(fallback);
   };
-
-  img.onload=function(){
-    if(img.naturalWidth>0&&img.naturalHeight>0){
-      container.replaceChildren(img);
-    }
-  };
-
-  img.src=sources[0];
+  return img;
 }
-
-function makeLogo(name,url){
-  const logo=document.createElement("div");
-  logo.className="game-logo";
-  logo.setAttribute("aria-label",name+" logo");
-  logo.textContent=initials(name);
-  addFavicon(logo,name,url);
-  return logo;
+function renderShowcase() {
+  const holder=document.getElementById("logoShowcase");
+  games.slice(0,16).forEach(game=>{
+    const tile=document.createElement("a");
+    tile.className="logo-tile";
+    tile.href=game.url;tile.target="_blank";tile.rel="noopener";
+    tile.appendChild(makeLogo(game,38));
+    const label=document.createElement("span");
+    label.textContent=game.name;
+    tile.appendChild(label);
+    holder.appendChild(tile);
+  });
 }
-
-function renderGames(filter=""){
-  grid.innerHTML="";
-  const filtered=games.filter(game=>game[0].toLowerCase().includes(filter.toLowerCase()));
-
-  filtered.forEach(([name,url])=>{
-    const card=document.createElement("article");
+function renderGames() {
+  const query=document.getElementById("searchBox").value.toLowerCase().trim();
+  const filtered=games.filter(g=>g.name.toLowerCase().includes(query));
+  const grid=document.getElementById("gameGrid");
+  grid.replaceChildren();
+  document.getElementById("gameCount").textContent=
+    "Showing "+filtered.length+" of "+games.length+" games";
+  filtered.forEach(game=>{
+    const card=document.createElement("div");
     card.className="game-card";
-
-    const logo=makeLogo(name,url);
-    const title=document.createElement("div");
-    title.className="game-name";
-    title.textContent=name;
-
+    card.appendChild(makeLogo(game,62));
+    const name=document.createElement("div");
+    name.className="game-name";name.textContent=game.name;
+    card.appendChild(name);
     const status=document.createElement("div");
-    status.className="status";
-    status.dataset.game=name+"|"+url;
-    status.textContent=(counts.get(status.dataset.game)||500)+" playing";
-
+    status.className="game-status";status.textContent="Platform link";
+    card.appendChild(status);
     const link=document.createElement("a");
-    link.className="play-btn";
-    link.textContent="↗ OPEN PLATFORM";
-    link.href=url;
-    link.target="_blank";
-    link.rel="noopener noreferrer";
-    link.setAttribute("aria-label","Open "+name);
-
-    card.append(logo,title,status,link);
+    link.className="btn gold";link.textContent="OPEN GAME";
+    link.href=game.url;link.target="_blank";link.rel="noopener";
+    card.appendChild(link);
     grid.appendChild(card);
   });
-
-  document.getElementById("gameCount").textContent=filtered.length+" platforms";
-  emptyMessage.style.display=filtered.length?"none":"block";
 }
-
-const winAmounts=[100,250,500,600,750,1000,1500,2000];
-
-function makeTicker(id){
-  const track=document.getElementById(id);
-  track.innerHTML="";
-
-  for(let repeat=0;repeat<2;repeat++){
-    games.forEach(([name,url],i)=>{
-      const item=document.createElement("span");
-      item.className="ticker-item";
-
-      const logo=document.createElement("span");
-      logo.className="ticker-logo";
-      logo.textContent=initials(name);
-      addFavicon(logo,name,url);
-
-      const label=document.createElement("span");
-
-      if(id==="tickerOne"){
-        const prefix=document.createElement("span");
-        prefix.textContent="Featured amount · ";
-        const game=document.createElement("strong");
-        game.textContent=name+" · ";
-        const amount=document.createElement("strong");
-        amount.className="win-amount";
-        amount.dataset.index=String(i);
-        amount.textContent="$"+winAmounts[(i+repeat)%winAmounts.length];
-        label.append(prefix,game,amount);
-      }else{
-        label.textContent=name+" · gaming activity";
-      }
-
-      item.append(logo,label);
-      track.appendChild(item);
-    });
-  }
-}
-
-function updatePlayerCounts(){
-  document.querySelectorAll(".status").forEach(el=>{
-    const key=el.dataset.game;
-    if(counts.has(key)){
-      counts.set(key,counts.get(key)+1);
-      el.textContent=counts.get(key)+" playing";
-    }
-  });
-}
-
-function updateAmounts(){
-  document.querySelectorAll(".win-amount").forEach(el=>{
-    const base=winAmounts[Number(el.dataset.index)%winAmounts.length];
-    const current=Number(el.dataset.current||base);
-    const next=current+1;
-    el.dataset.current=String(next);
-    el.textContent="$"+next;
-  });
-}
-
-function toggleLiveWin(){
-  const panel=document.getElementById("liveWinPanel");
-  const button=document.getElementById("liveWinButton");
-  const isOpen=panel.classList.toggle("visible");
-  button.setAttribute("aria-expanded",String(isOpen));
-  button.textContent=isOpen?"✕ CLOSE":"🔴 LIVE WIN";
-
-  if(isOpen){
-    panel.textContent="Welcome to Premium Gaming Lounge — choose a platform below to explore.";
-  }
-}
-
-/* Build the two animated offer bars */
-function buildOfferBar(id,message,className){
-  const track=document.getElementById(id);
-  if(!track)return;
-
-  track.innerHTML="";
-  for(let i=0;i<2;i++){
-    const item=document.createElement("span");
-    item.className=className;
-    item.textContent=message;
-    track.appendChild(item);
-  }
-}
-
-buildOfferBar("bonusTrack","✨ 180% WELCOME BONUS ✨","bonus180");
-buildOfferBar("freeTrack","🎁 5 FREE PLAYS 🎁","free5");
-
-/* Logo showcase */
-(function(){
-  const root=document.getElementById("newLogoShowcase");
-  if(!root)return;
-
-  const track=document.getElementById("newLogoTrack");
-  const slideLogo=document.getElementById("newSlideLogo");
-  const slideName=document.getElementById("newSlideName");
-  const soundButton=document.getElementById("newSoundButton");
-  const pauseButton=document.getElementById("newPauseButton");
-
-  let slideIndex=0;
-  let soundOn=false;
-  let paused=false;
-  let audioContext=null;
-
-  function makeShowcaseCard(game){
-    const card=document.createElement("div");
-    card.className="showcase-card";
-    const logo=document.createElement("div");
-    logo.className="showcase-logo";
-    logo.textContent=initials(game[0]);
-    const name=document.createElement("div");
-    name.textContent=game[0];
-    card.append(logo,name);
-    addFavicon(logo,game[0],game[1]);
-    return card;
-  }
-
-  function buildTrack(){
-    track.innerHTML="";
-    for(let copy=0;copy<2;copy++){
-      games.forEach(game=>track.appendChild(makeShowcaseCard(game)));
-    }
-  }
-
-  function playSound(){
-    try{
-      const AudioContextClass=window.AudioContext||window.webkitAudioContext;
-      if(!AudioContextClass)return;
-      audioContext=audioContext||new AudioContextClass();
-      if(audioContext.state==="suspended")audioContext.resume();
-      const oscillator=audioContext.createOscillator();
-      const gain=audioContext.createGain();
-      oscillator.type="sine";
-      oscillator.frequency.value=660;
-      gain.gain.value=0.035;
-      oscillator.connect(gain);
-      gain.connect(audioContext.destination);
-      oscillator.start();
-      oscillator.stop(audioContext.currentTime+0.12);
-    }catch(error){}
-  }
-
-  function showSlide(index){
-    slideIndex=(index+games.length)%games.length;
-    const game=games[slideIndex];
-    slideLogo.replaceChildren();
-    slideLogo.textContent=initials(game[0]);
-    slideName.textContent=game[0];
-    addFavicon(slideLogo,game[0],game[1]);
-    if(soundOn)playSound();
-  }
-
-  soundButton.addEventListener("click",()=>{
-    soundOn=!soundOn;
-    soundButton.textContent=soundOn?"🔊 SOUND ON":"🔇 SOUND OFF";
-    if(soundOn)playSound();
-  });
-
-  pauseButton.addEventListener("click",()=>{
-    paused=!paused;
-    track.style.animationPlayState=paused?"paused":"running";
-    pauseButton.textContent=paused?"▶ PLAY":"⏸ PAUSE";
-  });
-
-  document.getElementById("newPrevSlide").addEventListener("click",()=>showSlide(slideIndex-1));
-  document.getElementById("newNextSlide").addEventListener("click",()=>showSlide(slideIndex+1));
-
-  buildTrack();
-  showSlide(0);
-  window.setInterval(()=>showSlide(slideIndex+1),3500);
-})();
-
-searchBox.addEventListener("input",()=>renderGames(searchBox.value));
-makeTicker("tickerOne");
-makeTicker("tickerTwo");
+renderShowcase();
 renderGames();
-document.getElementById("year").textContent=new Date().getFullYear();
-setInterval(updatePlayerCounts,12000);
-setInterval(updateAmounts,5000);
 
-/* Tawk.to Live Chat */
-window.Tawk_API=window.Tawk_API||{};
-window.Tawk_LoadStart=new Date();
-
-function openLiveChat(){
-  if(window.Tawk_API&&typeof window.Tawk_API.maximize==="function"){
+function openChat() {
+  // Show installed live chat widgets when available.
+  if(window.Tawk_API && typeof window.Tawk_API.maximize==="function") {
     window.Tawk_API.maximize();
-  }else{
-    window.Tawk_API.onLoad=function(){
-      if(typeof window.Tawk_API.maximize==="function")window.Tawk_API.maximize();
-    };
+    return;
   }
-}
-
-(function(){
-  var s1=document.createElement("script");
-  var s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src="https://embed.tawk.to/6ace6bb6de4aab34bf8c3815/default";
-  s1.charset="UTF-8";
-  s1.setAttribute("crossorigin","*");
-  s0.parentNode.insertBefore(s1,s0);
-})();
-
-/* Install app */
-let deferredInstallPrompt=null;
-const installBtn=document.getElementById("installBtn");
-
-window.addEventListener("beforeinstallprompt",event=>{
-  event.preventDefault();
-  deferredInstallPrompt=event;
-});
-
-window.addEventListener("appinstalled",()=>{
-  installBtn.textContent="✓ APP INSTALLED";
-  deferredInstallPrompt=null;
-});
-
-async function installApp(){
-  if(deferredInstallPrompt){
-    deferredInstallPrompt.prompt();
-    await deferredInstallPrompt.userChoice;
-    deferredInstallPrompt=null;
-  }else{
-    alert("To install this website:\n\n1. Open this site in Google Chrome.\n2. Tap the three dots (⋮).\n3. Select Install app or Add to Home screen.");
+  if(window.$crisp) {
+    window.$crisp.push(["do","chat:open"]);
+    return;
   }
+  if(window.chaport) {
+    try { window.chaport.open(); return; } catch(e) {}
+  }
+  alert("Please use Facebook Messenger or WhatsApp to contact support.");
 }
-
-if("serviceWorker" in navigator&&location.protocol==="https:"){
-  window.addEventListener("load",()=>{
-    navigator.serviceWorker.register("./service-worker.js")
-      .catch(error=>console.log("Service worker error:",error));
-  });
+function paymentHelp(method) {
+  const message="Hello, I need help with "+method+".";
+  window.open(
+    "https://m.me/61595371058076?ref="+encodeURIComponent(message),
+    "_blank","noopener"
+  );
+}
+function toggleUpdates() {
+  const panel=document.getElementById("updatesPanel");
+  panel.style.display=panel.style.display==="block"?"none":"block";
+}
+function openSpin() {
+  document.getElementById("spinModal").style.display="flex";
+}
+function closeSpin() {
+  document.getElementById("spinModal").style.display="none";
+}
+let spinning=false;
+function spinWheel() {
+  if(spinning) return;
+  spinning=true;
+  const wheel=document.getElementById("wheel");
+  const button=document.getElementById("spinButton");
+  const result=document.getElementById("spinResult");
+  button.disabled=true;
+  result.textContent="Spinning...";
+  const degrees=1800+Math.floor(Math.random()*360);
+  wheel.style.transform="rotate("+degrees+"deg)";
+  setTimeout(()=>{
+    result.textContent="Contact support to check current offers and eligibility.";
+    button.disabled=false;
+    spinning=false;
+  },3100);
 }
 </script>
 
-<!-- Chaport Live Chat -->
+<!-- Tawk.to Live Chat -->
 <script type="text/javascript">
-(function(w,d,v3){
-  w.chaportConfig={appId:'6acef8d367f574f2e93a4357'};
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/6ace6bb6de4aab34bf8c3815/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+<!-- Chaport Live Chat -->
+<script>
+(function(w,d){
+  var id="6acef8d367f574f2e93a4357";
   if(w.chaport)return;
-  v3=w.chaport={};
-  v3._q=[];
-  v3._l={};
-  v3.q=function(){v3._q.push(arguments)};
-  v3.on=function(e,fn){
-    if(!v3._l[e])v3._l[e]=[];
-    v3._l[e].push(fn);
-  };
-  var s=d.createElement('script');
-  s.type='text/javascript';
-  s.async=true;
-  s.src='https://app.chaport.com/javascripts/insert.js';
-  var ss=d.getElementsByTagName('script')[0];
-  ss.parentNode.insertBefore(s,ss);
+  var ch=w.chaport={_q:[],_h:{}};
+  ch._q=[];ch._h={};
+  var script=d.createElement("script");
+  script.type="text/javascript";script.async=true;
+  script.src="https://app.chaport.com/javascripts/insert.js?app_id="+id;
+  var first=d.getElementsByTagName("script")[0];
+  first.parentNode.insertBefore(script,first);
 })(window,document);
 </script>
 
