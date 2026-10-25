@@ -3,500 +3,703 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#071923">
-<meta name="description" content="Premium Gaming Lounge - Games, offers and customer support.">
-<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
+<meta name="description" content="Premium Gaming Lounge - Games, offers and player support.">
 <title>Premium Gaming Lounge</title>
 
 <style>
-:root {
+:root{
   --bg:#071923;
   --panel:#102d3a;
   --gold:#d6a43b;
   --light:#fff0b0;
   --green:#42ddb2;
   --blue:#0084ff;
+  --text:#f4f7fa;
+  --muted:#a9c0ca;
+  --border:rgba(214,164,59,.35);
 }
-* {box-sizing:border-box}
-body {
-  margin:0;background:var(--bg);color:#fff;
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--text);
   font-family:Arial,Helvetica,sans-serif;
 }
-a {color:inherit;text-decoration:none}
-button,input {font:inherit}
-button {cursor:pointer}
-header {
-  text-align:center;padding:18px 12px;
-  background:linear-gradient(135deg,#102d3a,#071923);
-  border-bottom:2px solid var(--gold);
+a{color:inherit;text-decoration:none}
+button,input,select{font:inherit}
+button{cursor:pointer}
+.container{width:min(1150px,94%);margin:auto}
+header{
+  position:sticky;top:0;z-index:1000;
+  background:rgba(7,25,35,.97);
+  border-bottom:1px solid var(--border);
+  backdrop-filter:blur(12px);
 }
-.brand-logo {
-  width:85px;height:85px;margin:auto auto 8px;
-  display:flex;align-items:center;justify-content:center;
-  border:3px solid var(--gold);border-radius:50%;
-  color:var(--light);font-size:26px;font-weight:bold;
-  background:radial-gradient(circle,#315567,#071923);
+.header-inner{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:12px;padding:12px 0;flex-wrap:wrap;
 }
-h1 {color:var(--gold);font-size:27px;margin:8px 0}
-.subtitle {color:#d5e5ea;font-size:13px}
-nav {
-  display:flex;flex-wrap:wrap;justify-content:center;
-  gap:8px;padding:12px;background:#091f2a;
-  position:sticky;top:0;z-index:10;
+.brand{display:flex;align-items:center;gap:10px}
+.brand-logo{
+  width:48px;height:48px;border-radius:50%;
+  display:grid;place-items:center;
+  background:linear-gradient(135deg,var(--gold),#754b10);
+  color:#071923;font-size:20px;font-weight:900;
+  border:2px solid var(--light);
+  box-shadow:0 0 16px #d6a43b45;
 }
-.btn {
-  border:0;border-radius:9px;padding:11px 14px;
-  font-weight:bold;display:inline-flex;align-items:center;
-  justify-content:center;gap:6px;
+.brand-name{font-size:clamp(15px,3vw,22px);font-weight:900;color:var(--light)}
+.brand-sub{font-size:10px;color:var(--green);letter-spacing:2px;margin-top:4px}
+nav{display:flex;gap:7px;flex-wrap:wrap}
+nav a,.btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  border:1px solid var(--border);border-radius:9px;
+  padding:9px 12px;background:var(--panel);
+  color:var(--light);font-weight:bold;font-size:12px;
 }
-.gold {background:var(--gold);color:#101820}
-.green {background:#16a779;color:white}
-.blue {background:var(--blue);color:white}
-.dark {background:#203f4c;color:white;border:1px solid #42616c}
-.pink {background:#bc3f8a;color:white}
-nav .btn {font-size:12px;padding:10px}
-section {padding:14px 12px;max-width:1100px;margin:auto}
-.section-title {
-  text-align:center;color:var(--light);
-  font-size:21px;margin:8px 0 14px;
+nav a:hover,.btn:hover{border-color:var(--gold);filter:brightness(1.15)}
+.gold-btn{
+  background:linear-gradient(135deg,var(--gold),#9b6818);
+  color:#111;border:0;
 }
-.ticker {
-  overflow:hidden;white-space:nowrap;
-  background:#142f3b;border-block:1px solid #4d6570;
-  padding:10px 0;color:var(--light);font-weight:bold;
+.green-btn{background:var(--green);color:#061c20;border:0}
+.blue-btn{background:var(--blue);color:white;border:0}
+
+.ticker-wrap{
+  overflow:hidden;background:#09151c;
+  border-top:1px solid #5d451c;border-bottom:1px solid #5d451c;
+  padding:9px 0;white-space:nowrap;
 }
-.ticker-track {
-  display:inline-block;padding-left:100%;
-  animation:move 28s linear infinite;
+.ticker-track{
+  display:flex;width:max-content;animation:moveLeft 35s linear infinite;
 }
-.ticker.reverse .ticker-track {
-  animation:moveReverse 32s linear infinite;
+.ticker-track.reverse{animation:moveRight 38s linear infinite}
+.ticker-text{
+  flex-shrink:0;padding-right:50px;
+  color:var(--light);font-weight:900;font-size:13px;
+  letter-spacing:.7px;
 }
-@keyframes move {
-  from {transform:translateX(0)}
-  to {transform:translateX(-100%)}
+.live-dot{
+  display:inline-block;width:8px;height:8px;border-radius:50%;
+  background:#ff4e4e;margin-right:7px;
+  box-shadow:0 0 10px #ff4e4e;
 }
-@keyframes moveReverse {
-  from {transform:translateX(-100%)}
-  to {transform:translateX(0)}
+@keyframes moveLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@keyframes moveRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+
+.hero{text-align:center;padding:28px 0 18px}
+.hero h1{
+  margin:0;color:var(--light);font-size:clamp(27px,6vw,46px);
+  text-shadow:0 0 18px #d6a43b35;
 }
-.offer {
-  text-align:center;padding:12px 8px;margin:10px 0;
-  border:1px solid var(--gold);border-radius:12px;
-  background:linear-gradient(90deg,#172c35,#29434a,#172c35);
-  color:var(--light);font-weight:bold;
-  animation:glow 2s infinite alternate;
+.hero p{color:var(--muted);line-height:1.6}
+.hero-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin-top:16px}
+.section{padding:18px 0}
+.section-title{
+  text-align:center;color:var(--light);font-size:23px;
+  margin:8px 0 18px;font-weight:900;
 }
-@keyframes glow {
-  from {box-shadow:0 0 3px #d6a43b}
-  to {box-shadow:0 0 13px #d6a43b}
+.section-title span{color:var(--green)}
+.panel{
+  background:linear-gradient(145deg,#102d3a,#0a202b);
+  border:1px solid var(--border);border-radius:15px;
+  padding:18px;margin:14px 0;
 }
-.logo-showcase {
-  display:flex;gap:12px;overflow-x:auto;padding:12px 4px;
-  scrollbar-width:thin;
+.offer-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.offer{
+  text-align:center;padding:18px 10px;border-radius:13px;
+  border:1px solid var(--gold);
+  background:linear-gradient(135deg,#1c3540,#10212a);
 }
-.logo-tile {
-  min-width:100px;height:90px;background:#102d3a;
-  border:1px solid #3c5965;border-radius:12px;
-  display:flex;flex-direction:column;align-items:center;
-  justify-content:center;gap:7px;padding:8px;
+.offer h3{margin:0 0 8px;color:var(--light);font-size:19px}
+.offer strong{color:#ffdb62;font-size:25px}
+.offer p{font-size:13px;color:var(--muted);margin-bottom:0}
+
+.logo-showcase{
+  display:flex;justify-content:center;align-items:center;
+  flex-wrap:wrap;gap:10px;padding:10px 0;
 }
-.logo-tile img {width:38px;height:38px;object-fit:contain}
-.logo-tile span {font-size:11px;text-align:center;font-weight:bold}
-.panel {
-  background:var(--panel);border:1px solid #284956;
-  border-radius:14px;padding:15px;margin:12px 0;
+.logo-chip{
+  border:1px solid var(--border);border-radius:10px;
+  background:#102d3a;padding:8px 12px;
+  color:var(--light);font-weight:bold;font-size:12px;
 }
-.actions {
-  display:flex;flex-wrap:wrap;justify-content:center;gap:9px;
+
+.live-box{
+  border:1px solid var(--gold);border-radius:13px;
+  background:#0b202a;overflow:hidden;
 }
-input[type="search"],input[type="text"] {
-  width:100%;padding:13px;border-radius:10px;
-  border:1px solid #52717d;background:#071923;
-  color:white;outline:none;margin-bottom:12px;
+.live-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  gap:10px;padding:13px 15px;color:var(--light);font-weight:900;
 }
-.game-grid {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:11px;
+.live-content{
+  padding:12px 15px;border-top:1px solid var(--border);
+  color:var(--muted);font-size:13px;line-height:1.7;
 }
-.game-card {
-  background:var(--panel);border:1px solid #31515e;
-  border-radius:13px;padding:12px 8px;text-align:center;
-  min-width:0;
+.live-content[hidden]{display:none}
+
+.search-row{display:flex;gap:9px;margin-bottom:14px}
+#searchBox{
+  flex:1;min-width:0;padding:13px;border-radius:10px;
+  color:white;background:#071923;border:1px solid var(--border);
+  outline:none;
 }
-.game-card img {
-  width:62px;height:62px;object-fit:contain;
-  margin:5px auto 8px;display:block;
+#searchBox:focus{border-color:var(--gold)}
+.game-count{color:var(--green);font-size:13px;text-align:center;margin:10px 0 15px}
+.games-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;
 }
-.game-name {font-weight:bold;color:var(--light);font-size:14px}
-.game-status {color:var(--green);font-size:11px;margin:7px 0}
-.game-card .btn {width:100%;font-size:12px;padding:10px 5px}
-#gameCount {text-align:center;color:#d9e9ee;font-size:13px;margin:8px}
-.small-note {font-size:12px;color:#c3d4db;line-height:1.6}
-.payment-grid {
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;
+.game-card{
+  min-width:0;display:flex;flex-direction:column;align-items:center;
+  text-align:center;padding:13px 9px;
+  background:linear-gradient(160deg,#143543,#0b202b);
+  border:1px solid var(--border);border-radius:13px;
+  transition:transform .2s,border-color .2s;
 }
-.payment-item {
-  background:#0a222e;border:1px solid #355664;
-  padding:12px 6px;border-radius:9px;text-align:center;
-  font-weight:bold;font-size:13px;
+.game-card:hover{transform:translateY(-3px);border-color:var(--gold)}
+.game-logo{
+  width:66px;height:66px;border-radius:15px;
+  object-fit:contain;background:#fff;padding:5px;
+  border:1px solid #ffffff25;
 }
-footer {
-  text-align:center;padding:22px 12px;
-  color:#bacbd1;font-size:12px;border-top:1px solid #294651;
+.logo-fallback{
+  width:66px;height:66px;border-radius:15px;
+  display:grid;place-items:center;
+  color:#101820;font-size:23px;font-weight:900;
+  background:linear-gradient(135deg,var(--light),var(--gold));
+  border:2px solid #fff1b4;
 }
-.float-buttons {
-  position:fixed;right:13px;bottom:15px;
-  display:flex;flex-direction:column;gap:10px;z-index:30;
+.game-card h3{
+  font-size:13px;color:var(--light);margin:10px 0 7px;
+  min-height:30px;display:flex;align-items:center;justify-content:center;
+  overflow-wrap:anywhere;
 }
-.float-buttons a {
-  width:49px;height:49px;border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  font-size:22px;box-shadow:0 3px 12px #0008;
+.game-status{font-size:11px;color:var(--green);margin-bottom:9px}
+.game-buttons{display:grid;grid-template-columns:1fr;gap:7px;width:100%;margin-top:auto}
+.game-buttons a{
+  display:block;padding:9px 5px;border-radius:7px;
+  font-size:11px;font-weight:900;
 }
-.modal {
-  display:none;position:fixed;inset:0;z-index:50;
-  background:#000b;align-items:center;justify-content:center;
-  padding:18px;
+.account-btn{background:var(--gold);color:#111}
+.deposit-btn{background:var(--green);color:#061c20}
+.no-results{display:none;text-align:center;color:var(--muted);padding:20px}
+
+.payment-grid{
+  display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;
 }
-.modal-box {
-  width:100%;max-width:390px;max-height:85vh;overflow:auto;
-  background:#102d3a;border:1px solid var(--gold);
-  border-radius:16px;padding:20px;text-align:center;
+.payment-item{
+  padding:13px 5px;text-align:center;border-radius:9px;
+  background:#071923;border:1px solid var(--border);
+  color:var(--light);font-weight:bold;font-size:12px;
 }
-.modal-box h2 {color:var(--light)}
-.close-btn {float:right;background:#294651;color:white;border:0;
-  border-radius:7px;padding:7px 10px}
-#wheel {
-  width:220px;height:220px;max-width:75vw;max-height:75vw;
-  border-radius:50%;margin:18px auto;
-  border:5px solid var(--gold);
-  background:conic-gradient(
-    #d6a43b 0deg 60deg,#173b4a 60deg 120deg,
-    #42ddb2 120deg 180deg,#173b4a 180deg 240deg,
-    #d6a43b 240deg 300deg,#173b4a 300deg 360deg);
-  display:flex;align-items:center;justify-content:center;
-  color:white;font-weight:bold;text-shadow:1px 1px 3px #000;
-  transition:transform 3s cubic-bezier(.15,.7,.15,1);
+.contact-buttons{display:flex;justify-content:center;flex-wrap:wrap;gap:10px}
+footer{
+  text-align:center;padding:24px 10px;color:var(--muted);
+  border-top:1px solid var(--border);font-size:12px;margin-top:25px;
 }
-@media(min-width:600px) {
-  .game-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
-  .payment-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+.float-buttons{
+  position:fixed;right:13px;bottom:16px;z-index:1100;
+  display:flex;flex-direction:column;gap:9px;
+}
+.float-btn{
+  width:49px;height:49px;border-radius:50%;display:grid;
+  place-items:center;font-size:20px;font-weight:bold;
+  box-shadow:0 4px 16px #0007;border:1px solid #ffffff55;
+}
+.float-wa{background:#25d366;color:#fff}
+.float-chat{background:var(--gold);color:#111}
+.float-msg{background:var(--blue);color:#fff}
+
+.modal{
+  position:fixed;inset:0;z-index:2000;background:#000b;
+  display:none;align-items:center;justify-content:center;padding:15px;
+}
+.modal.open{display:flex}
+.modal-box{
+  width:min(430px,100%);max-height:90vh;overflow:auto;
+  background:var(--panel);border:1px solid var(--gold);
+  border-radius:15px;padding:20px;text-align:center;
+}
+.modal-box h2{color:var(--light);margin-top:0}
+.modal-box p{color:var(--muted);line-height:1.6}
+.modal-actions{display:flex;justify-content:center;gap:9px;flex-wrap:wrap}
+.close-btn{background:#283e48;color:white;border:1px solid #49606a}
+.spin-wheel{
+  width:180px;height:180px;margin:15px auto;border-radius:50%;
+  border:6px solid var(--gold);
+  background:conic-gradient(#d6a43b 0 45deg,#123947 45deg 90deg,
+    #42ddb2 90deg 135deg,#16303b 135deg 180deg,
+    #d6a43b 180deg 225deg,#123947 225deg 270deg,
+    #42ddb2 270deg 315deg,#16303b 315deg 360deg);
+  display:grid;place-items:center;color:white;font-weight:900;
+  box-shadow:0 0 25px #d6a43b45;
+}
+.spin-wheel span{background:#071923;padding:10px;border-radius:50%}
+@media(max-width:800px){
+  .games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  nav{width:100%;justify-content:center}
+}
+@media(max-width:480px){
+  .games-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  .payment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .offer-grid{grid-template-columns:1fr}
+  .header-inner{justify-content:center}
+  .brand{justify-content:center}
+  nav a{padding:8px 9px;font-size:11px}
+  .game-card{padding:11px 7px}
 }
 </style>
 </head>
 
 <body>
 <header>
-  <div class="brand-logo">PGL</div>
-  <h1>PREMIUM GAMING LOUNGE</h1>
-  <div class="subtitle">Games • Offers • Customer Support</div>
+  <div class="container header-inner">
+    <a class="brand" href="#home" aria-label="Premium Gaming Lounge home">
+      <div class="brand-logo">PGL</div>
+      <div>
+        <div class="brand-name">PREMIUM GAMING LOUNGE</div>
+        <div class="brand-sub">GAMES • OFFERS • SUPPORT</div>
+      </div>
+    </a>
+    <nav>
+      <a href="#home">HOME</a>
+      <a href="#games">GAMES</a>
+      <a href="#spin">SPIN</a>
+      <a href="#payments">PAYMENTS</a>
+      <a href="#contact">LIVE CHAT</a>
+      <a href="https://m.me/61595371058076" target="_blank" rel="noopener">MESSENGER</a>
+    </nav>
+  </div>
 </header>
 
-<nav>
-  <a class="btn gold" href="#home">🏠 Home</a>
-  <a class="btn dark" href="#games">🎮 Games</a>
-  <button class="btn dark" onclick="openSpin()">🎡 Spin</button>
-  <a class="btn dark" href="#payments">💳 Payments</a>
-  <button class="btn green" onclick="openChat()">💬 Live Chat</button>
-  <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">Messenger</a>
-</nav>
-
-<div class="ticker">
+<!-- First moving ticker -->
+<div class="ticker-wrap" aria-label="Live updates">
   <div class="ticker-track" id="tickerOne">
-    ✨ WELCOME TO PREMIUM GAMING LOUNGE ✨ CHECK OUT OUR FEATURED GAMES ✨ CONTACT SUPPORT FOR CURRENT OFFERS ✨
+    <div class="ticker-text">
+      <span class="live-dot"></span>🏆 LIVE WIN • PREMIUM GAMING LOUNGE • CHECK GAME DETAILS • CONTACT SUPPORT FOR ASSISTANCE •
+    </div>
+    <div class="ticker-text" aria-hidden="true">
+      <span class="live-dot"></span>🏆 LIVE WIN • PREMIUM GAMING LOUNGE • CHECK GAME DETAILS • CONTACT SUPPORT FOR ASSISTANCE •
+    </div>
   </div>
 </div>
 
-<section id="home">
-  <div class="offer">🎁 WELCOME OFFER — ASK SUPPORT FOR CURRENT PROMOTIONS</div>
-  <div class="offer">⭐ ASK ABOUT OUR 5 FREE PLAYS OFFER ⭐</div>
+<main id="home" class="container">
+  <section class="hero">
+    <h1>PREMIUM GAMING LOUNGE</h1>
+    <p>Explore your favorite games and contact our team for account and payment assistance.</p>
+    <div class="hero-actions">
+      <a class="btn gold-btn" href="#games">🎮 EXPLORE GAMES</a>
+      <button class="btn green-btn" onclick="openChat()">💬 LIVE CHAT</button>
+      <button class="btn" onclick="showInstallHelp()">📲 INSTALL APP</button>
+      <a class="btn blue-btn" href="https://m.me/61595371058076" target="_blank" rel="noopener">MESSENGER</a>
+      <a class="btn" href="#games">🎮 LIVE GAME ROOM</a>
+    </div>
+  </section>
 
-  <h2 class="section-title">Featured Gaming Platforms</h2>
-  <div class="logo-showcase" id="logoShowcase"></div>
-
-  <div class="panel">
-    <h2 class="section-title">🎉 Premium Gaming Lounge</h2>
-    <p style="text-align:center;line-height:1.7">
-      Explore the available gaming platforms and contact our team
-      for account assistance, current offers and payment questions.
-    </p>
-    <div class="actions">
-      <button class="btn gold" onclick="openSpin()">🎡 Spin Wheel</button>
-      <button class="btn green" onclick="openChat()">💬 Live Chat</button>
-      <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">Facebook Messenger</a>
+  <!-- Second moving ticker -->
+  <div class="ticker-wrap" aria-label="Gaming lounge updates">
+    <div class="ticker-track reverse" id="tickerTwo">
+      <div class="ticker-text">✨ PREMIUM GAMING LOUNGE • 🎁 5 FREE PLAYS OFFER • ✦ 180% WELCOME BONUS ✦ • SUPPORT AVAILABLE •</div>
+      <div class="ticker-text" aria-hidden="true">✨ PREMIUM GAMING LOUNGE • 🎁 5 FREE PLAYS OFFER • ✦ 180% WELCOME BONUS ✦ • SUPPORT AVAILABLE •</div>
     </div>
   </div>
 
-  <div class="ticker reverse">
-    <div class="ticker-track" id="tickerTwo">
-      🎮 ORION STAR • MILKYWAY • JUWA • VBLINK • FIRE KIRIN • VEGAS X • GAME VAULT • ULTRA PANDA •
+  <section class="section">
+    <div class="offer-grid">
+      <div class="offer">
+        <h3>🎁 SPECIAL OFFER</h3>
+        <strong>5 FREE PLAYS</strong>
+        <p>Contact support for offer details and eligibility.</p>
+      </div>
+      <div class="offer">
+        <h3>✦ WELCOME BONUS ✦</h3>
+        <strong>180%</strong>
+        <p>Ask support about the current welcome offer and terms.</p>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <div class="panel" style="text-align:center">
-    <button class="btn gold" onclick="toggleUpdates()">🏆 LIVE WIN / UPDATES</button>
-    <div id="updatesPanel" style="display:none;margin-top:12px;line-height:1.8">
-      <p>Check current game activity and promotional details with customer support.</p>
-      <button class="btn green" onclick="openChat()">Ask Support</button>
+  <section class="section">
+    <h2 class="section-title">⭐ FEATURED <span>GAMES</span></h2>
+    <div class="logo-showcase">
+      <div class="logo-chip">ORION STAR</div>
+      <div class="logo-chip">JUWA</div>
+      <div class="logo-chip">FIREKIRIN</div>
+      <div class="logo-chip">GAME VAULT</div>
+      <div class="logo-chip">ULTRAPANDA</div>
+      <div class="logo-chip">VEGAS X</div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="games">
-  <h2 class="section-title">🎮 Available Games</h2>
-  <input id="searchBox" type="search" placeholder="Search games..." oninput="renderGames()">
-  <div id="gameCount"></div>
-  <div class="game-grid" id="gameGrid"></div>
-</section>
+  <section class="section">
+    <div class="live-box">
+      <div class="live-heading">
+        <span>🔴 LIVE WIN / UPDATES</span>
+        <button class="btn" id="liveToggle" onclick="toggleLive()">VIEW UPDATES ▾</button>
+      </div>
+      <div class="live-content" id="liveContent" hidden>
+        <div>🏆 Welcome to Premium Gaming Lounge.</div>
+        <div>🎮 Browse the available game platforms below.</div>
+        <div>💬 For account or payment assistance, contact support.</div>
+        <div>📲 Offers and availability may vary by platform.</div>
+      </div>
+    </div>
+  </section>
 
-<section id="payments">
-  <h2 class="section-title">💳 Payment Methods</h2>
-  <div class="panel">
-    <p class="small-note">
-      Select a payment method to ask support about availability and instructions.
-      Payment options are not processed directly by this static website.
-    </p>
-    <div class="payment-grid">
-      <button class="payment-item" onclick="paymentHelp('Cash App')">Cash App</button>
-      <button class="payment-item" onclick="paymentHelp('Venmo')">Venmo</button>
-      <button class="payment-item" onclick="paymentHelp('Zelle')">Zelle</button>
-      <button class="payment-item" onclick="paymentHelp('Chime')">Chime</button>
-      <button class="payment-item" onclick="paymentHelp('PayPal')">PayPal</button>
-      <button class="payment-item" onclick="paymentHelp('Bitcoin')">Bitcoin</button>
-      <button class="payment-item" onclick="paymentHelp('USDT')">USDT</button>
-      <button class="payment-item" onclick="paymentHelp('Other method')">Other Method</button>
+  <section id="games" class="section">
+    <h2 class="section-title">🎮 OUR <span>GAMES</span></h2>
+    <div class="panel">
+      <div class="search-row">
+        <input id="searchBox" type="search" placeholder="🔍 Search your favorite game..." aria-label="Search games">
+      </div>
+      <div class="game-count" id="gameCount">Loading games...</div>
+      <div class="games-grid" id="gamesGrid"></div>
+      <div class="no-results" id="noResults">No matching games found.</div>
     </div>
-    <div class="actions" style="margin-top:15px">
-      <button class="btn green" onclick="paymentHelp('Deposit')">Deposit</button>
-      <button class="btn pink" onclick="paymentHelp('Withdraw')">Withdraw</button>
-    </div>
-  </div>
-</section>
+  </section>
 
-<section id="contact">
-  <h2 class="section-title">💬 Contact & Support</h2>
-  <div class="panel">
-    <div class="actions">
-      <button class="btn green" onclick="openChat()">Tawk.to Live Chat</button>
-      <button class="btn dark" onclick="openChat()">Chaport Live Chat</button>
-      <a class="btn blue" href="https://m.me/61595371058076" target="_blank" rel="noopener">
-        💬 Facebook Messenger
-      </a>
-      <a class="btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener">
-        WhatsApp
-      </a>
+  <section id="payments" class="section">
+    <h2 class="section-title">💳 PAYMENT <span>OPTIONS</span></h2>
+    <div class="panel">
+      <div class="payment-grid">
+        <div class="payment-item">Cash App</div>
+        <div class="payment-item">Venmo</div>
+        <div class="payment-item">Zelle</div>
+        <div class="payment-item">Chime</div>
+        <div class="payment-item">PayPal</div>
+        <div class="payment-item">Bitcoin</div>
+        <div class="payment-item">USDT</div>
+        <div class="payment-item">Other</div>
+      </div>
+      <p style="text-align:center;color:var(--muted);font-size:13px;line-height:1.6">
+        Contact support to discuss available payment methods.
+      </p>
+      <div class="contact-buttons">
+        <button class="btn green-btn" onclick="openPaymentChat('Deposit')">⬆ DEPOSIT</button>
+        <button class="btn gold-btn" onclick="openPaymentChat('Withdraw')">⬇ WITHDRAW</button>
+      </div>
     </div>
-    <p class="small-note" style="text-align:center;margin-top:15px">
-      For payment assistance, account questions or current promotions,
-      contact the support team.
-    </p>
-  </div>
-</section>
+  </section>
+
+  <section id="spin" class="section">
+    <h2 class="section-title">🎡 LUCKY <span>SPIN</span></h2>
+    <div class="panel" style="text-align:center">
+      <p style="color:var(--muted)">Open the wheel for a spin.</p>
+      <button class="btn gold-btn" onclick="openSpin()">🎡 OPEN SPIN WHEEL</button>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 class="section-title">💬 CONTACT <span>SUPPORT</span></h2>
+    <div class="panel">
+      <div class="contact-buttons">
+        <button class="btn green-btn" onclick="openChat()">LIVE CHAT</button>
+        <a class="btn" href="https://wa.me/14482414979" target="_blank" rel="noopener">WHATSAPP</a>
+        <a class="btn blue-btn" href="https://m.me/61595371058076" target="_blank" rel="noopener">MESSENGER</a>
+      </div>
+    </div>
+  </section>
+</main>
 
 <footer>
-  <strong>Premium Gaming Lounge</strong>
-  <p>Please review the rules, eligibility and terms of each platform before playing.</p>
-  <p>Only use services you are legally eligible to access.</p>
+  <div>© <span id="year"></span> Premium Gaming Lounge</div>
+  <p>Please check platform availability, rules and eligibility before using a game.</p>
 </footer>
 
 <div class="float-buttons">
-  <a style="background:#0084ff;color:white"
-     href="https://m.me/61595371058076" target="_blank" rel="noopener"
-     aria-label="Facebook Messenger">💬</a>
-  <a style="background:#25d366;color:white"
-     href="https://wa.me/14482414979" target="_blank" rel="noopener"
-     aria-label="WhatsApp">☎</a>
-  <a style="background:#d6a43b;color:#071923"
-     href="#contact" aria-label="Live chat">✉</a>
+  <a class="float-btn float-wa" href="https://wa.me/14482414979" target="_blank" rel="noopener" aria-label="WhatsApp">✆</a>
+  <a class="float-btn float-msg" href="https://m.me/61595371058076" target="_blank" rel="noopener" aria-label="Messenger">M</a>
+  <button class="float-btn float-chat" onclick="openChat()" aria-label="Live chat">💬</button>
 </div>
 
-<div class="modal" id="spinModal" onclick="if(event.target===this)closeSpin()">
+<!-- Install help modal -->
+<div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
   <div class="modal-box">
-    <button class="close-btn" onclick="closeSpin()">✕</button>
-    <h2>🎡 Premium Spin Wheel</h2>
-    <p class="small-note">Spin to reveal a message, then contact support to confirm available offers.</p>
-    <div id="wheel">SPIN</div>
-    <p id="spinResult">Tap the button to spin.</p>
-    <button class="btn gold" id="spinButton" onclick="spinWheel()">SPIN NOW</button>
-    <button class="btn green" onclick="openChat()">Ask Support</button>
+    <h2 id="installTitle">📲 INSTALL APP</h2>
+    <p>To add this website to your phone's home screen:</p>
+    <p><b>1.</b> Open this website in Chrome.<br>
+       <b>2.</b> Tap the three-dot menu (⋮).<br>
+       <b>3.</b> Choose “Add to Home screen” or “Install app” if available.</p>
+    <button class="btn gold-btn" onclick="closeModal('installModal')">CLOSE</button>
+  </div>
+</div>
+
+<!-- Spin modal -->
+<div class="modal" id="spinModal" role="dialog" aria-modal="true" aria-labelledby="spinTitle">
+  <div class="modal-box">
+    <h2 id="spinTitle">🎡 LUCKY SPIN</h2>
+    <div class="spin-wheel" id="spinWheel"><span>SPIN</span></div>
+    <p id="spinResult">Tap the button to spin the wheel.</p>
+    <div class="modal-actions">
+      <button class="btn gold-btn" id="spinButton" onclick="spinWheel()">SPIN NOW</button>
+      <button class="btn close-btn" onclick="closeModal('spinModal')">CLOSE</button>
+    </div>
   </div>
 </div>
 
 <script>
+const MESSENGER_URL = "https://m.me/61595371058076";
+const WHATSAPP_URL = "https://wa.me/14482414979";
+
+/* Game list: duplicate names with different supplied links are retained. */
 const games = [
-  {name:"Orion Star",url:"http://start.orionstars.vip:8580/"},
-  {name:"Milkyway",url:"https://milkywayapp.xyz/"},
-  {name:"Juwa",url:"https://dl.juwa777.com/"},
-  {name:"Vblink",url:"https://www.vblink777.club/"},
-  {name:"Juwa 2.0",url:"https://m.juwa2.com/"},
-  {name:"Firekirin",url:"https://firekirin.com/download-fire-kirin-app.html"},
-  {name:"Vegas X",url:"https://www.vegas-x.org/"},
-  {name:"Game Vault",url:"http://download.gamevault"},
-  {name:"Egame",url:"https://www.egame99.com/"},
-  {name:"Moolah",url:"https://moolah.us/"},
-  {name:"RiverSweep",url:"https://riversweeps.com/"},
-  {name:"Noble777",url:"https://noble777.com/"},
-  {name:"Highstake",url:"https://highstake.com/"},
-  {name:"Casino Royal",url:"https://www.casinoroyale.com/"},
-  {name:"Vegas Sweep",url:"https://vegassweeps.com/"},
-  {name:"Ultra Panda",url:"https://ultrapanda.mobi/"},
-  {name:"Paracasino",url:"https://paracasino.com/"},
-  {name:"Game Room",url:"https://gameroom.com/"},
-  {name:"Golden Dragon",url:"https://www.google.com/search?q=Golden+Dragon+game+platform"},
-  {name:"Panda Master",url:"https://www.google.com/search?q=Panda+Master+game+platform"},
-  {name:"Lucky Panda",url:"https://www.google.com/search?q=Lucky+Panda+game+platform"},
-  {name:"Orion",url:"https://www.google.com/search?q=Orion+Star+game+platform"},
-  {name:"Juwa Slots",url:"https://dl.juwa777.com/"},
-  {name:"Fire Kirin Slots",url:"https://firekirin.com/download-fire-kirin-app.html"}
+  ["Orion Star","http://start.orionstars.vip:8580/"],
+  ["Milkyway","https://milkywayapp.xyz/"],
+  ["Juwa","https://dl.juwa777.com/"],
+  ["Vblink","https://www.vblink777.club/"],
+  ["Juwa 2.0","https://m.juwa2.com/"],
+  ["Firekirin","https://start.firekirin.xyz:8580/index.html"],
+  ["Vegas X","https://www.vegas-x.org/"],
+  ["Game Vault","http://download.gamevault999.com/"],
+  ["Egame","https://www.egame99.club/"],
+  ["Moolah","https://moolah.vip:8888/"],
+  ["RiverSweep","https://bet777.eu/play/"],
+  ["Noble777","http://www.noble777.com/"],
+  ["Highstake","https://dl.highstakesweeps.com/"],
+  ["Casino Royal","http://m.casinoroyale07.com/"],
+  ["Vegas Sweep","http://m.lasvegassweeps.com/"],
+  ["Ultra Panda","http://www.ultrapanda.mobi/"],
+  ["Orion Power","http://download.orionpower.games:8008/"],
+  ["Winstar","https://www.winstar99999.com/"],
+  ["Mafia 777","https://www.mafia77777.com/"],
+  ["Paracasino","https://download.paracasino.net/"],
+  ["Vegas Roll","http://www.vegas-roll.com/m"],
+  ["Mr. All in One","http://www.mrallinone777.com/"],
+  ["Yolo 777","https://yolo777.game/"],
+  ["Cash Machine","https://www.cashmachine777.com/"],
+  ["Game Room","https://www.gameroom777.com/"],
+  ["Vegas Luck","https://start.vegasluck777.com/"],
+  ["Vegas Sweep Mobile","https://m.lasvegassweeps.com/"],
+  ["Moolah Mobile","https://moolah.vip:8888/"],
+  ["River Pay","https://river777.net/build.30/index.html"],
+  ["Loot Game","https://m.lootgame777.com/"],
+  ["Para Casino H5","https://h5.paracasino.net/"],
+  ["Mr All in One Agent","http://agentserver.mrallinone777.com/"],
+  ["Winstar Server","http://server.winstar99999.com:8009/"],
+  ["Hukum","https://hukum777.online/"],
+  ["Mob.com","https://fpc-mob.com/"],
+  ["Highroller","https://www.highroller.com/casino"],
+  ["Noble 777","https://www.noble777.com/"],
+  ["Dragon Crown","https://atlus.com/dragonscrown/"],
+  ["Lucky Master","https://lucky-master.net/"],
+  ["King of Pop","https://kingofpop777.com/"],
+  ["Firefonix","https://fpc-mob.com/AD/index.html"],
+  ["Bigwin","https://bigwplay.com/"],
+  ["Thunderseven","https://thunderseven.com/"],
+  ["Gem Slots","https://www.gem77777.com/m"],
+  ["Game Room Online","https://www.gameroom777.com/"],
+  ["Mr. All in One","https://www.mrallinone777.com/"],
+  ["Winner Club","https://www.winnersclub777.com/"],
+  ["Cash Frenzy","https://www.cashfrenzy777.com/"],
+  ["King of Pop Slots","https://www.slots88888.com/"],
+  ["Vegas Luck","https://start.vegasluck777.com/"],
+  ["Cash Machine","https://www.cashmachine777.com/"],
+  ["Win Star","http://www.winstar99999.com/"],
+  ["Joker 777","https://www.joker777.win/"],
+  ["Orion Strike","https://start.orionstrike777.com/"],
+  ["Orion Power Download","http://download.orionpower.games:8008"],
+  ["Big Bang","https://www.bigbangcasino.vegas/"],
+  ["Lucky Star","https://www.luckystars.games/"],
+  ["Stars Galaxy","https://www.starsgalaxy777.com/"],
+  ["Gem777","https://www.gem77777.com/"],
+  ["Lucky Paradise","https://www.luckyparadise777.com/"],
+  ["River Monster","https://rm777.net/"],
+  ["Mega Spin","https://megaspinpay.com/default.aspx"],
+  ["Sharks Secret 77","https://www.sharksecret777.com/"],
+  ["Winwin Vegas","https://winwinvegas777.com/"],
+  ["Panda Master","https://pandamaster.vip:8888/"],
+  ["Cash Frenzy","https://www.cashfrenzy777.com/"],
+  ["Ding Ding","https://www.dingdinghouse.com/"],
+  ["Lucky Paradise","https://www.luckyparadise777.com/"],
+  ["Vegas X Pro","https://vegas-x.pro/"],
+  ["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],
+  ["Big Winner","https://bigwplay.com/"],
+  ["Game Vault 777","https://www.gamevault77777.com/"],
+  ["Blue Dragon","https://bluedragon777.net/"],
+  ["Game Vault 2","https://res.gamevault2.vip/download/"],
+  ["Acebook","https://www.playacebook.mobi/"]
 ];
 
-function initials(name) {
-  return name.split(/\s+/).map(w=>w[0]).join("").slice(0,3).toUpperCase();
+function getInitials(name){
+  return name.split(/\s+/).filter(Boolean).slice(0,2)
+    .map(part=>part[0]).join("").toUpperCase();
 }
-function logoUrl(game) {
-  try {
-    return "https://www.google.com/s2/favicons?domain="+
-      new URL(game.url).hostname+"&sz=128";
-  } catch(e) {
-    return "";
-  }
-}
-function makeLogo(game, size=38) {
+
+function makeLogo(name,url){
+  const wrap=document.createElement("div");
+  wrap.className="logo-fallback";
+  wrap.textContent=getInitials(name);
   const img=document.createElement("img");
-  img.src=logoUrl(game);
-  img.alt=game.name+" logo";
-  img.width=size;img.height=size;
-  img.onerror=function(){
-    const fallback=document.createElement("span");
-    fallback.textContent=initials(game.name);
-    fallback.style.cssText=
-      "width:"+size+"px;height:"+size+"px;border-radius:10px;"+
-      "background:#d6a43b;color:#071923;display:flex;"+
-      "align-items:center;justify-content:center;font-weight:bold;";
-    img.replaceWith(fallback);
+  img.className="game-logo";
+  img.alt=name+" logo";
+  img.loading="lazy";
+  img.src="https://www.google.com/s2/favicons?domain="+encodeURIComponent(new URL(url).hostname)+"&sz=128";
+  img.onerror=()=>{img.replaceWith(wrap)};
+  img.onload=()=>{
+    if(img.naturalWidth<8 || img.naturalHeight<8) img.replaceWith(wrap);
   };
   return img;
 }
-function renderShowcase() {
-  const holder=document.getElementById("logoShowcase");
-  games.slice(0,16).forEach(game=>{
-    const tile=document.createElement("a");
-    tile.className="logo-tile";
-    tile.href=game.url;tile.target="_blank";tile.rel="noopener";
-    tile.appendChild(makeLogo(game,38));
-    const label=document.createElement("span");
-    label.textContent=game.name;
-    tile.appendChild(label);
-    holder.appendChild(tile);
-  });
+
+function openMessengerForGame(name,action,url){
+  const message=action==="Deposit"
+    ? "Hello, I need deposit assistance for "+name+"."
+    : "Hello, I need account assistance for "+name+".";
+  window.open(MESSENGER_URL+"?ref="+encodeURIComponent(message)," _blank","noopener");
 }
-function renderGames() {
-  const query=document.getElementById("searchBox").value.toLowerCase().trim();
-  const filtered=games.filter(g=>g.name.toLowerCase().includes(query));
-  const grid=document.getElementById("gameGrid");
+
+function renderGames(filter=""){
+  const grid=document.getElementById("gamesGrid");
+  const noResults=document.getElementById("noResults");
   grid.replaceChildren();
-  document.getElementById("gameCount").textContent=
-    "Showing "+filtered.length+" of "+games.length+" games";
-  filtered.forEach(game=>{
-    const card=document.createElement("div");
+  const normalized=filter.trim().toLowerCase();
+  const visible=games.filter(game=>game[0].toLowerCase().includes(normalized));
+  visible.forEach(([name,url])=>{
+    const card=document.createElement("article");
     card.className="game-card";
-    card.appendChild(makeLogo(game,62));
-    const name=document.createElement("div");
-    name.className="game-name";name.textContent=game.name;
-    card.appendChild(name);
+
+    const logo=makeLogo(name,url);
+    card.appendChild(logo);
+
+    const title=document.createElement("h3");
+    title.textContent=name;
+    card.appendChild(title);
+
     const status=document.createElement("div");
-    status.className="game-status";status.textContent="Platform link";
+    status.className="game-status";
+    status.textContent="● PLATFORM LINK";
     card.appendChild(status);
-    const link=document.createElement("a");
-    link.className="btn gold";link.textContent="OPEN GAME";
-    link.href=game.url;link.target="_blank";link.rel="noopener";
-    card.appendChild(link);
+
+    const buttons=document.createElement("div");
+    buttons.className="game-buttons";
+
+    const account=document.createElement("a");
+    account.className="account-btn";
+    account.href=url;
+    account.target="_blank";
+    account.rel="noopener noreferrer";
+    account.textContent="ACCOUNT";
+    buttons.appendChild(account);
+
+    const deposit=document.createElement("button");
+    deposit.className="deposit-btn";
+    deposit.textContent="DEPOSIT";
+    deposit.type="button";
+    deposit.addEventListener("click",()=>openMessengerForGame(name,"Deposit",url));
+    buttons.appendChild(deposit);
+
+    card.appendChild(buttons);
     grid.appendChild(card);
   });
+  document.getElementById("gameCount").textContent=
+    "Showing "+visible.length+" of "+games.length+" games";
+  noResults.style.display=visible.length?"none":"block";
 }
-renderShowcase();
-renderGames();
 
-function openChat() {
-  // Show installed live chat widgets when available.
-  if(window.Tawk_API && typeof window.Tawk_API.maximize==="function") {
+document.getElementById("searchBox").addEventListener("input",event=>{
+  renderGames(event.target.value);
+});
+
+function toggleLive(){
+  const content=document.getElementById("liveContent");
+  const button=document.getElementById("liveToggle");
+  content.hidden=!content.hidden;
+  button.textContent=content.hidden?"VIEW UPDATES ▾":"HIDE UPDATES ▴";
+}
+
+function openChat(){
+  if(window.Tawk_API && typeof window.Tawk_API.maximize==="function"){
     window.Tawk_API.maximize();
     return;
   }
-  if(window.$crisp) {
+  if(window.$crisp && typeof window.$crisp.push==="function"){
     window.$crisp.push(["do","chat:open"]);
     return;
   }
-  if(window.chaport) {
-    try { window.chaport.open(); return; } catch(e) {}
+  if(window.Chaport && typeof window.Chaport.open==="function"){
+    window.Chaport.open();
+    return;
   }
-  alert("Please use Facebook Messenger or WhatsApp to contact support.");
+  window.open(MESSENGER_URL,"_blank","noopener");
 }
-function paymentHelp(method) {
-  const message="Hello, I need help with "+method+".";
-  window.open(
-    "https://m.me/61595371058076?ref="+encodeURIComponent(message),
-    "_blank","noopener"
-  );
+
+function openPaymentChat(action){
+  const message="Hello, I need help with "+action.toLowerCase()+".";
+  window.open(MESSENGER_URL+"?ref="+encodeURIComponent(message),"_blank","noopener");
 }
-function toggleUpdates() {
-  const panel=document.getElementById("updatesPanel");
-  panel.style.display=panel.style.display==="block"?"none":"block";
+
+function showInstallHelp(){
+  document.getElementById("installModal").classList.add("open");
 }
-function openSpin() {
-  document.getElementById("spinModal").style.display="flex";
+function openSpin(){
+  document.getElementById("spinModal").classList.add("open");
 }
-function closeSpin() {
-  document.getElementById("spinModal").style.display="none";
+function closeModal(id){
+  document.getElementById(id).classList.remove("open");
 }
+document.querySelectorAll(".modal").forEach(modal=>{
+  modal.addEventListener("click",event=>{
+    if(event.target===modal) modal.classList.remove("open");
+  });
+});
+
 let spinning=false;
-function spinWheel() {
+function spinWheel(){
   if(spinning) return;
   spinning=true;
-  const wheel=document.getElementById("wheel");
-  const button=document.getElementById("spinButton");
+  const wheel=document.getElementById("spinWheel");
   const result=document.getElementById("spinResult");
+  const button=document.getElementById("spinButton");
   button.disabled=true;
   result.textContent="Spinning...";
-  const degrees=1800+Math.floor(Math.random()*360);
-  wheel.style.transform="rotate("+degrees+"deg)";
+  const rotation=1440+Math.floor(Math.random()*1440);
+  wheel.style.transition="transform 3s cubic-bezier(.12,.7,.18,1)";
+  wheel.style.transform="rotate("+rotation+"deg)";
   setTimeout(()=>{
-    result.textContent="Contact support to check current offers and eligibility.";
+    result.textContent="Contact support to check available offers.";
     button.disabled=false;
     spinning=false;
   },3100);
 }
-</script>
 
-<!-- Tawk.to Live Chat -->
-<script type="text/javascript">
+document.getElementById("year").textContent=new Date().getFullYear();
+renderGames();
+
+/* Tawk.to Live Chat */
 var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-s1.async=true;
-s1.src='https://embed.tawk.to/6ace6bb6de4aab34bf8c3815/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+  var s1=document.createElement("script");
+  var s0=document.getElementsByTagName("script")[0];
+  s1.async=true;
+  s1.src="https://embed.tawk.to/6ace6bb6de4aab34bf8c3815/default";
+  s1.charset="UTF-8";
+  s1.setAttribute("crossorigin","*");
+  s0.parentNode.insertBefore(s1,s0);
 })();
-</script>
 
-<!-- Chaport Live Chat -->
-<script>
+/* Chaport chat widget */
 (function(w,d){
-  var id="6acef8d367f574f2e93a4357";
-  if(w.chaport)return;
-  var ch=w.chaport={_q:[],_h:{}};
-  ch._q=[];ch._h={};
-  var script=d.createElement("script");
-  script.type="text/javascript";script.async=true;
-  script.src="https://app.chaport.com/javascripts/insert.js?app_id="+id;
-  var first=d.getElementsByTagName("script")[0];
-  first.parentNode.insertBefore(script,first);
+  var v=w.Chaport;
+  if(v && v._initialized) return;
+  w.Chaport={_q:[],_handlers:{},_v:"1.0",
+    on:function(){this._q.push(["on",arguments])},
+    off:function(){this._q.push(["off",arguments])},
+    call:function(){this._q.push(["call",arguments])},
+    open:function(){this._q.push(["open",arguments])},
+    init:function(){this._q.push(["init",arguments])}
+  };
+  var s=d.createElement("script");
+  s.type="text/javascript";
+  s.async=true;
+  s.src="https://app.chaport.com/javascripts/insert.js";
+  var ss=d.getElementsByTagName("script")[0];
+  ss.parentNode.insertBefore(s,ss);
+  w.Chaport.init("6acef8d367f574f2e93a4357");
 })(window,document);
 </script>
-
 </body>
 </html>
