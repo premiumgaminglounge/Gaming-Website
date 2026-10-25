@@ -16,9 +16,9 @@ body{margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
-.topbar{padding:9px 12px;text-align:center;background:#041219;color:var(--light);font-size:12px;font-weight:bold;letter-spacing:1px;border-bottom:1px solid #73551b}
+.topbar{padding:10px 12px;text-align:center;background:#041219;color:var(--light);font-size:12px;font-weight:bold;letter-spacing:1px;border-bottom:1px solid #73551b}
 header{text-align:center;padding:22px 14px 25px;background:radial-gradient(ellipse at top,#174354,#071923 72%)}
-.gold-brand{margin:0 auto 15px;width:min(260px,90%);padding:14px;border:1px solid var(--gold);border-radius:15px;background:linear-gradient(145deg,#183845,#071923);box-shadow:0 0 22px #d6a43b20}
+.gold-brand{margin:0 auto 15px;width:min(280px,90%);padding:15px;border:1px solid var(--gold);border-radius:15px;background:linear-gradient(145deg,#183845,#071923);box-shadow:0 0 22px #d6a43b25}
 .gold-crown{font-size:34px;color:var(--gold)}
 .gold-brand-name{font-size:23px;font-weight:900;letter-spacing:5px;color:var(--light)}
 .gold-brand-main{font-size:17px;font-weight:900;letter-spacing:2px;color:var(--gold)}
@@ -34,8 +34,8 @@ h1{color:var(--light);font-size:clamp(24px,5vw,38px);margin:10px 0}
 .ticker.reverse .ticker-track{animation-name:scrollRight;animation-duration:90s}
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-item{display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--light);font-size:13px;font-weight:bold}
-.ticker-logo{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(145deg,#234955,#071923,#9b7020);color:#fff0b0;font-size:10px;font-weight:900;overflow:hidden;flex-shrink:0;border:1px solid #d6a43b;box-shadow:0 0 7px #d6a43b44}
-.ticker-logo img{width:100%;height:100%;object-fit:contain}
+.ticker-logo{position:relative;width:34px;height:34px;display:inline-flex;align-items:center;justify-content:center;border-radius:9px;background:linear-gradient(145deg,#234955,#071923,#9b7020);color:#fff0b0;font-size:10px;font-weight:900;overflow:hidden;flex-shrink:0;border:1px solid #d6a43b;box-shadow:0 0 7px #d6a43b44}
+.ticker-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;background:#102d3a}
 .live-win-btn{background:#a91e28;color:white;border:0;border-radius:8px;padding:8px 12px;font-weight:bold;white-space:nowrap;animation:pulse 1.6s infinite}
 .live-win-panel{display:none;text-align:center;padding:12px;margin:8px 10px;background:#102d3a;border:1px solid #7e5d22;border-radius:8px;color:var(--light);font-size:13px}
 .live-win-panel.visible{display:block}
@@ -50,22 +50,24 @@ main{max-width:1200px;margin:auto;padding:18px 12px 35px}
 .bonus-pill{display:inline-block;background:var(--gold);color:#101b20;padding:7px 12px;border-radius:20px;font-size:11px;font-weight:900}
 .promo-banner h2{color:#ffe17a;font-size:clamp(22px,4vw,30px);margin:14px 0}
 .promo-banner p{font-size:14px;line-height:1.6;color:#e4edf0}
-.featured-logos{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin:0 0 25px}
-.featured-logo{background:#102d3a;border:1px solid #315566;padding:9px 12px;border-radius:9px;color:var(--light);font-size:12px;font-weight:bold}
+.featured-logos{display:flex;justify-content:center;gap:9px;flex-wrap:wrap;margin:0 0 25px}
+.featured-logo{display:flex;align-items:center;gap:7px;background:linear-gradient(145deg,#153744,#0c222d);border:1px solid #8e6b2b;padding:9px 12px;border-radius:10px;color:var(--light);font-size:12px;font-weight:bold;box-shadow:0 4px 12px #0003}
+.featured-logo .mini-mark{width:24px;height:24px;position:relative;display:inline-flex;align-items:center;justify-content:center;border-radius:6px;overflow:hidden;border:1px solid #d6a43b;color:#fff0b0;background:#071923;font-size:9px}
+.featured-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#102d3a}
 .section-heading{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 0 12px}
 .section-heading h2{font-size:20px;margin:0;color:var(--light)}
 .count{background:#193d49;border:1px solid #3b6371;padding:7px 10px;border-radius:8px;color:var(--green);font-size:12px;white-space:nowrap}
 .search-box{width:100%;padding:14px;border-radius:10px;border:1px solid #3a6474;background:#0c2631;color:white;outline:none;margin-bottom:17px}
 .search-box:focus{border-color:var(--gold)}
-.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
-.game-card{min-width:0;background:linear-gradient(145deg,#153744,#0c222d);border:1px solid #254c5b;border-radius:12px;padding:13px 9px;text-align:center;box-shadow:0 5px 13px #0002}
-.game-card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.game-logo{width:65px;height:65px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border:2px solid #d6a43b;border-radius:15px;background:linear-gradient(145deg,#234955,#071923 65%,#9b7020);color:#fff0b0;font-size:21px;font-weight:900;letter-spacing:1px;overflow:hidden;box-shadow:0 0 12px #d6a43b35,inset 0 0 8px #d6a43b22;text-shadow:0 1px 4px #000}
-.game-logo img{width:100%;height:100%;object-fit:contain;background:#fff}
-.game-name{font-size:14px;font-weight:bold;min-height:34px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game-card{min-width:0;position:relative;background:linear-gradient(145deg,#153744,#0c222d);border:1px solid #254c5b;border-radius:14px;padding:14px 9px;text-align:center;box-shadow:0 5px 13px #0003;transition:transform .2s,border-color .2s,box-shadow .2s}
+.game-card:hover{border-color:var(--gold);transform:translateY(-3px);box-shadow:0 7px 18px #0005,0 0 10px #d6a43b20}
+.game-logo{position:relative;width:76px;height:76px;margin:0 auto 11px;display:flex;align-items:center;justify-content:center;border:2px solid #d6a43b;border-radius:16px;background:linear-gradient(145deg,#234955,#071923 65%,#9b7020);color:#fff0b0;font-size:22px;font-weight:900;letter-spacing:1px;overflow:hidden;box-shadow:0 0 12px #d6a43b35,inset 0 0 8px #d6a43b22;text-shadow:0 1px 4px #000}
+.game-logo img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:4px;background:#102d3a}
+.game-name{font-size:14px;font-weight:bold;min-height:36px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere;color:#fff}
 .game-number{color:var(--green);font-size:12px;font-weight:bold;margin:7px 0 10px;min-height:16px}
 .card-actions{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.card-btn{display:block;border:0;border-radius:7px;padding:9px 4px;font-size:11px;font-weight:bold;background:linear-gradient(135deg,#f7d875,#b98220);color:#10202a}
+.card-btn{display:block;border:0;border-radius:7px;padding:9px 4px;font-size:11px;font-weight:bold;background:linear-gradient(135deg,#f7d875,#b98220);color:#10202a;text-align:center}
 .card-btn.deposit{background:#174d43;color:#9fffe0;border:1px solid #2b8c72}
 .empty{display:none;text-align:center;padding:25px;color:#c3d7dd}
 .extra-section{margin-top:28px;padding:18px 12px;border:1px solid #294d5b;border-radius:12px;background:#0d2631;text-align:center}
@@ -134,12 +136,12 @@ footer{text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #1
   </section>
 
   <div class="featured-logos" id="featuredLogos">
-    <span class="featured-logo">ORION STAR</span>
-    <span class="featured-logo">MILKYWAY</span>
-    <span class="featured-logo">JUWA</span>
-    <span class="featured-logo">FIREKIRIN</span>
-    <span class="featured-logo">GAME VAULT</span>
-    <span class="featured-logo">ULTRA PANDA</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Orion Star">OS</span>ORION STAR</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Milkyway">MW</span>MILKYWAY</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Juwa">JW</span>JUWA</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Firekirin">FK</span>FIREKIRIN</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Game Vault">GV</span>GAME VAULT</span>
+    <span class="featured-logo"><span class="mini-mark" data-feature="Ultra Panda">UP</span>ULTRA PANDA</span>
   </div>
 
   <div class="section-heading">
@@ -289,6 +291,7 @@ const searchBox=document.getElementById("searchBox");
 const emptyMessage=document.getElementById("emptyMessage");
 const numberOptions=[500,600,700,800,900,1000,1200,1500,1800,2000];
 const countMap=new Map();
+const logoCache=new Map();
 
 function initials(name){
   return String(name||"GAME")
@@ -301,32 +304,74 @@ function initials(name){
     .toUpperCase();
 }
 
-/* SELF-CONTAINED LOGOS:
-   No external image URLs are used.
-   Every game always displays its initials. */
-function loadLogo(container,name,url,size){
-  if(!container)return;
+/* Try the game's own favicon first, then common favicon services.
+   If all image sources fail, the initials remain visible. */
+function getLogoSources(url){
+  try{
+    const parsed=new URL(url);
+    const host=parsed.hostname;
+    const sources=[
+      new URL("/favicon.ico",parsed.origin).href,
+      "https://www.google.com/s2/favicons?domain="+encodeURIComponent(host)+"&sz=128",
+      "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(host)+".ico"
+    ];
+    return [...new Set(sources)];
+  }catch(error){
+    return [];
+  }
+}
 
+function loadLogo(container,name,url){
+  if(!container)return;
   container.replaceChildren();
   container.textContent=initials(name);
   container.setAttribute("role","img");
   container.setAttribute("aria-label",name+" logo");
   container.title=name;
 
-  container.style.display="flex";
-  container.style.alignItems="center";
-  container.style.justifyContent="center";
-  container.style.color="#fff0b0";
-  container.style.fontWeight="900";
-  container.style.background="linear-gradient(145deg,#234955,#071923 65%,#9b7020)";
-  container.style.border="1px solid #d6a43b";
+  const sources=logoCache.get(url)||getLogoSources(url);
+  logoCache.set(url,sources);
+  if(!sources.length)return;
+
+  const img=document.createElement("img");
+  img.alt="";
+  img.loading="lazy";
+  img.decoding="async";
+  img.referrerPolicy="no-referrer";
+  img.dataset.logoSourceIndex="0";
+
+  img.onerror=function(){
+    const nextIndex=Number(img.dataset.logoSourceIndex)+1;
+    if(nextIndex<sources.length){
+      img.dataset.logoSourceIndex=String(nextIndex);
+      img.src=sources[nextIndex];
+    }else{
+      img.remove();
+      container.textContent=initials(name);
+    }
+  };
+
+  img.onload=function(){
+    if(img.naturalWidth<2||img.naturalHeight<2)img.onerror();
+  };
+
+  container.appendChild(img);
+  img.src=sources[0];
 }
 
 function makeLogo(name,url){
   const logo=document.createElement("div");
   logo.className="game-logo";
-  loadLogo(logo,name,url,128);
+  loadLogo(logo,name,url);
   return logo;
+}
+
+function loadFeaturedLogos(){
+  document.querySelectorAll("[data-feature]").forEach(mark=>{
+    const name=mark.dataset.feature;
+    const match=games.find(game=>game[0].toLowerCase()===name.toLowerCase());
+    if(match)loadLogo(mark,name,match[1]);
+  });
 }
 
 function renderGames(filter=""){
@@ -343,7 +388,7 @@ function renderGames(filter=""){
     title.className="game-name";
     title.textContent=name;
 
-    const key=name+"|"+url+"|"+index;
+    const key=name+"|"+url;
     if(!countMap.has(key)){
       countMap.set(key,numberOptions[(index*3+1)%numberOptions.length]);
     }
@@ -390,7 +435,7 @@ function makeTicker(id){
 
       const logo=document.createElement("span");
       logo.className="ticker-logo";
-      loadLogo(logo,name,url,64);
+      loadLogo(logo,name,url);
 
       const label=document.createElement("span");
       if(id==="tickerOne"){
@@ -398,7 +443,7 @@ function makeTicker(id){
         amount.className="ticker-amount";
         amount.dataset.index=String(index+repeat);
         amount.textContent="$"+numberOptions[(index+repeat)%numberOptions.length].toLocaleString();
-        label.append("LIVE WIN  •  "+name+"  •  ");
+        label.append("FEATURED  •  "+name+"  •  ");
         label.appendChild(amount);
       }else{
         label.textContent="✦ "+name+"  •  5 FREE PLAYS  •  180% WELCOME BONUS";
@@ -421,11 +466,6 @@ function updateAnimatedNumbers(){
     countMap.set(key,next);
     el.textContent="✦ "+next.toLocaleString()+" ✦";
   });
-
-  document.querySelectorAll(".ticker-amount").forEach(el=>{
-    const amount=numberOptions[Math.floor(Math.random()*numberOptions.length)];
-    el.textContent="$"+amount.toLocaleString();
-  });
 }
 
 function toggleLiveWin(){
@@ -434,7 +474,7 @@ function toggleLiveWin(){
   const isOpen=panel.classList.toggle("visible");
   button.setAttribute("aria-expanded",String(isOpen));
   button.textContent=isOpen?"✕ CLOSE":"🔴 LIVE WIN";
-  panel.textContent=isOpen?"Premium Gaming Lounge • Explore your favorite gaming platforms below.":"";
+  panel.textContent=isOpen?"Explore your favorite gaming platforms. Displayed amounts and platform counts are illustrative, not verified live results.":"";
 }
 
 function showModal(id){
@@ -467,6 +507,7 @@ searchBox.addEventListener("input",()=>renderGames(searchBox.value));
 makeTicker("tickerOne");
 makeTicker("tickerTwo");
 renderGames();
+loadFeaturedLogos();
 document.getElementById("year").textContent=new Date().getFullYear();
 setInterval(updateAnimatedNumbers,7000);
 
