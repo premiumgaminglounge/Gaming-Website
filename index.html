@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,11 +29,11 @@ h1{color:var(--light);font-size:clamp(24px,5vw,38px);margin:10px 0}
 .action-btn.secondary{background:#153846;color:white;border:1px solid #376477}
 .ticker-row{display:flex;align-items:stretch;gap:7px;padding:10px 10px 0}
 .ticker{min-width:0;overflow:hidden;border:1px solid #59441d;border-radius:8px;background:#0b2631;flex:1}
-.ticker-track{width:max-content;display:flex;align-items:center;gap:28px;padding:12px 0;animation:scrollLeft 45s linear infinite}
-.ticker.reverse .ticker-track{animation-name:scrollRight;animation-duration:52s}
+.ticker-track{width:max-content;display:flex;align-items:center;gap:28px;padding:12px 0;animation:scrollLeft 80s linear infinite}
+.ticker.reverse .ticker-track{animation-name:scrollRight;animation-duration:90s}
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-item{display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--light);font-size:13px;font-weight:bold}
-.ticker-logo{width:25px;height:25px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#183b49;color:var(--gold);font-size:10px;overflow:hidden}
+.ticker-logo{width:25px;height:25px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#183b49;color:var(--gold);font-size:10px;overflow:hidden;flex-shrink:0}
 .ticker-logo img{width:100%;height:100%;object-fit:contain}
 .live-win-btn{background:#a91e28;color:white;border:0;border-radius:8px;padding:8px 12px;font-weight:bold;white-space:nowrap;animation:pulse 1.6s infinite}
 .live-win-panel{display:none;text-align:center;padding:12px;margin:8px 10px;background:#102d3a;border:1px solid #7e5d22;border-radius:8px;color:var(--light);font-size:13px}
@@ -294,23 +293,54 @@ function initials(name){
   return name.split(/\s+/).map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
 }
 
+/* Logo fallback: Google, DuckDuckGo, then the game's own favicon.
+   If all fail, the game's initials remain visible. */
+function loadLogo(container,name,url,size){
+  let domain;
+  try{
+    domain=new URL(url).hostname;
+  }catch(e){
+    return;
+  }
+
+  const img=document.createElement("img");
+  img.alt=name+" logo";
+  img.loading="lazy";
+  img.referrerPolicy="no-referrer";
+
+  const sources=[
+    "https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz="+size,
+    "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(domain)+".ico",
+    "https://"+domain+"/favicon.ico"
+  ];
+
+  let attempt=0;
+
+  img.onerror=()=>{
+    attempt++;
+    if(attempt<sources.length){
+      img.src=sources[attempt];
+    }else{
+      img.remove();
+    }
+  };
+
+  img.onload=()=>{
+    if(img.naturalWidth>0){
+      container.textContent="";
+      container.appendChild(img);
+    }
+  };
+
+  img.src=sources[0];
+}
+
 function makeLogo(name,url){
   const logo=document.createElement("div");
   logo.className="game-logo";
+  logo.setAttribute("aria-label",name+" logo");
   logo.textContent=initials(name);
-  const img=document.createElement("img");
-  try{
-    img.src="https://www.google.com/s2/favicons?domain="+encodeURIComponent(new URL(url).hostname)+"&sz=128";
-  }catch(e){return logo}
-  img.alt=name+" logo";
-  img.loading="lazy";
-  img.onerror=()=>{img.remove()};
-  img.onload=()=>{
-    if(img.naturalWidth>0){
-      logo.textContent="";
-      logo.appendChild(img);
-    }
-  };
+  loadLogo(logo,name,url,128);
   return logo;
 }
 
@@ -376,19 +406,7 @@ function makeTicker(id){
       const logo=document.createElement("span");
       logo.className="ticker-logo";
       logo.textContent=initials(name);
-
-      const img=document.createElement("img");
-      try{
-        img.src="https://www.google.com/s2/favicons?domain="+encodeURIComponent(new URL(url).hostname)+"&sz=64";
-        img.alt="";
-        img.onerror=()=>img.remove();
-        img.onload=()=>{
-          if(img.naturalWidth>0){
-            logo.textContent="";
-            logo.appendChild(img);
-          }
-        };
-      }catch(e){}
+      loadLogo(logo,name,url,64);
 
       const label=document.createElement("span");
       if(id==="tickerOne"){
