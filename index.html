@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +34,7 @@ h1{color:var(--light);font-size:clamp(24px,5vw,38px);margin:10px 0}
 .ticker.reverse .ticker-track{animation-name:scrollRight;animation-duration:90s}
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-item{display:flex;align-items:center;gap:8px;white-space:nowrap;color:var(--light);font-size:13px;font-weight:bold}
-.ticker-logo{width:25px;height:25px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:#183b49;color:var(--gold);font-size:10px;overflow:hidden;flex-shrink:0}
+.ticker-logo{width:28px;height:28px;display:inline-flex;align-items:center;justify-content:center;border-radius:50%;background:linear-gradient(145deg,#234955,#071923,#9b7020);color:#fff0b0;font-size:10px;font-weight:900;overflow:hidden;flex-shrink:0;border:1px solid #d6a43b;box-shadow:0 0 7px #d6a43b44}
 .ticker-logo img{width:100%;height:100%;object-fit:contain}
 .live-win-btn{background:#a91e28;color:white;border:0;border-radius:8px;padding:8px 12px;font-weight:bold;white-space:nowrap;animation:pulse 1.6s infinite}
 .live-win-panel{display:none;text-align:center;padding:12px;margin:8px 10px;background:#102d3a;border:1px solid #7e5d22;border-radius:8px;color:var(--light);font-size:13px}
@@ -59,7 +60,7 @@ main{max-width:1200px;margin:auto;padding:18px 12px 35px}
 .games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
 .game-card{min-width:0;background:linear-gradient(145deg,#153744,#0c222d);border:1px solid #254c5b;border-radius:12px;padding:13px 9px;text-align:center;box-shadow:0 5px 13px #0002}
 .game-card:hover{border-color:var(--gold);transform:translateY(-2px)}
-.game-logo{width:65px;height:65px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border:1px solid #806222;border-radius:15px;background:linear-gradient(145deg,#234955,#071923);color:var(--light);font-size:21px;font-weight:900;overflow:hidden}
+.game-logo{width:65px;height:65px;margin:0 auto 10px;display:flex;align-items:center;justify-content:center;border:2px solid #d6a43b;border-radius:15px;background:linear-gradient(145deg,#234955,#071923 65%,#9b7020);color:#fff0b0;font-size:21px;font-weight:900;letter-spacing:1px;overflow:hidden;box-shadow:0 0 12px #d6a43b35,inset 0 0 8px #d6a43b22;text-shadow:0 1px 4px #000}
 .game-logo img{width:100%;height:100%;object-fit:contain;background:#fff}
 .game-name{font-size:14px;font-weight:bold;min-height:34px;display:flex;align-items:center;justify-content:center;overflow-wrap:anywhere}
 .game-number{color:var(--green);font-size:12px;font-weight:bold;margin:7px 0 10px;min-height:16px}
@@ -290,56 +291,40 @@ const numberOptions=[500,600,700,800,900,1000,1200,1500,1800,2000];
 const countMap=new Map();
 
 function initials(name){
-  return name.split(/\s+/).map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
+  return String(name||"GAME")
+    .trim()
+    .split(/\s+/)
+    .filter(Boolean)
+    .map(word=>word[0]||"")
+    .join("")
+    .slice(0,3)
+    .toUpperCase();
 }
 
-/* Logo fallback: Google, DuckDuckGo, then the game's own favicon.
-   If all fail, the game's initials remain visible. */
+/* SELF-CONTAINED LOGOS:
+   No external image URLs are used.
+   Every game always displays its initials. */
 function loadLogo(container,name,url,size){
-  let domain;
-  try{
-    domain=new URL(url).hostname;
-  }catch(e){
-    return;
-  }
+  if(!container)return;
 
-  const img=document.createElement("img");
-  img.alt=name+" logo";
-  img.loading="lazy";
-  img.referrerPolicy="no-referrer";
+  container.replaceChildren();
+  container.textContent=initials(name);
+  container.setAttribute("role","img");
+  container.setAttribute("aria-label",name+" logo");
+  container.title=name;
 
-  const sources=[
-    "https://www.google.com/s2/favicons?domain="+encodeURIComponent(domain)+"&sz="+size,
-    "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(domain)+".ico",
-    "https://"+domain+"/favicon.ico"
-  ];
-
-  let attempt=0;
-
-  img.onerror=()=>{
-    attempt++;
-    if(attempt<sources.length){
-      img.src=sources[attempt];
-    }else{
-      img.remove();
-    }
-  };
-
-  img.onload=()=>{
-    if(img.naturalWidth>0){
-      container.textContent="";
-      container.appendChild(img);
-    }
-  };
-
-  img.src=sources[0];
+  container.style.display="flex";
+  container.style.alignItems="center";
+  container.style.justifyContent="center";
+  container.style.color="#fff0b0";
+  container.style.fontWeight="900";
+  container.style.background="linear-gradient(145deg,#234955,#071923 65%,#9b7020)";
+  container.style.border="1px solid #d6a43b";
 }
 
 function makeLogo(name,url){
   const logo=document.createElement("div");
   logo.className="game-logo";
-  logo.setAttribute("aria-label",name+" logo");
-  logo.textContent=initials(name);
   loadLogo(logo,name,url,128);
   return logo;
 }
@@ -405,7 +390,6 @@ function makeTicker(id){
 
       const logo=document.createElement("span");
       logo.className="ticker-logo";
-      logo.textContent=initials(name);
       loadLogo(logo,name,url,64);
 
       const label=document.createElement("span");
