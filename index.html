@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -133,10 +132,10 @@ h1 {
 .ticker-track {
   display:flex;width:max-content;align-items:center;
   gap:25px;padding:12px 0;
-  animation:scrollLeft 70s linear infinite
+  animation:scrollLeft 180s linear infinite
 }
 .ticker.reverse .ticker-track {
-  animation-name:scrollRight;animation-duration:70s
+  animation-name:scrollRight;animation-duration:180s
 }
 .ticker:hover .ticker-track {animation-play-state:paused}
 .ticker-item {
@@ -426,7 +425,6 @@ footer {
 
   <div class="games-grid" id="gamesGrid"></div>
   <div class="empty" id="emptyMessage">No games found. Try another name.</div>
-  <p class="note">Player figures shown on cards are illustrative display values, not verified live player totals.</p>
 
   <section class="extra-section" id="wallet">
     <h2>💳 Deposit / Withdraw Support</h2>
@@ -816,11 +814,14 @@ function toggleMenu(){
   if(menu)menu.scrollIntoView({behavior:"smooth",block:"end"});
 }
 
+/* LIVE CHAT: TRY CHAPORT FIRST, THEN TAWK, THEN WHATSAPP */
 function openLiveChat(){
-  if(window.Tawk_API&&typeof window.Tawk_API.maximize==="function"){
-    window.Tawk_API.maximize();
-  }else if(window.chaport&&typeof window.chaport.open==="function"){
+  if(window.chaport&&typeof window.chaport.open==="function"){
     window.chaport.open();
+  }else if(window.chaport&&typeof window.chaport.q==="function"){
+    window.chaport.q("open");
+  }else if(window.Tawk_API&&typeof window.Tawk_API.maximize==="function"){
+    window.Tawk_API.maximize();
   }else{
     window.open("https://wa.me/14482414979","_blank");
   }
