@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -814,14 +815,11 @@ function toggleMenu(){
   if(menu)menu.scrollIntoView({behavior:"smooth",block:"end"});
 }
 
-/* LIVE CHAT: TRY CHAPORT FIRST, THEN TAWK, THEN WHATSAPP */
+/* LIVE CHAT: CHAPORT FIRST */
 function openLiveChat(){
-  if(window.chaport&&typeof window.chaport.open==="function"){
-    window.chaport.open();
-  }else if(window.chaport&&typeof window.chaport.q==="function"){
-    window.chaport.q("open");
-  }else if(window.Tawk_API&&typeof window.Tawk_API.maximize==="function"){
-    window.Tawk_API.maximize();
+  if(window.chaport){
+    window.chaport._q=window.chaport._q||[];
+    window.chaport._q.push(["open"]);
   }else{
     window.open("https://wa.me/14482414979","_blank");
   }
