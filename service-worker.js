@@ -1,16 +1,14 @@
-
 const CACHE_NAME = "premium-gaming-lounge-v1";
-
-const FILES = [
+const APP_FILES = [
   "./",
   "./index.html",
-  "./manifest.webmanifest"
+  "./manifest.json",
+  "./icon.svg"
 ];
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME)
-      .then(cache => cache.addAll(FILES))
+    caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES))
   );
   self.skipWaiting();
 });
@@ -19,8 +17,7 @@ self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
       Promise.all(
-        keys
-          .filter(key => key !== CACHE_NAME)
+        keys.filter(key => key !== CACHE_NAME)
           .map(key => caches.delete(key))
       )
     )
@@ -36,15 +33,16 @@ self.addEventListener("fetch", event => {
 
   event.respondWith(
     fetch(event.request).then(response => {
-      if (response.ok) {
+      if (response && response.ok) {
         const copy = response.clone();
-        caches.open(CACHE_NAME)
-          .then(cache => cache.put(event.request, copy));
+        caches.open(CACHE_NAME).then(cache =>
+          cache.put(event.request, copy)
+        );
       }
       return response;
     }).catch(() =>
-      caches.match(event.request).then(
-        cached => cached || caches.match("./index.html")
+      caches.match(event.request).then(cached =>
+        cached || caches.match("./index.html")
       )
     )
   );
