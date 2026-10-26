@@ -696,7 +696,7 @@ function renderGames(filter=""){
 
     const number=document.createElement("div");
     number.className="game-number";
-    number.textContent="● "+countMap.get(key).toLocaleString()+" sample activity";
+    number.textContent="● "+countMap.get(key).toLocaleString()+" Playing";
 
     const info=document.createElement("div");
     info.className="game-info";
@@ -768,7 +768,7 @@ function updateAnimatedNumbers(){
     while(next===current)
       next=numberOptions[Math.floor(Math.random()*numberOptions.length)];
     countMap.set(key,next);
-    el.textContent="● "+next.toLocaleString()+" sample activity";
+    el.textContent="● "+next.toLocaleString()+" Playing";
   });
 }
 
