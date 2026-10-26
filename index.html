@@ -133,10 +133,10 @@ h1 {
 .ticker-track {
   display:flex;width:max-content;align-items:center;
   gap:25px;padding:12px 0;
-  animation:scrollLeft 65s linear infinite
+  animation:scrollLeft 70s linear infinite
 }
 .ticker.reverse .ticker-track {
-  animation-name:scrollRight;animation-duration:75s
+  animation-name:scrollRight;animation-duration:70s
 }
 .ticker:hover .ticker-track {animation-play-state:paused}
 .ticker-item {
@@ -729,27 +729,39 @@ function renderGames(filter=""){
   emptyMessage.style.display=filtered.length?"none":"block";
 }
 
+/* UPDATED LIVE WIN TICKER: DISPLAY AMOUNTS FROM $500 TO $5,000 */
 function makeTicker(id){
   const track=document.getElementById(id);
   track.replaceChildren();
+
+  const winAmounts=[500,750,900,1000,1200,1500,2000,3000,5000];
 
   for(let repeat=0;repeat<2;repeat++){
     games.forEach(([name,url],index)=>{
       const item=document.createElement("span");
       item.className="ticker-item";
+
       const logo=document.createElement("span");
       logo.className="ticker-logo";
       loadLogo(logo,name,url);
 
       const label=document.createElement("span");
+
       if(id==="tickerOne"){
         label.append("FEATURED • "+name+" • ");
+
+        const amount=document.createElement("strong");
+        amount.style.color="#36d9ae";
+        amount.textContent="$"+winAmounts[(index+repeat)%winAmounts.length]+" • ";
+        label.appendChild(amount);
+
         const tag=document.createElement("strong");
         tag.textContent="VIEW PLATFORM";
         label.appendChild(tag);
       }else{
         label.textContent="✦ "+name+" • GAMING PLATFORM • SUPPORT AVAILABLE";
       }
+
       item.append(logo,label);
       track.appendChild(item);
     });
