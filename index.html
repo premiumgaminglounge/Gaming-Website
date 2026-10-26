@@ -22,78 +22,36 @@
 <title>Premium Gaming Lounge</title>
 <style>
 :root {
-  --bg:#04141e;
-  --panel:#0c2735;
-  --gold:#e8b943;
-  --light:#fff0b0;
-  --green:#36d9ae;
-  --orange:#ff813e;
-  --text:#f7f9fc;
-  --muted:#a8c0ce;
+  --bg:#04141e;--panel:#0c2735;--gold:#e8b943;--light:#fff0b0;
+  --green:#36d9ae;--orange:#ff813e;--text:#f7f9fc;--muted:#a8c0ce;
 }
 * {box-sizing:border-box}
 html {scroll-behavior:smooth;scroll-padding-top:15px}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,Helvetica,sans-serif;padding-bottom:20px;
-}
+body {margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;padding-bottom:20px}
 a {color:inherit;text-decoration:none}
 button,input {font:inherit}
 button {cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible {
-  outline:2px solid var(--gold);outline-offset:3px
-}
-.topbar {
-  text-align:center;padding:11px 8px;
-  background:linear-gradient(90deg,#e8a42c,#ff813e,#e8a42c);
-  color:#29190b;font-size:12px;font-weight:900;letter-spacing:.6px
-}
-header {
-  padding:17px 12px 20px;text-align:center;
-  background:radial-gradient(ellipse at top,#174354,#071923 75%);
-  border-bottom:1px solid #183c4b
-}
-.header-line {
-  display:flex;align-items:center;justify-content:space-between;
-  gap:10px;max-width:900px;margin:auto
-}
+button:focus-visible,a:focus-visible,input:focus-visible {outline:2px solid var(--gold);outline-offset:3px}
+.topbar {text-align:center;padding:11px 8px;background:linear-gradient(90deg,#e8a42c,#ff813e,#e8a42c);color:#29190b;font-size:12px;font-weight:900;letter-spacing:.6px}
+header {padding:17px 12px 20px;text-align:center;background:radial-gradient(ellipse at top,#174354,#071923 75%);border-bottom:1px solid #183c4b}
+.header-line {display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:900px;margin:auto}
 .brand {display:flex;align-items:center;gap:10px;text-align:left;min-width:0}
-.brand-icon {
-  width:54px;height:54px;flex-shrink:0;display:grid;place-items:center;
-  border-radius:50%;border:2px solid var(--gold);
-  background:linear-gradient(145deg,#3b6c64,#102b34,#b17c25);
-  color:var(--light);font-size:28px;box-shadow:0 0 12px #d6a43b30
-}
+.brand-icon {width:54px;height:54px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(145deg,#3b6c64,#102b34,#b17c25);color:var(--light);font-size:28px;box-shadow:0 0 12px #d6a43b30}
 .brand-name {font-size:clamp(17px,4vw,24px);font-weight:900}
 .brand-name span {color:var(--gold)}
 .header-actions {display:flex;gap:7px;align-items:center}
-.small-btn {
-  border:1px solid #234959;border-radius:12px;background:#0c2735;
-  color:white;padding:11px 12px;font-size:12px;font-weight:800
-}
+.small-btn {border:1px solid #234959;border-radius:12px;background:#0c2735;color:white;padding:11px 12px;font-size:12px;font-weight:800}
 .menu-btn {font-size:20px;padding:9px 13px}
 .hero {max-width:800px;margin:25px auto 0}
 h1 {font-size:clamp(29px,7vw,48px);line-height:1.12;margin:16px 0;color:white;font-weight:900}
 .hero h1 span {color:var(--orange)}
 .subtitle {color:var(--muted);font-size:15px;line-height:1.8;margin:12px auto 18px;max-width:600px}
 .actions {display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
-.action-btn {
-  display:inline-flex;align-items:center;justify-content:center;
-  border:0;border-radius:10px;padding:12px 15px;font-weight:900;font-size:12px;
-  background:linear-gradient(135deg,#ffda75,#e7a62d);color:#241b0d
-}
+.action-btn {display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 15px;font-weight:900;font-size:12px;background:linear-gradient(135deg,#ffda75,#e7a62d);color:#241b0d}
 .action-btn.secondary {background:#102e3b;color:white;border:1px solid #315666}
 .action-btn.green {background:linear-gradient(135deg,#37e0b0,#09a986);color:#06271f}
-.logo-strip {
-  display:flex;gap:12px;overflow-x:auto;padding:15px 12px;
-  background:#061923;border-bottom:1px solid #173542;scrollbar-width:thin
-}
-.logo-tile {
-  flex:0 0 88px;height:82px;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;gap:5px;border:1px solid #294b5b;
-  border-radius:15px;background:linear-gradient(145deg,#183b4b,#0b202b);
-  font-size:10px;font-weight:900;text-align:center;color:var(--light);overflow:hidden
-}
+.logo-strip {display:flex;gap:12px;overflow-x:auto;padding:15px 12px;background:#061923;border-bottom:1px solid #173542;scrollbar-width:thin}
+.logo-tile {flex:0 0 88px;height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid #294b5b;border-radius:15px;background:linear-gradient(145deg,#183b4b,#0b202b);font-size:10px;font-weight:900;text-align:center;color:var(--light);overflow:hidden}
 .logo-tile .game-logo {width:43px;height:43px;margin:0;font-size:13px}
 .ticker-row {display:flex;align-items:center;gap:8px;padding:12px 10px 0;max-width:1200px;margin:auto}
 .ticker {min-width:0;overflow:hidden;flex:1;border:1px solid #245249;border-radius:30px;background:#081f29}
@@ -102,14 +60,8 @@ h1 {font-size:clamp(29px,7vw,48px);line-height:1.12;margin:16px 0;color:white;fo
 .ticker:hover .ticker-track {animation-play-state:paused}
 .ticker-item {display:flex;align-items:center;gap:7px;white-space:nowrap;color:#d9e5eb;font-size:12px;font-weight:700}
 .ticker-item strong {color:var(--green)}
-.ticker-logo {
-  position:relative;width:30px;height:30px;flex-shrink:0;display:inline-flex;
-  align-items:center;justify-content:center;overflow:hidden;border-radius:50%;
-  border:1px solid var(--gold);background:#173744;color:var(--light);font-size:9px
-}
-.ticker-logo img,.game-logo img,.mini-mark img {
-  position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;background:#102d3a
-}
+.ticker-logo {position:relative;width:30px;height:30px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;border:1px solid var(--gold);background:#173744;color:var(--light);font-size:9px}
+.ticker-logo img,.game-logo img,.mini-mark img {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;background:#102d3a}
 .live-win-btn {border:0;border-radius:22px;padding:11px 12px;background:#a92330;color:white;font-weight:900;font-size:11px;white-space:nowrap;animation:pulse 1.8s infinite}
 .live-win-panel {display:none;margin:8px 12px;padding:12px;text-align:center;border:1px solid #355567;border-radius:12px;background:#102d3a;color:#fff0b0;font-size:12px}
 .live-win-panel.visible {display:block}
@@ -117,12 +69,7 @@ h1 {font-size:clamp(29px,7vw,48px);line-height:1.12;margin:16px 0;color:white;fo
 @keyframes scrollRight {from {transform:translateX(-50%)} to {transform:translateX(0)}}
 @keyframes pulse {50% {filter:brightness(1.25)}}
 main {max-width:1200px;margin:auto;padding:15px 12px 35px}
-.promo-banner {
-  position:relative;overflow:hidden;text-align:center;padding:21px 12px;margin:15px 0 22px;
-  border:1px solid #a87b35;border-radius:24px;
-  background:linear-gradient(125deg,#ff7a48,#ffb13c,#f37a3e);
-  color:#2c180e;box-shadow:0 7px 24px #ff813e20
-}
+.promo-banner {position:relative;overflow:hidden;text-align:center;padding:21px 12px;margin:15px 0 22px;border:1px solid #a87b35;border-radius:24px;background:linear-gradient(125deg,#ff7a48,#ffb13c,#f37a3e);color:#2c180e;box-shadow:0 7px 24px #ff813e20}
 .promo-icon {font-size:30px}
 .bonus-pill {display:inline-block;background:#532b1a;color:#fff0b0;padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900}
 .promo-banner h2 {font-size:clamp(23px,5vw,32px);margin:10px 0;font-weight:900}
@@ -171,31 +118,25 @@ footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #
 .modal-close {background:#a91e28;color:white;border:0;padding:10px 16px;border-radius:8px}
 .spin-wheel {font-size:62px;margin:10px auto;color:var(--gold)}
 .mobile-nav {display:none}
-@media(min-width:600px) {
-  .games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
-  main {padding-left:20px;padding-right:20px}
-  .game-logo {height:165px}
-}
+@media(min-width:600px) {.games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}main {padding-left:20px;padding-right:20px}.game-logo {height:165px}}
 @media(min-width:900px) {.games-grid {grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:599px) {
-  body {padding-bottom:68px}
-  header {padding:14px 10px 20px}
-  .brand-icon {width:47px;height:47px;font-size:24px}
-  .small-btn {padding:10px 9px}
-  .hero {margin-top:20px}
-  .ticker-row {padding-top:10px}
-  .live-win-btn {padding:10px 9px;font-size:10px}
-  .game-logo {height:122px}
-  .mobile-nav {display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;justify-content:space-around;align-items:center;padding:9px 3px max(9px,env(safe-area-inset-bottom));background:#061923f5;border-top:1px solid #274554;backdrop-filter:blur(12px)}
-  .nav-item {display:flex;flex-direction:column;align-items:center;gap:4px;color:#a9bec8;font-size:10px;font-weight:800;min-width:48px}
-  .nav-item span:first-child {font-size:21px}
-  .nav-item.active {color:#ffd45c}
-  .install-float {bottom:78px}
-  .floating-buttons {bottom:78px}
+body {padding-bottom:68px}
+header {padding:14px 10px 20px}
+.brand-icon {width:47px;height:47px;font-size:24px}
+.small-btn {padding:10px 9px}
+.hero {margin-top:20px}
+.ticker-row {padding-top:10px}
+.live-win-btn {padding:10px 9px;font-size:10px}
+.game-logo {height:122px}
+.mobile-nav {display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;justify-content:space-around;align-items:center;padding:9px 3px max(9px,env(safe-area-inset-bottom));background:#061923f5;border-top:1px solid #274554;backdrop-filter:blur(12px)}
+.nav-item {display:flex;flex-direction:column;align-items:center;gap:4px;color:#a9bec8;font-size:10px;font-weight:800;min-width:48px}
+.nav-item span:first-child {font-size:21px}
+.nav-item.active {color:#ffd45c}
+.install-float {bottom:78px}
+.floating-buttons {bottom:78px}
 }
-@media(prefers-reduced-motion:reduce) {
-  *,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}
-}
+@media(prefers-reduced-motion:reduce) {*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -296,81 +237,7 @@ footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #
 </div>
 <script>
 const games = [
-["Orion Star","http://start.orionstars.vip:8580/"],
-["Milkyway","https://milkywayapp.xyz/"],
-["Juwa","https://dl.juwa777.com/"],
-["Vblink","https://www.vblink777.club/"],
-["Juwa 2.0","https://m.juwa2.com/"],
-["Firekirin","https://start.firekirin.xyz:8580/index.html"],
-["Vegas X","https://www.vegas-x.org/"],
-["Game Vault","http://download.gamevault999.com/"],
-["Egame","https://www.egame99.club/"],
-["Moolah","https://moolah.vip:8888/"],
-["RiverSweep","https://bet777.eu/play/"],
-["Noble777","http://www.noble777.com/"],
-["Highstake","https://dl.highstakesweeps.com/"],
-["Casino Royal","http://m.casinoroyale07.com/"],
-["Vegas Sweep","http://m.lasvegassweeps.com/"],
-["Ultra Panda","http://www.ultrapanda.mobi/"],
-["Orion Power","http://download.orionpower.games:8008/"],
-["Winstar","https://www.winstar99999.com/"],
-["Mafia 777","https://www.mafia77777.com/"],
-["Paracasino","https://download.paracasino.net/"],
-["Vegas Roll","http://www.vegas-roll.com/m"],
-["Mr. All in One","http://www.mrallinone777.com/"],
-["Yolo 777","https://yolo777.game/"],
-["Cash Machine","https://www.cashmachine777.com/"],
-["Game Room","https://www.gameroom777.com/"],
-["Vegas Luck","https://start.vegasluck777.com/"],
-["Vegas Sweep Mobile","https://m.lasvegassweeps.com/"],
-["Moolah Mobile","https://moolah.vip:8888/"],
-["River Pay","https://river777.net/build.30/index.html"],
-["Loot Game","https://m.lootgame777.com/"],
-["Para Casino H5","https://h5.paracasino.net/"],
-["Mr All in One Agent","http://agentserver.mrallinone777.com/"],
-["Winstar Server","http://server.winstar99999.com:8009/"],
-["Hukum","https://hukum777.online/"],
-["Mob.com","https://fpc-mob.com/"],
-["Highroller","https://www.highroller.com/casino"],
-["Noble 777","https://www.noble777.com/"],
-["Dragon Crown","https://atlus.com/dragonscrown/"],
-["Lucky Master","https://lucky-master.net/"],
-["King of Pop","https://kingofpop777.com/"],
-["Firefonix","https://fpc-mob.com/AD/index.html"],
-["Bigwin","https://bigwplay.com/"],
-["Thunderseven","https://thunderseven.com/"],
-["Gem Slots","https://www.gem77777.com/m"],
-["Game Room Online","https://www.gameroom777.com/"],
-["Mr. All in One","https://www.mrallinone777.com/"],
-["Winner Club","https://www.winnersclub777.com/"],
-["Cash Frenzy","https://www.cashfrenzy777.com/"],
-["King of Pop Slots","https://www.slots88888.com/"],
-["Vegas Luck","https://start.vegasluck777.com/"],
-["Cash Machine","https://www.cashmachine777.com/"],
-["Win Star","http://www.winstar99999.com/"],
-["Joker 777","https://www.joker777.win/"],
-["Orion Strike","https://start.orionstrike777.com/"],
-["Orion Power Download","http://download.orionpower.games:8008"],
-["Big Bang","https://www.bigbangcasino.vegas/"],
-["Lucky Star","https://www.luckystars.games/"],
-["Stars Galaxy","https://www.starsgalaxy777.com/"],
-["Gem777","https://www.gem77777.com/"],
-["Lucky Paradise","https://www.luckyparadise777.com/"],
-["River Monster","https://rm777.net/"],
-["Mega Spin","https://megaspinpay.com/default.aspx"],
-["Sharks Secret 77","https://www.sharksecret777.com/"],
-["Winwin Vegas","https://winwinvegas777.com/"],
-["Panda Master","https://pandamaster.vip:8888/"],
-["Cash Frenzy","https://www.cashfrenzy777.com/"],
-["Ding Ding","https://www.dingdinghouse.com/"],
-["Lucky Paradise","https://www.luckyparadise777.com/"],
-["Vegas X Pro","https://vegas-x.pro/"],
-["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],
-["Big Winner","https://bigwplay.com/"],
-["Game Vault 777","https://www.gamevault77777.com/"],
-["Blue Dragon","https://bluedragon777.net/"],
-["Game Vault 2","https://res.gamevault2.vip/download/"],
-["Acebook","https://www.playacebook.mobi/"]
+["Orion Star","http://start.orionstars.vip:8580/"],["Milkyway","https://milkywayapp.xyz/"],["Juwa","https://dl.juwa777.com/"],["Vblink","https://www.vblink777.club/"],["Juwa 2.0","https://m.juwa2.com/"],["Firekirin","https://start.firekirin.xyz:8580/index.html"],["Vegas X","https://www.vegas-x.org/"],["Game Vault","http://download.gamevault999.com/"],["Egame","https://www.egame99.club/"],["Moolah","https://moolah.vip:8888/"],["RiverSweep","https://bet777.eu/play/"],["Noble777","http://www.noble777.com/"],["Highstake","https://dl.highstakesweeps.com/"],["Casino Royal","http://m.casinoroyale07.com/"],["Vegas Sweep","http://m.lasvegassweeps.com/"],["Ultra Panda","http://www.ultrapanda.mobi/"],["Orion Power","http://download.orionpower.games:8008/"],["Winstar","https://www.winstar99999.com/"],["Mafia 777","https://www.mafia77777.com/"],["Paracasino","https://download.paracasino.net/"],["Vegas Roll","http://www.vegas-roll.com/m"],["Mr. All in One","http://www.mrallinone777.com/"],["Yolo 777","https://yolo777.game/"],["Cash Machine","https://www.cashmachine777.com/"],["Game Room","https://www.gameroom777.com/"],["Vegas Luck","https://start.vegasluck777.com/"],["Vegas Sweep Mobile","https://m.lasvegassweeps.com/"],["Moolah Mobile","https://moolah.vip:8888/"],["River Pay","https://river777.net/build.30/index.html"],["Loot Game","https://m.lootgame777.com/"],["Para Casino H5","https://h5.paracasino.net/"],["Mr All in One Agent","http://agentserver.mrallinone777.com/"],["Winstar Server","http://server.winstar99999.com:8009/"],["Hukum","https://hukum777.online/"],["Mob.com","https://fpc-mob.com/"],["Highroller","https://www.highroller.com/casino"],["Noble 777","https://www.noble777.com/"],["Dragon Crown","https://atlus.com/dragonscrown/"],["Lucky Master","https://lucky-master.net/"],["King of Pop","https://kingofpop777.com/"],["Firefonix","https://fpc-mob.com/AD/index.html"],["Bigwin","https://bigwplay.com/"],["Thunderseven","https://thunderseven.com/"],["Gem Slots","https://www.gem77777.com/m"],["Game Room Online","https://www.gameroom777.com/"],["Mr. All in One","https://www.mrallinone777.com/"],["Winner Club","https://www.winnersclub777.com/"],["Cash Frenzy","https://www.cashfrenzy777.com/"],["King of Pop Slots","https://www.slots88888.com/"],["Vegas Luck","https://start.vegasluck777.com/"],["Cash Machine","https://www.cashmachine777.com/"],["Win Star","http://www.winstar99999.com/"],["Joker 777","https://www.joker777.win/"],["Orion Strike","https://start.orionstrike777.com/"],["Orion Power Download","http://download.orionpower.games:8008"],["Big Bang","https://www.bigbangcasino.vegas/"],["Lucky Star","https://www.luckystars.games/"],["Stars Galaxy","https://www.starsgalaxy777.com/"],["Gem777","https://www.gem77777.com/"],["Lucky Paradise","https://www.luckyparadise777.com/"],["River Monster","https://rm777.net/"],["Mega Spin","https://megaspinpay.com/default.aspx"],["Sharks Secret 77","https://www.sharksecret777.com/"],["Winwin Vegas","https://winwinvegas777.com/"],["Panda Master","https://pandamaster.vip:8888/"],["Cash Frenzy","https://www.cashfrenzy777.com/"],["Ding Ding","https://www.dingdinghouse.com/"],["Lucky Paradise","https://www.luckyparadise777.com/"],["Vegas X Pro","https://vegas-x.pro/"],["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],["Big Winner","https://bigwplay.com/"],["Game Vault 777","https://www.gamevault77777.com/"],["Blue Dragon","https://bluedragon777.net/"],["Game Vault 2","https://res.gamevault2.vip/download/"],["Acebook","https://www.playacebook.mobi/"]
 ];
 
 const grid=document.getElementById("gamesGrid");
@@ -381,193 +248,102 @@ const countMap=new Map();
 const logoCache=new Map();
 let installPrompt=null;
 
-function initials(name){
-  return String(name||"GAME").trim().split(/\s+/).filter(Boolean).map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
-}
+function initials(name){return String(name||"GAME").trim().split(/\s+/).filter(Boolean).map(word=>word[0]||"").join("").slice(0,3).toUpperCase()}
 function getLogoSources(url){
-  try{
-    const parsed=new URL(url);
-    return [...new Set([
-      new URL("/favicon.ico",parsed.origin).href,
-      "https://www.google.com/s2/favicons?domain="+encodeURIComponent(parsed.hostname)+"&sz=128",
-      "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(parsed.hostname)+".ico"
-    ])];
-  }catch(e){return []}
+  try{const parsed=new URL(url);return [...new Set([new URL("/favicon.ico",parsed.origin).href,"https://www.google.com/s2/favicons?domain="+encodeURIComponent(parsed.hostname)+"&sz=128","https://icons.duckduckgo.com/ip3/"+encodeURIComponent(parsed.hostname)+".ico"])]}catch(e){return []}
 }
 function loadLogo(container,name,url){
-  container.replaceChildren();
-  container.textContent=initials(name);
-  container.setAttribute("role","img");
-  container.setAttribute("aria-label",name+" logo");
-  const sources=logoCache.get(url)||getLogoSources(url);
-  logoCache.set(url,sources);
-  if(!sources.length)return;
-  const img=document.createElement("img");
-  img.alt="";img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";
-  let index=0;
-  img.onerror=()=>{
-    index++;
-    if(index<sources.length)img.src=sources[index];
-    else {img.remove();container.textContent=initials(name)}
-  };
+  container.replaceChildren();container.textContent=initials(name);container.setAttribute("role","img");container.setAttribute("aria-label",name+" logo");
+  const sources=logoCache.get(url)||getLogoSources(url);logoCache.set(url,sources);if(!sources.length)return;
+  const img=document.createElement("img");img.alt="";img.loading="lazy";img.decoding="async";img.referrerPolicy="no-referrer";let index=0;
+  img.onerror=()=>{index++;if(index<sources.length)img.src=sources[index];else{img.remove();container.textContent=initials(name)}};
   container.appendChild(img);img.src=sources[0];
 }
-function makeLogo(name,url){
-  const logo=document.createElement("div");logo.className="game-logo";loadLogo(logo,name,url);return logo;
-}
+function makeLogo(name,url){const logo=document.createElement("div");logo.className="game-logo";loadLogo(logo,name,url);return logo}
 function makeFeaturedLogos(){
-  const featured=[
-    ["Orion Star","http://start.orionstars.vip:8580/"],
-    ["Milkyway","https://milkywayapp.xyz/"],
-    ["Juwa","https://dl.juwa777.com/"],
-    ["Firekirin","https://start.firekirin.xyz:8580/index.html"],
-    ["Game Vault","http://download.gamevault999.com/"],
-    ["Ultra Panda","http://www.ultrapanda.mobi/"]
-  ];
-  const strip=document.getElementById("logoStrip");
-  const boxes=document.getElementById("featuredLogos");
-  strip.replaceChildren();boxes.replaceChildren();
+  const featured=[["Orion Star","http://start.orionstars.vip:8580/"],["Milkyway","https://milkywayapp.xyz/"],["Juwa","https://dl.juwa777.com/"],["Firekirin","https://start.firekirin.xyz:8580/index.html"],["Game Vault","http://download.gamevault999.com/"],["Ultra Panda","http://www.ultrapanda.mobi/"]];
+  const strip=document.getElementById("logoStrip");const boxes=document.getElementById("featuredLogos");strip.replaceChildren();boxes.replaceChildren();
   featured.forEach(([name,url])=>{
-    const tile=document.createElement("div");tile.className="logo-tile";
-    const logo=document.createElement("div");logo.className="game-logo";loadLogo(logo,name,url);
+    const tile=document.createElement("div");tile.className="logo-tile";const logo=document.createElement("div");logo.className="game-logo";loadLogo(logo,name,url);
     const label=document.createElement("span");label.textContent=name;tile.append(logo,label);strip.appendChild(tile);
-    const badge=document.createElement("div");badge.className="featured-logo";
-    const mark=document.createElement("span");mark.className="mini-mark";loadLogo(mark,name,url);
+    const badge=document.createElement("div");badge.className="featured-logo";const mark=document.createElement("span");mark.className="mini-mark";loadLogo(mark,name,url);
     const text=document.createElement("span");text.textContent=name.toUpperCase();badge.append(mark,text);boxes.appendChild(badge);
   });
 }
 function renderGames(filter=""){
-  grid.replaceChildren();
-  const term=filter.trim().toLowerCase();
-  const filtered=games.filter(([name,url])=>(name+" "+url).toLowerCase().includes(term));
+  grid.replaceChildren();const term=filter.trim().toLowerCase();const filtered=games.filter(([name,url])=>(name+" "+url).toLowerCase().includes(term));
   filtered.forEach(([name,url],index)=>{
-    const card=document.createElement("article");card.className="game-card";
-    const hot=document.createElement("span");hot.className="hot-badge";hot.textContent="POPULAR";
-    const logo=makeLogo(name,url);
-    const title=document.createElement("div");title.className="game-name";title.textContent=name;
-    const key=name+"|"+url;
+    const card=document.createElement("article");card.className="game-card";const hot=document.createElement("span");hot.className="hot-badge";hot.textContent="POPULAR";
+    const logo=makeLogo(name,url);const title=document.createElement("div");title.className="game-name";title.textContent=name;const key=name+"|"+url;
     if(!countMap.has(key))countMap.set(key,numberOptions[(index*3+1)%numberOptions.length]);
     const number=document.createElement("div");number.className="game-number";number.textContent="● "+countMap.get(key).toLocaleString()+" Playing";
-    const info=document.createElement("div");info.className="game-info";
-    const actions=document.createElement("div");actions.className="card-actions";
+    const info=document.createElement("div");info.className="game-info";const actions=document.createElement("div");actions.className="card-actions";
     const account=document.createElement("a");account.className="card-btn";account.textContent="GET ID / OPEN";account.href=url;account.target="_blank";account.rel="noopener noreferrer";
-    const deposit=document.createElement("a");deposit.className="card-btn deposit";deposit.textContent="DEPOSIT SUPPORT";
-    deposit.href="https://m.me/61595371058076?ref="+encodeURIComponent("Deposit inquiry: "+name);
-    deposit.target="_blank";deposit.rel="noopener noreferrer";
+    const deposit=document.createElement("a");deposit.className="card-btn deposit";deposit.textContent="DEPOSIT SUPPORT";deposit.href="https://m.me/61595371058076?ref="+encodeURIComponent("Deposit inquiry: "+name);deposit.target="_blank";deposit.rel="noopener noreferrer";
     actions.append(account,deposit);info.append(title,number,actions);card.append(hot,logo,info);grid.appendChild(card);
   });
-  document.getElementById("gameCount").textContent=filtered.length+" platforms";
-  emptyMessage.style.display=filtered.length?"none":"block";
+  document.getElementById("gameCount").textContent=filtered.length+" platforms";emptyMessage.style.display=filtered.length?"none":"block";
 }
 function makeTicker(id){
-  const track=document.getElementById(id);track.replaceChildren();
-  const winAmounts=[500,750,900,1000,1200,1500,2000,3000,5000];
-  for(let repeat=0;repeat<2;repeat++){
-    games.forEach(([name,url],index)=>{
-      const item=document.createElement("span");item.className="ticker-item";
-      const logo=document.createElement("span");logo.className="ticker-logo";loadLogo(logo,name,url);
-      const label=document.createElement("span");
-      if(id==="tickerOne"){
-        label.append("FEATURED • "+name+" • ");
-        const amount=document.createElement("strong");amount.style.color="#36d9ae";amount.textContent="$"+winAmounts[(index+repeat)%winAmounts.length]+" • ";label.appendChild(amount);
-        const tag=document.createElement("strong");tag.textContent="VIEW PLATFORM";label.appendChild(tag);
-      }else{label.textContent="✦ "+name+" • GAMING PLATFORM • SUPPORT AVAILABLE"}
-      item.append(logo,label);track.appendChild(item);
-    });
-  }
+  const track=document.getElementById(id);track.replaceChildren();const winAmounts=[500,750,900,1000,1200,1500,2000,3000,5000];
+  for(let repeat=0;repeat<2;repeat++)games.forEach(([name,url],index)=>{
+    const item=document.createElement("span");item.className="ticker-item";const logo=document.createElement("span");logo.className="ticker-logo";loadLogo(logo,name,url);const label=document.createElement("span");
+    if(id==="tickerOne"){label.append("FEATURED • "+name+" • ");const amount=document.createElement("strong");amount.style.color="#36d9ae";amount.textContent="$"+winAmounts[(index+repeat)%winAmounts.length]+" • ";label.appendChild(amount);const tag=document.createElement("strong");tag.textContent="VIEW PLATFORM";label.appendChild(tag)}
+    else label.textContent="✦ "+name+" • GAMING PLATFORM • SUPPORT AVAILABLE";
+    item.append(logo,label);track.appendChild(item);
+  });
 }
 function updateAnimatedNumbers(){
   document.querySelectorAll(".game-number").forEach(el=>{
-    const card=el.closest(".game-card");if(!card)return;
-    const title=card.querySelector(".game-name").textContent;
-    const url=games.find(g=>g[0]===title)?.[1]||"";
-    const key=title+"|"+url;let current=countMap.get(key)||500;let next=current;
+    const card=el.closest(".game-card");if(!card)return;const title=card.querySelector(".game-name").textContent;const url=games.find(g=>g[0]===title)?.[1]||"";const key=title+"|"+url;let current=countMap.get(key)||500;let next=current;
     while(next===current)next=numberOptions[Math.floor(Math.random()*numberOptions.length)];
     countMap.set(key,next);el.textContent="● "+next.toLocaleString()+" Playing";
   });
 }
 function toggleLiveWin(){
-  const panel=document.getElementById("liveWinPanel");
-  const button=document.getElementById("liveWinButton");
-  const open=panel.classList.toggle("visible");
+  const panel=document.getElementById("liveWinPanel");const button=document.getElementById("liveWinButton");const open=panel.classList.toggle("visible");
   button.setAttribute("aria-expanded",String(open));button.textContent=open?"✕ CLOSE":"● LIVE WINS";
 }
 function showModal(id){document.getElementById(id).classList.add("show")}
 function hideModal(id){document.getElementById(id).classList.remove("show")}
-document.querySelectorAll(".modal").forEach(modal=>{
-  modal.addEventListener("click",event=>{if(event.target===modal)modal.classList.remove("show")});
-});
+document.querySelectorAll(".modal").forEach(modal=>{modal.addEventListener("click",event=>{if(event.target===modal)modal.classList.remove("show")})});
 function spinWheel(){
   const results=["Explore another platform","Contact support","Explore the games","Good luck"];
-  document.getElementById("spinWheel").textContent="🎯";
-  document.getElementById("spinResult").textContent=results[Math.floor(Math.random()*results.length)];
+  document.getElementById("spinWheel").textContent="🎯";document.getElementById("spinResult").textContent=results[Math.floor(Math.random()*results.length)];
 }
-function toggleMenu(){
-  const menu=document.querySelector(".mobile-nav");
-  if(menu)menu.scrollIntoView({behavior:"smooth",block:"end"});
-}
+function toggleMenu(){const menu=document.querySelector(".mobile-nav");if(menu)menu.scrollIntoView({behavior:"smooth",block:"end"})}
 
-/* LIVE CHAT: OPEN ROKOCHAT */
+/* WHAZZUP LIVE CHAT
+   Widget loads below. The documented installation code does not specify
+   a public JavaScript command for opening it from these existing buttons. */
 function openLiveChat(){
-  if(typeof window.Rokochat==="function"){
-    window.Rokochat("open");
-  }
+  alert("Please use the Whazzup chat bubble on the page to start a live chat.");
 }
 
 function installApp(){
-  if(installPrompt){
-    installPrompt.prompt();
-    installPrompt.userChoice.then(()=>{installPrompt=null});
-    return;
-  }
-  const message=document.getElementById("installMessage");
-  const button=document.getElementById("installConfirm");
+  if(installPrompt){installPrompt.prompt();installPrompt.userChoice.then(()=>{installPrompt=null});return}
+  const message=document.getElementById("installMessage");const button=document.getElementById("installConfirm");
   const standalone=window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
-  if(standalone){
-    message.textContent="Premium Gaming Lounge is already running as an installed app.";
-    button.style.display="none";
-  }else{
-    message.textContent="If Chrome supports direct installation, the install option will appear here. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";
-    button.style.display="inline-flex";
-  }
+  if(standalone){message.textContent="Premium Gaming Lounge is already running as an installed app.";button.style.display="none"}
+  else{message.textContent="If Chrome supports direct installation, the install option will appear here. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";button.style.display="inline-flex"}
   showModal("installModal");
 }
 async function confirmInstall(){
-  if(installPrompt){
-    installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;hideModal("installModal");
-  }else{
-    document.getElementById("installMessage").textContent="Open this page in Chrome. Tap ⋮ in the top-right corner, then choose Install app or Add to Home screen if available.";
-  }
+  if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;hideModal("installModal")}
+  else document.getElementById("installMessage").textContent="Open this page in Chrome. Tap ⋮ in the top-right corner, then choose Install app or Add to Home screen if available.";
 }
 window.addEventListener("beforeinstallprompt",event=>{event.preventDefault();installPrompt=event});
-window.addEventListener("appinstalled",()=>{
-  installPrompt=null;
-  document.getElementById("installMessage").textContent="Premium Gaming Lounge was installed successfully.";
-});
+window.addEventListener("appinstalled",()=>{installPrompt=null;document.getElementById("installMessage").textContent="Premium Gaming Lounge was installed successfully."});
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));
-makeTicker("tickerOne");
-makeTicker("tickerTwo");
-renderGames();
-makeFeaturedLogos();
+makeTicker("tickerOne");makeTicker("tickerTwo");renderGames();makeFeaturedLogos();
 document.getElementById("year").textContent=new Date().getFullYear();
-if("serviceWorker" in navigator && location.protocol==="https:"){
-  window.addEventListener("load",()=>{
-    navigator.serviceWorker.register("./service-worker.js").catch(error=>console.log("Service worker registration failed",error));
-  });
-}
-
-/* RokoChat Live Chat */
-(function(w,d,s,k){
-  w.Rokochat = w.Rokochat || function(){
-    (w.Rokochat.q = w.Rokochat.q || []).push(arguments);
-  };
-  w.Rokochat.k = k;
-  var f = d.getElementsByTagName(s)[0];
-  var j = d.createElement(s);
-  j.async = 1;
-  j.src = "https://cdn.rokochat.com/w.js";
-  f.parentNode.insertBefore(j,f);
-})(window,document,"script","rk_pk_cc1e90d49839f38594b08d6604ede9a95c3b6c4656e6c6f8");
+if("serviceWorker" in navigator&&location.protocol==="https:"){window.addEventListener("load",()=>{navigator.serviceWorker.register("./service-worker.js").catch(error=>console.log("Service worker registration failed",error))})}
 </script>
+
+<!-- WHAZZUP LIVE CHAT WIDGET -->
+<script src="https://whazzup.io/widget.js"
+  data-workspace="8ec8f9ea8b3e5ba2d1c023fd"
+  async></script>
+
 </body>
 </html>
