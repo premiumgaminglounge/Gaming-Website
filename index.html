@@ -1,7 +1,7 @@
-
 <!DOCTYPE html>
 <html lang="en">
-<head><meta name="google-site-verification" content="zRZWFRVXeNVB7xMJqNy3UOXhFpTwX0wJOy7uv_PioOc" />
+<head>
+<meta name="google-site-verification" content="zRZWFRVXeNVB7xMJqNy3UOXhFpTwX0wJOy7uv_PioOc">
 <meta charset="UTF-8">
 <meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -20,6 +20,7 @@
 <meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <title>Premium Gaming Lounge</title>
+
 <style>
 :root {
   --bg:#04141e;--panel:#0c2735;--gold:#e8b943;--light:#fff0b0;
@@ -118,7 +119,76 @@ footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #
 .modal-close {background:#a91e28;color:white;border:0;padding:10px 16px;border-radius:8px}
 .spin-wheel {font-size:62px;margin:10px auto;color:var(--gold)}
 .mobile-nav {display:none}
-@media(min-width:600px) {.games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}main {padding-left:20px;padding-right:20px}.game-logo {height:165px}}
+
+/* FIREBASE CHAT DESIGN */
+#firebaseChatPanel {
+  display:none;position:fixed;inset:0;z-index:1000;
+  background:#000b;align-items:center;justify-content:center;padding:12px;
+}
+#firebaseChatPanel.open {display:flex}
+.fb-chat-window {
+  width:min(440px,100%);height:min(680px,90dvh);min-height:420px;
+  background:#0c2735;border:1px solid #e8b943;border-radius:18px;
+  display:flex;flex-direction:column;overflow:hidden;box-shadow:0 15px 50px #000b;
+}
+.fb-chat-head {
+  padding:14px;background:linear-gradient(120deg,#174354,#071923);
+  display:flex;align-items:center;justify-content:space-between;gap:8px;
+  border-bottom:1px solid #315666;
+}
+.fb-chat-head strong {color:#fff0b0;font-size:16px}
+.fb-chat-head small {display:block;color:#a8c0ce;margin-top:4px}
+.fb-head-actions {display:flex;gap:6px}
+.fb-head-actions button {
+  background:#173b4b;color:white;border:1px solid #456171;
+  padding:8px 10px;border-radius:8px;font-size:11px;
+}
+#fbChatClose {font-size:19px;padding:5px 11px}
+.fb-chat-content {flex:1;min-height:0;display:flex;flex-direction:column}
+.fb-chat-status {padding:8px 12px;color:#a8c0ce;font-size:11px;border-bottom:1px solid #234554}
+#fbChatMessages {
+  flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:9px;
+}
+.fb-message {
+  max-width:85%;padding:10px 12px;border-radius:13px;
+  font-size:13px;line-height:1.5;overflow-wrap:anywhere;white-space:pre-wrap;
+}
+.fb-message.customer {align-self:flex-end;background:#087c70;color:white;border-bottom-right-radius:4px}
+.fb-message.admin {align-self:flex-start;background:#1c4050;color:white;border-bottom-left-radius:4px}
+.fb-message small {display:block;font-size:9px;opacity:.7;margin-top:5px}
+.fb-chat-compose {display:flex;gap:7px;padding:10px;border-top:1px solid #315666}
+.fb-chat-compose input {
+  min-width:0;flex:1;background:#061923;border:1px solid #315666;
+  border-radius:10px;padding:12px;color:white;
+}
+.fb-chat-compose button {
+  border:0;border-radius:10px;background:#16b995;color:#04271f;
+  font-weight:900;padding:0 16px;
+}
+.fb-chat-form {padding:16px;display:flex;flex-direction:column;gap:10px}
+.fb-chat-form input {
+  width:100%;padding:12px;border:1px solid #315666;
+  border-radius:9px;background:#061923;color:white;
+}
+.fb-chat-form button {
+  padding:12px;border:0;border-radius:9px;background:#e8b943;
+  color:#251b0b;font-weight:900;
+}
+.fb-chat-note {font-size:11px;color:#a8c0ce;line-height:1.5}
+#fbAdminChatList {overflow-y:auto;max-height:180px;border-bottom:1px solid #315666}
+.fb-admin-chat {
+  width:100%;text-align:left;padding:11px;border:0;border-bottom:1px solid #234554;
+  background:#102d3a;color:white;display:block;
+}
+.fb-admin-chat strong {display:block;color:#fff0b0}
+.fb-admin-chat small {color:#a8c0ce}
+.fb-hidden {display:none!important}
+
+@media(min-width:600px) {
+.games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
+main {padding-left:20px;padding-right:20px}
+.game-logo {height:165px}
+}
 @media(min-width:900px) {.games-grid {grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:599px) {
 body {padding-bottom:68px}
@@ -135,15 +205,23 @@ header {padding:14px 10px 20px}
 .nav-item.active {color:#ffd45c}
 .install-float {bottom:78px}
 .floating-buttons {bottom:78px}
+.fb-chat-window {height:88dvh;min-height:380px}
 }
-@media(prefers-reduced-motion:reduce) {*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce) {
+*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}
+}
 </style>
 </head>
+
 <body>
 <div class="topbar">★ PREMIUM GAMING LOUNGE ★ • ALL PLATFORMS IN ONE PLACE</div>
+
 <header id="home">
   <div class="header-line">
-    <div class="brand"><div class="brand-icon">♛</div><div class="brand-name">Premium <span>Gaming</span></div></div>
+    <div class="brand">
+      <div class="brand-icon">♛</div>
+      <div class="brand-name">Premium <span>Gaming</span></div>
+    </div>
     <div class="header-actions">
       <button class="small-btn" onclick="openLiveChat()" type="button">💬 Chat</button>
       <button class="small-btn menu-btn" onclick="toggleMenu()" type="button" aria-label="Open menu">☰</button>
@@ -156,11 +234,12 @@ header {padding:14px 10px 20px}
       <button class="action-btn" onclick="installApp()" type="button">⬇ INSTALL APP</button>
       <button class="action-btn secondary" onclick="openLiveChat()" type="button">💬 LIVE CHAT</button>
       <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
-      <a class="action-btn secondary" href="https://m.me/61595371058076" target="_blank" rel="noopener noreferrer">MESSENGER</a>
+      <button class="action-btn secondary" onclick="openLiveChat()" type="button">MESSENGER</button>
       <button class="action-btn secondary" onclick="showModal('spinModal')" type="button">🎡 SPIN</button>
     </div>
   </div>
 </header>
+
 <div class="logo-strip" id="logoStrip" aria-label="Featured game logos"></div>
 <div class="ticker-row">
   <div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
@@ -168,6 +247,7 @@ header {padding:14px 10px 20px}
 </div>
 <div class="live-win-panel" id="liveWinPanel">Platform highlights. Verified live results are not connected to this website.</div>
 <div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
+
 <main>
   <section class="promo-banner" id="offers">
     <div class="promo-icon">🎁</div>
@@ -177,39 +257,57 @@ header {padding:14px 10px 20px}
     <h2>180% WELCOME BONUS</h2>
     <p>Terms and availability must be confirmed with support.</p>
   </section>
+
   <div class="featured-logos" id="featuredLogos"></div>
-  <div class="section-heading" id="games"><h2>🎮 All Gaming Platforms</h2><span class="count" id="gameCount">0 platforms</span></div>
+
+  <div class="section-heading" id="games">
+    <h2>🎮 All Gaming Platforms</h2>
+    <span class="count" id="gameCount">0 platforms</span>
+  </div>
   <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite game..." aria-label="Search games">
   <div class="games-grid" id="gamesGrid"></div>
   <div class="empty" id="emptyMessage">No games found. Try another name.</div>
+
   <section class="extra-section" id="wallet">
     <h2>💳 Deposit / Withdraw Support</h2>
     <p>Contact support for available payment methods and transaction instructions.</p>
     <div class="payment-list">
-      <span class="payment-chip">Cash App</span><span class="payment-chip">Venmo</span><span class="payment-chip">Zelle</span><span class="payment-chip">Chime</span><span class="payment-chip">PayPal</span><span class="payment-chip">Bitcoin</span><span class="payment-chip">USDT</span><span class="payment-chip">Other</span>
+      <span class="payment-chip">Cash App</span>
+      <span class="payment-chip">Venmo</span>
+      <span class="payment-chip">Zelle</span>
+      <span class="payment-chip">Chime</span>
+      <span class="payment-chip">PayPal</span>
+      <span class="payment-chip">Bitcoin</span>
+      <span class="payment-chip">USDT</span>
+      <span class="payment-chip">Other</span>
     </div>
     <div class="contact-actions">
-      <a class="action-btn" href="https://m.me/61595371058076" target="_blank" rel="noopener noreferrer">DEPOSIT / WITHDRAW</a>
+      <button class="action-btn" type="button" onclick="openLiveChat()">DEPOSIT / WITHDRAW</button>
       <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">CONTACT SUPPORT</a>
     </div>
   </section>
+
   <section class="extra-section" id="support">
     <h2>💬 Need Help?</h2>
     <p>Contact support for account, deposit and withdrawal questions.</p>
     <div class="contact-actions">
       <button class="action-btn green" onclick="openLiveChat()" type="button">LIVE CHAT</button>
-      <a class="action-btn secondary" href="https://m.me/61595371058076" target="_blank" rel="noopener noreferrer">MESSENGER</a>
+      <button class="action-btn secondary" onclick="openLiveChat()" type="button">MESSENGER</button>
       <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
     </div>
   </section>
 </main>
+
 <footer>© <span id="year"></span> Premium Gaming Lounge. All rights reserved.</footer>
+
 <button class="install-float" type="button" onclick="installApp()">⬇ Install App</button>
+
 <div class="floating-buttons">
   <button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
-  <a class="float-btn messenger-float" aria-label="Messenger" href="https://m.me/61595371058076" target="_blank" rel="noopener noreferrer">➤</a>
+  <button class="float-btn messenger-float" aria-label="Messenger" type="button" onclick="openLiveChat()">➤</button>
   <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☏</a>
 </div>
+
 <nav class="mobile-nav" aria-label="Mobile navigation">
   <a class="nav-item active" href="#home"><span>🏠</span><span>Home</span></a>
   <a class="nav-item" href="#games"><span>🎮</span><span>Games</span></a>
@@ -217,6 +315,7 @@ header {padding:14px 10px 20px}
   <a class="nav-item" href="#offers"><span>🏷️</span><span>Offers</span></a>
   <a class="nav-item" href="#wallet"><span>👛</span><span>Wallet</span></a>
 </nav>
+
 <div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
   <div class="modal-box">
     <h2 id="installTitle">⬇ Install Premium Gaming Lounge</h2>
@@ -226,6 +325,7 @@ header {padding:14px 10px 20px}
     <button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button>
   </div>
 </div>
+
 <div class="modal" id="spinModal" role="dialog" aria-modal="true" aria-labelledby="spinTitle">
   <div class="modal-box">
     <h2 id="spinTitle">🎡 Spin Wheel</h2>
@@ -235,6 +335,62 @@ header {padding:14px 10px 20px}
     <button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button>
   </div>
 </div>
+
+<!-- FIREBASE CUSTOMER AND ADMIN CHAT -->
+<div id="firebaseChatPanel" role="dialog" aria-modal="true" aria-label="Customer support chat">
+  <div class="fb-chat-window">
+    <div class="fb-chat-head">
+      <div>
+        <strong>💬 Customer Support</strong>
+        <small id="fbChatSubtitle">We are here to help</small>
+      </div>
+      <div class="fb-head-actions">
+        <button type="button" id="fbAdminLoginButton">Admin</button>
+        <button type="button" id="fbChatClose" aria-label="Close chat">✕</button>
+      </div>
+    </div>
+
+    <div id="fbCustomerStart" class="fb-chat-form">
+      <p class="fb-chat-note">Enter your name to start a conversation with support.</p>
+      <input id="fbCustomerName" type="text" maxlength="60" placeholder="Your name">
+      <button id="fbStartChat" type="button">START CHAT</button>
+      <div id="fbStartError" class="fb-chat-note"></div>
+    </div>
+
+    <div id="fbAdminLogin" class="fb-chat-form fb-hidden">
+      <p class="fb-chat-note">Admin login</p>
+      <input id="fbAdminEmail" type="email" placeholder="Admin email" autocomplete="username">
+      <input id="fbAdminPassword" type="password" placeholder="Admin password" autocomplete="current-password">
+      <button id="fbAdminSignIn" type="button">ADMIN LOGIN</button>
+      <div id="fbAdminError" class="fb-chat-note"></div>
+      <button id="fbBackToCustomer" type="button">BACK TO CUSTOMER CHAT</button>
+    </div>
+
+    <div id="fbAdminArea" class="fb-hidden fb-chat-content">
+      <div class="fb-chat-status">Admin inbox — select a customer conversation</div>
+      <div id="fbAdminChatList"></div>
+      <div id="fbAdminSelected" class="fb-chat-status">No conversation selected</div>
+      <div id="fbAdminMessages" style="flex:1;min-height:100px;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:9px"></div>
+      <div class="fb-chat-compose">
+        <input id="fbAdminMessage" type="text" maxlength="2000" placeholder="Reply to customer...">
+        <button id="fbAdminSend" type="button">SEND</button>
+      </div>
+      <div style="padding:8px;text-align:center">
+        <button id="fbAdminLogout" type="button" style="background:#a91e28;color:white;border:0;border-radius:8px;padding:8px 14px">ADMIN LOGOUT</button>
+      </div>
+    </div>
+
+    <div id="fbCustomerArea" class="fb-hidden fb-chat-content">
+      <div class="fb-chat-status" id="fbCustomerStatus">Connected to support</div>
+      <div id="fbChatMessages"></div>
+      <div class="fb-chat-compose">
+        <input id="fbCustomerMessage" type="text" maxlength="2000" placeholder="Type your message...">
+        <button id="fbCustomerSend" type="button">SEND</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <script>
 const games = [
 ["Orion Star","http://start.orionstars.vip:8580/"],["Milkyway","https://milkywayapp.xyz/"],["Juwa","https://dl.juwa777.com/"],["Vblink","https://www.vblink777.club/"],["Juwa 2.0","https://m.juwa2.com/"],["Firekirin","https://start.firekirin.xyz:8580/index.html"],["Vegas X","https://www.vegas-x.org/"],["Game Vault","http://download.gamevault999.com/"],["Egame","https://www.egame99.club/"],["Moolah","https://moolah.vip:8888/"],["RiverSweep","https://bet777.eu/play/"],["Noble777","http://www.noble777.com/"],["Highstake","https://dl.highstakesweeps.com/"],["Casino Royal","http://m.casinoroyale07.com/"],["Vegas Sweep","http://m.lasvegassweeps.com/"],["Ultra Panda","http://www.ultrapanda.mobi/"],["Orion Power","http://download.orionpower.games:8008/"],["Winstar","https://www.winstar99999.com/"],["Mafia 777","https://www.mafia77777.com/"],["Paracasino","https://download.paracasino.net/"],["Vegas Roll","http://www.vegas-roll.com/m"],["Mr. All in One","http://www.mrallinone777.com/"],["Yolo 777","https://yolo777.game/"],["Cash Machine","https://www.cashmachine777.com/"],["Game Room","https://www.gameroom777.com/"],["Vegas Luck","https://start.vegasluck777.com/"],["Vegas Sweep Mobile","https://m.lasvegassweeps.com/"],["Moolah Mobile","https://moolah.vip:8888/"],["River Pay","https://river777.net/build.30/index.html"],["Loot Game","https://m.lootgame777.com/"],["Para Casino H5","https://h5.paracasino.net/"],["Mr All in One Agent","http://agentserver.mrallinone777.com/"],["Winstar Server","http://server.winstar99999.com:8009/"],["Hukum","https://hukum777.online/"],["Mob.com","https://fpc-mob.com/"],["Highroller","https://www.highroller.com/casino"],["Noble 777","https://www.noble777.com/"],["Dragon Crown","https://atlus.com/dragonscrown/"],["Lucky Master","https://lucky-master.net/"],["King of Pop","https://kingofpop777.com/"],["Firefonix","https://fpc-mob.com/AD/index.html"],["Bigwin","https://bigwplay.com/"],["Thunderseven","https://thunderseven.com/"],["Gem Slots","https://www.gem77777.com/m"],["Game Room Online","https://www.gameroom777.com/"],["Mr. All in One","https://www.mrallinone777.com/"],["Winner Club","https://www.winnersclub777.com/"],["Cash Frenzy","https://www.cashfrenzy777.com/"],["King of Pop Slots","https://www.slots88888.com/"],["Vegas Luck","https://start.vegasluck777.com/"],["Cash Machine","https://www.cashmachine777.com/"],["Win Star","http://www.winstar99999.com/"],["Joker 777","https://www.joker777.win/"],["Orion Strike","https://start.orionstrike777.com/"],["Orion Power Download","http://download.orionpower.games:8008"],["Big Bang","https://www.bigbangcasino.vegas/"],["Lucky Star","https://www.luckystars.games/"],["Stars Galaxy","https://www.starsgalaxy777.com/"],["Gem777","https://www.gem77777.com/"],["Lucky Paradise","https://www.luckyparadise777.com/"],["River Monster","https://rm777.net/"],["Mega Spin","https://megaspinpay.com/default.aspx"],["Sharks Secret 77","https://www.sharksecret777.com/"],["Winwin Vegas","https://winwinvegas777.com/"],["Panda Master","https://pandamaster.vip:8888/"],["Cash Frenzy","https://www.cashfrenzy777.com/"],["Ding Ding","https://www.dingdinghouse.com/"],["Lucky Paradise","https://www.luckyparadise777.com/"],["Vegas X Pro","https://vegas-x.pro/"],["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],["Big Winner","https://bigwplay.com/"],["Game Vault 777","https://www.gamevault77777.com/"],["Blue Dragon","https://bluedragon777.net/"],["Game Vault 2","https://res.gamevault2.vip/download/"],["Acebook","https://www.playacebook.mobi/"]
@@ -279,7 +435,7 @@ function renderGames(filter=""){
     const number=document.createElement("div");number.className="game-number";number.textContent="● "+countMap.get(key).toLocaleString()+" Playing";
     const info=document.createElement("div");info.className="game-info";const actions=document.createElement("div");actions.className="card-actions";
     const account=document.createElement("a");account.className="card-btn";account.textContent="GET ID / OPEN";account.href=url;account.target="_blank";account.rel="noopener noreferrer";
-    const deposit=document.createElement("a");deposit.className="card-btn deposit";deposit.textContent="DEPOSIT SUPPORT";deposit.href="https://m.me/61595371058076?ref="+encodeURIComponent("Deposit inquiry: "+name);deposit.target="_blank";deposit.rel="noopener noreferrer";
+    const deposit=document.createElement("button");deposit.className="card-btn deposit";deposit.textContent="DEPOSIT SUPPORT";deposit.type="button";deposit.addEventListener("click",()=>openLiveChat("Deposit inquiry: "+name));
     actions.append(account,deposit);info.append(title,number,actions);card.append(hot,logo,info);grid.appendChild(card);
   });
   document.getElementById("gameCount").textContent=filtered.length+" platforms";emptyMessage.style.display=filtered.length?"none":"block";
@@ -313,13 +469,6 @@ function spinWheel(){
 }
 function toggleMenu(){const menu=document.querySelector(".mobile-nav");if(menu)menu.scrollIntoView({behavior:"smooth",block:"end"})}
 
-/* WHAZZUP LIVE CHAT
-   Widget loads below. The documented installation code does not specify
-   a public JavaScript command for opening it from these existing buttons. */
-function openLiveChat(){
-  alert("Please use the Whazzup chat bubble on the page to start a live chat.");
-}
-
 function installApp(){
   if(installPrompt){installPrompt.prompt();installPrompt.userChoice.then(()=>{installPrompt=null});return}
   const message=document.getElementById("installMessage");const button=document.getElementById("installConfirm");
@@ -340,10 +489,381 @@ document.getElementById("year").textContent=new Date().getFullYear();
 if("serviceWorker" in navigator&&location.protocol==="https:"){window.addEventListener("load",()=>{navigator.serviceWorker.register("./service-worker.js").catch(error=>console.log("Service worker registration failed",error))})}
 </script>
 
-<!-- WHAZZUP LIVE CHAT WIDGET -->
-<script src="https://whazzup.io/widget.js"
-  data-workspace="8ec8f9ea8b3e5ba2d1c023fd"
-  async></script>
+<!-- FIREBASE CHAT SYSTEM -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.14.1/firebase-app.js";
+import {
+  getAuth, signInAnonymously, signInWithEmailAndPassword,
+  signOut, onAuthStateChanged
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-auth.js";
+import {
+  getFirestore, collection, doc, addDoc, setDoc, getDoc,
+  query, where, orderBy, limit, onSnapshot, serverTimestamp,
+  updateDoc
+} from "https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBlCkntw2Pf-mcNxEpsAS4VRGBjUJ1UHBU",
+  authDomain: "gaming-customer-messenge-ad17e.firebaseapp.com",
+  projectId: "gaming-customer-messenge-ad17e",
+  storageBucket: "gaming-customer-messenge-ad17e.firebasestorage.app",
+  messagingSenderId: "837096280938",
+  appId: "1:837096280938:web:374deb0c54ec4166b60b13"
+};
+
+const ADMIN_UID = "eDB7PN3pJ4TwmZrzs0jharxWlBg2";
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const db = getFirestore(app);
+
+const $ = id => document.getElementById(id);
+let currentChatId = null;
+let currentUser = null;
+let messageUnsubscribe = null;
+let adminListUnsubscribe = null;
+let adminMessageUnsubscribe = null;
+let selectedAdminChatId = null;
+let customerName = localStorage.getItem("plCustomerName") || "";
+
+function showChatPanel() {
+  $("firebaseChatPanel").classList.add("open");
+}
+function closeChatPanel() {
+  $("firebaseChatPanel").classList.remove("open");
+}
+$("fbChatClose").addEventListener("click", closeChatPanel);
+$("firebaseChatPanel").addEventListener("click", e => {
+  if (e.target === $("firebaseChatPanel")) closeChatPanel();
+});
+
+function setChatScreen(screen) {
+  $("fbCustomerStart").classList.toggle("fb-hidden", screen !== "start");
+  $("fbCustomerArea").classList.toggle("fb-hidden", screen !== "customer");
+  $("fbAdminLogin").classList.toggle("fb-hidden", screen !== "login");
+  $("fbAdminArea").classList.toggle("fb-hidden", screen !== "admin");
+}
+
+function showError(id, message) {
+  $(id).textContent = message;
+}
+
+function addMessageToScreen(container, data, isAdminView) {
+  const bubble = document.createElement("div");
+  const ownMessage = data.senderRole === "customer";
+  bubble.className = "fb-message " + (isAdminView
+    ? (ownMessage ? "customer" : "admin")
+    : (ownMessage ? "customer" : "admin"));
+
+  const content = document.createElement("div");
+  content.textContent = data.text || "";
+  const time = document.createElement("small");
+  time.textContent = data.createdAt?.toDate
+    ? data.createdAt.toDate().toLocaleString()
+    : "Just now";
+  bubble.append(content, time);
+  container.appendChild(bubble);
+}
+
+function listenToMessages(chatId, container, isAdminView) {
+  if (messageUnsubscribe) messageUnsubscribe();
+  if (adminMessageUnsubscribe) adminMessageUnsubscribe();
+
+  const messagesRef = collection(db, "chats", chatId, "messages");
+  const messagesQuery = query(messagesRef, orderBy("createdAt", "asc"), limit(300));
+
+  const unsubscribe = onSnapshot(messagesQuery, snapshot => {
+    container.replaceChildren();
+    snapshot.forEach(item => addMessageToScreen(container, item.data(), isAdminView));
+    container.scrollTop = container.scrollHeight;
+  }, error => {
+    console.error(error);
+    container.textContent = "Could not load messages. Check Firestore rules.";
+  });
+
+  if (isAdminView) adminMessageUnsubscribe = unsubscribe;
+  else messageUnsubscribe = unsubscribe;
+}
+
+async function ensureCustomerAuth() {
+  if (!auth.currentUser) await signInAnonymously(auth);
+  currentUser = auth.currentUser;
+  if (!currentUser) throw new Error("Customer sign-in failed.");
+  return currentUser;
+}
+
+async function startCustomerChat() {
+  const name = $("fbCustomerName").value.trim();
+  if (!name) {
+    showError("fbStartError", "Please enter your name.");
+    return;
+  }
+
+  $("fbStartChat").disabled = true;
+  showError("fbStartError", "Connecting...");
+
+  try {
+    const user = await ensureCustomerAuth();
+    customerName = name;
+    localStorage.setItem("plCustomerName", name);
+
+    const savedChatId = localStorage.getItem("plFirebaseChatId");
+    let chatRef = null;
+
+    if (savedChatId) {
+      const savedRef = doc(db, "chats", savedChatId);
+      const savedSnapshot = await getDoc(savedRef);
+      if (savedSnapshot.exists() && savedSnapshot.data().ownerUid === user.uid) {
+        chatRef = savedRef;
+      }
+    }
+
+    if (!chatRef) {
+      chatRef = await addDoc(collection(db, "chats"), {
+        ownerUid: user.uid,
+        customerName: name,
+        status: "open",
+        lastMessage: "New conversation",
+        createdAt: serverTimestamp(),
+        updatedAt: serverTimestamp()
+      });
+      localStorage.setItem("plFirebaseChatId", chatRef.id);
+    } else {
+      await updateDoc(chatRef, {
+        customerName: name,
+        updatedAt: serverTimestamp()
+      });
+    }
+
+    currentChatId = chatRef.id;
+    $("fbCustomerStatus").textContent = "Connected as " + name;
+    setChatScreen("customer");
+    listenToMessages(currentChatId, $("fbChatMessages"), false);
+    $("fbCustomerMessage").focus();
+  } catch (error) {
+    console.error(error);
+    showError("fbStartError", "Could not connect. Check Firebase Authentication and Firestore rules.");
+  } finally {
+    $("fbStartChat").disabled = false;
+  }
+}
+
+async function sendCustomerMessage() {
+  const text = $("fbCustomerMessage").value.trim();
+  if (!text || !currentChatId || !auth.currentUser) return;
+
+  $("fbCustomerSend").disabled = true;
+  try {
+    const chatRef = doc(db, "chats", currentChatId);
+    await addDoc(collection(db, "chats", currentChatId, "messages"), {
+      text,
+      senderUid: auth.currentUser.uid,
+      senderRole: "customer",
+      createdAt: serverTimestamp()
+    });
+    await updateDoc(chatRef, {
+      lastMessage: text,
+      updatedAt: serverTimestamp(),
+      status: "open"
+    });
+    $("fbCustomerMessage").value = "";
+  } catch (error) {
+    console.error(error);
+    alert("Message could not be sent. Please check your internet connection and Firebase rules.");
+  } finally {
+    $("fbCustomerSend").disabled = false;
+  }
+}
+
+function listenToAdminChats() {
+  if (adminListUnsubscribe) adminListUnsubscribe();
+
+  const chatsQuery = query(
+    collection(db, "chats"),
+    orderBy("updatedAt", "desc"),
+    limit(100)
+  );
+
+  adminListUnsubscribe = onSnapshot(chatsQuery, snapshot => {
+    const list = $("fbAdminChatList");
+    list.replaceChildren();
+
+    if (snapshot.empty) {
+      list.textContent = "No customer conversations yet.";
+      return;
+    }
+
+    snapshot.forEach(item => {
+      const data = item.data();
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "fb-admin-chat";
+
+      const name = document.createElement("strong");
+      name.textContent = data.customerName || "Customer";
+      const last = document.createElement("small");
+      last.textContent = data.lastMessage || "New conversation";
+      button.append(name, last);
+      button.addEventListener("click", () => openAdminConversation(item.id, data.customerName || "Customer"));
+      list.appendChild(button);
+    });
+  }, error => {
+    console.error(error);
+    $("fbAdminChatList").textContent = "Could not load inbox. Check Firestore rules.";
+  });
+}
+
+function openAdminConversation(chatId, name) {
+  selectedAdminChatId = chatId;
+  $("fbAdminSelected").textContent = "Chat with " + name;
+  listenToMessages(chatId, $("fbAdminMessages"), true);
+}
+
+async function sendAdminMessage() {
+  const text = $("fbAdminMessage").value.trim();
+  if (!text || !selectedAdminChatId || !auth.currentUser) return;
+
+  $("fbAdminSend").disabled = true;
+  try {
+    await addDoc(collection(db, "chats", selectedAdminChatId, "messages"), {
+      text,
+      senderUid: auth.currentUser.uid,
+      senderRole: "admin",
+      createdAt: serverTimestamp()
+    });
+
+    await updateDoc(doc(db, "chats", selectedAdminChatId), {
+      lastMessage: text,
+      updatedAt: serverTimestamp(),
+      status: "open"
+    });
+    $("fbAdminMessage").value = "";
+  } catch (error) {
+    console.error(error);
+    alert("Reply could not be sent. Check Firestore rules.");
+  } finally {
+    $("fbAdminSend").disabled = false;
+  }
+}
+
+$("fbStartChat").addEventListener("click", startCustomerChat);
+$("fbCustomerMessage").addEventListener("keydown", e => {
+  if (e.key === "Enter") sendCustomerMessage();
+});
+$("fbCustomerSend").addEventListener("click", sendCustomerMessage);
+
+$("fbAdminLoginButton").addEventListener("click", () => {
+  setChatScreen("login");
+  $("fbAdminError").textContent = "";
+});
+$("fbBackToCustomer").addEventListener("click", () => {
+  setChatScreen("start");
+});
+
+$("fbAdminSignIn").addEventListener("click", async () => {
+  const email = $("fbAdminEmail").value.trim();
+  const password = $("fbAdminPassword").value;
+
+  if (!email || !password) {
+    showError("fbAdminError", "Enter your admin email and password.");
+    return;
+  }
+
+  $("fbAdminSignIn").disabled = true;
+  showError("fbAdminError", "Signing in...");
+
+  try {
+    if (auth.currentUser) await signOut(auth);
+    const result = await signInWithEmailAndPassword(auth, email, password);
+
+    if (result.user.uid !== ADMIN_UID) {
+      await signOut(auth);
+      throw new Error("This account is not authorized as the website admin.");
+    }
+
+    currentUser = result.user;
+    currentChatId = null;
+    setChatScreen("admin");
+    $("fbChatSubtitle").textContent = "Administrator inbox";
+    listenToAdminChats();
+  } catch (error) {
+    console.error(error);
+    showError("fbAdminError", error.code === "auth/invalid-credential"
+      ? "Incorrect admin email or password."
+      : error.message || "Admin login failed.");
+  } finally {
+    $("fbAdminSignIn").disabled = false;
+  }
+});
+
+$("fbAdminSend").addEventListener("click", sendAdminMessage);
+$("fbAdminMessage").addEventListener("keydown", e => {
+  if (e.key === "Enter") sendAdminMessage();
+});
+
+$("fbAdminLogout").addEventListener("click", async () => {
+  if (adminListUnsubscribe) adminListUnsubscribe();
+  if (adminMessageUnsubscribe) adminMessageUnsubscribe();
+  adminListUnsubscribe = null;
+  adminMessageUnsubscribe = null;
+  selectedAdminChatId = null;
+
+  try {
+    await signOut(auth);
+    await signInAnonymously(auth);
+    currentUser = auth.currentUser;
+    $("fbChatSubtitle").textContent = "We are here to help";
+    $("fbCustomerName").value = customerName;
+    setChatScreen("start");
+  } catch (error) {
+    console.error(error);
+    showError("fbAdminError", "Logout completed, but customer session could not start.");
+  }
+});
+
+onAuthStateChanged(auth, user => {
+  currentUser = user;
+  if (user && user.uid === ADMIN_UID) {
+    $("fbChatSubtitle").textContent = "Administrator inbox";
+  }
+});
+
+window.openLiveChat = async function(prefillMessage = "") {
+  showChatPanel();
+
+  if (prefillMessage) {
+    $("fbCustomerMessage").value = prefillMessage;
+  }
+
+  if (auth.currentUser && auth.currentUser.uid === ADMIN_UID) {
+    setChatScreen("admin");
+    listenToAdminChats();
+    return;
+  }
+
+  const savedChatId = localStorage.getItem("plFirebaseChatId");
+  if (savedChatId) {
+    try {
+      const user = await ensureCustomerAuth();
+      const savedRef = doc(db, "chats", savedChatId);
+      const savedSnapshot = await getDoc(savedRef);
+
+      if (savedSnapshot.exists() && savedSnapshot.data().ownerUid === user.uid) {
+        currentChatId = savedChatId;
+        $("fbCustomerName").value = customerName;
+        $("fbCustomerStatus").textContent = "Connected as " + customerName;
+        setChatScreen("customer");
+        listenToMessages(currentChatId, $("fbChatMessages"), false);
+        return;
+      }
+    } catch (error) {
+      console.error("Saved chat restore failed:", error);
+    }
+  }
+
+  $("fbCustomerName").value = customerName;
+  setChatScreen("start");
+};
+</script>
 
 </body>
 </html>
