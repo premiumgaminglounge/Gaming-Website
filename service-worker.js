@@ -1,37 +1,58 @@
-const CACHE_NAME = "premium-gaming-lounge-v2";
+
+const CACHE_NAME = "premium-gaming-lounge-v3";
 
 const APP_FILES = [
   "./",
   "./index.html",
-  "./manifest.json",
-  "./icon-192.png",
-  "./icon-512.png"
+  "./manifest.json"
+];
+
+const ICON_FILES = [
+  "./icon-192-3.png",
+  "./icon-512-1.png"
 ];
 
 self.addEventListener("install", event => {
   event.waitUntil(
-    caches.open(CACHE_NAME).then(cache => cache.addAll(APP_FILES))
+    (async () => {
+      const cache = await caches.open(CACHE_NAME);
+      await cache.addAll(APP_FILES);
+
+      await Promise.all(
+        ICON_FILES.map(file =>
+          cache.add(file).catch(() => null)
+        )
+      );
+
+      await self.skipWaiting();
+    })()
   );
-  self.skipWaiting();
 });
 
 self.addEventListener("activate", event => {
   event.waitUntil(
-    caches.keys().then(keys =>
-      Promise.all(
+    (async () => {
+      const keys = await caches.keys();
+
+      await Promise.all(
         keys
-          .filter(key => key.startsWith("premium-gaming-lounge-") && key !== CACHE_NAME)
+          .filter(key =>
+            key.startsWith("premium-gaming-lounge-") &&
+            key !== CACHE_NAME
+          )
           .map(key => caches.delete(key))
-      )
-    )
+      );
+
+      await self.clients.claim();
+    })()
   );
-  self.clients.claim();
 });
 
 self.addEventListener("fetch", event => {
   if (event.request.method !== "GET") return;
 
   const url = new URL(event.request.url);
+
   if (url.origin !== self.location.origin) return;
 
   event.respondWith(
@@ -39,10 +60,12 @@ self.addEventListener("fetch", event => {
       .then(response => {
         if (response && response.ok) {
           const copy = response.clone();
+
           caches.open(CACHE_NAME).then(cache => {
             cache.put(event.request, copy);
           });
         }
+
         return response;
       })
       .catch(() =>
