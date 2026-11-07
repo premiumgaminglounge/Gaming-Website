@@ -26,32 +26,38 @@
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
+
 window.OneSignalDeferred.push(async function(OneSignal) {
   await OneSignal.init({
     appId: "b8e89199-4e74-415e-b3fe-6c30dc97912b",
     serviceWorkerPath: "/Gaming-Website/push/onesignal/OneSignalSDKWorker.js",
     serviceWorkerParam: {
       scope: "/Gaming-Website/push/onesignal/"
-    },
-    promptOptions: {
-      slidedown: {
-        prompts: [{
-          type: "push",
-          autoPrompt: true,
-          delay: {
-            pageViews: 1,
-            timeDelay: 10
-          },
-          text: {
-            actionMessage: "Stay Connected! Enable notifications to receive the latest updates from Premium Gaming Lounge.",
-            acceptButton: "Allow",
-            cancelButton: "Not Now"
-          }
-        }]
-      }
     }
   });
+
+  window.OneSignalReady = true;
+
+  if ("Notification" in window && Notification.permission === "default") {
+    document.getElementById("notificationModal").classList.add("show");
+  }
 });
+
+async function enableNotifications() {
+  try {
+    await OneSignalDeferred.push(async function(OneSignal) {
+      await OneSignal.Notifications.requestPermission();
+      document.getElementById("notificationModal").classList.remove("show");
+    });
+  } catch (error) {
+    console.error("Notification error:", error);
+    alert("Please try again in Chrome.");
+  }
+}
+
+function closeNotificationPrompt() {
+  document.getElementById("notificationModal").classList.remove("show");
+}
 </script>
 <!-- End OneSignal -->
 
@@ -154,6 +160,12 @@ footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #
 .spin-wheel {font-size:62px;margin:10px auto;color:var(--gold)}
 .mobile-nav {display:none}
 
+/* Notification popup */
+#notificationModal {z-index:2000}
+.notification-icon {font-size:55px;margin:5px 0 12px}
+.notification-allow {width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(120deg,#37e0b0,#09a986);color:#06271f;font-weight:900}
+.notification-later {background:#173b4b;color:white;border:1px solid #456171;padding:11px 18px;border-radius:9px}
+
 @media(min-width:600px) {
 .games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
 main {padding-left:20px;padding-right:20px}
@@ -183,6 +195,18 @@ header {padding:14px 10px 20px}
 </head>
 
 <body>
+
+<!-- Notification popup appears when the page opens -->
+<div class="modal" id="notificationModal" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
+  <div class="modal-box">
+    <div class="notification-icon">🔔</div>
+    <h2 id="notificationTitle">Stay Connected!</h2>
+    <p>Enable notifications from Premium Gaming Lounge to receive the latest updates and announcements.</p>
+    <button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
+    <button class="notification-later" type="button" onclick="closeNotificationPrompt()">NOT NOW</button>
+  </div>
+</div>
+
 <div class="topbar">★ PREMIUM GAMING LOUNGE ★ • ALL PLATFORMS IN ONE PLACE</div>
 
 <header id="home">
@@ -369,13 +393,6 @@ function makeTicker(id){
     if(id==="tickerOne"){label.append("FEATURED • "+name+" • ");const amount=document.createElement("strong");amount.style.color="#36d9ae";amount.textContent="$"+winAmounts[(index+repeat)%winAmounts.length]+" • ";label.appendChild(amount);const tag=document.createElement("strong");tag.textContent="VIEW PLATFORM";label.appendChild(tag)}
     else label.textContent="✦ "+name+" • GAMING PLATFORM • SUPPORT AVAILABLE";
     item.append(logo,label);track.appendChild(item);
-  });
-}
-function updateAnimatedNumbers(){
-  document.querySelectorAll(".game-number").forEach(el=>{
-    const card=el.closest(".game-card");if(!card)return;const title=card.querySelector(".game-name").textContent;const url=games.find(g=>g[0]===title)?.[1]||"";const key=title+"|"+url;let current=countMap.get(key)||500;let next=current;
-    while(next===current)next=numberOptions[Math.floor(Math.random()*numberOptions.length)];
-    countMap.set(key,next);el.textContent="● "+next.toLocaleString()+" Playing";
   });
 }
 function toggleLiveWin(){
