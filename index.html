@@ -1,24 +1,33 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta name="google-site-verification" content="zRZWFRVXeNVB7xMJqNy3UOXhFpTwX0wJOy7uv_PioOc">
-<meta charset="UTF-8">
 <meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#071923">
 <meta name="description" content="Premium Gaming Lounge - Gaming Platforms">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="Premium Gaming Lounge">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./icon.svg" type="image/svg+xml">
+
 <meta property="og:title" content="Premium Gaming Lounge | Gaming Platforms">
-<meta property="og:description" content="Explore gaming platforms in one place.">
+<meta property="og:description" content="5 FREE PLAYS • 180% WELCOME BONUS">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
 <meta property="og:site_name" content="Premium Gaming Lounge">
 <meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Premium Gaming Lounge">
+<meta name="twitter:description" content="5 FREE PLAYS • 180% WELCOME BONUS">
+<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+
 <title>Premium Gaming Lounge</title>
 
 <!-- OneSignal SDK -->
@@ -50,7 +59,8 @@ window.PGL_OneSignalReady.catch(function(error) {
 
 document.addEventListener("DOMContentLoaded", function() {
   if ("Notification" in window && Notification.permission === "default") {
-    document.getElementById("notificationModal").classList.add("show");
+    const modal = document.getElementById("notificationModal");
+    if (modal) modal.classList.add("show");
   }
 });
 
@@ -111,136 +121,918 @@ function openNotificationPrompt() {
 
 <style>
 :root {
-  --bg:#04141e;--panel:#0c2735;--gold:#e8b943;--light:#fff0b0;
-  --green:#36d9ae;--orange:#ff813e;--text:#f7f9fc;--muted:#a8c0ce;
+  --bg:#04141e;
+  --panel:#0c2735;
+  --gold:#e8b943;
+  --light:#fff0b0;
+  --green:#36d9ae;
+  --orange:#ff813e;
+  --text:#f7f9fc;
+  --muted:#a8c0ce;
 }
+
 * {box-sizing:border-box}
-html {scroll-behavior:smooth;scroll-padding-top:15px}
-body {margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;padding-bottom:20px}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:15px;
+}
+
+body {
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:20px;
+}
+
 a {color:inherit;text-decoration:none}
 button,input {font:inherit}
 button {cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible {outline:2px solid var(--gold);outline-offset:3px}
-.topbar {text-align:center;padding:11px 8px;background:linear-gradient(90deg,#e8a42c,#ff813e,#e8a42c);color:#29190b;font-size:12px;font-weight:900;letter-spacing:.6px}
-header {padding:17px 12px 20px;text-align:center;background:radial-gradient(ellipse at top,#174354,#071923 75%);border-bottom:1px solid #183c4b}
-.header-line {display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:900px;margin:auto}
-.brand {display:flex;align-items:center;gap:10px;text-align:left;min-width:0}
-.brand-icon {width:54px;height:54px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(145deg,#3b6c64,#102b34,#b17c25);color:var(--light);font-size:28px;box-shadow:0 0 12px #d6a43b30}
-.brand-name {font-size:clamp(17px,4vw,24px);font-weight:900}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline:2px solid var(--gold);
+  outline-offset:3px;
+}
+
+.topbar {
+  text-align:center;
+  padding:11px 8px;
+  background:linear-gradient(90deg,#e8a42c,#ff813e,#e8a42c);
+  color:#29190b;
+  font-size:12px;
+  font-weight:900;
+  letter-spacing:.6px;
+}
+
+header {
+  padding:17px 12px 20px;
+  text-align:center;
+  background:radial-gradient(ellipse at top,#174354,#071923 75%);
+  border-bottom:1px solid #183c4b;
+}
+
+.header-line {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  max-width:900px;
+  margin:auto;
+}
+
+.brand {
+  display:flex;
+  align-items:center;
+  gap:10px;
+  text-align:left;
+  min-width:0;
+}
+
+.brand-icon {
+  width:54px;
+  height:54px;
+  flex-shrink:0;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  background:linear-gradient(145deg,#3b6c64,#102b34,#b17c25);
+  color:var(--light);
+  font-size:28px;
+  box-shadow:0 0 12px #d6a43b30;
+}
+
+.brand-name {
+  font-size:clamp(17px,4vw,24px);
+  font-weight:900;
+}
+
 .brand-name span {color:var(--gold)}
-.header-actions {display:flex;gap:7px;align-items:center}
-.small-btn {border:1px solid #234959;border-radius:12px;background:#0c2735;color:white;padding:11px 12px;font-size:12px;font-weight:800}
+
+.header-actions {
+  display:flex;
+  gap:7px;
+  align-items:center;
+}
+
+.small-btn {
+  border:1px solid #234959;
+  border-radius:12px;
+  background:#0c2735;
+  color:white;
+  padding:11px 12px;
+  font-size:12px;
+  font-weight:800;
+}
+
 .menu-btn {font-size:20px;padding:9px 13px}
-.hero {max-width:800px;margin:25px auto 0}
-h1 {font-size:clamp(29px,7vw,48px);line-height:1.12;margin:16px 0;color:white;font-weight:900}
+
+.hero {
+  max-width:800px;
+  margin:25px auto 0;
+}
+
+h1 {
+  font-size:clamp(29px,7vw,48px);
+  line-height:1.12;
+  margin:16px 0;
+  color:white;
+  font-weight:900;
+}
+
 .hero h1 span {color:var(--orange)}
-.subtitle {color:var(--muted);font-size:15px;line-height:1.8;margin:12px auto 18px;max-width:600px}
-.actions {display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
-.action-btn {display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 15px;font-weight:900;font-size:12px;background:linear-gradient(135deg,#ffda75,#e7a62d);color:#241b0d}
-.action-btn.secondary {background:#102e3b;color:white;border:1px solid #315666}
-.action-btn.green {background:linear-gradient(135deg,#37e0b0,#09a986);color:#06271f}
-.logo-strip {display:flex;gap:12px;overflow-x:auto;padding:15px 12px;background:#061923;border-bottom:1px solid #173542;scrollbar-width:thin}
-.logo-tile {flex:0 0 88px;height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid #294b5b;border-radius:15px;background:linear-gradient(145deg,#183b4b,#0b202b);font-size:10px;font-weight:900;text-align:center;color:var(--light);overflow:hidden}
-.logo-tile .game-logo {width:43px;height:43px;margin:0;font-size:13px}
-.ticker-row {display:flex;align-items:center;gap:8px;padding:12px 10px 0;max-width:1200px;margin:auto}
-.ticker {min-width:0;overflow:hidden;flex:1;border:1px solid #245249;border-radius:30px;background:#081f29}
-.ticker-track {display:flex;width:max-content;align-items:center;gap:25px;padding:12px 0;animation:scrollLeft 180s linear infinite}
-.ticker.reverse .ticker-track {animation-name:scrollRight;animation-duration:180s}
+
+.subtitle {
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.8;
+  margin:12px auto 18px;
+  max-width:600px;
+}
+
+.actions {
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;
+  gap:9px;
+}
+
+.action-btn {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:10px;
+  padding:12px 15px;
+  font-weight:900;
+  font-size:12px;
+  background:linear-gradient(135deg,#ffda75,#e7a62d);
+  color:#241b0d;
+}
+
+.action-btn.secondary {
+  background:#102e3b;
+  color:white;
+  border:1px solid #315666;
+}
+
+.action-btn.green {
+  background:linear-gradient(135deg,#37e0b0,#09a986);
+  color:#06271f;
+}
+
+/* NEW FRONT PROFILE AND VIDEO SECTION */
+.front-showcase {
+  max-width:1000px;
+  margin:22px auto;
+  padding:0 12px;
+}
+
+.showcase-panel {
+  display:grid;
+  grid-template-columns:minmax(0,1.15fr) minmax(220px,.85fr);
+  gap:16px;
+  align-items:center;
+  padding:17px;
+  border:1px solid #a77c38;
+  border-radius:23px;
+  background:
+    radial-gradient(ellipse at top left,#214454,#0b202c 65%);
+  box-shadow:0 8px 28px #0005;
+}
+
+.profile-area {
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  min-width:0;
+  padding:8px;
+}
+
+.profile-frame {
+  width:min(100%,300px);
+  aspect-ratio:1/1;
+  overflow:hidden;
+  border-radius:50%;
+  border:4px solid var(--gold);
+  background:#102d3a;
+  box-shadow:0 0 0 5px #e8b94322,0 0 28px #e8b94355;
+}
+
+.profile-frame img {
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.profile-title {
+  margin:15px 0 5px;
+  color:var(--light);
+  font-size:clamp(19px,4vw,26px);
+  font-weight:900;
+}
+
+.profile-caption {
+  margin:0;
+  color:var(--muted);
+  font-size:12px;
+  line-height:1.6;
+}
+
+.front-video-area {
+  min-width:0;
+  padding:8px;
+  border:1px solid #526b65;
+  border-radius:18px;
+  background:#071923;
+}
+
+.front-video-title {
+  margin:0 0 10px;
+  text-align:center;
+  color:var(--light);
+  font-size:14px;
+  font-weight:900;
+}
+
+.front-video {
+  display:block;
+  width:100%;
+  max-height:330px;
+  aspect-ratio:9/14;
+  object-fit:cover;
+  background:#000;
+  border-radius:12px;
+}
+
+.video-caption {
+  margin:9px 0 0;
+  text-align:center;
+  color:#a8c0ce;
+  font-size:10px;
+}
+
+.logo-strip {
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+  padding:15px 12px;
+  background:#061923;
+  border-bottom:1px solid #173542;
+  scrollbar-width:thin;
+}
+
+.logo-tile {
+  flex:0 0 88px;
+  height:82px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:5px;
+  border:1px solid #294b5b;
+  border-radius:15px;
+  background:linear-gradient(145deg,#183b4b,#0b202b);
+  font-size:10px;
+  font-weight:900;
+  text-align:center;
+  color:var(--light);
+  overflow:hidden;
+}
+
+.logo-tile .game-logo {
+  width:43px;
+  height:43px;
+  margin:0;
+  font-size:13px;
+}
+
+.ticker-row {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  padding:12px 10px 0;
+  max-width:1200px;
+  margin:auto;
+}
+
+.ticker {
+  min-width:0;
+  overflow:hidden;
+  flex:1;
+  border:1px solid #245249;
+  border-radius:30px;
+  background:#081f29;
+}
+
+.ticker-track {
+  display:flex;
+  width:max-content;
+  align-items:center;
+  gap:25px;
+  padding:12px 0;
+  animation:scrollLeft 180s linear infinite;
+}
+
+.ticker.reverse .ticker-track {
+  animation-name:scrollRight;
+  animation-duration:180s;
+}
+
 .ticker:hover .ticker-track {animation-play-state:paused}
-.ticker-item {display:flex;align-items:center;gap:7px;white-space:nowrap;color:#d9e5eb;font-size:12px;font-weight:700}
+
+.ticker-item {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  white-space:nowrap;
+  color:#d9e5eb;
+  font-size:12px;
+  font-weight:700;
+}
+
 .ticker-item strong {color:var(--green)}
-.ticker-logo {position:relative;width:30px;height:30px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;border:1px solid var(--gold);background:#173744;color:var(--light);font-size:9px}
-.ticker-logo img,.game-logo img,.mini-mark img {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;background:#102d3a}
-.live-win-btn {border:0;border-radius:22px;padding:11px 12px;background:#a92330;color:white;font-weight:900;font-size:11px;white-space:nowrap;animation:pulse 1.8s infinite}
-.live-win-panel {display:none;margin:8px 12px;padding:12px;text-align:center;border:1px solid #355567;border-radius:12px;background:#102d3a;color:#fff0b0;font-size:12px}
+
+.ticker-logo {
+  position:relative;
+  width:30px;
+  height:30px;
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border-radius:50%;
+  border:1px solid var(--gold);
+  background:#173744;
+  color:var(--light);
+  font-size:9px;
+}
+
+.ticker-logo img,
+.game-logo img,
+.mini-mark img {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  padding:2px;
+  background:#102d3a;
+}
+
+.live-win-btn {
+  border:0;
+  border-radius:22px;
+  padding:11px 12px;
+  background:#a92330;
+  color:white;
+  font-weight:900;
+  font-size:11px;
+  white-space:nowrap;
+  animation:pulse 1.8s infinite;
+}
+
+.live-win-panel {
+  display:none;
+  margin:8px 12px;
+  padding:12px;
+  text-align:center;
+  border:1px solid #355567;
+  border-radius:12px;
+  background:#102d3a;
+  color:#fff0b0;
+  font-size:12px;
+}
+
 .live-win-panel.visible {display:block}
-@keyframes scrollLeft {from {transform:translateX(0)} to {transform:translateX(-50%)}}
-@keyframes scrollRight {from {transform:translateX(-50%)} to {transform:translateX(0)}}
-@keyframes pulse {50% {filter:brightness(1.25)}}
-main {max-width:1200px;margin:auto;padding:15px 12px 35px}
-.promo-banner {position:relative;overflow:hidden;text-align:center;padding:21px 12px;margin:15px 0 22px;border:1px solid #a87b35;border-radius:24px;background:linear-gradient(125deg,#ff7a48,#ffb13c,#f37a3e);color:#2c180e;box-shadow:0 7px 24px #ff813e20}
+
+@keyframes scrollLeft {
+  from {transform:translateX(0)}
+  to {transform:translateX(-50%)}
+}
+
+@keyframes scrollRight {
+  from {transform:translateX(-50%)}
+  to {transform:translateX(0)}
+}
+
+@keyframes pulse {
+  50% {filter:brightness(1.25)}
+}
+
+main {
+  max-width:1200px;
+  margin:auto;
+  padding:15px 12px 35px;
+}
+
+.promo-banner {
+  position:relative;
+  overflow:hidden;
+  text-align:center;
+  padding:21px 12px;
+  margin:15px 0 22px;
+  border:1px solid #a87b35;
+  border-radius:24px;
+  background:linear-gradient(125deg,#ff7a48,#ffb13c,#f37a3e);
+  color:#2c180e;
+  box-shadow:0 7px 24px #ff813e20;
+}
+
 .promo-icon {font-size:30px}
-.bonus-pill {display:inline-block;background:#532b1a;color:#fff0b0;padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900}
-.promo-banner h2 {font-size:clamp(23px,5vw,32px);margin:10px 0;font-weight:900}
-.promo-banner p {font-size:13px;line-height:1.6;margin:7px 0}
-.featured-logos {display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0}
-.featured-logo {display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #4a5b4c;border-radius:10px;background:#102b35;color:var(--light);font-size:10px;font-weight:900}
-.mini-mark {position:relative;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--gold);border-radius:7px;color:var(--light);background:#071923;font-size:9px}
-.section-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:24px 0 13px}
-.section-heading h2 {font-size:19px;margin:0;color:var(--light)}
-.count {padding:7px 10px;border:1px solid #326173;border-radius:20px;color:var(--green);font-size:11px;white-space:nowrap}
-.search-box {width:100%;padding:14px;border-radius:12px;border:1px solid #31596a;background:#0c2735;color:white;outline:none;margin-bottom:15px}
+
+.bonus-pill {
+  display:inline-block;
+  background:#532b1a;
+  color:#fff0b0;
+  padding:7px 12px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:900;
+}
+
+.promo-banner h2 {
+  font-size:clamp(23px,5vw,32px);
+  margin:10px 0;
+  font-weight:900;
+}
+
+.promo-banner p {
+  font-size:13px;
+  line-height:1.6;
+  margin:7px 0;
+}
+
+.featured-logos {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+  margin:18px 0;
+}
+
+.featured-logo {
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding:8px 10px;
+  border:1px solid #4a5b4c;
+  border-radius:10px;
+  background:#102b35;
+  color:var(--light);
+  font-size:10px;
+  font-weight:900;
+}
+
+.mini-mark {
+  position:relative;
+  width:27px;
+  height:27px;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  border:1px solid var(--gold);
+  border-radius:7px;
+  color:var(--light);
+  background:#071923;
+  font-size:9px;
+}
+
+.section-heading {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin:24px 0 13px;
+}
+
+.section-heading h2 {
+  font-size:19px;
+  margin:0;
+  color:var(--light);
+}
+
+.count {
+  padding:7px 10px;
+  border:1px solid #326173;
+  border-radius:20px;
+  color:var(--green);
+  font-size:11px;
+  white-space:nowrap;
+}
+
+.search-box {
+  width:100%;
+  padding:14px;
+  border-radius:12px;
+  border:1px solid #31596a;
+  background:#0c2735;
+  color:white;
+  outline:none;
+  margin-bottom:15px;
+}
+
 .search-box:focus {border-color:var(--gold)}
-.games-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.game-card {min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#102e3d,#091f2a);border:1px solid #214655;border-radius:17px;box-shadow:0 6px 15px #0003;transition:transform .2s,border-color .2s}
-.game-card:hover {border-color:var(--gold);transform:translateY(-2px)}
-.game-logo {position:relative;width:100%;height:135px;margin:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:0;background:linear-gradient(145deg,#214957,#071923);color:var(--light);font-size:30px;font-weight:900;letter-spacing:1px;overflow:hidden;text-shadow:0 2px 5px #000}
+
+.games-grid {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:12px;
+}
+
+.game-card {
+  min-width:0;
+  overflow:hidden;
+  position:relative;
+  background:linear-gradient(155deg,#102e3d,#091f2a);
+  border:1px solid #214655;
+  border-radius:17px;
+  box-shadow:0 6px 15px #0003;
+  transition:transform .2s,border-color .2s;
+}
+
+.game-card:hover {
+  border-color:var(--gold);
+  transform:translateY(-2px);
+}
+
+.game-logo {
+  position:relative;
+  width:100%;
+  height:135px;
+  margin:0;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:0;
+  background:linear-gradient(145deg,#214957,#071923);
+  color:var(--light);
+  font-size:30px;
+  font-weight:900;
+  letter-spacing:1px;
+  overflow:hidden;
+  text-shadow:0 2px 5px #000;
+}
+
 .game-logo img {padding:0}
-.hot-badge {position:absolute;top:9px;left:9px;z-index:2;padding:6px 10px;border-radius:20px;background:linear-gradient(120deg,#ffda62,#ff713f);color:#35180d;font-size:10px;font-weight:900}
+
+.hot-badge {
+  position:absolute;
+  top:9px;
+  left:9px;
+  z-index:2;
+  padding:6px 10px;
+  border-radius:20px;
+  background:linear-gradient(120deg,#ffda62,#ff713f);
+  color:#35180d;
+  font-size:10px;
+  font-weight:900;
+}
+
 .game-info {padding:12px 10px 13px}
-.game-name {font-size:14px;font-weight:900;min-height:35px;display:flex;align-items:center;overflow-wrap:anywhere;color:#fff}
-.game-number {color:var(--green);font-size:12px;font-weight:800;margin:6px 0 10px}
-.card-actions {display:grid;grid-template-columns:1fr;gap:7px}
-.card-btn {display:flex;align-items:center;justify-content:center;border:0;border-radius:9px;padding:11px 4px;font-size:12px;font-weight:900;text-align:center;background:linear-gradient(120deg,#35ddbc,#0cbaa2);color:#052920}
-.card-btn.deposit {background:linear-gradient(120deg,#ff9651,#ff713e);color:#35180d}
-.empty {display:none;text-align:center;padding:25px;color:#c3d7dd}
-.note {margin:12px 0;color:#9bb6c2;font-size:11px;line-height:1.6}
-.extra-section {margin-top:25px;padding:18px 12px;border:1px solid #294d5b;border-radius:15px;background:#0c2531;text-align:center}
-.extra-section h2 {color:var(--light);font-size:19px}
-.extra-section p {color:var(--muted);font-size:13px;line-height:1.7}
-.payment-list,.contact-actions {display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.payment-chip {border:1px solid #416271;background:#153744;border-radius:9px;padding:9px 12px;font-size:12px;color:#fff0b0}
+
+.game-name {
+  font-size:14px;
+  font-weight:900;
+  min-height:35px;
+  display:flex;
+  align-items:center;
+  overflow-wrap:anywhere;
+  color:#fff;
+}
+
+.game-number {
+  color:var(--green);
+  font-size:12px;
+  font-weight:800;
+  margin:6px 0 10px;
+}
+
+.card-actions {
+  display:grid;
+  grid-template-columns:1fr;
+  gap:7px;
+}
+
+.card-btn {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  border:0;
+  border-radius:9px;
+  padding:11px 4px;
+  font-size:12px;
+  font-weight:900;
+  text-align:center;
+  background:linear-gradient(120deg,#35ddbc,#0cbaa2);
+  color:#052920;
+}
+
+.card-btn.deposit {
+  background:linear-gradient(120deg,#ff9651,#ff713e);
+  color:#35180d;
+}
+
+.empty {
+  display:none;
+  text-align:center;
+  padding:25px;
+  color:#c3d7dd;
+}
+
+.note {
+  margin:12px 0;
+  color:#9bb6c2;
+  font-size:11px;
+  line-height:1.6;
+}
+
+.extra-section {
+  margin-top:25px;
+  padding:18px 12px;
+  border:1px solid #294d5b;
+  border-radius:15px;
+  background:#0c2531;
+  text-align:center;
+}
+
+.extra-section h2 {
+  color:var(--light);
+  font-size:19px;
+}
+
+.extra-section p {
+  color:var(--muted);
+  font-size:13px;
+  line-height:1.7;
+}
+
+.payment-list,
+.contact-actions {
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  justify-content:center;
+}
+
+.payment-chip {
+  border:1px solid #416271;
+  background:#153744;
+  border-radius:9px;
+  padding:9px 12px;
+  font-size:12px;
+  color:#fff0b0;
+}
+
 .contact-actions {margin-top:14px}
-footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #1c3c48;font-size:12px}
-.floating-buttons {position:fixed;right:12px;bottom:18px;z-index:20;display:flex;flex-direction:column;gap:10px}
-.float-btn {width:48px;height:48px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;box-shadow:0 4px 13px #0008}
+
+footer {
+  text-align:center;
+  color:#a9c1ca;
+  padding:22px 10px;
+  border-top:1px solid #1c3c48;
+  font-size:12px;
+}
+
+.floating-buttons {
+  position:fixed;
+  right:12px;
+  bottom:18px;
+  z-index:20;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+}
+
+.float-btn {
+  width:48px;
+  height:48px;
+  border:0;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:22px;
+  color:white;
+  box-shadow:0 4px 13px #0008;
+}
+
 .chat-float {background:#087cc1}
 .whatsapp-float {background:#16a765}
 .messenger-float {background:#0866ff}
-.install-float {position:fixed;left:12px;bottom:18px;z-index:19;border:1px solid #856a2e;border-radius:30px;padding:12px 15px;background:#0b2530;color:white;font-size:12px;font-weight:900;box-shadow:0 5px 18px #0006}
-.modal {display:none;position:fixed;inset:0;z-index:50;background:#000c;align-items:center;justify-content:center;padding:16px}
+
+.install-float {
+  position:fixed;
+  left:12px;
+  bottom:18px;
+  z-index:19;
+  border:1px solid #856a2e;
+  border-radius:30px;
+  padding:12px 15px;
+  background:#0b2530;
+  color:white;
+  font-size:12px;
+  font-weight:900;
+  box-shadow:0 5px 18px #0006;
+}
+
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:50;
+  background:#000c;
+  align-items:center;
+  justify-content:center;
+  padding:16px;
+}
+
 .modal.show {display:flex}
-.modal-box {width:min(440px,100%);background:#102d3a;border:1px solid var(--gold);border-radius:17px;padding:22px;text-align:center;max-height:85vh;overflow:auto}
-.modal-box h2 {color:var(--light);margin-top:0}
-.modal-box p {line-height:1.7;color:#e3edf0;font-size:14px}
-.modal-box button,.modal-box a {margin:5px}
-.modal-close {background:#a91e28;color:white;border:0;padding:10px 16px;border-radius:8px}
-.spin-wheel {font-size:62px;margin:10px auto;color:var(--gold)}
+
+.modal-box {
+  width:min(440px,100%);
+  background:#102d3a;
+  border:1px solid var(--gold);
+  border-radius:17px;
+  padding:22px;
+  text-align:center;
+  max-height:85vh;
+  overflow:auto;
+}
+
+.modal-box h2 {
+  color:var(--light);
+  margin-top:0;
+}
+
+.modal-box p {
+  line-height:1.7;
+  color:#e3edf0;
+  font-size:14px;
+}
+
+.modal-box button,
+.modal-box a {margin:5px}
+
+.modal-close {
+  background:#a91e28;
+  color:white;
+  border:0;
+  padding:10px 16px;
+  border-radius:8px;
+}
+
+.spin-wheel {
+  font-size:62px;
+  margin:10px auto;
+  color:var(--gold);
+}
+
 .mobile-nav {display:none}
 
 /* Notification popup */
 #notificationModal {z-index:2000}
-.notification-icon {font-size:55px;margin:5px 0 12px}
-.notification-allow {width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(120deg,#37e0b0,#09a986);color:#06271f;font-weight:900}
-.notification-allow:disabled {opacity:.65;cursor:wait}
-.notification-later {background:#173b4b;color:white;border:1px solid #456171;padding:11px 18px;border-radius:9px}
+
+.notification-icon {
+  font-size:55px;
+  margin:5px 0 12px;
+}
+
+.notification-allow {
+  width:100%;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:linear-gradient(120deg,#37e0b0,#09a986);
+  color:#06271f;
+  font-weight:900;
+}
+
+.notification-allow:disabled {
+  opacity:.65;
+  cursor:wait;
+}
+
+.notification-later {
+  background:#173b4b;
+  color:white;
+  border:1px solid #456171;
+  padding:11px 18px;
+  border-radius:9px;
+}
 
 @media(min-width:600px) {
-.games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
-main {padding-left:20px;padding-right:20px}
-.game-logo {height:165px}
+  .games-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+  main {
+    padding-left:20px;
+    padding-right:20px;
+  }
+  .game-logo {height:165px}
 }
+
 @media(min-width:900px) {
-.games-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
+  .games-grid {
+    grid-template-columns:repeat(4,minmax(0,1fr));
+  }
 }
+
 @media(max-width:599px) {
-body {padding-bottom:68px}
-header {padding:14px 10px 20px}
-.brand-icon {width:47px;height:47px;font-size:24px}
-.small-btn {padding:10px 9px}
-.hero {margin-top:20px}
-.ticker-row {padding-top:10px}
-.live-win-btn {padding:10px 9px;font-size:10px}
-.game-logo {height:122px}
-.mobile-nav {display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;justify-content:space-around;align-items:center;padding:9px 3px max(9px,env(safe-area-inset-bottom));background:#061923f5;border-top:1px solid #274554;backdrop-filter:blur(12px)}
-.nav-item {display:flex;flex-direction:column;align-items:center;gap:4px;color:#a9bec8;font-size:10px;font-weight:800;min-width:48px}
-.nav-item span:first-child {font-size:21px}
-.nav-item.active {color:#ffd45c}
-.install-float {bottom:78px}
-.floating-buttons {bottom:78px}
+  body {padding-bottom:68px}
+
+  header {padding:14px 10px 20px}
+
+  .brand-icon {
+    width:47px;
+    height:47px;
+    font-size:24px;
+  }
+
+  .small-btn {padding:10px 9px}
+  .hero {margin-top:20px}
+  .ticker-row {padding-top:10px}
+
+  .live-win-btn {
+    padding:10px 9px;
+    font-size:10px;
+  }
+
+  .game-logo {height:122px}
+
+  .showcase-panel {
+    grid-template-columns:minmax(0,1fr) minmax(0,.85fr);
+    gap:8px;
+    padding:10px;
+  }
+
+  .profile-frame {
+    width:100%;
+    max-width:190px;
+  }
+
+  .profile-title {font-size:17px}
+  .profile-caption {font-size:10px}
+
+  .front-video-area {padding:6px}
+  .front-video-title {font-size:11px}
+  .front-video {max-height:240px}
+
+  .mobile-nav {
+    display:flex;
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    z-index:18;
+    justify-content:space-around;
+    align-items:center;
+    padding:9px 3px max(9px,env(safe-area-inset-bottom));
+    background:#061923f5;
+    border-top:1px solid #274554;
+    backdrop-filter:blur(12px);
+  }
+
+  .nav-item {
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:4px;
+    color:#a9bec8;
+    font-size:10px;
+    font-weight:800;
+    min-width:48px;
+  }
+
+  .nav-item span:first-child {font-size:21px}
+  .nav-item.active {color:#ffd45c}
+  .install-float {bottom:78px}
+  .floating-buttons {bottom:78px}
 }
+
+@media(max-width:360px) {
+  .showcase-panel {grid-template-columns:1fr}
+  .profile-frame {max-width:190px}
+  .front-video {max-height:260px}
+}
+
 @media(prefers-reduced-motion:reduce) {
-*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
 }
 </style>
 </head>
@@ -271,6 +1063,7 @@ header {padding:14px 10px 20px}
       <button class="small-btn menu-btn" onclick="toggleMenu()" type="button" aria-label="Open menu">☰</button>
     </div>
   </div>
+
   <div class="hero">
     <h1>Welcome to <span>Premium Gaming Lounge</span></h1>
     <p class="subtitle">Explore your favorite gaming platforms in one convenient place. Contact support for account and platform assistance.</p>
@@ -285,11 +1078,50 @@ header {padding:14px 10px 20px}
   </div>
 </header>
 
+<!-- NEW PROFILE AND VIDEO DISPLAY -->
+<section class="front-showcase" aria-label="Featured profile and video">
+  <div class="showcase-panel">
+
+    <div class="profile-area">
+      <div class="profile-frame">
+        <img
+          src="./profile-dp.jpg"
+          alt="Premium Gaming Lounge profile"
+          loading="eager"
+          onerror="this.style.display='none';this.parentElement.style.background='linear-gradient(145deg,#173b4b,#b17c25)';this.parentElement.innerHTML='<div style=&quot;display:grid;place-items:center;width:100%;height:100%;font-size:75px;color:#fff0b0&quot;>♛</div>';"
+        >
+      </div>
+      <h2 class="profile-title">Premium Gaming Lounge</h2>
+      <p class="profile-caption">Welcome to our gaming platforms</p>
+    </div>
+
+    <div class="front-video-area">
+      <h3 class="front-video-title">🎬 Featured Video</h3>
+      <video
+        class="front-video"
+        controls
+        playsinline
+        preload="metadata"
+        poster="./roll-sweeps-logo.png"
+      >
+        <source src="./front-video.mp4" type="video/mp4">
+        Your browser does not support HTML video.
+      </video>
+      <p class="video-caption">Press Play to watch the video</p>
+    </div>
+
+  </div>
+</section>
+
 <div class="logo-strip" id="logoStrip" aria-label="Featured game logos"></div>
+
 <div class="ticker-row">
-  <div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
+  <div class="ticker">
+    <div class="ticker-track" id="tickerOne"></div>
+  </div>
   <button class="live-win-btn" type="button" onclick="toggleLiveWin()" aria-expanded="false" id="liveWinButton">● LIVE WINS</button>
 </div>
+
 <div class="live-win-panel" id="liveWinPanel">Platform highlights. Verified live results are not connected to this website.</div>
 <div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
 
@@ -309,7 +1141,9 @@ header {padding:14px 10px 20px}
     <h2>🎮 All Gaming Platforms</h2>
     <span class="count" id="gameCount">0 platforms</span>
   </div>
+
   <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite game..." aria-label="Search games">
+
   <div class="games-grid" id="gamesGrid"></div>
   <div class="empty" id="emptyMessage">No games found. Try another name.</div>
 
@@ -553,6 +1387,7 @@ function makeFeaturedLogos() {
   featured.forEach(([name,url]) => {
     const tile = document.createElement("div");
     tile.className = "logo-tile";
+
     const logo = document.createElement("div");
     logo.className = "game-logo";
     loadLogo(logo,name,url);
@@ -564,6 +1399,7 @@ function makeFeaturedLogos() {
 
     const badge = document.createElement("div");
     badge.className = "featured-logo";
+
     const mark = document.createElement("span");
     mark.className = "mini-mark";
     loadLogo(mark,name,url);
@@ -578,6 +1414,7 @@ function makeFeaturedLogos() {
 function renderGames(filter = "") {
   grid.replaceChildren();
   const term = filter.trim().toLowerCase();
+
   const filtered = games.filter(([name,url]) =>
     (name+" "+url).toLowerCase().includes(term)
   );
@@ -591,11 +1428,13 @@ function renderGames(filter = "") {
     hot.textContent = "POPULAR";
 
     const logo = makeLogo(name,url);
+
     const title = document.createElement("div");
     title.className = "game-name";
     title.textContent = name;
 
     const key = name+"|"+url;
+
     if (!countMap.has(key)) {
       countMap.set(key,numberOptions[(index*3+1)%numberOptions.length]);
     }
@@ -631,12 +1470,14 @@ function renderGames(filter = "") {
 
   document.getElementById("gameCount").textContent =
     filtered.length+" platforms";
+
   emptyMessage.style.display = filtered.length ? "none" : "block";
 }
 
 function makeTicker(id) {
   const track = document.getElementById(id);
   track.replaceChildren();
+
   const winAmounts = [500,750,900,1000,1200,1500,2000,3000,5000];
 
   for (let repeat=0; repeat<2; repeat++) {
@@ -677,6 +1518,7 @@ function toggleLiveWin() {
   const panel = document.getElementById("liveWinPanel");
   const button = document.getElementById("liveWinButton");
   const open = panel.classList.toggle("visible");
+
   button.setAttribute("aria-expanded",String(open));
   button.textContent = open ? "✕ CLOSE" : "● LIVE WINS";
 }
@@ -702,6 +1544,7 @@ function spinWheel() {
     "Explore the games",
     "Good luck"
   ];
+
   document.getElementById("spinWheel").textContent = "🎯";
   document.getElementById("spinResult").textContent =
     results[Math.floor(Math.random()*results.length)];
@@ -723,6 +1566,7 @@ function installApp() {
 
   const message = document.getElementById("installMessage");
   const button = document.getElementById("installConfirm");
+
   const standalone =
     window.matchMedia("(display-mode: standalone)").matches ||
     window.navigator.standalone === true;
@@ -769,6 +1613,7 @@ makeTicker("tickerOne");
 makeTicker("tickerTwo");
 renderGames();
 makeFeaturedLogos();
+
 document.getElementById("year").textContent = new Date().getFullYear();
 
 /* Keep the website's existing root service worker */
