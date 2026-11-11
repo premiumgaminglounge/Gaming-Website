@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -63,10 +64,8 @@ window.PGL_OneSignalReady.catch(function(e){
 --muted:#b8c6d7;
 --line:#294866
 }
-
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:18px}
-
 body{
 margin:0;
 background:radial-gradient(ellipse at 50% -10%,#173b68 0,#08192b 48%,#040d18 100%);
@@ -74,16 +73,13 @@ color:var(--text);
 font-family:Arial,Helvetica,sans-serif;
 padding-bottom:18px
 }
-
 a{color:inherit;text-decoration:none}
 button,input{font:inherit}
 button{cursor:pointer}
-
 button:focus-visible,a:focus-visible,input:focus-visible{
 outline:2px solid var(--gold);
 outline-offset:3px
 }
-
 .topbar{
 padding:10px 8px;
 text-align:center;
@@ -93,13 +89,11 @@ font-size:11px;
 font-weight:900;
 letter-spacing:.7px
 }
-
 header{
 padding:14px 12px 24px;
 border-bottom:1px solid #315171;
 background:linear-gradient(110deg,#07182b,#102b4c 55%,#081629)
 }
-
 .header-line{
 max-width:1180px;
 margin:auto;
@@ -108,784 +102,295 @@ align-items:center;
 justify-content:space-between;
 gap:12px
 }
-
-.brand{
-display:flex;
-align-items:center;
-gap:10px;
-min-width:0
-}
-
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
 .brand-mark{
-width:58px;
-height:58px;
-flex:none;
-display:grid;
-place-items:center;
-border-radius:50%;
-border:2px solid var(--gold);
+width:58px;height:58px;flex:none;display:grid;place-items:center;
+border-radius:50%;border:2px solid var(--gold);
 background:radial-gradient(circle at 35% 25%,#fff0a5,#b77a14 42%,#192b45 72%);
-box-shadow:0 0 22px #ffc94d55;
-color:#241706;
-font-size:34px
+box-shadow:0 0 22px #ffc94d55;color:#241706;font-size:34px
 }
-
 .brand-name{
-font-size:clamp(22px,5vw,36px);
-font-weight:1000;
-font-style:italic;
-letter-spacing:-1px;
-text-shadow:0 3px 12px #000
+font-size:clamp(22px,5vw,36px);font-weight:1000;font-style:italic;
+letter-spacing:-1px;text-shadow:0 3px 12px #000
 }
-
-.brand-name span{
-color:var(--gold);
-text-shadow:0 0 12px #e6a82e66
-}
-
+.brand-name span{color:var(--gold);text-shadow:0 0 12px #e6a82e66}
 .brand-logo{
-display:block;
-width:clamp(180px,38vw,320px);
-max-height:76px;
-object-fit:contain;
-border-radius:8px
+display:block;width:clamp(180px,38vw,320px);max-height:76px;
+object-fit:contain;border-radius:8px
 }
-
 .footer-brand-logo{
-display:block;
-width:min(230px,72vw);
-max-height:66px;
-object-fit:contain;
-margin:0 auto 12px;
-border-radius:8px
+display:block;width:min(230px,72vw);max-height:66px;
+object-fit:contain;margin:0 auto 12px;border-radius:8px
 }
-
-.header-actions{
-display:flex;
-align-items:center;
-gap:8px
-}
-
+.header-actions{display:flex;align-items:center;gap:8px}
 .small-btn{
-border:1px solid #557394;
-border-radius:24px;
-padding:10px 13px;
-background:#0b2037;
-color:#fff;
-font-size:12px;
-font-weight:900
+border:1px solid #557394;border-radius:24px;padding:10px 13px;
+background:#0b2037;color:#fff;font-size:12px;font-weight:900
 }
-
 .menu-btn{font-size:20px;padding:7px 12px}
-
 .hero{
-max-width:1180px;
-margin:28px auto 0;
-display:grid;
-grid-template-columns:1.05fr .95fr;
-align-items:center;
-gap:16px
+max-width:1180px;margin:28px auto 0;display:grid;
+grid-template-columns:1.05fr .95fr;align-items:center;gap:16px
 }
-
 .hero-copy{text-align:left}
-
 .eyebrow{
-display:inline-block;
-border:1px solid #8c6a2a;
-border-radius:30px;
-padding:7px 12px;
-color:var(--gold2);
-font-size:11px;
-font-weight:900;
-letter-spacing:1px;
-background:#1a2a3a
+display:inline-block;border:1px solid #8c6a2a;border-radius:30px;
+padding:7px 12px;color:var(--gold2);font-size:11px;font-weight:900;
+letter-spacing:1px;background:#1a2a3a
 }
-
 h1{
-font-size:clamp(34px,6vw,64px);
-line-height:1.02;
-margin:14px 0;
-color:#fff;
-font-weight:1000;
-text-shadow:0 4px 18px #000
+font-size:clamp(34px,6vw,64px);line-height:1.02;margin:14px 0;
+color:#fff;font-weight:1000;text-shadow:0 4px 18px #000
 }
-
 h1 span{color:var(--gold);display:block}
-
 .subtitle{
-max-width:600px;
-color:var(--muted);
-font-size:15px;
-line-height:1.7;
-margin:12px 0 18px
+max-width:600px;color:var(--muted);font-size:15px;
+line-height:1.7;margin:12px 0 18px
 }
-
 .hero-art{
-min-height:250px;
-border-radius:22px;
-border:1px solid #6e5a31;
+min-height:250px;border-radius:22px;border:1px solid #6e5a31;
 background:linear-gradient(135deg,#102c4c,#11152c 55%,#4b2361);
-display:flex;
-align-items:center;
-justify-content:center;
-position:relative;
-overflow:hidden;
-box-shadow:0 12px 35px #0008
+display:flex;align-items:center;justify-content:center;position:relative;
+overflow:hidden;box-shadow:0 12px 35px #0008
 }
-
 .hero-art:before{
-content:"♛";
-font-size:150px;
-color:#f4c44e;
-text-shadow:0 0 24px #ffb82d;
-opacity:.9
+content:"♛";font-size:150px;color:#f4c44e;
+text-shadow:0 0 24px #ffb82d;opacity:.9
 }
-
 .hero-art:after{
-content:"ROLL • PLAY • EXPLORE";
-position:absolute;
-bottom:17px;
-left:0;
-right:0;
-text-align:center;
-color:#fff0bd;
-font-size:13px;
-font-weight:900;
-letter-spacing:3px
+content:"ROLL • PLAY • EXPLORE";position:absolute;bottom:17px;
+left:0;right:0;text-align:center;color:#fff0bd;font-size:13px;
+font-weight:900;letter-spacing:3px
 }
-
 .actions{display:flex;flex-wrap:wrap;gap:9px}
-
 .action-btn{
-display:inline-flex;
-align-items:center;
-justify-content:center;
-gap:7px;
-border:0;
-border-radius:12px;
-padding:12px 15px;
-font-size:12px;
-font-weight:1000;
-background:linear-gradient(135deg,#ffe28a,#e7a321);
-color:#241807;
-box-shadow:0 4px 12px #0005
+display:inline-flex;align-items:center;justify-content:center;gap:7px;
+border:0;border-radius:12px;padding:12px 15px;font-size:12px;
+font-weight:1000;background:linear-gradient(135deg,#ffe28a,#e7a321);
+color:#241807;box-shadow:0 4px 12px #0005
 }
-
-.action-btn.green{
-background:linear-gradient(135deg,#50edb6,#08a97e);
-color:#04291e
-}
-
-.action-btn.blue{
-background:linear-gradient(135deg,#52bff7,#1764c9);
-color:#fff
-}
-
-.action-btn.purple{
-background:linear-gradient(135deg,#d17cff,#7134cb);
-color:white
-}
-
-.action-btn.dark{
-background:#102a43;
-border:1px solid #42617e;
-color:white
-}
-
+.action-btn.green{background:linear-gradient(135deg,#50edb6,#08a97e);color:#04291e}
+.action-btn.blue{background:linear-gradient(135deg,#52bff7,#1764c9);color:#fff}
+.action-btn.purple{background:linear-gradient(135deg,#d17cff,#7134cb);color:white}
+.action-btn.dark{background:#102a43;border:1px solid #42617e;color:white}
 .logo-strip{
-display:flex;
-gap:11px;
-overflow-x:auto;
-padding:15px 12px;
-background:#061321;
-border-bottom:1px solid var(--line);
-scrollbar-width:thin
+display:flex;gap:11px;overflow-x:auto;padding:15px 12px;
+background:#061321;border-bottom:1px solid var(--line);scrollbar-width:thin
 }
-
 .logo-tile{
-flex:0 0 105px;
-min-height:84px;
-display:flex;
-flex-direction:column;
-align-items:center;
-justify-content:center;
-gap:6px;
-border:1px solid #a68b4a;
-border-radius:15px;
-background:linear-gradient(145deg,#183858,#08182a);
-color:#ffe6a0;
-font-size:11px;
-font-weight:900;
-text-align:center
+flex:0 0 105px;min-height:84px;display:flex;flex-direction:column;
+align-items:center;justify-content:center;gap:6px;border:1px solid #a68b4a;
+border-radius:15px;background:linear-gradient(145deg,#183858,#08182a);
+color:#ffe6a0;font-size:11px;font-weight:900;text-align:center
 }
-
 .logo-symbol{font-size:27px}
-
 .logo-tile .game-logo{
-width:78px;
-height:48px;
-min-height:48px;
-border:0;
-background:transparent;
-font-size:15px
+width:78px;height:48px;min-height:48px;border:0;
+background:transparent;font-size:15px
 }
-
-.logo-tile .game-logo img{
-width:100%;
-height:100%;
-object-fit:contain
-}
-
+.logo-tile .game-logo img{width:100%;height:100%;object-fit:contain}
 .featured-logo .mini-mark{
-display:inline-flex;
-width:30px;
-height:30px;
-align-items:center;
-justify-content:center;
-overflow:hidden
+display:inline-flex;width:30px;height:30px;align-items:center;
+justify-content:center;overflow:hidden
 }
-
-.featured-logo .mini-mark img{
-width:100%;
-height:100%;
-object-fit:contain
-}
+.featured-logo .mini-mark img{width:100%;height:100%;object-fit:contain}
 
 /* Moving ticker strips */
 .ticker-row{
-display:flex;
-align-items:center;
-gap:8px;
-padding:12px 10px 0;
-max-width:1200px;
-margin:auto
+display:flex;align-items:center;gap:8px;padding:12px 10px 0;
+max-width:1200px;margin:auto
 }
-
 .ticker{
-min-width:0;
-overflow:hidden;
-flex:1;
-border:1px solid #355b77;
-border-radius:30px;
-background:#071b2c
+min-width:0;overflow:hidden;flex:1;border:1px solid #355b77;
+border-radius:30px;background:#071b2c
 }
-
 .ticker-track{
-display:flex;
-width:max-content;
-gap:26px;
-padding:12px 0;
+display:flex;width:max-content;gap:26px;padding:12px 0;
 animation:slide 90s linear infinite
 }
-
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker.reverse .ticker-track{animation-direction:reverse}
-
 .ticker-item{
-display:inline-flex;
-align-items:center;
-gap:3px;
-padding:0 3px;
-white-space:nowrap;
-color:#dce7f3;
-font-size:12px;
-font-weight:800
+display:inline-flex;align-items:center;gap:3px;padding:0 3px;
+white-space:nowrap;color:#dce7f3;font-size:12px;font-weight:800
 }
-
 .ticker-item strong{color:var(--gold)}
-
 .ticker-logo{
-display:inline-flex;
-width:27px;
-height:24px;
-vertical-align:middle;
-align-items:center;
-justify-content:center;
-margin-right:7px;
-overflow:hidden
+display:inline-flex;width:27px;height:24px;vertical-align:middle;
+align-items:center;justify-content:center;margin-right:7px;overflow:hidden
 }
-
-.ticker-logo img{
-width:100%;
-height:100%;
-object-fit:contain
-}
-
+.ticker-logo img{width:100%;height:100%;object-fit:contain}
 .live-wins-label,.live-win-btn{
-flex:none;
-border:1px solid #e44b56;
-border-radius:22px;
-background:linear-gradient(120deg,#ed3444,#a90d27);
-color:#fff;
-padding:11px 13px;
-font-size:11px;
-font-weight:1000;
-white-space:nowrap
+flex:none;border:1px solid #e44b56;border-radius:22px;
+background:linear-gradient(120deg,#ed3444,#a90d27);color:#fff;
+padding:11px 13px;font-size:11px;font-weight:1000;white-space:nowrap
 }
-
 .live-win-panel{
-display:none;
-max-width:1180px;
-margin:8px auto 0;
-padding:12px 16px;
-border:1px solid #8b3d4b;
-border-radius:13px;
-background:#251523;
-color:#ffe3e6;
-font-size:12px;
-line-height:1.6
+display:none;max-width:1180px;margin:8px auto 0;padding:12px 16px;
+border:1px solid #8b3d4b;border-radius:13px;background:#251523;
+color:#ffe3e6;font-size:12px;line-height:1.6
 }
-
 .live-win-panel.visible{display:block}
 .ticker-row.second{padding-top:8px}
-
-.game-number{
-color:#a9c5d8;
-font-size:11px;
-margin:5px 0 10px
-}
-
+.game-number{color:#a9c5d8;font-size:11px;margin:5px 0 10px}
 .video-review video{
-display:block;
-width:100%;
-max-height:620px;
-background:#000;
-border:1px solid #46647e;
-border-radius:14px;
-margin-top:12px
+display:block;width:100%;max-height:620px;background:#000;
+border:1px solid #46647e;border-radius:14px;margin-top:12px
 }
-
-@keyframes slide{
-to{transform:translateX(-50%)}
-}
-
-main{
-max-width:1200px;
-margin:auto;
-padding:14px 12px 35px
-}
-
+@keyframes slide{to{transform:translateX(-50%)}}
+main{max-width:1200px;margin:auto;padding:14px 12px 35px}
 .promo-banner{
-margin:16px 0 22px;
-padding:20px 14px;
-border:1px solid #d7a93f;
-border-radius:20px;
-text-align:center;
-color:#281908;
+margin:16px 0 22px;padding:20px 14px;border:1px solid #d7a93f;
+border-radius:20px;text-align:center;color:#281908;
 background:linear-gradient(110deg,#ffdc71,#f3a51e 55%,#ffe39a);
 box-shadow:0 8px 26px #f3b63b22
 }
-
 .promo-banner .pill{
-display:inline-block;
-background:#6f1d1d;
-color:white;
-padding:7px 13px;
-border-radius:22px;
-font-size:10px;
-font-weight:900
+display:inline-block;background:#6f1d1d;color:white;padding:7px 13px;
+border-radius:22px;font-size:10px;font-weight:900
 }
-
-.promo-banner h2{
-font-size:clamp(23px,5vw,34px);
-margin:10px 0;
-font-weight:1000
-}
-
-.promo-banner p{
-font-size:13px;
-line-height:1.6;
-margin:6px 0
-}
-
+.promo-banner h2{font-size:clamp(23px,5vw,34px);margin:10px 0;font-weight:1000}
+.promo-banner p{font-size:13px;line-height:1.6;margin:6px 0}
 .featured-logos{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-justify-content:center;
-margin:17px 0
+display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:17px 0
 }
-
 .featured-logo{
-display:flex;
-align-items:center;
-gap:7px;
-padding:8px 11px;
-border:1px solid #405e79;
-border-radius:24px;
-background:#0d243b;
-color:#ffe6a0;
-font-size:11px;
-font-weight:900
+display:flex;align-items:center;gap:7px;padding:8px 11px;
+border:1px solid #405e79;border-radius:24px;background:#0d243b;
+color:#ffe6a0;font-size:11px;font-weight:900
 }
-
 .section-heading{
-display:flex;
-align-items:center;
-justify-content:space-between;
-gap:8px;
-margin:25px 0 13px
+display:flex;align-items:center;justify-content:space-between;
+gap:8px;margin:25px 0 13px
 }
-
-.section-heading h2{
-font-size:clamp(19px,4vw,25px);
-margin:0;
-color:#fff
-}
-
+.section-heading h2{font-size:clamp(19px,4vw,25px);margin:0;color:#fff}
 .count{
-padding:7px 10px;
-border:1px solid #c79c39;
-border-radius:20px;
-color:#ffdc76;
-font-size:11px;
-white-space:nowrap
+padding:7px 10px;border:1px solid #c79c39;border-radius:20px;
+color:#ffdc76;font-size:11px;white-space:nowrap
 }
-
 .search-box{
-width:100%;
-padding:14px 16px;
-border-radius:14px;
-border:1px solid #456989;
-background:#0b2239;
-color:white;
-margin-bottom:15px
+width:100%;padding:14px 16px;border-radius:14px;
+border:1px solid #456989;background:#0b2239;color:white;margin-bottom:15px
 }
-
-.games-grid{
-display:grid;
-grid-template-columns:repeat(2,minmax(0,1fr));
-gap:12px
-}
-
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .game-card{
-min-width:0;
-overflow:hidden;
-border:1px solid #526e87;
-border-radius:17px;
+min-width:0;overflow:hidden;border:1px solid #526e87;border-radius:17px;
 background:linear-gradient(155deg,#112d48,#071827);
-box-shadow:0 6px 15px #0005;
-transition:transform .2s,border-color .2s
+box-shadow:0 6px 15px #0005;transition:transform .2s,border-color .2s
 }
-
-.game-card:hover{
-border-color:var(--gold);
-transform:translateY(-2px)
-}
-
+.game-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .game-logo{
-height:116px;
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-background:radial-gradient(circle,#294c76,#0a1b2d 72%);
-border-bottom:1px solid #3e5a78;
-color:#ffe08a;
-font-size:34px;
-font-weight:1000;
-text-shadow:0 3px 12px #000
+height:116px;display:flex;align-items:center;justify-content:center;
+overflow:hidden;background:radial-gradient(circle,#294c76,#0a1b2d 72%);
+border-bottom:1px solid #3e5a78;color:#ffe08a;font-size:34px;
+font-weight:1000;text-shadow:0 3px 12px #000
 }
-
 .game-logo img{
-display:block;
-width:100%;
-height:100%;
-max-width:100%;
-max-height:100%;
-object-fit:contain;
-padding:8px
+display:block;width:100%;height:100%;max-width:100%;max-height:100%;
+object-fit:contain;padding:8px
 }
-
 .game-info{padding:11px 10px 12px}
-
 .game-name{
-font-size:14px;
-font-weight:900;
-min-height:34px;
-display:flex;
-align-items:center;
-overflow-wrap:anywhere
+font-size:14px;font-weight:900;min-height:34px;display:flex;
+align-items:center;overflow-wrap:anywhere
 }
-
 .card-actions{display:grid;gap:7px}
-
 .card-btn{
-display:flex;
-align-items:center;
-justify-content:center;
-border:0;
-border-radius:9px;
-padding:10px 5px;
-font-size:11px;
-font-weight:900;
-text-align:center;
-background:linear-gradient(120deg,#43e0ae,#0aa982);
+display:flex;align-items:center;justify-content:center;border:0;
+border-radius:9px;padding:10px 5px;font-size:11px;font-weight:900;
+text-align:center;background:linear-gradient(120deg,#43e0ae,#0aa982);
 color:#04291e
 }
-
-.card-btn.support{
-background:linear-gradient(120deg,#ffcf63,#e99a19);
-color:#281806
-}
-
-.empty{
-display:none;
-text-align:center;
-padding:25px;
-color:#c3d7dd
-}
-
-.two-panels{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:14px;
-margin-top:24px
-}
-
+.card-btn.support{background:linear-gradient(120deg,#ffcf63,#e99a19);color:#281806}
+.empty{display:none;text-align:center;padding:25px;color:#c3d7dd}
+.two-panels{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
 .extra-section{
-padding:19px 15px;
-border:1px solid #42617c;
-border-radius:17px;
-background:linear-gradient(145deg,#102d49,#091b2c);
-text-align:center
+padding:19px 15px;border:1px solid #42617c;border-radius:17px;
+background:linear-gradient(145deg,#102d49,#091b2c);text-align:center
 }
-
-.extra-section h2{
-color:var(--gold2);
-font-size:20px;
-margin:2px 0 10px
-}
-
-.extra-section p{
-color:var(--muted);
-font-size:13px;
-line-height:1.7
-}
-
+.extra-section h2{color:var(--gold2);font-size:20px;margin:2px 0 10px}
+.extra-section p{color:var(--muted);font-size:13px;line-height:1.7}
 .payment-list,.contact-actions{
-display:flex;
-gap:8px;
-flex-wrap:wrap;
-justify-content:center
+display:flex;gap:8px;flex-wrap:wrap;justify-content:center
 }
-
 .payment-chip{
-border:1px solid #49677f;
-background:#16334c;
-border-radius:9px;
-padding:8px 11px;
-font-size:11px;
-color:#fff0bd
+border:1px solid #49677f;background:#16334c;border-radius:9px;
+padding:8px 11px;font-size:11px;color:#fff0bd
 }
-
 .contact-actions{margin-top:13px}
-
 .info-section{
-margin-top:18px;
-padding:19px;
-border:1px solid #334f69;
-border-radius:16px;
-background:#0a2034
+margin-top:18px;padding:19px;border:1px solid #334f69;
+border-radius:16px;background:#0a2034
 }
-
-.info-section h2{
-margin:0 0 9px;
-color:var(--gold2);
-font-size:19px
-}
-
-.info-section p,.info-section li{
-color:var(--muted);
-font-size:13px;
-line-height:1.7
-}
-
-.faq details{
-border-top:1px solid #29445e;
-padding:12px 0;
-color:#fff
-}
-
+.info-section h2{margin:0 0 9px;color:var(--gold2);font-size:19px}
+.info-section p,.info-section li{color:var(--muted);font-size:13px;line-height:1.7}
+.faq details{border-top:1px solid #29445e;padding:12px 0;color:#fff}
 .faq summary{cursor:pointer;font-weight:800}
 .faq p{margin-bottom:0}
-
 footer{
-text-align:center;
-color:#a9bdce;
-padding:22px 10px;
-border-top:1px solid #29445e;
-font-size:12px
+text-align:center;color:#a9bdce;padding:22px 10px;
+border-top:1px solid #29445e;font-size:12px
 }
-
 .footer-links{
-display:flex;
-gap:16px;
-flex-wrap:wrap;
-justify-content:center;
-margin:12px 0
+display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0
 }
-
 .floating-buttons{
-position:fixed;
-right:12px;
-bottom:18px;
-z-index:20;
-display:flex;
-flex-direction:column;
-gap:9px
+position:fixed;right:12px;bottom:18px;z-index:20;
+display:flex;flex-direction:column;gap:9px
 }
-
 .float-btn{
-width:47px;
-height:47px;
-border:0;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-font-size:21px;
-color:white;
+width:47px;height:47px;border:0;border-radius:50%;display:flex;
+align-items:center;justify-content:center;font-size:21px;color:white;
 box-shadow:0 4px 13px #0008
 }
-
 .chat-float{background:#087cc1}
 .whatsapp-float{background:#16a765}
-
 .install-float{
-position:fixed;
-left:12px;
-bottom:18px;
-z-index:19;
-border:1px solid #c69b3b;
-border-radius:30px;
-padding:12px 15px;
-background:linear-gradient(120deg,#ffe18a,#e6a21e);
-color:#241807;
-font-size:12px;
-font-weight:1000;
-box-shadow:0 5px 18px #0006
+position:fixed;left:12px;bottom:18px;z-index:19;
+border:1px solid #c69b3b;border-radius:30px;padding:12px 15px;
+background:linear-gradient(120deg,#ffe18a,#e6a21e);color:#241807;
+font-size:12px;font-weight:1000;box-shadow:0 5px 18px #0006
 }
-
 .modal{
-display:none;
-position:fixed;
-inset:0;
-z-index:50;
-background:#000c;
-align-items:center;
-justify-content:center;
-padding:16px
+display:none;position:fixed;inset:0;z-index:50;background:#000c;
+align-items:center;justify-content:center;padding:16px
 }
-
 .modal.show{display:flex}
-
 .modal-box{
-width:min(440px,100%);
-background:#102b45;
-border:1px solid var(--gold);
-border-radius:17px;
-padding:22px;
-text-align:center;
-max-height:85vh;
-overflow:auto
+width:min(440px,100%);background:#102b45;border:1px solid var(--gold);
+border-radius:17px;padding:22px;text-align:center;max-height:85vh;overflow:auto
 }
-
-.modal-box h2{
-color:var(--gold2);
-margin-top:0
-}
-
-.modal-box p{
-line-height:1.7;
-color:#e3edf0;
-font-size:14px
-}
-
-.modal-close{
-background:#9c2631;
-color:white;
-border:0;
-padding:10px 16px;
-border-radius:8px
-}
-
-/* Featured profile and video */
-.top-media-wrap{
-max-width:1100px;
-margin:16px auto 10px;
-padding:0 14px
-}
-
+.modal-box h2{color:var(--gold2);margin-top:0}
+.modal-box p{line-height:1.7;color:#e3edf0;font-size:14px}
+.modal-close{background:#9c2631;color:white;border:0;padding:10px 16px;border-radius:8px}
+.top-media-wrap{max-width:1100px;margin:16px auto 10px;padding:0 14px}
 .top-media-card{
-display:grid;
-grid-template-columns:minmax(0,1fr) minmax(190px,30%);
-gap:14px;
-align-items:stretch;
-padding:12px;
-border:1px solid #d5aa45;
-border-radius:20px;
-background:linear-gradient(135deg,#102b45,#071626);
+display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,30%);
+gap:14px;align-items:stretch;padding:12px;border:1px solid #d5aa45;
+border-radius:20px;background:linear-gradient(135deg,#102b45,#071626);
 box-shadow:0 8px 24px #0008
 }
-
 .top-dp-wrap{
-grid-column:1;
-grid-row:1;
-position:relative;
-min-width:0;
-overflow:hidden;
-border:2px solid #e8bd52;
-border-radius:16px;
-background:#071626;
-min-height:230px
+grid-column:1;grid-row:1;position:relative;min-width:0;overflow:hidden;
+border:2px solid #e8bd52;border-radius:16px;background:#071626;min-height:230px
 }
-
 .top-dp{
-display:block;
-width:100%;
-height:100%;
-min-height:230px;
-max-height:360px;
-object-fit:cover;
-object-position:center 35%
+display:block;width:100%;height:100%;min-height:230px;max-height:360px;
+object-fit:cover;object-position:center 35%
 }
-
 .top-dp-label{
-position:absolute;
-left:12px;
-bottom:12px;
-padding:8px 13px;
-border:1px solid #f4c44e;
-border-radius:20px;
-background:#071626dd;
-color:#ffdf80;
-font-size:11px;
-font-weight:1000;
-letter-spacing:1px
+position:absolute;left:12px;bottom:12px;padding:8px 13px;
+border:1px solid #f4c44e;border-radius:20px;background:#071626dd;
+color:#ffdf80;font-size:11px;font-weight:1000;letter-spacing:1px
 }
-
 .top-video-frame{
-grid-column:2;
-grid-row:1;
-align-self:end;
-min-width:0;
-overflow:hidden;
-border:2px solid #d5aa45;
-border-radius:15px;
-background:#020811;
-box-shadow:0 5px 18px #0009
+grid-column:2;grid-row:1;align-self:end;min-width:0;overflow:hidden;
+border:2px solid #d5aa45;border-radius:15px;background:#020811;box-shadow:0 5px 18px #0009
 }
-
 .top-video-frame video{
-display:block;
-width:100%;
-aspect-ratio:9/16;
-max-height:250px;
-object-fit:cover;
-background:#020811
+display:block;width:100%;aspect-ratio:9/16;max-height:250px;
+object-fit:cover;background:#020811
 }
-
 @media(max-width:599px){
 .top-media-wrap{margin:10px auto 6px;padding:0 9px}
 .top-media-card{grid-template-columns:minmax(0,1fr) 34%;gap:7px;padding:7px}
@@ -894,39 +399,23 @@ background:#020811
 .top-video-frame video{max-height:165px}
 .top-dp-label{left:7px;bottom:7px;padding:6px 8px;font-size:9px}
 }
-
 .mobile-nav{display:none}
 #notificationModal{z-index:2000}
-
 .notification-allow{
-width:100%;
-padding:14px;
-border:0;
-border-radius:10px;
+width:100%;padding:14px;border:0;border-radius:10px;
 background:linear-gradient(120deg,#37e0b0,#09a986);
-color:#06271f;
-font-weight:900
+color:#06271f;font-weight:900
 }
-
 .notification-later{
-background:#173b4b;
-color:white;
-border:1px solid #456171;
-padding:11px 18px;
-border-radius:9px;
-margin-top:7px
+background:#173b4b;color:white;border:1px solid #456171;
+padding:11px 18px;border-radius:9px;margin-top:7px
 }
-
 @media(min-width:620px){
 .games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 .game-logo{height:145px}
 main{padding-left:20px;padding-right:20px}
 }
-
-@media(min-width:930px){
-.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-
+@media(min-width:930px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){
 .hero{grid-template-columns:1fr}
 .hero-art{min-height:145px}
@@ -936,7 +425,6 @@ main{padding-left:20px;padding-right:20px}
 .actions{justify-content:center}
 .two-panels{grid-template-columns:1fr}
 }
-
 @media(max-width:599px){
 body{padding-bottom:65px}
 header{padding:12px 10px 19px}
@@ -948,47 +436,29 @@ header{padding:12px 10px 19px}
 .games-grid{gap:9px}
 .game-logo{height:110px}
 .mobile-nav{
-display:flex;
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-z-index:18;
-justify-content:space-around;
-align-items:center;
+display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;
+justify-content:space-around;align-items:center;
 padding:9px 3px max(9px,env(safe-area-inset-bottom));
-background:#061321f5;
-border-top:1px solid #34516b;
-backdrop-filter:blur(12px)
+background:#061321f5;border-top:1px solid #34516b;backdrop-filter:blur(12px)
 }
 .nav-item{
-display:flex;
-flex-direction:column;
-align-items:center;
-gap:4px;
-color:#b8c6d7;
-font-size:10px;
-font-weight:800;
-min-width:48px
+display:flex;flex-direction:column;align-items:center;gap:4px;
+color:#b8c6d7;font-size:10px;font-weight:800;min-width:48px
 }
 .nav-item span:first-child{font-size:20px}
 .nav-item.active{color:#ffd45c}
 .install-float{bottom:78px}
 .floating-buttons{bottom:78px}
 }
-
 @media(prefers-reduced-motion:reduce){
 *,*::before,*::after{
-scroll-behavior:auto!important;
-animation:none!important;
-transition:none!important
+scroll-behavior:auto!important;animation:none!important;transition:none!important
 }
 }
 </style>
 </head>
 
 <body>
-
 <div class="topbar">♛ ROLLSWEEPS ♛ &nbsp; • &nbsp; ALL PLATFORMS IN ONE PLACE</div>
 
 <header id="home">
@@ -996,20 +466,17 @@ transition:none!important
     <a class="brand" href="#home" aria-label="RollSweeps home">
       <img class="brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
     </a>
-
     <div class="header-actions">
       <button class="small-btn" type="button" onclick="openLiveChat()">💬 Chat</button>
       <button class="small-btn" type="button" onclick="openNotificationPrompt()">🔔</button>
       <button class="small-btn menu-btn" type="button" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
     </div>
   </div>
-
   <div class="hero">
     <div class="hero-copy">
       <span class="eyebrow">WELCOME TO THE GAMING HUB</span>
       <h1>Welcome to <span>RollSweeps</span></h1>
       <p class="subtitle">Explore your favorite gaming platforms in one convenient place.</p>
-
       <div class="actions">
         <button class="action-btn" type="button" onclick="installApp()">⬇ INSTALL APP</button>
         <button class="action-btn green" type="button" onclick="openNotificationPrompt()">♧ NOTIFICATIONS</button>
@@ -1019,7 +486,6 @@ transition:none!important
         <button class="action-btn purple" type="button" onclick="showModal('spinModal')">✦ SPIN</button>
       </div>
     </div>
-
     <div class="hero-art" role="img" aria-label="RollSweeps crown gaming brand artwork"></div>
   </div>
 </header>
@@ -1030,7 +496,6 @@ transition:none!important
       <img class="top-dp" src="./profile-dp.jpg" alt="RollSweeps featured profile artwork" onerror="this.src='./roll-sweeps-logo.png'">
       <span class="top-dp-label">♛ ROLLSWEEPS • PLAY • WIN • ENJOY</span>
     </div>
-
     <div class="top-video-frame">
       <video controls playsinline preload="metadata" poster="./share-preview.jpg">
         <source src="./front-video.mp4" type="video/mp4">
@@ -1043,25 +508,18 @@ transition:none!important
 <div class="logo-strip" id="logoStrip" aria-label="Featured platform logos"></div>
 
 <div class="ticker-row">
-  <div class="ticker">
-    <div class="ticker-track" id="tickerOne"></div>
-  </div>
+  <div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
   <span class="live-wins-label">● SPOTLIGHT</span>
 </div>
-
 <div class="ticker-row second">
-  <div class="ticker reverse">
-    <div class="ticker-track" id="tickerTwo"></div>
-  </div>
+  <div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
   <button class="live-win-btn" id="liveWinButton" type="button" onclick="toggleLiveWin()" aria-expanded="false">● LIVE WINS</button>
 </div>
-
 <div class="live-win-panel" id="liveWinPanel">
   Featured dollar highlights are promotional display amounts, not verified player payouts.
 </div>
 
 <main>
-
   <section class="promo-banner" id="offers">
     <span class="pill">SPECIAL WELCOME OFFER</span>
     <h2>✦ 5 FREE PLAYS ✦</h2>
@@ -1076,17 +534,13 @@ transition:none!important
     <h2>🎮 All Gaming Platforms</h2>
     <span class="count" id="gameCount">0 platforms</span>
   </div>
-
   <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite platform..." aria-label="Search platforms">
-
   <div class="games-grid" id="gamesGrid"></div>
   <div class="empty" id="emptyMessage">No platforms found. Try another name.</div>
 
   <div class="two-panels">
-
     <section class="extra-section" id="wallet">
       <h2>💳 Payment Information</h2>
-
       <div class="payment-list">
         <span class="payment-chip">Cash App</span>
         <span class="payment-chip">Venmo</span>
@@ -1096,39 +550,32 @@ transition:none!important
         <span class="payment-chip">Bitcoin</span>
         <span class="payment-chip">USDT</span>
       </div>
-
       <div class="contact-actions">
         <button class="action-btn" type="button" onclick="openLiveChat()">ASK SUPPORT</button>
       </div>
     </section>
-
     <section class="extra-section" id="support">
       <h2>🎧 Need Help?</h2>
-
       <div class="contact-actions">
         <button class="action-btn green" type="button" onclick="openLiveChat()">LIVE CHAT</button>
         <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
       </div>
     </section>
-
   </div>
 </main>
 
 <footer>
   <img class="footer-brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
-
   <div class="footer-links">
     <a href="#offers">Offers</a>
     <a href="#games">Platforms</a>
     <a href="#support">Contact Support</a>
     <a href="#games">Platforms</a>
   </div>
-
   <p>© <span id="year"></span> RollSweeps. All rights reserved.</p>
 </footer>
 
 <button class="install-float" type="button" onclick="installApp()">⬇ Install App</button>
-
 <div class="floating-buttons">
   <button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
   <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎</a>
@@ -1264,20 +711,14 @@ let installPrompt=null;
 function openLiveChat(){
   if(!window.chaport){
     window.chaport={_q:[],_l:{}};
-
-    window.chaport.q=function(){
-      window.chaport._q.push(arguments);
-    };
-
+    window.chaport.q=function(){window.chaport._q.push(arguments);};
     window.chaport.on=function(event,fn){
       if(!window.chaport._l[event])window.chaport._l[event]=[];
       window.chaport._l[event].push(fn);
     };
   }
-
   if(typeof window.chaport.q==="function"){
     window.chaport.q("open");
-
     if(!document.querySelector('script[data-chaport-loader="true"]')){
       const script=document.createElement("script");
       script.src="https://app.chaport.com/javascripts/insert.js";
@@ -1288,13 +729,8 @@ function openLiveChat(){
   }
 }
 
-function showModal(id){
-  document.getElementById(id).classList.add("show");
-}
-
-function hideModal(id){
-  document.getElementById(id).classList.remove("show");
-}
+function showModal(id){document.getElementById(id).classList.add("show");}
+function hideModal(id){document.getElementById(id).classList.remove("show");}
 
 document.querySelectorAll(".modal").forEach(m=>{
   m.addEventListener("click",e=>{
@@ -1304,20 +740,13 @@ document.querySelectorAll(".modal").forEach(m=>{
 
 function toggleMenu(){
   document.querySelector(".mobile-nav")?.scrollIntoView({
-    behavior:"smooth",
-    block:"end"
+    behavior:"smooth",block:"end"
   });
 }
 
 function initials(name){
-  return String(name||"GAME")
-    .trim()
-    .split(/\s+/)
-    .filter(Boolean)
-    .map(word=>word[0]||"")
-    .join("")
-    .slice(0,3)
-    .toUpperCase();
+  return String(name||"GAME").trim().split(/\s+/).filter(Boolean)
+    .map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
 }
 
 const logoCache=new Map();
@@ -1325,16 +754,12 @@ const logoCache=new Map();
 function getLogoSources(url){
   try{
     const parsed=new URL(url);
-
     return [...new Set([
       new URL("/favicon.ico",parsed.origin).href,
       "https://www.google.com/s2/favicons?domain="+encodeURIComponent(parsed.hostname)+"&sz=128",
       "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(parsed.hostname)+".ico"
     ])];
-
-  }catch(e){
-    return [];
-  }
+  }catch(e){return [];}
 }
 
 function loadLogo(container,name,url){
@@ -1345,7 +770,6 @@ function loadLogo(container,name,url){
 
   const sources=logoCache.get(url)||getLogoSources(url);
   logoCache.set(url,sources);
-
   if(!sources.length)return;
 
   const img=document.createElement("img");
@@ -1353,19 +777,13 @@ function loadLogo(container,name,url){
   img.loading="lazy";
   img.decoding="async";
   img.referrerPolicy="no-referrer";
-
   let index=0;
 
   img.onerror=()=>{
     index++;
-    if(index<sources.length){
-      img.src=sources[index];
-    }else{
-      img.remove();
-      container.textContent=initials(name);
-    }
+    if(index<sources.length)img.src=sources[index];
+    else{img.remove();container.textContent=initials(name);}
   };
-
   container.appendChild(img);
   img.src=sources[0];
 }
@@ -1389,34 +807,27 @@ function makeFeaturedLogos(){
 
   const strip=document.getElementById("logoStrip");
   const boxes=document.getElementById("featuredLogos");
-
   strip.replaceChildren();
   boxes.replaceChildren();
 
   featured.forEach(([name,url])=>{
     const tile=document.createElement("div");
     tile.className="logo-tile";
-
     const logo=document.createElement("div");
     logo.className="game-logo";
     loadLogo(logo,name,url);
-
     const label=document.createElement("span");
     label.textContent=name;
-
     tile.append(logo,label);
     strip.appendChild(tile);
 
     const badge=document.createElement("div");
     badge.className="featured-logo";
-
     const mark=document.createElement("span");
     mark.className="mini-mark";
     loadLogo(mark,name,url);
-
     const text=document.createElement("span");
     text.textContent=name.toUpperCase();
-
     badge.append(mark,text);
     boxes.appendChild(badge);
   });
@@ -1424,30 +835,25 @@ function makeFeaturedLogos(){
 
 function renderGames(filter=""){
   grid.replaceChildren();
-
   const term=filter.trim().toLowerCase();
-
   const filtered=games.filter(([name,url])=>
     (name+" "+url).toLowerCase().includes(term)
   );
 
-  filtered.forEach(([name,url],index)=>{
+  filtered.forEach(([name,url])=>{
     const card=document.createElement("article");
     card.className="game-card";
-
     const logo=makeLogo(name,url);
-
     const info=document.createElement("div");
     info.className="game-info";
-
     const title=document.createElement("div");
     title.className="game-name";
     title.textContent=name;
 
     const key=name+"|"+url;
-
     if(!countMap.has(key)){
-      countMap.set(key,numberOptions[(index*3+1)%numberOptions.length]);
+      const originalIndex=games.findIndex(g=>g[0]===name&&g[1]===url);
+      countMap.set(key,numberOptions[(originalIndex*3+1)%numberOptions.length]);
     }
 
     const number=document.createElement("div");
@@ -1456,7 +862,6 @@ function renderGames(filter=""){
 
     const actions=document.createElement("div");
     actions.className="card-actions";
-
     const open=document.createElement("a");
     open.className="card-btn";
     open.textContent="OPEN PLATFORM";
@@ -1489,61 +894,48 @@ function makeTicker(id){
     games.forEach(([name,url],index)=>{
       const item=document.createElement("span");
       item.className="ticker-item";
-
       const logo=document.createElement("span");
       logo.className="ticker-logo";
       loadLogo(logo,name,url);
-
       const label=document.createElement("span");
 
       if(id==="tickerOne"){
         const key=name+"|"+url;
         const amount=countMap.get(key)||numberOptions[(index*3+1)%numberOptions.length];
-
         label.textContent="✦ "+name+" • SPOTLIGHT INDEX: "+amount.toLocaleString();
       }else{
         const amount=dollarOptions[(index+repeat)%dollarOptions.length];
-
         label.textContent="✦ "+name+" • FEATURED AMOUNT: $"+amount.toLocaleString();
       }
-
       item.append(logo,label);
       track.appendChild(item);
     });
   }
 }
 
-/* Update the decorative spotlight index on game cards */
 function updateAnimatedNumbers(){
   document.querySelectorAll(".game-number").forEach(el=>{
     const card=el.closest(".game-card");
     if(!card)return;
-
     const title=card.querySelector(".game-name").textContent;
     const game=games.find(g=>g[0]===title);
     const url=game?game[1]:"";
     const key=title+"|"+url;
-
     let current=countMap.get(key)||500;
     let next=current;
-
     while(next===current){
       next=numberOptions[Math.floor(Math.random()*numberOptions.length)];
     }
-
     countMap.set(key,next);
     el.textContent="✦ Spotlight index: "+next.toLocaleString();
   });
-
   makeTicker("tickerOne");
 }
 
 function toggleLiveWin(){
   const panel=document.getElementById("liveWinPanel");
   const button=document.getElementById("liveWinButton");
-
   const open=panel.classList.toggle("visible");
-
   button.setAttribute("aria-expanded",String(open));
   button.textContent=open?"✕ CLOSE":"● LIVE WINS";
 }
@@ -1555,7 +947,6 @@ function spinWheel(){
     "Browse all games",
     "Visit the support section"
   ];
-
   document.getElementById("spinResult").textContent=
     picks[Math.floor(Math.random()*picks.length)];
 }
@@ -1563,23 +954,17 @@ function spinWheel(){
 function installApp(){
   const msg=document.getElementById("installMessage");
   const btn=document.getElementById("installConfirm");
-
   if(installPrompt){
     installPrompt.prompt();
-    installPrompt.userChoice.finally(()=>{
-      installPrompt=null;
-    });
+    installPrompt.userChoice.finally(()=>{installPrompt=null;});
     return;
   }
-
   const standalone=
     window.matchMedia("(display-mode: standalone)").matches||
     window.navigator.standalone===true;
-
   msg.textContent=standalone
     ?"RollSweeps is already installed."
     :"If installation is supported, your browser will show an install option. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";
-
   btn.style.display=standalone?"none":"inline-flex";
   showModal("installModal");
 }
@@ -1610,7 +995,6 @@ window.addEventListener("appinstalled",()=>{
 async function enableNotifications(){
   const btn=document.querySelector(".notification-allow");
   const msg=document.getElementById("notificationMessage");
-
   btn.disabled=true;
   btn.textContent="PLEASE WAIT...";
 
@@ -1619,7 +1003,6 @@ async function enableNotifications(){
       window.PGL_OneSignalReady,
       new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))
     ]);
-
     await OneSignal.Notifications.requestPermission();
 
     if(Notification.permission==="granted"){
@@ -1632,7 +1015,6 @@ async function enableNotifications(){
     console.error(e);
     msg.textContent="Notifications could not load. Check your connection and try again.";
   }
-
   btn.disabled=false;
   btn.textContent="ALLOW NOTIFICATIONS";
 }
@@ -1642,7 +1024,6 @@ function openNotificationPrompt(){
     alert("Your browser does not support notifications.");
     return;
   }
-
   if(Notification.permission==="granted"){
     alert("Notifications are already enabled.");
   }else if(Notification.permission==="denied"){
@@ -1662,7 +1043,6 @@ renderGames();
 makeFeaturedLogos();
 
 document.getElementById("year").textContent=new Date().getFullYear();
-
 setInterval(updateAnimatedNumbers,8000);
 
 /* Keep existing service-worker registration */
@@ -1682,26 +1062,18 @@ if("serviceWorker"in navigator&&location.protocol==="https:"){
     appId:"6acef8d367f574f2e93a4357",
     language:{use:"en"}
   };
-
   if(w.chaport&&typeof w.chaport.q==="function")return;
-
   var v3=w.chaport={_q:[],_l:{}};
-
-  v3.q=function(){
-    v3._q.push(arguments);
-  };
-
+  v3.q=function(){v3._q.push(arguments);};
   v3.on=function(e,fn){
     if(!v3._l[e])v3._l[e]=[];
     v3._l[e].push(fn);
   };
-
   var s=d.createElement("script");
   s.type="text/javascript";
   s.async=true;
   s.src="https://app.chaport.com/javascripts/insert.js";
   s.dataset.chaportLoader="true";
-
   var ss=d.getElementsByTagName("script")[0];
   ss.parentNode.insertBefore(s,ss);
 })(window,document);
