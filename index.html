@@ -1,385 +1,261 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta name="google-site-verification" content="zRZWFRVXeNVB7xMJqNy3UOXhFpTwX0wJOy7uv_PioOc">
-<meta charset="UTF-8">
-<meta name="google-site-verification" content="12AD4z5l7vka6mdh_K2h3R34MqhpcC4AsKrWzLf8Jtc">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#071923">
-<meta name="description" content="Premium Gaming Lounge - Gaming Platforms">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#071426">
+<meta name="description" content="RollSweeps — explore gaming platforms in one place. Check each provider's terms, availability and eligibility before participating.">
 <meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-title" content="Premium Gaming Lounge">
+<meta name="apple-mobile-web-app-title" content="RollSweeps">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <link rel="manifest" href="./manifest.json">
-<link rel="icon" href="./icon.svg" type="image/svg+xml">
-<meta property="og:title" content="Premium Gaming Lounge | Gaming Platforms">
-<meta property="og:description" content="Explore gaming platforms in one place.">
+<link rel="icon" href="./roll-sweeps-logo.png" type="image/png">
+<link rel="apple-touch-icon" href="./roll-sweeps-logo.png">
+<meta property="og:title" content="RollSweeps | Gaming Platforms">
+<meta property="og:description" content="Explore gaming platforms in one place. Check provider terms, availability and eligibility.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
-<meta property="og:site_name" content="Premium Gaming Lounge">
+<meta property="og:site_name" content="RollSweeps">
 <meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<title>Premium Gaming Lounge</title>
+<meta name="twitter:title" content="RollSweeps | Gaming Platforms">
+<meta name="twitter:description" content="Explore gaming platforms in one place.">
+<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+<title>RollSweeps | Gaming Platforms</title>
 
-<!-- OneSignal SDK -->
+<!-- OneSignal: existing app configuration retained -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
-
-window.PGL_OneSignalReady = new Promise(function(resolve, reject) {
-  window.OneSignalDeferred.push(async function(OneSignal) {
+window.PGL_OneSignalReady = new Promise(function(resolve,reject){
+  window.OneSignalDeferred.push(async function(OneSignal){
     try {
       await OneSignal.init({
-        appId: "b8e89199-4e74-415e-b3fe-6c30dc97912b",
-        serviceWorkerPath: "/Gaming-Website/push/onesignal/OneSignalSDKWorker.js",
-        serviceWorkerParam: {
-          scope: "/Gaming-Website/push/onesignal/"
-        }
+        appId:"b8e89199-4e74-415e-b3fe-6c30dc97912b",
+        serviceWorkerPath:"/Gaming-Website/push/onesignal/OneSignalSDKWorker.js",
+        serviceWorkerParam:{scope:"/Gaming-Website/push/onesignal/"}
       });
       resolve(OneSignal);
-    } catch (error) {
-      console.error("OneSignal initialization error:", error);
-      reject(error);
-    }
+    } catch(e) { console.error("OneSignal initialization error:",e); reject(e); }
   });
 });
-
-window.PGL_OneSignalReady.catch(function(error) {
-  console.error("OneSignal is not ready:", error);
-});
-
-document.addEventListener("DOMContentLoaded", function() {
-  if ("Notification" in window && Notification.permission === "default") {
-    document.getElementById("notificationModal").classList.add("show");
-  }
-});
-
-async function enableNotifications() {
-  const button = document.querySelector(".notification-allow");
-  const message = document.getElementById("notificationMessage");
-
-  button.disabled = true;
-  button.textContent = "PLEASE WAIT...";
-
-  try {
-    const OneSignal = await Promise.race([
-      window.PGL_OneSignalReady,
-      new Promise(function(_, reject) {
-        setTimeout(function() {
-          reject(new Error("OneSignal loading timeout"));
-        }, 15000);
-      })
-    ]);
-
-    await OneSignal.Notifications.requestPermission();
-
-    if (Notification.permission === "granted") {
-      document.getElementById("notificationModal").classList.remove("show");
-      message.textContent = "Thank you! Notifications are enabled.";
-    } else {
-      message.textContent = "Notifications were not enabled. Please allow them in Chrome site settings.";
-    }
-  } catch (error) {
-    console.error("Notification error:", error);
-    message.textContent = "Could not load notifications. Please check your internet connection and try again.";
-  }
-
-  button.disabled = false;
-  button.textContent = "ALLOW NOTIFICATIONS";
-}
-
-function closeNotificationPrompt() {
-  document.getElementById("notificationModal").classList.remove("show");
-}
-
-function openNotificationPrompt() {
-  if (!("Notification" in window)) {
-    alert("Your browser does not support notifications.");
-    return;
-  }
-
-  if (Notification.permission === "granted") {
-    alert("Notifications are already enabled.");
-  } else if (Notification.permission === "denied") {
-    alert("Notifications are blocked. Please allow them in Chrome site settings.");
-  } else {
-    document.getElementById("notificationModal").classList.add("show");
-  }
-}
+window.PGL_OneSignalReady.catch(function(e){ console.error("OneSignal is not ready:",e); });
 </script>
-<!-- End OneSignal -->
 
 <style>
-:root {
-  --bg:#04141e;--panel:#0c2735;--gold:#e8b943;--light:#fff0b0;
-  --green:#36d9ae;--orange:#ff813e;--text:#f7f9fc;--muted:#a8c0ce;
-}
-* {box-sizing:border-box}
-html {scroll-behavior:smooth;scroll-padding-top:15px}
-body {margin:0;background:var(--bg);color:var(--text);font-family:Arial,Helvetica,sans-serif;padding-bottom:20px}
-a {color:inherit;text-decoration:none}
-button,input {font:inherit}
-button {cursor:pointer}
-button:focus-visible,a:focus-visible,input:focus-visible {outline:2px solid var(--gold);outline-offset:3px}
-.topbar {text-align:center;padding:11px 8px;background:linear-gradient(90deg,#e8a42c,#ff813e,#e8a42c);color:#29190b;font-size:12px;font-weight:900;letter-spacing:.6px}
-header {padding:17px 12px 20px;text-align:center;background:radial-gradient(ellipse at top,#174354,#071923 75%);border-bottom:1px solid #183c4b}
-.header-line {display:flex;align-items:center;justify-content:space-between;gap:10px;max-width:900px;margin:auto}
-.brand {display:flex;align-items:center;gap:10px;text-align:left;min-width:0}
-.brand-icon {width:54px;height:54px;flex-shrink:0;display:grid;place-items:center;border-radius:50%;border:2px solid var(--gold);background:linear-gradient(145deg,#3b6c64,#102b34,#b17c25);color:var(--light);font-size:28px;box-shadow:0 0 12px #d6a43b30}
-.brand-name {font-size:clamp(17px,4vw,24px);font-weight:900}
-.brand-name span {color:var(--gold)}
-.header-actions {display:flex;gap:7px;align-items:center}
-.small-btn {border:1px solid #234959;border-radius:12px;background:#0c2735;color:white;padding:11px 12px;font-size:12px;font-weight:800}
-.menu-btn {font-size:20px;padding:9px 13px}
-.hero {max-width:800px;margin:25px auto 0}
-h1 {font-size:clamp(29px,7vw,48px);line-height:1.12;margin:16px 0;color:white;font-weight:900}
-.hero h1 span {color:var(--orange)}
-.subtitle {color:var(--muted);font-size:15px;line-height:1.8;margin:12px auto 18px;max-width:600px}
-.actions {display:flex;flex-wrap:wrap;justify-content:center;gap:9px}
-.action-btn {display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:10px;padding:12px 15px;font-weight:900;font-size:12px;background:linear-gradient(135deg,#ffda75,#e7a62d);color:#241b0d}
-.action-btn.secondary {background:#102e3b;color:white;border:1px solid #315666}
-.action-btn.green {background:linear-gradient(135deg,#37e0b0,#09a986);color:#06271f}
-.logo-strip {display:flex;gap:12px;overflow-x:auto;padding:15px 12px;background:#061923;border-bottom:1px solid #173542;scrollbar-width:thin}
-.logo-tile {flex:0 0 88px;height:82px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;border:1px solid #294b5b;border-radius:15px;background:linear-gradient(145deg,#183b4b,#0b202b);font-size:10px;font-weight:900;text-align:center;color:var(--light);overflow:hidden}
-.logo-tile .game-logo {width:43px;height:43px;margin:0;font-size:13px}
-.ticker-row {display:flex;align-items:center;gap:8px;padding:12px 10px 0;max-width:1200px;margin:auto}
-.ticker {min-width:0;overflow:hidden;flex:1;border:1px solid #245249;border-radius:30px;background:#081f29}
-.ticker-track {display:flex;width:max-content;align-items:center;gap:25px;padding:12px 0;animation:scrollLeft 180s linear infinite}
-.ticker.reverse .ticker-track {animation-name:scrollRight;animation-duration:180s}
-.ticker:hover .ticker-track {animation-play-state:paused}
-.ticker-item {display:flex;align-items:center;gap:7px;white-space:nowrap;color:#d9e5eb;font-size:12px;font-weight:700}
-.ticker-item strong {color:var(--green)}
-.ticker-logo {position:relative;width:30px;height:30px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border-radius:50%;border:1px solid var(--gold);background:#173744;color:var(--light);font-size:9px}
-.ticker-logo img,.game-logo img,.mini-mark img {position:absolute;inset:0;width:100%;height:100%;object-fit:contain;padding:2px;background:#102d3a}
-.live-win-btn {border:0;border-radius:22px;padding:11px 12px;background:#a92330;color:white;font-weight:900;font-size:11px;white-space:nowrap;animation:pulse 1.8s infinite}
-.live-win-panel {display:none;margin:8px 12px;padding:12px;text-align:center;border:1px solid #355567;border-radius:12px;background:#102d3a;color:#fff0b0;font-size:12px}
-.live-win-panel.visible {display:block}
-@keyframes scrollLeft {from {transform:translateX(0)} to {transform:translateX(-50%)}}
-@keyframes scrollRight {from {transform:translateX(-50%)} to {transform:translateX(0)}}
-@keyframes pulse {50% {filter:brightness(1.25)}}
-main {max-width:1200px;margin:auto;padding:15px 12px 35px}
-.promo-banner {position:relative;overflow:hidden;text-align:center;padding:21px 12px;margin:15px 0 22px;border:1px solid #a87b35;border-radius:24px;background:linear-gradient(125deg,#ff7a48,#ffb13c,#f37a3e);color:#2c180e;box-shadow:0 7px 24px #ff813e20}
-.promo-icon {font-size:30px}
-.bonus-pill {display:inline-block;background:#532b1a;color:#fff0b0;padding:7px 12px;border-radius:20px;font-size:10px;font-weight:900}
-.promo-banner h2 {font-size:clamp(23px,5vw,32px);margin:10px 0;font-weight:900}
-.promo-banner p {font-size:13px;line-height:1.6;margin:7px 0}
-.featured-logos {display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:18px 0}
-.featured-logo {display:flex;align-items:center;gap:7px;padding:8px 10px;border:1px solid #4a5b4c;border-radius:10px;background:#102b35;color:var(--light);font-size:10px;font-weight:900}
-.mini-mark {position:relative;width:27px;height:27px;display:inline-flex;align-items:center;justify-content:center;overflow:hidden;border:1px solid var(--gold);border-radius:7px;color:var(--light);background:#071923;font-size:9px}
-.section-heading {display:flex;align-items:center;justify-content:space-between;gap:8px;margin:24px 0 13px}
-.section-heading h2 {font-size:19px;margin:0;color:var(--light)}
-.count {padding:7px 10px;border:1px solid #326173;border-radius:20px;color:var(--green);font-size:11px;white-space:nowrap}
-.search-box {width:100%;padding:14px;border-radius:12px;border:1px solid #31596a;background:#0c2735;color:white;outline:none;margin-bottom:15px}
-.search-box:focus {border-color:var(--gold)}
-.games-grid {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.game-card {min-width:0;overflow:hidden;position:relative;background:linear-gradient(155deg,#102e3d,#091f2a);border:1px solid #214655;border-radius:17px;box-shadow:0 6px 15px #0003;transition:transform .2s,border-color .2s}
-.game-card:hover {border-color:var(--gold);transform:translateY(-2px)}
-.game-logo {position:relative;width:100%;height:135px;margin:0;display:flex;align-items:center;justify-content:center;border:0;border-radius:0;background:linear-gradient(145deg,#214957,#071923);color:var(--light);font-size:30px;font-weight:900;letter-spacing:1px;overflow:hidden;text-shadow:0 2px 5px #000}
-.game-logo img {padding:0}
-.hot-badge {position:absolute;top:9px;left:9px;z-index:2;padding:6px 10px;border-radius:20px;background:linear-gradient(120deg,#ffda62,#ff713f);color:#35180d;font-size:10px;font-weight:900}
-.game-info {padding:12px 10px 13px}
-.game-name {font-size:14px;font-weight:900;min-height:35px;display:flex;align-items:center;overflow-wrap:anywhere;color:#fff}
-.game-number {color:var(--green);font-size:12px;font-weight:800;margin:6px 0 10px}
-.card-actions {display:grid;grid-template-columns:1fr;gap:7px}
-.card-btn {display:flex;align-items:center;justify-content:center;border:0;border-radius:9px;padding:11px 4px;font-size:12px;font-weight:900;text-align:center;background:linear-gradient(120deg,#35ddbc,#0cbaa2);color:#052920}
-.card-btn.deposit {background:linear-gradient(120deg,#ff9651,#ff713e);color:#35180d}
-.empty {display:none;text-align:center;padding:25px;color:#c3d7dd}
-.note {margin:12px 0;color:#9bb6c2;font-size:11px;line-height:1.6}
-.extra-section {margin-top:25px;padding:18px 12px;border:1px solid #294d5b;border-radius:15px;background:#0c2531;text-align:center}
-.extra-section h2 {color:var(--light);font-size:19px}
-.extra-section p {color:var(--muted);font-size:13px;line-height:1.7}
-.payment-list,.contact-actions {display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
-.payment-chip {border:1px solid #416271;background:#153744;border-radius:9px;padding:9px 12px;font-size:12px;color:#fff0b0}
-.contact-actions {margin-top:14px}
-footer {text-align:center;color:#a9c1ca;padding:22px 10px;border-top:1px solid #1c3c48;font-size:12px}
-.floating-buttons {position:fixed;right:12px;bottom:18px;z-index:20;display:flex;flex-direction:column;gap:10px}
-.float-btn {width:48px;height:48px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:white;box-shadow:0 4px 13px #0008}
-.chat-float {background:#087cc1}
-.whatsapp-float {background:#16a765}
-.messenger-float {background:#0866ff}
-.install-float {position:fixed;left:12px;bottom:18px;z-index:19;border:1px solid #856a2e;border-radius:30px;padding:12px 15px;background:#0b2530;color:white;font-size:12px;font-weight:900;box-shadow:0 5px 18px #0006}
-.modal {display:none;position:fixed;inset:0;z-index:50;background:#000c;align-items:center;justify-content:center;padding:16px}
-.modal.show {display:flex}
-.modal-box {width:min(440px,100%);background:#102d3a;border:1px solid var(--gold);border-radius:17px;padding:22px;text-align:center;max-height:85vh;overflow:auto}
-.modal-box h2 {color:var(--light);margin-top:0}
-.modal-box p {line-height:1.7;color:#e3edf0;font-size:14px}
-.modal-box button,.modal-box a {margin:5px}
-.modal-close {background:#a91e28;color:white;border:0;padding:10px 16px;border-radius:8px}
-.spin-wheel {font-size:62px;margin:10px auto;color:var(--gold)}
-.mobile-nav {display:none}
-
-/* Notification popup */
-#notificationModal {z-index:2000}
-.notification-icon {font-size:55px;margin:5px 0 12px}
-.notification-allow {width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(120deg,#37e0b0,#09a986);color:#06271f;font-weight:900}
-.notification-allow:disabled {opacity:.65;cursor:wait}
-.notification-later {background:#173b4b;color:white;border:1px solid #456171;padding:11px 18px;border-radius:9px}
-
-@media(min-width:600px) {
-.games-grid {grid-template-columns:repeat(3,minmax(0,1fr))}
-main {padding-left:20px;padding-right:20px}
-.game-logo {height:165px}
-}
-@media(min-width:900px) {
-.games-grid {grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-@media(max-width:599px) {
-body {padding-bottom:68px}
-header {padding:14px 10px 20px}
-.brand-icon {width:47px;height:47px;font-size:24px}
-.small-btn {padding:10px 9px}
-.hero {margin-top:20px}
-.ticker-row {padding-top:10px}
-.live-win-btn {padding:10px 9px;font-size:10px}
-.game-logo {height:122px}
-.mobile-nav {display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;justify-content:space-around;align-items:center;padding:9px 3px max(9px,env(safe-area-inset-bottom));background:#061923f5;border-top:1px solid #274554;backdrop-filter:blur(12px)}
-.nav-item {display:flex;flex-direction:column;align-items:center;gap:4px;color:#a9bec8;font-size:10px;font-weight:800;min-width:48px}
-.nav-item span:first-child {font-size:21px}
-.nav-item.active {color:#ffd45c}
-.install-float {bottom:78px}
-.floating-buttons {bottom:78px}
-}
-@media(prefers-reduced-motion:reduce) {
-*,*::before,*::after {scroll-behavior:auto!important;animation:none!important;transition:none!important}
-}
+:root{--bg:#061321;--panel:#0c2035;--panel2:#102b45;--gold:#f4c44e;--gold2:#ffdf80;--cyan:#49c9f3;--green:#28d49a;--text:#f7f8fc;--muted:#b8c6d7;--line:#294866}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:18px}
+body{margin:0;background:radial-gradient(ellipse at 50% -10%,#173b68 0,#08192b 48%,#040d18 100%);color:var(--text);font-family:Arial,Helvetica,sans-serif;padding-bottom:18px}
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.topbar{padding:10px 8px;text-align:center;background:linear-gradient(90deg,#ffda67,#f0a91e,#ffdf7d);color:#211606;font-size:11px;font-weight:900;letter-spacing:.7px}
+header{padding:14px 12px 24px;border-bottom:1px solid #315171;background:linear-gradient(110deg,#07182b,#102b4c 55%,#081629)}
+.header-line{max-width:1180px;margin:auto;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{width:58px;height:58px;flex:none;display:grid;place-items:center;border-radius:50%;border:2px solid var(--gold);background:radial-gradient(circle at 35% 25%,#fff0a5,#b77a14 42%,#192b45 72%);box-shadow:0 0 22px #ffc94d55;color:#241706;font-size:34px}
+.brand-name{font-size:clamp(22px,5vw,36px);font-weight:1000;font-style:italic;letter-spacing:-1px;text-shadow:0 3px 12px #000}
+.brand-name span{color:var(--gold);text-shadow:0 0 12px #e6a82e66}
+.brand-logo{display:block;width:clamp(180px,38vw,320px);max-height:76px;object-fit:contain;border-radius:8px}
+.footer-brand-logo{display:block;width:min(230px,72vw);max-height:66px;object-fit:contain;margin:0 auto 12px;border-radius:8px}
+.header-actions{display:flex;align-items:center;gap:8px}
+.small-btn{border:1px solid #557394;border-radius:24px;padding:10px 13px;background:#0b2037;color:#fff;font-size:12px;font-weight:900}
+.menu-btn{font-size:20px;padding:7px 12px}
+.hero{max-width:1180px;margin:28px auto 0;display:grid;grid-template-columns:1.05fr .95fr;align-items:center;gap:16px}
+.hero-copy{text-align:left}
+.eyebrow{display:inline-block;border:1px solid #8c6a2a;border-radius:30px;padding:7px 12px;color:var(--gold2);font-size:11px;font-weight:900;letter-spacing:1px;background:#1a2a3a}
+h1{font-size:clamp(34px,6vw,64px);line-height:1.02;margin:14px 0;color:#fff;font-weight:1000;text-shadow:0 4px 18px #000}
+h1 span{color:var(--gold);display:block}
+.subtitle{max-width:600px;color:var(--muted);font-size:15px;line-height:1.7;margin:12px 0 18px}
+.hero-art{min-height:250px;border-radius:22px;border:1px solid #6e5a31;background:linear-gradient(135deg,#102c4c,#11152c 55%,#4b2361);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 12px 35px #0008}
+.hero-art:before{content:"♛";font-size:150px;color:#f4c44e;text-shadow:0 0 24px #ffb82d;opacity:.9}
+.hero-art:after{content:"ROLL • PLAY • EXPLORE";position:absolute;bottom:17px;left:0;right:0;text-align:center;color:#fff0bd;font-size:13px;font-weight:900;letter-spacing:3px}
+.actions{display:flex;flex-wrap:wrap;gap:9px}
+.action-btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;border:0;border-radius:12px;padding:12px 15px;font-size:12px;font-weight:1000;background:linear-gradient(135deg,#ffe28a,#e7a321);color:#241807;box-shadow:0 4px 12px #0005}
+.action-btn.green{background:linear-gradient(135deg,#50edb6,#08a97e);color:#04291e}
+.action-btn.blue{background:linear-gradient(135deg,#52bff7,#1764c9);color:#fff}
+.action-btn.purple{background:linear-gradient(135deg,#d17cff,#7134cb);color:white}
+.action-btn.dark{background:#102a43;border:1px solid #42617e;color:white}
+.logo-strip{display:flex;gap:11px;overflow-x:auto;padding:15px 12px;background:#061321;border-bottom:1px solid var(--line);scrollbar-width:thin}
+.logo-tile{flex:0 0 105px;min-height:84px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border:1px solid #a68b4a;border-radius:15px;background:linear-gradient(145deg,#183858,#08182a);color:#ffe6a0;font-size:11px;font-weight:900;text-align:center}
+.logo-symbol{font-size:27px}
+.logo-tile .game-logo{width:78px;height:48px;min-height:48px;border:0;background:transparent;font-size:15px}
+.logo-tile .game-logo img{width:100%;height:100%;object-fit:contain}
+.featured-logo .mini-mark{display:inline-flex;width:30px;height:30px;align-items:center;justify-content:center;overflow:hidden}
+.featured-logo .mini-mark img{width:100%;height:100%;object-fit:contain}
+.ticker-row{display:flex;align-items:center;gap:8px;padding:12px 10px 0;max-width:1200px;margin:auto}
+.ticker{min-width:0;overflow:hidden;flex:1;border:1px solid #355b77;border-radius:30px;background:#071b2c}
+.ticker-track{display:flex;width:max-content;gap:26px;padding:12px 0;animation:slide 90s linear infinite}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{white-space:nowrap;color:#dce7f3;font-size:12px;font-weight:800}
+.ticker-item strong{color:var(--gold)}
+@keyframes slide{to{transform:translateX(-50%)}}
+main{max-width:1200px;margin:auto;padding:14px 12px 35px}
+.promo-banner{margin:16px 0 22px;padding:20px 14px;border:1px solid #d7a93f;border-radius:20px;text-align:center;color:#281908;background:linear-gradient(110deg,#ffdc71,#f3a51e 55%,#ffe39a);box-shadow:0 8px 26px #f3b63b22}
+.promo-banner .pill{display:inline-block;background:#6f1d1d;color:white;padding:7px 13px;border-radius:22px;font-size:10px;font-weight:900}
+.promo-banner h2{font-size:clamp(23px,5vw,34px);margin:10px 0;font-weight:1000}
+.promo-banner p{font-size:13px;line-height:1.6;margin:6px 0}
+.featured-logos{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:17px 0}
+.featured-logo{display:flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #405e79;border-radius:24px;background:#0d243b;color:#ffe6a0;font-size:11px;font-weight:900}
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:25px 0 13px}
+.section-heading h2{font-size:clamp(19px,4vw,25px);margin:0;color:#fff}
+.count{padding:7px 10px;border:1px solid #c79c39;border-radius:20px;color:#ffdc76;font-size:11px;white-space:nowrap}
+.search-box{width:100%;padding:14px 16px;border-radius:14px;border:1px solid #456989;background:#0b2239;color:white;margin-bottom:15px}
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.game-card{min-width:0;overflow:hidden;border:1px solid #526e87;border-radius:17px;background:linear-gradient(155deg,#112d48,#071827);box-shadow:0 6px 15px #0005;transition:transform .2s,border-color .2s}
+.game-card:hover{border-color:var(--gold);transform:translateY(-2px)}
+.game-logo{height:116px;display:flex;align-items:center;justify-content:center;overflow:hidden;background:radial-gradient(circle,#294c76,#0a1b2d 72%);border-bottom:1px solid #3e5a78;color:#ffe08a;font-size:34px;font-weight:1000;text-shadow:0 3px 12px #000}
+.game-logo img{display:block;width:100%;height:100%;max-width:100%;max-height:100%;object-fit:contain;padding:8px}
+.game-info{padding:11px 10px 12px}
+.game-name{font-size:14px;font-weight:900;min-height:34px;display:flex;align-items:center;overflow-wrap:anywhere}
+.game-number{color:#a9c5d8;font-size:11px;margin:5px 0 10px}
+.card-actions{display:grid;gap:7px}
+.card-btn{display:flex;align-items:center;justify-content:center;border:0;border-radius:9px;padding:10px 5px;font-size:11px;font-weight:900;text-align:center;background:linear-gradient(120deg,#43e0ae,#0aa982);color:#04291e}
+.card-btn.support{background:linear-gradient(120deg,#ffcf63,#e99a19);color:#281806}
+.empty{display:none;text-align:center;padding:25px;color:#c3d7dd}
+.two-panels{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
+.extra-section{padding:19px 15px;border:1px solid #42617c;border-radius:17px;background:linear-gradient(145deg,#102d49,#091b2c);text-align:center}
+.extra-section h2{color:var(--gold2);font-size:20px;margin:2px 0 10px}
+.extra-section p{color:var(--muted);font-size:13px;line-height:1.7}
+.payment-list,.contact-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.payment-chip{border:1px solid #49677f;background:#16334c;border-radius:9px;padding:8px 11px;font-size:11px;color:#fff0bd}
+.contact-actions{margin-top:13px}
+.info-section{margin-top:18px;padding:19px;border:1px solid #334f69;border-radius:16px;background:#0a2034}
+.info-section h2{margin:0 0 9px;color:var(--gold2);font-size:19px}
+.info-section p,.info-section li{color:var(--muted);font-size:13px;line-height:1.7}
+.faq details{border-top:1px solid #29445e;padding:12px 0;color:#fff}
+.faq summary{cursor:pointer;font-weight:800}
+.faq p{margin-bottom:0}
+footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #29445e;font-size:12px}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0}
+.floating-buttons{position:fixed;right:12px;bottom:18px;z-index:20;display:flex;flex-direction:column;gap:9px}
+.float-btn{width:47px;height:47px;border:0;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:21px;color:white;box-shadow:0 4px 13px #0008}
+.chat-float{background:#087cc1}
+.whatsapp-float{background:#16a765}
+.install-float{position:fixed;left:12px;bottom:18px;z-index:19;border:1px solid #c69b3b;border-radius:30px;padding:12px 15px;background:linear-gradient(120deg,#ffe18a,#e6a21e);color:#241807;font-size:12px;font-weight:1000;box-shadow:0 5px 18px #0006}
+.modal{display:none;position:fixed;inset:0;z-index:50;background:#000c;align-items:center;justify-content:center;padding:16px}
+.modal.show{display:flex}
+.modal-box{width:min(440px,100%);background:#102b45;border:1px solid var(--gold);border-radius:17px;padding:22px;text-align:center;max-height:85vh;overflow:auto}
+.modal-box h2{color:var(--gold2);margin-top:0}
+.modal-box p{line-height:1.7;color:#e3edf0;font-size:14px}
+.modal-close{background:#9c2631;color:white;border:0;padding:10px 16px;border-radius:8px}
+.mobile-nav{display:none}
+#notificationModal{z-index:2000}
+.notification-allow{width:100%;padding:14px;border:0;border-radius:10px;background:linear-gradient(120deg,#37e0b0,#09a986);color:#06271f;font-weight:900}
+.notification-later{background:#173b4b;color:white;border:1px solid #456171;padding:11px 18px;border-radius:9px;margin-top:7px}
+@media(min-width:620px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.game-logo{height:145px}main{padding-left:20px;padding-right:20px}}
+@media(min-width:930px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
+@media(max-width:700px){.hero{grid-template-columns:1fr}.hero-art{min-height:145px}.hero-art:before{font-size:100px}.hero-copy{text-align:center}.subtitle{margin-left:auto;margin-right:auto}.actions{justify-content:center}.two-panels{grid-template-columns:1fr}}
+@media(max-width:599px){body{padding-bottom:65px}header{padding:12px 10px 19px}.brand-mark{width:46px;height:46px;font-size:26px}.brand-logo{width:clamp(150px,48vw,230px);max-height:58px}.small-btn{padding:9px 10px}.hero{margin-top:19px}.ticker-row{padding-top:10px}.games-grid{gap:9px}.game-logo{height:110px}.mobile-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:18;justify-content:space-around;align-items:center;padding:9px 3px max(9px,env(safe-area-inset-bottom));background:#061321f5;border-top:1px solid #34516b;backdrop-filter:blur(12px)}.nav-item{display:flex;flex-direction:column;align-items:center;gap:4px;color:#b8c6d7;font-size:10px;font-weight:800;min-width:48px}.nav-item span:first-child{font-size:20px}.nav-item.active{color:#ffd45c}.install-float{bottom:78px}.floating-buttons{bottom:78px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 </style>
 </head>
-
 <body>
-
-<!-- Notification popup -->
-<div class="modal" id="notificationModal" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
-  <div class="modal-box">
-    <div class="notification-icon">🔔</div>
-    <h2 id="notificationTitle">Stay Connected!</h2>
-    <p id="notificationMessage">Enable notifications from Premium Gaming Lounge to receive the latest updates and announcements.</p>
-    <button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
-    <button class="notification-later" type="button" onclick="closeNotificationPrompt()">NOT NOW</button>
-  </div>
-</div>
-
-<div class="topbar">★ PREMIUM GAMING LOUNGE ★ • ALL PLATFORMS IN ONE PLACE</div>
-
+<div class="topbar">♛ ROLLSWEEPS ♛ &nbsp; • &nbsp; ALL PLATFORMS IN ONE PLACE</div>
 <header id="home">
   <div class="header-line">
-    <div class="brand">
-      <div class="brand-icon">♛</div>
-      <div class="brand-name">Premium <span>Gaming</span></div>
-    </div>
+    <a class="brand" href="#home" aria-label="RollSweeps home"><img class="brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo"></a>
     <div class="header-actions">
-      <button class="small-btn" onclick="openLiveChat()" type="button">💬 Chat</button>
-      <button class="small-btn menu-btn" onclick="toggleMenu()" type="button" aria-label="Open menu">☰</button>
+      <button class="small-btn" type="button" onclick="openLiveChat()">💬 Chat</button>
+      <button class="small-btn" type="button" onclick="openNotificationPrompt()">🔔</button>
+      <button class="small-btn menu-btn" type="button" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
     </div>
   </div>
   <div class="hero">
-    <h1>Welcome to <span>Premium Gaming Lounge</span></h1>
-    <p class="subtitle">Explore your favorite gaming platforms in one convenient place. Contact support for account and platform assistance.</p>
-    <div class="actions">
-      <button class="action-btn" onclick="installApp()" type="button">⬇ INSTALL APP</button>
-      <button class="action-btn green" onclick="openNotificationPrompt()" type="button">🔔 NOTIFICATIONS</button>
-      <button class="action-btn secondary" onclick="openLiveChat()" type="button">💬 LIVE CHAT</button>
-      <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
-      <button class="action-btn secondary" onclick="openLiveChat()" type="button">MESSENGER</button>
-      <button class="action-btn secondary" onclick="showModal('spinModal')" type="button">🎡 SPIN</button>
+    <div class="hero-copy">
+      <span class="eyebrow">WELCOME TO THE GAMING HUB</span>
+      <h1>Welcome to <span>RollSweeps</span></h1>
+      <p class="subtitle">Explore gaming platforms in one convenient place. Review each provider's rules, eligibility and availability before you participate.</p>
+      <div class="actions">
+        <button class="action-btn" type="button" onclick="installApp()">⬇ INSTALL APP</button>
+        <button class="action-btn green" type="button" onclick="openNotificationPrompt()">♧ NOTIFICATIONS</button>
+        <button class="action-btn blue" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
+        <a class="action-btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
+        <button class="action-btn blue" type="button" onclick="openLiveChat()">➤ SUPPORT</button>
+        <button class="action-btn purple" type="button" onclick="showModal('spinModal')">✦ SPIN</button>
+      </div>
     </div>
+    <div class="hero-art" role="img" aria-label="RollSweeps crown gaming brand artwork"></div>
   </div>
 </header>
 
-<div class="logo-strip" id="logoStrip" aria-label="Featured game logos"></div>
-<div class="ticker-row">
-  <div class="ticker"><div class="ticker-track" id="tickerOne"></div></div>
-  <button class="live-win-btn" type="button" onclick="toggleLiveWin()" aria-expanded="false" id="liveWinButton">● LIVE WINS</button>
-</div>
-<div class="live-win-panel" id="liveWinPanel">Platform highlights. Verified live results are not connected to this website.</div>
-<div class="ticker reverse"><div class="ticker-track" id="tickerTwo"></div></div>
+<div class="logo-strip" id="logoStrip" aria-label="Featured platform logos"></div>
+<div class="ticker-row"><div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div></div>
 
 <main>
   <section class="promo-banner" id="offers">
-    <div class="promo-icon">🎁</div>
-    <span class="bonus-pill">SPECIAL WELCOME OFFER</span>
-    <h2>✦ 5 FREE PLAYS ✦</h2>
-    <p>Ask support to confirm offer availability and eligibility.</p>
-    <h2>180% WELCOME BONUS</h2>
-    <p>Terms and availability must be confirmed with support.</p>
+    <span class="pill">PLATFORM INFORMATION</span>
+    <h2>Explore Your Favorite Platforms</h2>
+    <p>Platform features, promotions and eligibility are controlled by each provider. Please check the provider's official terms before signing up or making any transaction.</p>
   </section>
-
   <div class="featured-logos" id="featuredLogos"></div>
 
-  <div class="section-heading" id="games">
-    <h2>🎮 All Gaming Platforms</h2>
-    <span class="count" id="gameCount">0 platforms</span>
-  </div>
-  <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite game..." aria-label="Search games">
+  <div class="section-heading" id="games"><h2>🎮 All Gaming Platforms</h2><span class="count" id="gameCount">0 platforms</span></div>
+  <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite platform..." aria-label="Search platforms">
   <div class="games-grid" id="gamesGrid"></div>
-  <div class="empty" id="emptyMessage">No games found. Try another name.</div>
+  <div class="empty" id="emptyMessage">No platforms found. Try another name.</div>
 
-  <section class="extra-section" id="wallet">
-    <h2>💳 Deposit / Withdraw Support</h2>
-    <p>Contact support for available payment methods and transaction instructions.</p>
-    <div class="payment-list">
-      <span class="payment-chip">Cash App</span>
-      <span class="payment-chip">Venmo</span>
-      <span class="payment-chip">Zelle</span>
-      <span class="payment-chip">Chime</span>
-      <span class="payment-chip">PayPal</span>
-      <span class="payment-chip">Bitcoin</span>
-      <span class="payment-chip">USDT</span>
-      <span class="payment-chip">Other</span>
-    </div>
-    <div class="contact-actions">
-      <button class="action-btn" type="button" onclick="openLiveChat()">DEPOSIT / WITHDRAW</button>
-      <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">CONTACT SUPPORT</a>
-    </div>
-  </section>
+  <div class="two-panels">
+    <section class="extra-section" id="wallet">
+      <h2>💳 Payment Information</h2>
+      <p>Payment options and transaction availability vary by provider. Contact the provider directly to confirm supported methods and instructions.</p>
+      <div class="payment-list"><span class="payment-chip">Cash App</span><span class="payment-chip">Venmo</span><span class="payment-chip">Zelle</span><span class="payment-chip">Chime</span><span class="payment-chip">PayPal</span><span class="payment-chip">Bitcoin</span><span class="payment-chip">USDT</span></div>
+      <div class="contact-actions"><button class="action-btn" type="button" onclick="openLiveChat()">ASK SUPPORT</button></div>
+    </section>
+    <section class="extra-section" id="support">
+      <h2>🎧 Need Help?</h2>
+      <p>For website questions, use live chat or WhatsApp. For account, payment or game issues, contact the relevant platform provider.</p>
+      <div class="contact-actions"><button class="action-btn green" type="button" onclick="openLiveChat()">LIVE CHAT</button><a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a></div>
+    </section>
+  </div>
 
-  <section class="extra-section" id="support">
-    <h2>💬 Need Help?</h2>
-    <p>Contact support for account, deposit and withdrawal questions.</p>
-    <div class="contact-actions">
-      <button class="action-btn green" onclick="openLiveChat()" type="button">LIVE CHAT</button>
-      <button class="action-btn secondary" onclick="openLiveChat()" type="button">MESSENGER</button>
-      <a class="action-btn secondary" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
-    </div>
+  <section class="info-section" id="about">
+    <h2>About RollSweeps</h2>
+    <p>RollSweeps is a directory-style page that brings links to multiple third-party gaming platforms together. Platform names and destinations belong to their respective operators. RollSweeps does not claim to operate or verify those third-party services.</p>
   </section>
+  <section class="info-section faq" id="faq">
+    <h2>Frequently Asked Questions</h2>
+    <details><summary>How do I open a platform?</summary><p>Find the platform card and tap “OPEN PLATFORM”. You will be taken to the third-party provider's website. Review its terms and eligibility rules first.</p></details>
+    <details><summary>How do I install this website?</summary><p>Open the site in a supported browser and tap “INSTALL APP”. If the browser does not show an install prompt, use its menu and choose “Install app” or “Add to Home screen”, if available.</p></details>
+    <details><summary>Who handles accounts and transactions?</summary><p>Each third-party provider is responsible for its own accounts, services, payment methods, terms and customer support.</p></details>
+    <details><summary>How do I contact website support?</summary><p>Use the Live Chat or WhatsApp buttons on this page.</p></details>
+  </section>
+  <section class="info-section"><h2>Play Responsibly</h2><p>Only participate where lawful and where you meet the provider's age and eligibility requirements. Set personal limits, never chase losses, and do not use money needed for essentials. If gambling is causing harm, stop and seek appropriate support.</p></section>
 </main>
 
-<footer>© <span id="year"></span> Premium Gaming Lounge. All rights reserved.</footer>
+<footer>
+  <img class="footer-brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
+  <div class="footer-links"><a href="#about">About Us</a><a href="#faq">FAQ</a><a href="#support">Contact Support</a><a href="#games">Platforms</a></div>
+  <p>© <span id="year"></span> RollSweeps. All rights reserved.</p>
+  <p>Third-party platform names and services are the property of their respective owners.</p>
+</footer>
 
 <button class="install-float" type="button" onclick="installApp()">⬇ Install App</button>
-
 <div class="floating-buttons">
   <button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
-  <button class="float-btn messenger-float" aria-label="Messenger" type="button" onclick="openLiveChat()">➤</button>
-  <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☏</a>
+  <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎</a>
 </div>
-
 <nav class="mobile-nav" aria-label="Mobile navigation">
   <a class="nav-item active" href="#home"><span>🏠</span><span>Home</span></a>
   <a class="nav-item" href="#games"><span>🎮</span><span>Games</span></a>
   <a class="nav-item" href="#support"><span>💬</span><span>Chat</span></a>
-  <a class="nav-item" href="#offers"><span>🏷️</span><span>Offers</span></a>
-  <a class="nav-item" href="#wallet"><span>👛</span><span>Wallet</span></a>
+  <a class="nav-item" href="#offers"><span>✨</span><span>Info</span></a>
+  <a class="nav-item" href="#wallet"><span>💳</span><span>Payment</span></a>
 </nav>
 
-<div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
-  <div class="modal-box">
-    <h2 id="installTitle">⬇ Install Premium Gaming Lounge</h2>
-    <p id="installMessage">If installation is available, use the button below.</p>
-    <button class="action-btn" id="installConfirm" type="button" onclick="confirmInstall()">INSTALL NOW</button>
-    <p><b>Manual method:</b><br>Open this website in Chrome, tap the three dots (⋮), then select “Install app” or “Add to Home screen” if available.</p>
-    <button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button>
-  </div>
+<div class="modal" id="notificationModal" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
+  <div class="modal-box"><div style="font-size:45px">🔔</div><h2 id="notificationTitle">Stay Connected</h2><p id="notificationMessage">Enable notifications to receive website updates.</p><button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button><button class="notification-later" type="button" onclick="hideModal('notificationModal')">NOT NOW</button></div>
 </div>
-
+<div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+  <div class="modal-box"><h2 id="installTitle">⬇ Install RollSweeps</h2><p id="installMessage">If installation is available, use the button below.</p><button class="action-btn" id="installConfirm" type="button" onclick="confirmInstall()">INSTALL NOW</button><p><b>Manual method:</b><br>Open this website in Chrome, tap the three dots (⋮), then select “Install app” or “Add to Home screen” if available.</p><button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button></div>
+</div>
 <div class="modal" id="spinModal" role="dialog" aria-modal="true" aria-labelledby="spinTitle">
-  <div class="modal-box">
-    <h2 id="spinTitle">🎡 Spin Wheel</h2>
-    <div class="spin-wheel" id="spinWheel">🎡</div>
-    <p id="spinResult">Tap the button to spin.</p>
-    <button class="action-btn" type="button" onclick="spinWheel()">SPIN NOW</button>
-    <button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button>
-  </div>
+  <div class="modal-box"><h2 id="spinTitle">✦ Spin & Explore</h2><div style="font-size:60px">🎡</div><p id="spinResult">Tap to pick a platform category.</p><button class="action-btn" type="button" onclick="spinWheel()">SPIN NOW</button><button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button></div>
 </div>
 
 <script>
@@ -461,83 +337,61 @@ const games = [
 ["Acebook","https://www.playacebook.mobi/"]
 ];
 
-const grid = document.getElementById("gamesGrid");
-const searchBox = document.getElementById("searchBox");
-const emptyMessage = document.getElementById("emptyMessage");
-const numberOptions = [500,600,700,800,900,1000,1200,1500,1800,2000];
-const countMap = new Map();
-const logoCache = new Map();
-let installPrompt = null;
+const grid=document.getElementById("gamesGrid");
+const searchBox=document.getElementById("searchBox");
+const emptyMessage=document.getElementById("emptyMessage");
+let installPrompt=null;
 
-function openLiveChat() {
-  if (window.chaport && typeof window.chaport.q === "function") {
-    window.chaport.q("open");
-  } else {
-    console.log("Chaport chat is still loading. Please try again.");
-  }
+function openLiveChat(){
+  if(window.chaport&&typeof window.chaport.q==="function"){window.chaport.q("open");}
+  else{alert("Live Chat is loading. Please try again in a moment.");}
 }
-
-function initials(name) {
-  return String(name || "GAME").trim().split(/\s+/)
-    .filter(Boolean).map(word => word[0] || "")
-    .join("").slice(0,3).toUpperCase();
-}
-
-function getLogoSources(url) {
-  try {
-    const parsed = new URL(url);
+function showModal(id){document.getElementById(id).classList.add("show");}
+function hideModal(id){document.getElementById(id).classList.remove("show");}
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show");}));
+function toggleMenu(){document.querySelector(".mobile-nav")?.scrollIntoView({behavior:"smooth",block:"end"});}
+function initials(name){return String(name||"GAME").trim().split(/\s+/).filter(Boolean).map(word=>word[0]||"").join("").slice(0,3).toUpperCase();}
+const logoCache=new Map();
+function getLogoSources(url){
+  try{
+    const parsed=new URL(url);
     return [...new Set([
-      new URL("/favicon.ico", parsed.origin).href,
-      "https://www.google.com/s2/favicons?domain=" +
-        encodeURIComponent(parsed.hostname) + "&sz=128",
-      "https://icons.duckduckgo.com/ip3/" +
-        encodeURIComponent(parsed.hostname) + ".ico"
+      new URL("/favicon.ico",parsed.origin).href,
+      "https://www.google.com/s2/favicons?domain="+encodeURIComponent(parsed.hostname)+"&sz=128",
+      "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(parsed.hostname)+".ico"
     ])];
-  } catch(e) {
-    return [];
-  }
+  }catch(e){return [];}
 }
-
-function loadLogo(container,name,url) {
+function loadLogo(container,name,url){
   container.replaceChildren();
-  container.textContent = initials(name);
+  container.textContent=initials(name);
   container.setAttribute("role","img");
   container.setAttribute("aria-label",name+" logo");
-
-  const sources = logoCache.get(url) || getLogoSources(url);
+  const sources=logoCache.get(url)||getLogoSources(url);
   logoCache.set(url,sources);
-  if (!sources.length) return;
-
-  const img = document.createElement("img");
-  img.alt = "";
-  img.loading = "lazy";
-  img.decoding = "async";
-  img.referrerPolicy = "no-referrer";
-  let index = 0;
-
-  img.onerror = () => {
+  if(!sources.length)return;
+  const img=document.createElement("img");
+  img.alt="";
+  img.loading="lazy";
+  img.decoding="async";
+  img.referrerPolicy="no-referrer";
+  let index=0;
+  img.onerror=()=>{
     index++;
-    if (index < sources.length) {
-      img.src = sources[index];
-    } else {
-      img.remove();
-      container.textContent = initials(name);
-    }
+    if(index<sources.length)img.src=sources[index];
+    else{img.remove();container.textContent=initials(name);}
   };
-
   container.appendChild(img);
-  img.src = sources[0];
+  img.src=sources[0];
 }
-
-function makeLogo(name,url) {
-  const logo = document.createElement("div");
-  logo.className = "game-logo";
+function makeLogo(name,url){
+  const logo=document.createElement("div");
+  logo.className="game-logo";
   loadLogo(logo,name,url);
   return logo;
 }
-
-function makeFeaturedLogos() {
-  const featured = [
+function makeFeaturedLogos(){
+  const featured=[
     ["Orion Star","http://start.orionstars.vip:8580/"],
     ["Milkyway","https://milkywayapp.xyz/"],
     ["Juwa","https://dl.juwa777.com/"],
@@ -545,277 +399,112 @@ function makeFeaturedLogos() {
     ["Game Vault","http://download.gamevault999.com/"],
     ["Ultra Panda","http://www.ultrapanda.mobi/"]
   ];
-
-  const strip = document.getElementById("logoStrip");
-  const boxes = document.getElementById("featuredLogos");
+  const strip=document.getElementById("logoStrip");
+  const boxes=document.getElementById("featuredLogos");
   strip.replaceChildren();
   boxes.replaceChildren();
-
-  featured.forEach(([name,url]) => {
-    const tile = document.createElement("div");
-    tile.className = "logo-tile";
-    const logo = document.createElement("div");
-    logo.className = "game-logo";
+  featured.forEach(([name,url])=>{
+    const tile=document.createElement("div");
+    tile.className="logo-tile";
+    const logo=document.createElement("div");
+    logo.className="game-logo";
     loadLogo(logo,name,url);
-
-    const label = document.createElement("span");
-    label.textContent = name;
+    const label=document.createElement("span");
+    label.textContent=name;
     tile.append(logo,label);
     strip.appendChild(tile);
-
-    const badge = document.createElement("div");
-    badge.className = "featured-logo";
-    const mark = document.createElement("span");
-    mark.className = "mini-mark";
+    const badge=document.createElement("div");
+    badge.className="featured-logo";
+    const mark=document.createElement("span");
+    mark.className="mini-mark";
     loadLogo(mark,name,url);
-
-    const text = document.createElement("span");
-    text.textContent = name.toUpperCase();
+    const text=document.createElement("span");
+    text.textContent=name.toUpperCase();
     badge.append(mark,text);
     boxes.appendChild(badge);
   });
 }
-
-function renderGames(filter = "") {
+function renderGames(filter=""){
   grid.replaceChildren();
-  const term = filter.trim().toLowerCase();
-  const filtered = games.filter(([name,url]) =>
-    (name+" "+url).toLowerCase().includes(term)
-  );
-
-  filtered.forEach(([name,url],index) => {
-    const card = document.createElement("article");
-    card.className = "game-card";
-
-    const hot = document.createElement("span");
-    hot.className = "hot-badge";
-    hot.textContent = "POPULAR";
-
-    const logo = makeLogo(name,url);
-    const title = document.createElement("div");
-    title.className = "game-name";
-    title.textContent = name;
-
-    const key = name+"|"+url;
-    if (!countMap.has(key)) {
-      countMap.set(key,numberOptions[(index*3+1)%numberOptions.length]);
-    }
-
-    const number = document.createElement("div");
-    number.className = "game-number";
-    number.textContent = "● "+countMap.get(key).toLocaleString()+" Playing";
-
-    const info = document.createElement("div");
-    info.className = "game-info";
-
-    const actions = document.createElement("div");
-    actions.className = "card-actions";
-
-    const account = document.createElement("a");
-    account.className = "card-btn";
-    account.textContent = "GET ID / OPEN";
-    account.href = url;
-    account.target = "_blank";
-    account.rel = "noopener noreferrer";
-
-    const deposit = document.createElement("button");
-    deposit.className = "card-btn deposit";
-    deposit.textContent = "DEPOSIT SUPPORT";
-    deposit.type = "button";
-    deposit.addEventListener("click",() => openLiveChat());
-
-    actions.append(account,deposit);
-    info.append(title,number,actions);
-    card.append(hot,logo,info);
-    grid.appendChild(card);
+  const term=filter.trim().toLowerCase();
+  const filtered=games.filter(([name,url])=>(name+" "+url).toLowerCase().includes(term));
+  filtered.forEach(([name,url],index)=>{
+    const card=document.createElement("article");card.className="game-card";
+    const logo=makeLogo(name,url);
+    const info=document.createElement("div");info.className="game-info";
+    const title=document.createElement("div");title.className="game-name";title.textContent=name;
+    const number=document.createElement("div");number.className="game-number";number.textContent="PLATFORM "+String(index+1).padStart(2,"0");
+    const actions=document.createElement("div");actions.className="card-actions";
+    const open=document.createElement("a");open.className="card-btn";open.textContent="OPEN PLATFORM";open.href=url;open.target="_blank";open.rel="noopener noreferrer";
+    const support=document.createElement("button");support.className="card-btn support";support.type="button";support.textContent="CONTACT SUPPORT";support.addEventListener("click",openLiveChat);
+    actions.append(open,support);info.append(title,number,actions);card.append(logo,info);grid.append(card);
   });
-
-  document.getElementById("gameCount").textContent =
-    filtered.length+" platforms";
-  emptyMessage.style.display = filtered.length ? "none" : "block";
+  document.getElementById("gameCount").textContent=filtered.length+" platforms";
+  emptyMessage.style.display=filtered.length?"none":"block";
 }
-
-function makeTicker(id) {
-  const track = document.getElementById(id);
-  track.replaceChildren();
-  const winAmounts = [500,750,900,1000,1200,1500,2000,3000,5000];
-
-  for (let repeat=0; repeat<2; repeat++) {
-    games.forEach(([name,url],index) => {
-      const item = document.createElement("span");
-      item.className = "ticker-item";
-
-      const logo = document.createElement("span");
-      logo.className = "ticker-logo";
-      loadLogo(logo,name,url);
-
-      const label = document.createElement("span");
-
-      if (id === "tickerOne") {
-        label.append("FEATURED • "+name+" • ");
-
-        const amount = document.createElement("strong");
-        amount.style.color = "#36d9ae";
-        amount.textContent =
-          "$"+winAmounts[(index+repeat)%winAmounts.length]+" • ";
-        label.appendChild(amount);
-
-        const tag = document.createElement("strong");
-        tag.textContent = "VIEW PLATFORM";
-        label.appendChild(tag);
-      } else {
-        label.textContent =
-          "✦ "+name+" • GAMING PLATFORM • SUPPORT AVAILABLE";
-      }
-
-      item.append(logo,label);
-      track.appendChild(item);
-    });
-  }
-}
-
-function toggleLiveWin() {
-  const panel = document.getElementById("liveWinPanel");
-  const button = document.getElementById("liveWinButton");
-  const open = panel.classList.toggle("visible");
-  button.setAttribute("aria-expanded",String(open));
-  button.textContent = open ? "✕ CLOSE" : "● LIVE WINS";
-}
-
-function showModal(id) {
-  document.getElementById(id).classList.add("show");
-}
-
-function hideModal(id) {
-  document.getElementById(id).classList.remove("show");
-}
-
-document.querySelectorAll(".modal").forEach(modal => {
-  modal.addEventListener("click",event => {
-    if (event.target === modal) modal.classList.remove("show");
+function buildTicker(){
+  const track=document.getElementById("tickerTrack");track.replaceChildren();
+  for(let repeat=0;repeat<2;repeat++)games.forEach(([name])=>{
+    const item=document.createElement("span");item.className="ticker-item";
+    item.innerHTML="<strong>✦ FEATURED</strong> • "+name+" • EXPLORE PLATFORM";
+    track.append(item);
   });
-});
-
-function spinWheel() {
-  const results = [
-    "Explore another platform",
-    "Contact support",
-    "Explore the games",
-    "Good luck"
-  ];
-  document.getElementById("spinWheel").textContent = "🎯";
-  document.getElementById("spinResult").textContent =
-    results[Math.floor(Math.random()*results.length)];
 }
-
-function toggleMenu() {
-  const menu = document.querySelector(".mobile-nav");
-  if (menu) menu.scrollIntoView({behavior:"smooth",block:"end"});
+function spinWheel(){
+  const picks=["Featured platforms","New platform to explore","Browse all games","Visit the support section"];
+  document.getElementById("spinResult").textContent=picks[Math.floor(Math.random()*picks.length)];
 }
-
-function installApp() {
-  if (installPrompt) {
-    installPrompt.prompt();
-    installPrompt.userChoice.then(() => {
-      installPrompt = null;
-    });
-    return;
-  }
-
-  const message = document.getElementById("installMessage");
-  const button = document.getElementById("installConfirm");
-  const standalone =
-    window.matchMedia("(display-mode: standalone)").matches ||
-    window.navigator.standalone === true;
-
-  if (standalone) {
-    message.textContent =
-      "Premium Gaming Lounge is already running as an installed app.";
-    button.style.display = "none";
-  } else {
-    message.textContent =
-      "If Chrome supports direct installation, the install option will appear here. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";
-    button.style.display = "inline-flex";
-  }
-
-  showModal("installModal");
+function installApp(){
+  const msg=document.getElementById("installMessage"),btn=document.getElementById("installConfirm");
+  if(installPrompt){installPrompt.prompt();installPrompt.userChoice.finally(()=>{installPrompt=null;});return;}
+  const standalone=window.matchMedia("(display-mode: standalone)").matches||window.navigator.standalone===true;
+  msg.textContent=standalone?"RollSweeps is already installed.":"If installation is supported, your browser will show an install option. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";
+  btn.style.display=standalone?"none":"inline-flex";showModal("installModal");
 }
-
-async function confirmInstall() {
-  if (installPrompt) {
-    installPrompt.prompt();
-    await installPrompt.userChoice;
-    installPrompt = null;
-    hideModal("installModal");
-  } else {
-    document.getElementById("installMessage").textContent =
-      "Open this page in Chrome. Tap ⋮ in the top-right corner, then choose Install app or Add to Home screen if available.";
-  }
+async function confirmInstall(){
+  if(installPrompt){installPrompt.prompt();await installPrompt.userChoice;installPrompt=null;hideModal("installModal");}
+  else{document.getElementById("installMessage").textContent="Open this page in Chrome, tap ⋮, then choose Install app or Add to Home screen if available.";}
 }
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;});
+window.addEventListener("appinstalled",()=>{installPrompt=null;document.getElementById("installMessage").textContent="RollSweeps was installed successfully.";});
+async function enableNotifications(){
+  const btn=document.querySelector(".notification-allow"),msg=document.getElementById("notificationMessage");
+  btn.disabled=true;btn.textContent="PLEASE WAIT...";
+  try{
+    const OneSignal=await Promise.race([window.PGL_OneSignalReady,new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))]);
+    await OneSignal.Notifications.requestPermission();
+    if(Notification.permission==="granted"){hideModal("notificationModal");msg.textContent="Notifications enabled.";}
+    else{msg.textContent="Permission was not granted. You can change it in browser site settings.";}
+  }catch(e){console.error(e);msg.textContent="Notifications could not load. Check your connection and try again.";}
+  btn.disabled=false;btn.textContent="ALLOW NOTIFICATIONS";
+}
+function openNotificationPrompt(){
+  if(!("Notification"in window)){alert("Your browser does not support notifications.");return;}
+  if(Notification.permission==="granted"){alert("Notifications are already enabled.");}
+  else if(Notification.permission==="denied"){alert("Notifications are blocked. Please change browser site settings.");}
+  else{showModal("notificationModal");}
+}
+searchBox.addEventListener("input",()=>renderGames(searchBox.value));
+buildTicker();renderGames();makeFeaturedLogos();document.getElementById("year").textContent=new Date().getFullYear();
 
-window.addEventListener("beforeinstallprompt",event => {
-  event.preventDefault();
-  installPrompt = event;
-});
-
-window.addEventListener("appinstalled",() => {
-  installPrompt = null;
-  document.getElementById("installMessage").textContent =
-    "Premium Gaming Lounge was installed successfully.";
-});
-
-searchBox.addEventListener("input",() => renderGames(searchBox.value));
-
-makeTicker("tickerOne");
-makeTicker("tickerTwo");
-renderGames();
-makeFeaturedLogos();
-document.getElementById("year").textContent = new Date().getFullYear();
-
-/* Keep the website's existing root service worker */
-if ("serviceWorker" in navigator && location.protocol === "https:") {
-  window.addEventListener("load",() => {
-    navigator.serviceWorker.register("./service-worker.js")
-      .catch(error => console.log(
-        "Service worker registration failed",error
-      ));
-  });
+/* Keep the existing root service-worker registration. Do not replace the existing
+   service-worker.js or OneSignal worker files when uploading this redesign. */
+if("serviceWorker"in navigator&&location.protocol==="https:"){
+  window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(e=>console.log("Service worker registration failed",e)));
 }
 </script>
 
-<!-- Chaport Live Chat -->
-<script type="text/javascript">
-(function(w,d,v3) {
-  w.chaportConfig = {
-    appId: "6acef8d367f574f2e93a4357",
-    language: { use: "en" }
-  };
-
-  if (w.chaport) return;
-
-  v3 = w.chaport = {};
-  v3._q = [];
-  v3._l = {};
-
-  v3.q = function() {
-    v3._q.push(arguments);
-  };
-
-  v3.on = function(e,fn) {
-    if (!v3._l[e]) v3._l[e] = [];
-    v3._l[e].push(fn);
-  };
-
-  var s = d.createElement("script");
-  s.type = "text/javascript";
-  s.async = true;
-  s.src = "https://app.chaport.com/javascripts/insert.js";
-
-  var ss = d.getElementsByTagName("script")[0];
-  ss.parentNode.insertBefore(s,ss);
+<!-- Chaport: existing account configuration retained -->
+<script>
+(function(w,d,v3){
+  w.chaportConfig={appId:"6acef8d367f574f2e93a4357",language:{use:"en"}};
+  if(w.chaport)return;
+  v3=w.chaport={};v3._q=[];v3._l={};
+  v3.q=function(){v3._q.push(arguments);};
+  v3.on=function(e,fn){if(!v3._l[e])v3._l[e]=[];v3._l[e].push(fn);};
+  var s=d.createElement("script");s.type="text/javascript";s.async=true;s.src="https://app.chaport.com/javascripts/insert.js";
+  var ss=d.getElementsByTagName("script")[0];ss.parentNode.insertBefore(s,ss);
 })(window,document);
 </script>
-<!-- End Chaport Live Chat -->
-
 </body>
 </html>
