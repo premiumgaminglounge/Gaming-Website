@@ -32,6 +32,7 @@ window.PGL_OneSignalReady=new Promise((resolve,reject)=>{
   }catch(e){reject(e);}
  });
 });
+window.PGL_OneSignalReady.catch(console.error);
 </script>
 
 <style>
@@ -44,7 +45,7 @@ window.PGL_OneSignalReady=new Promise((resolve,reject)=>{
  --line:#604c85;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:15px}
 body{
  margin:0;
  background:radial-gradient(circle at top,#19234e,#05091b 65%);
@@ -122,8 +123,7 @@ h1 span{color:var(--gold)}
  min-height:260px;
  border:1px solid #99743a;
  border-radius:20px;
- background:
- radial-gradient(circle at 50% 50%,#37316c,#0c1433 65%,#080c1d);
+ background:radial-gradient(circle at 50% 50%,#37316c,#0c1433 65%,#080c1d);
  display:flex;
  justify-content:center;
  align-items:center;
@@ -141,6 +141,9 @@ h1 span{color:var(--gold)}
  margin-top:20px;
 }
 .action-btn{
+ display:inline-flex;
+ align-items:center;
+ justify-content:center;
  border:0;
  border-radius:12px;
  padding:13px 16px;
@@ -152,22 +155,72 @@ h1 span{color:var(--gold)}
 .action-btn.blue{background:linear-gradient(120deg,#45bafa,#1859b9);color:white}
 .action-btn.green{background:linear-gradient(120deg,#51e6b4,#079c74);color:#03271c}
 
+/* ANIMATED GOLD PLATFORM TICKERS */
 .ticker{
+ position:relative;
  overflow:hidden;
  white-space:nowrap;
- background:#090e22;
+ background:linear-gradient(90deg,#090e22,#111832,#090e22);
  border-top:1px solid #a77c34;
  border-bottom:1px solid #a77c34;
- padding:13px 0;
+ padding:12px 0;
+}
+.ticker.second{
+ background:linear-gradient(90deg,#111328,#201735,#111328);
+ border-top:1px solid #76559e;
 }
 .ticker-track{
  display:flex;
+ align-items:center;
  width:max-content;
- gap:30px;
- animation:move 65s linear infinite;
+ gap:28px;
+ animation:move 75s linear infinite;
 }
-.ticker-item{font-size:13px;font-weight:bold;color:#ffe39a}
-@keyframes move{to{transform:translateX(-50%)}}
+.ticker.second .ticker-track{
+ animation-name:moveReverse;
+ animation-duration:85s;
+}
+.ticker:hover .ticker-track{animation-play-state:paused}
+.ticker-item{
+ display:inline-flex;
+ align-items:center;
+ gap:9px;
+ font-size:13px;
+ font-weight:bold;
+ color:#ffe39a;
+}
+.ticker-logo{
+ width:31px;
+ height:31px;
+ flex-shrink:0;
+ display:flex;
+ justify-content:center;
+ align-items:center;
+ overflow:hidden;
+ border-radius:50%;
+ border:1px solid var(--gold);
+ background:#18254a;
+ color:#ffe69a;
+ font-size:9px;
+}
+.ticker-logo img{
+ width:100%;
+ height:100%;
+ object-fit:contain;
+}
+.ticker-item strong{color:white}
+.ticker-separator{
+ color:#a77c34;
+ font-size:18px;
+}
+@keyframes move{
+ from{transform:translateX(0)}
+ to{transform:translateX(-50%)}
+}
+@keyframes moveReverse{
+ from{transform:translateX(-50%)}
+ to{transform:translateX(0)}
+}
 
 main{max-width:1200px;margin:auto;padding:15px}
 
@@ -205,7 +258,6 @@ main{max-width:1200px;margin:auto;padding:15px}
  margin-bottom:16px;
  font-size:15px;
 }
-
 .games-grid{
  display:grid;
  grid-template-columns:repeat(3,minmax(0,1fr));
@@ -257,10 +309,7 @@ main{max-width:1200px;margin:auto;padding:15px}
  font-weight:900;
  border:0;
 }
-.card-btn.support{
- background:#173c70;
- color:white;
-}
+.card-btn.support{background:#173c70;color:white}
 .empty{
  display:none;
  text-align:center;
@@ -337,7 +386,6 @@ footer{
  gap:16px;
  margin:15px;
 }
-
 .floating-buttons{
  position:fixed;
  right:12px;
@@ -372,9 +420,7 @@ footer{
  color:#211400;
  font-weight:bold;
 }
-.mobile-nav{
- display:none;
-}
+.mobile-nav{display:none}
 .modal{
  display:none;
  position:fixed;
@@ -435,6 +481,10 @@ footer{
  .brand-logo{width:155px}
  .small-btn{padding:8px;font-size:11px}
  .game-logo{height:105px}
+ .ticker{padding:10px 0}
+ .ticker-track{gap:18px}
+ .ticker-item{font-size:11px}
+ .ticker-logo{width:26px;height:26px}
  .mobile-nav{
   display:flex;
   position:fixed;
@@ -491,7 +541,7 @@ footer{
    <div class="actions">
     <a href="#games" class="action-btn">EXPLORE GAMES</a>
     <button class="action-btn green" onclick="openLiveChat()">LIVE CHAT</button>
-    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener">WHATSAPP</a>
+    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
    </div>
   </div>
 
@@ -501,8 +551,14 @@ footer{
  </div>
 </header>
 
+<!-- FIRST MOVING PLATFORM STRIP -->
 <div class="ticker">
  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- SECOND MOVING GOLD STRIP -->
+<div class="ticker second">
+ <div class="ticker-track" id="tickerTrackTwo"></div>
 </div>
 
 <main>
@@ -529,7 +585,6 @@ footer{
  <div class="games-grid" id="gamesGrid"></div>
  <div class="empty" id="emptyMessage">No platforms found.</div>
 
- <!-- VIDEO REVIEW: Keep the cleaned video file in this folder -->
  <section class="video-review" id="videoReview">
   <h2>🎬 Video Review</h2>
   <video controls playsinline preload="metadata" poster="./roll-sweeps-logo.png">
@@ -561,12 +616,11 @@ footer{
    <p>Contact support for assistance.</p>
    <div class="contact-actions">
     <button class="action-btn green" onclick="openLiveChat()">LIVE CHAT</button>
-    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener">WHATSAPP</a>
+    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
    </div>
   </section>
 
  </div>
-
 </main>
 
 <footer>
@@ -585,7 +639,7 @@ footer{
 
 <div class="floating-buttons">
  <button class="float-btn chat-float" onclick="openLiveChat()" aria-label="Live Chat">💬</button>
- <a class="float-btn whatsapp-float" href="https://wa.me/14482414979" target="_blank" rel="noopener" aria-label="WhatsApp">☎</a>
+ <a class="float-btn whatsapp-float" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">☎</a>
 </div>
 
 <nav class="mobile-nav">
@@ -697,6 +751,31 @@ function getLogoSources(url){
  }catch(e){return [];}
 }
 
+function loadTickerLogo(box,name,url){
+ const img=document.createElement("img");
+ img.alt="";
+ img.loading="lazy";
+ img.referrerPolicy="no-referrer";
+ const sources=getLogoSources(url);
+ let index=0;
+
+ img.onerror=()=>{
+  index++;
+  if(index<sources.length){
+   img.src=sources[index];
+  }else{
+   img.remove();
+   box.textContent=name.substring(0,3).toUpperCase();
+  }
+ };
+ if(sources.length){
+  box.appendChild(img);
+  img.src=sources[0];
+ }else{
+  box.textContent=name.substring(0,3).toUpperCase();
+ }
+}
+
 function makeLogo(name,url){
  const box=document.createElement("div");
  box.className="game-logo";
@@ -706,10 +785,12 @@ function makeLogo(name,url){
  img.referrerPolicy="no-referrer";
  const sources=getLogoSources(url);
  let index=0;
+
  img.onerror=()=>{
   index++;
-  if(index<sources.length)img.src=sources[index];
-  else{
+  if(index<sources.length){
+   img.src=sources[index];
+  }else{
    img.remove();
    box.textContent=name;
    box.style.fontWeight="bold";
@@ -719,7 +800,9 @@ function makeLogo(name,url){
  if(sources.length){
   box.appendChild(img);
   img.src=sources[0];
- }else{box.textContent=name;}
+ }else{
+  box.textContent=name;
+ }
  return box;
 }
 
@@ -735,7 +818,6 @@ function renderGames(filter=""){
   card.className="game-card";
 
   const logo=makeLogo(name,url);
-
   const info=document.createElement("div");
   info.className="game-info";
 
@@ -756,7 +838,8 @@ function renderGames(filter=""){
   const support=document.createElement("button");
   support.className="card-btn support";
   support.textContent="CONTACT SUPPORT";
-  support.onclick=openLiveChat;
+  support.type="button";
+  support.addEventListener("click",openLiveChat);
 
   actions.append(open,support);
   info.append(title,actions);
@@ -764,19 +847,36 @@ function renderGames(filter=""){
   grid.append(card);
  });
 
- document.getElementById("gameCount").textContent=filtered.length+" platforms";
+ document.getElementById("gameCount").textContent=
+  filtered.length+" platforms";
  empty.style.display=filtered.length?"none":"block";
 }
 
-function buildTicker(){
- const track=document.getElementById("tickerTrack");
+/* BUILD BOTH CONTINUOUS TICKERS */
+function buildTicker(id,second=false){
+ const track=document.getElementById(id);
  track.replaceChildren();
+
  for(let repeat=0;repeat<2;repeat++){
-  games.forEach(([name])=>{
+  games.forEach(([name,url])=>{
    const item=document.createElement("span");
    item.className="ticker-item";
-   item.textContent="✦ ROLLSWEEPS • "+name+" • EXPLORE";
-   track.append(item);
+
+   const logo=document.createElement("span");
+   logo.className="ticker-logo";
+   loadTickerLogo(logo,name,url);
+
+   const label=document.createElement("strong");
+   label.textContent=second
+    ?name+" • ROLLSWEEPS PLATFORM"
+    :"FEATURED • "+name+" • EXPLORE";
+
+   const separator=document.createElement("span");
+   separator.className="ticker-separator";
+   separator.textContent="✦";
+
+   item.append(logo,label,separator);
+   track.appendChild(item);
   });
  }
 }
@@ -860,9 +960,12 @@ async function enableNotifications(){
  try{
   const OneSignal=await Promise.race([
    window.PGL_OneSignalReady,
-   new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))
+   new Promise((_,reject)=>
+    setTimeout(()=>reject(new Error("timeout")),15000)
+   )
   ]);
   await OneSignal.Notifications.requestPermission();
+
   if(Notification.permission==="granted"){
    msg.textContent="Notifications enabled.";
    hideModal("notificationModal");
@@ -881,10 +984,12 @@ searchBox.addEventListener("input",()=>{
  renderGames(searchBox.value);
 });
 
-buildTicker();
+buildTicker("tickerTrack",false);
+buildTicker("tickerTrackTwo",true);
 renderGames();
 
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent=
+ new Date().getFullYear();
 
 if("serviceWorker" in navigator && location.protocol==="https:"){
  window.addEventListener("load",()=>{
@@ -894,7 +999,7 @@ if("serviceWorker" in navigator && location.protocol==="https:"){
 }
 </script>
 
-<!-- Existing Chaport account -->
+<!-- CHAPORT LIVE CHAT -->
 <script>
 (function(w,d,v3){
  w.chaportConfig={
