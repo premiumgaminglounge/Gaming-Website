@@ -5,7 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071426">
-<meta name="description" content="RollSweeps — explore gaming platforms in one place. Check each provider's terms, availability and eligibility before participating.">
+<meta name="description" content="RollSweeps — explore gaming platforms in one place.">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-title" content="RollSweeps">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -13,7 +13,7 @@
 <link rel="icon" href="./roll-sweeps-logo.png" type="image/png">
 <link rel="apple-touch-icon" href="./roll-sweeps-logo.png">
 <meta property="og:title" content="RollSweeps | Gaming Platforms">
-<meta property="og:description" content="Explore gaming platforms in one place. Check provider terms, availability and eligibility.">
+<meta property="og:description" content="Explore gaming platforms in one place.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
 <meta property="og:site_name" content="RollSweeps">
@@ -26,7 +26,6 @@
 <meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
 <title>RollSweeps | Gaming Platforms</title>
 
-<!-- OneSignal: existing app configuration retained -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
 window.OneSignalDeferred = window.OneSignalDeferred || [];
@@ -94,6 +93,8 @@ h1 span{color:var(--gold);display:block}
 .ticker:hover .ticker-track{animation-play-state:paused}
 .ticker-item{white-space:nowrap;color:#dce7f3;font-size:12px;font-weight:800}
 .ticker-item strong{color:var(--gold)}
+.live-wins-label{flex:none;border:1px solid #e44b56;border-radius:22px;background:linear-gradient(120deg,#ed3444,#a90d27);color:#fff;padding:11px 13px;font-size:11px;font-weight:1000;white-space:nowrap}
+.video-review video{display:block;width:100%;max-height:620px;background:#000;border:1px solid #46647e;border-radius:14px;margin-top:12px}
 @keyframes slide{to{transform:translateX(-50%)}}
 main{max-width:1200px;margin:auto;padding:14px 12px 35px}
 .promo-banner{margin:16px 0 22px;padding:20px 14px;border:1px solid #d7a93f;border-radius:20px;text-align:center;color:#281908;background:linear-gradient(110deg,#ffdc71,#f3a51e 55%,#ffe39a);box-shadow:0 8px 26px #f3b63b22}
@@ -170,7 +171,7 @@ footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #2
     <div class="hero-copy">
       <span class="eyebrow">WELCOME TO THE GAMING HUB</span>
       <h1>Welcome to <span>RollSweeps</span></h1>
-      <p class="subtitle">Explore gaming platforms in one convenient place. Review each provider's rules, eligibility and availability before you participate.</p>
+      <p class="subtitle">Explore your favorite gaming platforms in one convenient place.</p>
       <div class="actions">
         <button class="action-btn" type="button" onclick="installApp()">⬇ INSTALL APP</button>
         <button class="action-btn green" type="button" onclick="openNotificationPrompt()">♧ NOTIFICATIONS</button>
@@ -185,14 +186,10 @@ footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #2
 </header>
 
 <div class="logo-strip" id="logoStrip" aria-label="Featured platform logos"></div>
-<div class="ticker-row"><div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div></div>
+<div class="ticker-row"><div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div><span class="live-wins-label">● LIVE WINS</span></div>
 
 <main>
-  <section class="promo-banner" id="offers">
-    <span class="pill">PLATFORM INFORMATION</span>
-    <h2>Explore Your Favorite Platforms</h2>
-    <p>Platform features, promotions and eligibility are controlled by each provider. Please check the provider's official terms before signing up or making any transaction.</p>
-  </section>
+  <section class="promo-banner" id="offers"><span class="pill">ROLLSWEEPS</span><h2>Explore Your Favorite Platforms</h2><p>All your favorite gaming platforms in one place.</p></section>
   <div class="featured-logos" id="featuredLogos"></div>
 
   <div class="section-heading" id="games"><h2>🎮 All Gaming Platforms</h2><span class="count" id="gameCount">0 platforms</span></div>
@@ -200,39 +197,46 @@ footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #2
   <div class="games-grid" id="gamesGrid"></div>
   <div class="empty" id="emptyMessage">No platforms found. Try another name.</div>
 
+  <section class="info-section video-review" id="videoReview">
+    <h2>🎬 Video Review</h2>
+    <video controls playsinline preload="metadata" poster="./roll-sweeps-logo.png">
+      <source src="./review-video.mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
+  </section>
+
   <div class="two-panels">
     <section class="extra-section" id="wallet">
       <h2>💳 Payment Information</h2>
-      <p>Payment options and transaction availability vary by provider. Contact the provider directly to confirm supported methods and instructions.</p>
-      <div class="payment-list"><span class="payment-chip">Cash App</span><span class="payment-chip">Venmo</span><span class="payment-chip">Zelle</span><span class="payment-chip">Chime</span><span class="payment-chip">PayPal</span><span class="payment-chip">Bitcoin</span><span class="payment-chip">USDT</span></div>
+      <div class="payment-list">
+        <span class="payment-chip">Cash App</span>
+        <span class="payment-chip">Venmo</span>
+        <span class="payment-chip">Zelle</span>
+        <span class="payment-chip">Chime</span>
+        <span class="payment-chip">PayPal</span>
+        <span class="payment-chip">Bitcoin</span>
+        <span class="payment-chip">USDT</span>
+      </div>
       <div class="contact-actions"><button class="action-btn" type="button" onclick="openLiveChat()">ASK SUPPORT</button></div>
     </section>
     <section class="extra-section" id="support">
       <h2>🎧 Need Help?</h2>
-      <p>For website questions, use live chat or WhatsApp. For account, payment or game issues, contact the relevant platform provider.</p>
-      <div class="contact-actions"><button class="action-btn green" type="button" onclick="openLiveChat()">LIVE CHAT</button><a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a></div>
+      <div class="contact-actions">
+        <button class="action-btn green" type="button" onclick="openLiveChat()">LIVE CHAT</button>
+        <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+      </div>
     </section>
   </div>
-
-  <section class="info-section" id="about">
-    <h2>About RollSweeps</h2>
-    <p>RollSweeps is a directory-style page that brings links to multiple third-party gaming platforms together. Platform names and destinations belong to their respective operators. RollSweeps does not claim to operate or verify those third-party services.</p>
-  </section>
-  <section class="info-section faq" id="faq">
-    <h2>Frequently Asked Questions</h2>
-    <details><summary>How do I open a platform?</summary><p>Find the platform card and tap “OPEN PLATFORM”. You will be taken to the third-party provider's website. Review its terms and eligibility rules first.</p></details>
-    <details><summary>How do I install this website?</summary><p>Open the site in a supported browser and tap “INSTALL APP”. If the browser does not show an install prompt, use its menu and choose “Install app” or “Add to Home screen”, if available.</p></details>
-    <details><summary>Who handles accounts and transactions?</summary><p>Each third-party provider is responsible for its own accounts, services, payment methods, terms and customer support.</p></details>
-    <details><summary>How do I contact website support?</summary><p>Use the Live Chat or WhatsApp buttons on this page.</p></details>
-  </section>
-  <section class="info-section"><h2>Play Responsibly</h2><p>Only participate where lawful and where you meet the provider's age and eligibility requirements. Set personal limits, never chase losses, and do not use money needed for essentials. If gambling is causing harm, stop and seek appropriate support.</p></section>
 </main>
 
 <footer>
   <img class="footer-brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
-  <div class="footer-links"><a href="#about">About Us</a><a href="#faq">FAQ</a><a href="#support">Contact Support</a><a href="#games">Platforms</a></div>
+  <div class="footer-links">
+    <a href="#videoReview">Video Review</a>
+    <a href="#support">Contact Support</a>
+    <a href="#games">Platforms</a>
+  </div>
   <p>© <span id="year"></span> RollSweeps. All rights reserved.</p>
-  <p>Third-party platform names and services are the property of their respective owners.</p>
 </footer>
 
 <button class="install-float" type="button" onclick="installApp()">⬇ Install App</button>
@@ -244,18 +248,36 @@ footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #2
   <a class="nav-item active" href="#home"><span>🏠</span><span>Home</span></a>
   <a class="nav-item" href="#games"><span>🎮</span><span>Games</span></a>
   <a class="nav-item" href="#support"><span>💬</span><span>Chat</span></a>
-  <a class="nav-item" href="#offers"><span>✨</span><span>Info</span></a>
+  <a class="nav-item" href="#videoReview"><span>🎬</span><span>Video</span></a>
   <a class="nav-item" href="#wallet"><span>💳</span><span>Payment</span></a>
 </nav>
 
 <div class="modal" id="notificationModal" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
-  <div class="modal-box"><div style="font-size:45px">🔔</div><h2 id="notificationTitle">Stay Connected</h2><p id="notificationMessage">Enable notifications to receive website updates.</p><button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button><button class="notification-later" type="button" onclick="hideModal('notificationModal')">NOT NOW</button></div>
+  <div class="modal-box">
+    <div style="font-size:45px">🔔</div>
+    <h2 id="notificationTitle">Stay Connected</h2>
+    <p id="notificationMessage">Enable notifications to receive website updates.</p>
+    <button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
+    <button class="notification-later" type="button" onclick="hideModal('notificationModal')">NOT NOW</button>
+  </div>
 </div>
 <div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
-  <div class="modal-box"><h2 id="installTitle">⬇ Install RollSweeps</h2><p id="installMessage">If installation is available, use the button below.</p><button class="action-btn" id="installConfirm" type="button" onclick="confirmInstall()">INSTALL NOW</button><p><b>Manual method:</b><br>Open this website in Chrome, tap the three dots (⋮), then select “Install app” or “Add to Home screen” if available.</p><button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button></div>
+  <div class="modal-box">
+    <h2 id="installTitle">⬇ Install RollSweeps</h2>
+    <p id="installMessage">If installation is available, use the button below.</p>
+    <button class="action-btn" id="installConfirm" type="button" onclick="confirmInstall()">INSTALL NOW</button>
+    <p><b>Manual method:</b><br>Open this website in Chrome, tap the three dots (⋮), then select “Install app” or “Add to Home screen” if available.</p>
+    <button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button>
+  </div>
 </div>
 <div class="modal" id="spinModal" role="dialog" aria-modal="true" aria-labelledby="spinTitle">
-  <div class="modal-box"><h2 id="spinTitle">✦ Spin & Explore</h2><div style="font-size:60px">🎡</div><p id="spinResult">Tap to pick a platform category.</p><button class="action-btn" type="button" onclick="spinWheel()">SPIN NOW</button><button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button></div>
+  <div class="modal-box">
+    <h2 id="spinTitle">✦ Spin & Explore</h2>
+    <div style="font-size:60px">🎡</div>
+    <p id="spinResult">Tap to pick a platform category.</p>
+    <button class="action-btn" type="button" onclick="spinWheel()">SPIN NOW</button>
+    <button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button>
+  </div>
 </div>
 
 <script>
@@ -446,7 +468,7 @@ function buildTicker(){
   const track=document.getElementById("tickerTrack");track.replaceChildren();
   for(let repeat=0;repeat<2;repeat++)games.forEach(([name])=>{
     const item=document.createElement("span");item.className="ticker-item";
-    item.innerHTML="<strong>✦ FEATURED</strong> • "+name+" • EXPLORE PLATFORM";
+    item.innerHTML="<strong>✦ FEATURED</strong> • "+name+" • VIEW PLATFORM";
     track.append(item);
   });
 }
@@ -487,14 +509,11 @@ function openNotificationPrompt(){
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));
 buildTicker();renderGames();makeFeaturedLogos();document.getElementById("year").textContent=new Date().getFullYear();
 
-/* Keep the existing root service-worker registration. Do not replace the existing
-   service-worker.js or OneSignal worker files when uploading this redesign. */
 if("serviceWorker"in navigator&&location.protocol==="https:"){
   window.addEventListener("load",()=>navigator.serviceWorker.register("./service-worker.js").catch(e=>console.log("Service worker registration failed",e)));
 }
 </script>
 
-<!-- Chaport: existing account configuration retained -->
 <script>
 (function(w,d,v3){
   w.chaportConfig={appId:"6acef8d367f574f2e93a4357",language:{use:"en"}};
