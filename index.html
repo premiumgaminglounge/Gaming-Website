@@ -1,676 +1,614 @@
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#071426">
-<meta name="description" content="RollSweeps Gaming Platforms">
+<meta name="description" content="RollSweeps — explore gaming platforms in one place. Check each provider's terms, availability and eligibility before participating.">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RollSweeps">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="manifest" href="./manifest.json">
+<link rel="icon" href="./roll-sweeps-logo.png" type="image/png">
+<link rel="apple-touch-icon" href="./roll-sweeps-logo.png">
+
+<meta property="og:title" content="RollSweeps | Gaming Platforms">
+<meta property="og:description" content="Explore gaming platforms in one place. Check provider terms, availability and eligibility.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
+<meta property="og:site_name" content="RollSweeps">
+<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:alt" content="RollSweeps gaming platforms preview">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image:alt" content="RollSweeps gaming platforms preview">
+<meta name="twitter:title" content="RollSweeps | Gaming Platforms">
+<meta name="twitter:description" content="Explore gaming platforms in one place.">
+<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+
 <title>RollSweeps | Gaming Platforms</title>
 
-<meta property="og:title" content="RollSweeps">
-<meta property="og:description" content="Explore gaming platforms in one place.">
-<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
-<meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
-<meta property="og:type" content="website">
-
-<link rel="icon" href="./roll-sweeps-logo.png">
-<link rel="manifest" href="./manifest.json">
-
+<!-- OneSignal: existing app configuration retained -->
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
 <script>
-window.OneSignalDeferred=window.OneSignalDeferred||[];
-window.PGL_OneSignalReady=new Promise((resolve,reject)=>{
- window.OneSignalDeferred.push(async OneSignal=>{
-  try{
-   await OneSignal.init({
-    appId:"b8e89199-4e74-415e-b3fe-6c30dc97912b",
-    serviceWorkerPath:"/Gaming-Website/push/onesignal/OneSignalSDKWorker.js",
-    serviceWorkerParam:{scope:"/Gaming-Website/push/onesignal/"}
-   });
-   resolve(OneSignal);
-  }catch(e){reject(e);}
- });
+window.OneSignalDeferred = window.OneSignalDeferred || [];
+window.PGL_OneSignalReady = new Promise(function(resolve,reject){
+  window.OneSignalDeferred.push(async function(OneSignal){
+    try {
+      await OneSignal.init({
+        appId:"b8e89199-4e74-415e-b3fe-6c30dc97912b",
+        serviceWorkerPath:"/Gaming-Website/push/onesignal/OneSignalSDKWorker.js",
+        serviceWorkerParam:{scope:"/Gaming-Website/push/onesignal/"}
+      });
+      resolve(OneSignal);
+    } catch(e) {
+      console.error("OneSignal initialization error:",e);
+      reject(e);
+    }
+  });
 });
-window.PGL_OneSignalReady.catch(console.error);
+window.PGL_OneSignalReady.catch(function(e){
+  console.error("OneSignal is not ready:",e);
+});
 </script>
 
 <style>
 :root{
- --bg:#050b1d;
- --panel:#101b38;
- --gold:#ffc43d;
- --gold2:#ffe69a;
- --white:#fff;
- --line:#604c85;
+  --bg:#061321;
+  --panel:#0c2035;
+  --panel2:#102b45;
+  --gold:#f4c44e;
+  --gold2:#ffdf80;
+  --cyan:#49c9f3;
+  --green:#28d49a;
+  --text:#f7f8fc;
+  --muted:#b8c6d7;
+  --line:#294866
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:15px}
+html{scroll-behavior:smooth;scroll-padding-top:18px}
 body{
- margin:0;
- background:radial-gradient(circle at top,#19234e,#05091b 65%);
- color:white;
- font-family:Arial,sans-serif;
+  margin:0;
+  background:radial-gradient(ellipse at 50% -10%,#173b68 0,#08192b 48%,#040d18 100%);
+  color:var(--text);
+  font-family:Arial,Helvetica,sans-serif;
+  padding-bottom:18px
 }
-a{text-decoration:none;color:inherit}
-button{cursor:pointer;font:inherit}
-
+a{color:inherit;text-decoration:none}
+button,input{font:inherit}
+button{cursor:pointer}
+button:focus-visible,a:focus-visible,input:focus-visible{
+  outline:2px solid var(--gold);
+  outline-offset:3px
+}
 .topbar{
- text-align:center;
- padding:10px;
- background:linear-gradient(90deg,#f6a900,#ffe48b,#e9a000);
- color:#1c1200;
- font-weight:900;
- font-size:12px;
+  padding:10px 8px;
+  text-align:center;
+  background:linear-gradient(90deg,#ffda67,#f0a91e,#ffdf7d);
+  color:#211606;
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:.7px
 }
 header{
- background:linear-gradient(120deg,#070b1c,#171b3b,#080c20);
- border-bottom:2px solid #765a9d;
- padding:13px;
+  padding:14px 12px 24px;
+  border-bottom:1px solid #315171;
+  background:linear-gradient(110deg,#07182b,#102b4c 55%,#081629)
 }
 .header-line{
- max-width:1200px;
- margin:auto;
- display:flex;
- align-items:center;
- justify-content:space-between;
- gap:10px;
+  max-width:1180px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px
 }
+.brand{display:flex;align-items:center;gap:10px;min-width:0}
+.brand-mark{
+  width:58px;height:58px;flex:none;
+  display:grid;place-items:center;
+  border-radius:50%;
+  border:2px solid var(--gold);
+  background:radial-gradient(circle at 35% 25%,#fff0a5,#b77a14 42%,#192b45 72%);
+  box-shadow:0 0 22px #ffc94d55;
+  color:#241706;font-size:34px
+}
+.brand-name{
+  font-size:clamp(22px,5vw,36px);
+  font-weight:1000;font-style:italic;
+  letter-spacing:-1px;text-shadow:0 3px 12px #000
+}
+.brand-name span{color:var(--gold);text-shadow:0 0 12px #e6a82e66}
 .brand-logo{
- width:clamp(165px,35vw,310px);
- max-height:75px;
- object-fit:contain;
+  display:block;
+  width:clamp(180px,38vw,320px);
+  max-height:76px;
+  object-fit:contain;
+  border-radius:8px
 }
-.header-actions{display:flex;gap:7px}
+.footer-brand-logo{
+  display:block;
+  width:min(230px,72vw);
+  max-height:66px;
+  object-fit:contain;
+  margin:0 auto 12px;
+  border-radius:8px
+}
+.header-actions{display:flex;align-items:center;gap:8px}
 .small-btn{
- border:1px solid var(--gold);
- background:#101831;
- color:white;
- padding:10px 12px;
- border-radius:20px;
- font-size:12px;
- font-weight:bold;
+  border:1px solid #557394;
+  border-radius:24px;
+  padding:10px 13px;
+  background:#0b2037;
+  color:#fff;
+  font-size:12px;
+  font-weight:900
 }
+.menu-btn{font-size:20px;padding:7px 12px}
 .hero{
- max-width:1200px;
- margin:22px auto;
- padding:20px;
- display:grid;
- grid-template-columns:1fr 1fr;
- align-items:center;
- gap:20px;
+  max-width:1180px;
+  margin:28px auto 0;
+  display:grid;
+  grid-template-columns:1.05fr .95fr;
+  align-items:center;
+  gap:16px
 }
 .hero-copy{text-align:left}
 .eyebrow{
- color:var(--gold2);
- font-size:12px;
- font-weight:bold;
- letter-spacing:2px;
+  display:inline-block;
+  border:1px solid #8c6a2a;
+  border-radius:30px;
+  padding:7px 12px;
+  color:var(--gold2);
+  font-size:11px;
+  font-weight:900;
+  letter-spacing:1px;
+  background:#1a2a3a
 }
 h1{
- font-size:clamp(35px,6vw,65px);
- line-height:1.1;
- margin:15px 0;
- font-weight:1000;
+  font-size:clamp(34px,6vw,64px);
+  line-height:1.02;
+  margin:14px 0;
+  color:#fff;
+  font-weight:1000;
+  text-shadow:0 4px 18px #000
 }
-h1 span{color:var(--gold)}
+h1 span{color:var(--gold);display:block}
 .subtitle{
- color:#d2d8ec;
- font-size:16px;
- line-height:1.7;
+  max-width:600px;
+  color:var(--muted);
+  font-size:15px;
+  line-height:1.7;
+  margin:12px 0 18px
 }
 .hero-art{
- min-height:260px;
- border:1px solid #99743a;
- border-radius:20px;
- background:radial-gradient(circle at 50% 50%,#37316c,#0c1433 65%,#080c1d);
- display:flex;
- justify-content:center;
- align-items:center;
- overflow:hidden;
+  min-height:250px;
+  border-radius:22px;
+  border:1px solid #6e5a31;
+  background:#081629 url("./rollsweeps-hero.png") center/cover no-repeat;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  position:relative;
+  overflow:hidden;
+  box-shadow:0 12px 35px #0008
 }
-.hero-art img{
- width:80%;
- max-height:220px;
- object-fit:contain;
-}
-.actions{
- display:flex;
- flex-wrap:wrap;
- gap:9px;
- margin-top:20px;
-}
+.hero-art:before{display:none}
+.hero-art:after{display:none}
+.actions{display:flex;flex-wrap:wrap;gap:9px}
 .action-btn{
- display:inline-flex;
- align-items:center;
- justify-content:center;
- border:0;
- border-radius:12px;
- padding:13px 16px;
- background:linear-gradient(120deg,#ffe28a,#efa51c);
- color:#211400;
- font-size:12px;
- font-weight:900;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  border:0;
+  border-radius:12px;
+  padding:12px 15px;
+  font-size:12px;
+  font-weight:1000;
+  background:linear-gradient(135deg,#ffe28a,#e7a321);
+  color:#241807;
+  box-shadow:0 4px 12px #0005
 }
-.action-btn.blue{background:linear-gradient(120deg,#45bafa,#1859b9);color:white}
-.action-btn.green{background:linear-gradient(120deg,#51e6b4,#079c74);color:#03271c}
-
-/* ANIMATED GOLD PLATFORM TICKERS */
+.action-btn.green{background:linear-gradient(135deg,#50edb6,#08a97e);color:#04291e}
+.action-btn.blue{background:linear-gradient(135deg,#52bff7,#1764c9);color:#fff}
+.action-btn.purple{background:linear-gradient(135deg,#d17cff,#7134cb);color:white}
+.action-btn.dark{background:#102a43;border:1px solid #42617e;color:white}
+.logo-strip{
+  display:flex;gap:11px;overflow-x:auto;
+  padding:15px 12px;
+  background:#061321;
+  border-bottom:1px solid var(--line);
+  scrollbar-width:thin
+}
+.logo-tile{
+  flex:0 0 105px;min-height:84px;
+  display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  gap:6px;border:1px solid #a68b4a;
+  border-radius:15px;
+  background:linear-gradient(145deg,#183858,#08182a);
+  color:#ffe6a0;font-size:11px;
+  font-weight:900;text-align:center
+}
+.logo-symbol{font-size:27px}
+.logo-tile .game-logo{width:78px;height:48px;min-height:48px;border:0;background:transparent;font-size:15px}
+.logo-tile .game-logo img{width:100%;height:100%;object-fit:contain}
+.featured-logo .mini-mark{
+  display:inline-flex;width:30px;height:30px;
+  align-items:center;justify-content:center;overflow:hidden
+}
+.featured-logo .mini-mark img{width:100%;height:100%;object-fit:contain}
+.ticker-row{
+  display:flex;align-items:center;gap:8px;
+  padding:12px 10px 0;max-width:1200px;margin:auto
+}
 .ticker{
- position:relative;
- overflow:hidden;
- white-space:nowrap;
- background:linear-gradient(90deg,#090e22,#111832,#090e22);
- border-top:1px solid #a77c34;
- border-bottom:1px solid #a77c34;
- padding:12px 0;
-}
-.ticker.second{
- background:linear-gradient(90deg,#111328,#201735,#111328);
- border-top:1px solid #76559e;
+  min-width:0;overflow:hidden;flex:1;
+  border:1px solid #355b77;
+  border-radius:30px;background:#071b2c
 }
 .ticker-track{
- display:flex;
- align-items:center;
- width:max-content;
- gap:28px;
- animation:move 75s linear infinite;
-}
-.ticker.second .ticker-track{
- animation-name:moveReverse;
- animation-duration:85s;
+  display:flex;width:max-content;gap:26px;
+  padding:12px 0;
+  animation:slide 90s linear infinite
 }
 .ticker:hover .ticker-track{animation-play-state:paused}
-.ticker-item{
- display:inline-flex;
- align-items:center;
- gap:9px;
- font-size:13px;
- font-weight:bold;
- color:#ffe39a;
+.ticker-item{white-space:nowrap;color:#dce7f3;font-size:12px;font-weight:800}
+.ticker-item strong{color:var(--gold)}
+.spotlight-label{
+  flex:none;border:1px solid #c69b3b;
+  border-radius:22px;
+  background:linear-gradient(120deg,#ffe18a,#d99516);
+  color:#281806;padding:11px 13px;
+  font-size:11px;font-weight:1000;white-space:nowrap
 }
-.ticker-logo{
- width:31px;
- height:31px;
- flex-shrink:0;
- display:flex;
- justify-content:center;
- align-items:center;
- overflow:hidden;
- border-radius:50%;
- border:1px solid var(--gold);
- background:#18254a;
- color:#ffe69a;
- font-size:9px;
+.video-review video{
+  display:block;width:100%;max-height:620px;
+  background:#000;border:1px solid #46647e;
+  border-radius:14px;margin-top:12px
 }
-.ticker-logo img{
- width:100%;
- height:100%;
- object-fit:contain;
-}
-.ticker-item strong{color:white}
-.ticker-separator{
- color:#a77c34;
- font-size:18px;
-}
-@keyframes move{
- from{transform:translateX(0)}
- to{transform:translateX(-50%)}
-}
-@keyframes moveReverse{
- from{transform:translateX(-50%)}
- to{transform:translateX(0)}
-}
-
-main{max-width:1200px;margin:auto;padding:15px}
-
+@keyframes slide{to{transform:translateX(-50%)}}
+main{max-width:1200px;margin:auto;padding:14px 12px 35px}
 .promo-banner{
- margin:20px 0;
- padding:23px 12px;
- text-align:center;
- color:#241500;
- border:2px solid #ffe49a;
- border-radius:17px;
- background:linear-gradient(110deg,#ffe69a,#ed9c13,#ffe08a);
+  margin:16px 0 22px;padding:20px 14px;
+  border:1px solid #d7a93f;border-radius:20px;
+  text-align:center;color:#281908;
+  background:linear-gradient(110deg,#ffdc71,#f3a51e 55%,#ffe39a);
+  box-shadow:0 8px 26px #f3b63b22
 }
-.promo-banner h2{
- font-size:clamp(24px,5vw,36px);
- margin:10px 0;
+.promo-banner .pill{
+  display:inline-block;background:#6f1d1d;color:white;
+  padding:7px 13px;border-radius:22px;
+  font-size:10px;font-weight:900
 }
-.promo-banner p{font-size:13px;line-height:1.6}
-
-.section-heading{
- display:flex;
- justify-content:space-between;
- align-items:center;
- margin:25px 0 14px;
+.promo-banner h2{font-size:clamp(23px,5vw,34px);margin:10px 0;font-weight:1000}
+.promo-banner p{font-size:13px;line-height:1.6;margin:6px 0}
+.featured-logos{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:17px 0}
+.featured-logo{
+  display:flex;align-items:center;gap:7px;
+  padding:8px 11px;border:1px solid #405e79;
+  border-radius:24px;background:#0d243b;
+  color:#ffe6a0;font-size:11px;font-weight:900
 }
-.section-heading h2{font-size:24px;margin:0}
-.count{color:var(--gold2);font-size:12px}
-
+.section-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:25px 0 13px}
+.section-heading h2{font-size:clamp(19px,4vw,25px);margin:0;color:#fff}
+.count{padding:7px 10px;border:1px solid #c79c39;border-radius:20px;color:#ffdc76;font-size:11px;white-space:nowrap}
 .search-box{
- width:100%;
- padding:14px;
- border-radius:12px;
- background:#101b38;
- border:1px solid #6e6091;
- color:white;
- margin-bottom:16px;
- font-size:15px;
+  width:100%;padding:14px 16px;border-radius:14px;
+  border:1px solid #456989;background:#0b2239;
+  color:white;margin-bottom:15px
 }
-.games-grid{
- display:grid;
- grid-template-columns:repeat(3,minmax(0,1fr));
- gap:12px;
-}
+.games-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
 .game-card{
- overflow:hidden;
- background:linear-gradient(145deg,#171e43,#080e25);
- border:1px solid #7962a0;
- border-radius:15px;
- transition:.2s;
+  min-width:0;overflow:hidden;border:1px solid #526e87;
+  border-radius:17px;
+  background:linear-gradient(155deg,#112d48,#071827);
+  box-shadow:0 6px 15px #0005;
+  transition:transform .2s,border-color .2s
 }
-.game-card:hover{
- border-color:var(--gold);
- transform:translateY(-3px);
-}
+.game-card:hover{border-color:var(--gold);transform:translateY(-2px)}
 .game-logo{
- height:115px;
- display:flex;
- align-items:center;
- justify-content:center;
- background:radial-gradient(circle,#29376a,#10152d);
- border-bottom:1px solid #51446f;
- padding:9px;
+  height:116px;display:flex;align-items:center;
+  justify-content:center;overflow:hidden;
+  background:radial-gradient(circle,#294c76,#0a1b2d 72%);
+  border-bottom:1px solid #3e5a78;
+  color:#ffe08a;font-size:34px;font-weight:1000;text-shadow:0 3px 12px #000
 }
 .game-logo img{
- width:100%;
- height:100%;
- object-fit:contain;
+  display:block;width:100%;height:100%;
+  max-width:100%;max-height:100%;
+  object-fit:contain;padding:8px
 }
-.game-info{padding:10px}
+.game-info{padding:11px 10px 12px}
 .game-name{
- font-size:14px;
- font-weight:bold;
- min-height:34px;
- display:flex;
- align-items:center;
- overflow-wrap:anywhere;
+  font-size:14px;font-weight:900;min-height:34px;
+  display:flex;align-items:center;overflow-wrap:anywhere
 }
-.game-actions{display:grid;gap:7px}
+.game-number{color:#a9c5d8;font-size:11px;margin:5px 0 10px}
+.card-actions{display:grid;gap:7px}
 .card-btn{
- display:block;
- text-align:center;
- padding:10px 4px;
- border-radius:8px;
- background:linear-gradient(120deg,#ffe18a,#efa41b);
- color:#211400;
- font-size:11px;
- font-weight:900;
- border:0;
+  display:flex;align-items:center;justify-content:center;
+  border:0;border-radius:9px;padding:10px 5px;
+  font-size:11px;font-weight:900;text-align:center;
+  background:linear-gradient(120deg,#43e0ae,#0aa982);
+  color:#04291e
 }
-.card-btn.support{background:#173c70;color:white}
-.empty{
- display:none;
- text-align:center;
- padding:25px;
- color:#ffe69a;
-}
-
-.video-review{
- margin-top:25px;
- padding:15px;
- background:#101a36;
- border:1px solid #82683d;
- border-radius:15px;
-}
-.video-review h2{color:var(--gold2)}
-.video-review video{
- display:block;
- width:100%;
- max-height:600px;
- border-radius:12px;
- background:#000;
- margin-top:12px;
-}
-.two-panels{
- display:grid;
- grid-template-columns:1fr 1fr;
- gap:14px;
- margin-top:22px;
-}
+.card-btn.support{background:linear-gradient(120deg,#ffcf63,#e99a19);color:#281806}
+.empty{display:none;text-align:center;padding:25px;color:#c3d7dd}
+.two-panels{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:24px}
 .extra-section{
- text-align:center;
- padding:20px;
- border:1px solid #75603d;
- border-radius:15px;
- background:#101a34;
+  padding:19px 15px;border:1px solid #42617c;
+  border-radius:17px;
+  background:linear-gradient(145deg,#102d49,#091b2c);
+  text-align:center
 }
-.extra-section h2{color:var(--gold2)}
-.payment-list{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:8px;
-}
+.extra-section h2{color:var(--gold2);font-size:20px;margin:2px 0 10px}
+.extra-section p{color:var(--muted);font-size:13px;line-height:1.7}
+.payment-list,.contact-actions{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
 .payment-chip{
- background:#1b3150;
- border:1px solid #80683c;
- padding:8px 11px;
- border-radius:9px;
- font-size:11px;
+  border:1px solid #49677f;background:#16334c;
+  border-radius:9px;padding:8px 11px;
+  font-size:11px;color:#fff0bd
 }
-.contact-actions{
- display:flex;
- justify-content:center;
- gap:8px;
- flex-wrap:wrap;
- margin-top:15px;
-}
-footer{
- text-align:center;
- padding:25px 10px;
- border-top:1px solid #604b76;
- color:#bdc7dd;
- font-size:12px;
-}
-.footer-brand-logo{
- width:210px;
- max-height:65px;
- object-fit:contain;
-}
-.footer-links{
- display:flex;
- flex-wrap:wrap;
- justify-content:center;
- gap:16px;
- margin:15px;
-}
+.contact-actions{margin-top:13px}
+.info-section{margin-top:18px;padding:19px;border:1px solid #334f69;border-radius:16px;background:#0a2034}
+.info-section h2{margin:0 0 9px;color:var(--gold2);font-size:19px}
+.info-section p,.info-section li{color:var(--muted);font-size:13px;line-height:1.7}
+.faq details{border-top:1px solid #29445e;padding:12px 0;color:#fff}
+.faq summary{cursor:pointer;font-weight:800}
+.faq p{margin-bottom:0}
+footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #29445e;font-size:12px}
+.footer-links{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;margin:12px 0}
 .floating-buttons{
- position:fixed;
- right:12px;
- bottom:80px;
- z-index:50;
- display:flex;
- flex-direction:column;
- gap:10px;
+  position:fixed;right:12px;bottom:18px;
+  z-index:20;display:flex;flex-direction:column;gap:9px
 }
 .float-btn{
- width:48px;
- height:48px;
- display:flex;
- align-items:center;
- justify-content:center;
- border-radius:50%;
- border:0;
- color:white;
- font-size:21px;
+  width:47px;height:47px;border:0;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:21px;color:white;box-shadow:0 4px 13px #0008
 }
 .chat-float{background:#087cc1}
 .whatsapp-float{background:#16a765}
 .install-float{
- position:fixed;
- left:10px;
- bottom:80px;
- z-index:50;
- padding:12px;
- border:1px solid #f4c44e;
- border-radius:25px;
- background:#ffc43d;
- color:#211400;
- font-weight:bold;
+  position:fixed;left:12px;bottom:18px;z-index:19;
+  border:1px solid #c69b3b;border-radius:30px;
+  padding:12px 15px;
+  background:linear-gradient(120deg,#ffe18a,#e6a21e);
+  color:#241807;font-size:12px;font-weight:1000;
+  box-shadow:0 5px 18px #0006
 }
-.mobile-nav{display:none}
 .modal{
- display:none;
- position:fixed;
- inset:0;
- background:#000c;
- z-index:100;
- align-items:center;
- justify-content:center;
- padding:15px;
+  display:none;position:fixed;inset:0;z-index:50;
+  background:#000c;align-items:center;
+  justify-content:center;padding:16px
 }
 .modal.show{display:flex}
 .modal-box{
- width:min(420px,100%);
- background:#111d3b;
- border:1px solid var(--gold);
- border-radius:16px;
- padding:22px;
- text-align:center;
+  width:min(440px,100%);
+  background:#102b45;border:1px solid var(--gold);
+  border-radius:17px;padding:22px;text-align:center;
+  max-height:85vh;overflow:auto
 }
-.modal-box h2{color:var(--gold2)}
-.modal-box p{line-height:1.7;font-size:14px}
-.modal-close{
- padding:11px 18px;
- border:0;
- border-radius:8px;
- background:#a32a35;
- color:white;
-}
+.modal-box h2{color:var(--gold2);margin-top:0}
+.modal-box p{line-height:1.7;color:#e3edf0;font-size:14px}
+.modal-close{background:#9c2631;color:white;border:0;padding:10px 16px;border-radius:8px}
+.mobile-nav{display:none}
+#notificationModal{z-index:2000}
 .notification-allow{
- width:100%;
- padding:13px;
- border:0;
- border-radius:9px;
- background:#27d49a;
- font-weight:bold;
+  width:100%;padding:14px;border:0;border-radius:10px;
+  background:linear-gradient(120deg,#37e0b0,#09a986);
+  color:#06271f;font-weight:900
 }
 .notification-later{
- margin-top:10px;
- padding:10px 17px;
- background:#233b57;
- color:white;
- border:0;
- border-radius:8px;
+  background:#173b4b;color:white;border:1px solid #456171;
+  padding:11px 18px;border-radius:9px;margin-top:7px
 }
-
+@media(min-width:620px){
+  .games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .game-logo{height:145px}
+  main{padding-left:20px;padding-right:20px}
+}
+@media(min-width:930px){.games-grid{grid-template-columns:repeat(4,minmax(0,1fr))}}
 @media(max-width:700px){
- .hero{grid-template-columns:1fr;text-align:center}
- .hero-copy{text-align:center}
- .actions{justify-content:center}
- .hero-art{min-height:150px}
- .hero-art img{max-height:130px}
- .games-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
- .two-panels{grid-template-columns:1fr}
+  .hero{grid-template-columns:1fr}
+  .hero-art{min-height:145px}
+  .hero-copy{text-align:center}
+  .subtitle{margin-left:auto;margin-right:auto}
+  .actions{justify-content:center}
+  .two-panels{grid-template-columns:1fr}
 }
 @media(max-width:599px){
- body{padding-bottom:65px}
- .header-line{gap:5px}
- .brand-logo{width:155px}
- .small-btn{padding:8px;font-size:11px}
- .game-logo{height:105px}
- .ticker{padding:10px 0}
- .ticker-track{gap:18px}
- .ticker-item{font-size:11px}
- .ticker-logo{width:26px;height:26px}
- .mobile-nav{
-  display:flex;
-  position:fixed;
-  bottom:0;
-  left:0;
-  right:0;
-  z-index:40;
-  justify-content:space-around;
-  background:#080e22f5;
-  border-top:1px solid #5e4b7b;
-  padding:9px 2px;
- }
- .nav-item{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:3px;
-  color:#d6d9ed;
-  font-size:10px;
- }
- .nav-item span:first-child{font-size:19px}
+  body{padding-bottom:65px}
+  header{padding:12px 10px 19px}
+  .brand-mark{width:46px;height:46px;font-size:26px}
+  .brand-logo{width:clamp(150px,48vw,230px);max-height:58px}
+  .small-btn{padding:9px 10px}
+  .hero{margin-top:19px}
+  .ticker-row{padding-top:10px}
+  .games-grid{gap:9px}
+  .game-logo{height:110px}
+  .mobile-nav{
+    display:flex;position:fixed;bottom:0;left:0;right:0;
+    z-index:18;justify-content:space-around;align-items:center;
+    padding:9px 3px max(9px,env(safe-area-inset-bottom));
+    background:#061321f5;border-top:1px solid #34516b;
+    backdrop-filter:blur(12px)
+  }
+  .nav-item{
+    display:flex;flex-direction:column;align-items:center;
+    gap:4px;color:#b8c6d7;font-size:10px;
+    font-weight:800;min-width:48px
+  }
+  .nav-item span:first-child{font-size:20px}
+  .nav-item.active{color:#ffd45c}
+  .install-float{bottom:78px}
+  .floating-buttons{bottom:78px}
 }
 @media(prefers-reduced-motion:reduce){
- *{animation:none!important;scroll-behavior:auto!important}
+  *,*::before,*::after{
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important
+  }
 }
 </style>
 </head>
 
 <body>
-
-<div class="topbar">
- ♛ ROLLSWEEPS ♛ • ALL GAMING PLATFORMS IN ONE PLACE
-</div>
+<div class="topbar">♛ ROLLSWEEPS – PLAY • WIN • ENJOY ♛ &nbsp; • &nbsp; 🛡 ALL PLATFORMS IN ONE PLACE</div>
 
 <header id="home">
- <div class="header-line">
-  <a href="#home">
-   <img class="brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps">
-  </a>
-  <div class="header-actions">
-   <button class="small-btn" onclick="openLiveChat()">CHAT</button>
-   <button class="small-btn" onclick="openNotificationPrompt()">🔔</button>
-   <button class="small-btn" onclick="toggleMenu()">☰</button>
-  </div>
- </div>
-
- <div class="hero">
-  <div class="hero-copy">
-   <span class="eyebrow">WELCOME TO ROLLSWEEPS</span>
-   <h1>Play With <span>RollSweeps</span></h1>
-   <p class="subtitle">
-    Explore gaming platforms in one convenient place.
-   </p>
-   <div class="actions">
-    <a href="#games" class="action-btn">EXPLORE GAMES</a>
-    <button class="action-btn green" onclick="openLiveChat()">LIVE CHAT</button>
-    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
-   </div>
+  <div class="header-line">
+    <a class="brand" href="#home" aria-label="RollSweeps home">
+      <img class="brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
+    </a>
+    <div class="header-actions">
+      <button class="small-btn" type="button" onclick="openLiveChat()">💬 Chat</button>
+      <button class="small-btn" type="button" onclick="openNotificationPrompt()">🔔</button>
+      <button class="small-btn menu-btn" type="button" onclick="toggleMenu()" aria-label="Open navigation">☰</button>
+    </div>
   </div>
 
-  <div class="hero-art">
-   <img src="./roll-sweeps-logo.png" alt="RollSweeps Crown">
+  <div class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">WELCOME TO THE GAMING HUB</span>
+      <h1>Welcome to <span>RollSweeps</span></h1>
+      <p class="subtitle">Explore your favorite gaming platforms in one convenient place.</p>
+      <div class="actions">
+        <button class="action-btn" type="button" onclick="installApp()">⬇ INSTALL APP</button>
+        <button class="action-btn green" type="button" onclick="openNotificationPrompt()">♧ NOTIFICATIONS</button>
+        <button class="action-btn blue" type="button" onclick="openLiveChat()">💬 LIVE CHAT</button>
+        <a class="action-btn green" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎ WHATSAPP</a>
+        <a class="action-btn blue" href="https://m.me/100095251569745" target="_blank" rel="noopener noreferrer">➤ MESSENGER</a>
+        <button class="action-btn purple" type="button" onclick="showModal('spinModal')">✦ SPIN</button>
+      </div>
+    </div>
+    <div class="hero-art" role="img" aria-label="RollSweeps crown gaming brand artwork"></div>
   </div>
- </div>
 </header>
 
-<!-- FIRST MOVING PLATFORM STRIP -->
-<div class="ticker">
- <div class="ticker-track" id="tickerTrack"></div>
-</div>
-
-<!-- SECOND MOVING GOLD STRIP -->
-<div class="ticker second">
- <div class="ticker-track" id="tickerTrackTwo"></div>
+<div class="logo-strip" id="logoStrip" aria-label="Featured platform logos"></div>
+<div class="ticker-row">
+  <div class="ticker"><div class="ticker-track" id="tickerTrack"></div></div>
+  <span class="spotlight-label">✦ SPOTLIGHT</span>
 </div>
 
 <main>
-
- <section class="promo-banner" id="offers">
-  <strong>ROLLSWEEPS WELCOME OFFER</strong>
-  <h2>5 FREE PLAYS • 180% WELCOME BONUS</h2>
-  <p>Check each platform's applicable terms, eligibility and offer conditions.</p>
- </section>
-
- <div class="section-heading" id="games">
-  <h2>🎮 Gaming Platforms</h2>
-  <span class="count" id="gameCount">Platforms</span>
- </div>
-
- <input
-  id="searchBox"
-  class="search-box"
-  type="search"
-  placeholder="🔎 Search gaming platforms..."
-  aria-label="Search platforms"
- >
-
- <div class="games-grid" id="gamesGrid"></div>
- <div class="empty" id="emptyMessage">No platforms found.</div>
-
- <section class="video-review" id="videoReview">
-  <h2>🎬 Video Review</h2>
-  <video controls playsinline preload="metadata" poster="./roll-sweeps-logo.png">
-   <source src="./review-video.mp4" type="video/mp4">
-   Your browser does not support this video.
-  </video>
- </section>
-
- <div class="two-panels">
-
-  <section class="extra-section" id="wallet">
-   <h2>💳 Payment Information</h2>
-   <div class="payment-list">
-    <span class="payment-chip">Cash App</span>
-    <span class="payment-chip">Venmo</span>
-    <span class="payment-chip">Zelle</span>
-    <span class="payment-chip">Chime</span>
-    <span class="payment-chip">PayPal</span>
-    <span class="payment-chip">Bitcoin</span>
-    <span class="payment-chip">USDT</span>
-   </div>
-   <div class="contact-actions">
-    <button class="action-btn" onclick="openLiveChat()">ASK SUPPORT</button>
-   </div>
+  <section class="promo-banner" id="offers">
+    <span class="pill">ROLLSWEEPS WELCOME OFFER</span>
+    <h2>5 FREE PLAYS • 180% WELCOME BONUS</h2>
+    <p>Check the applicable platform terms, eligibility and offer conditions before participating.</p>
   </section>
 
-  <section class="extra-section" id="support">
-   <h2>🎧 Customer Support</h2>
-   <p>Contact support for assistance.</p>
-   <div class="contact-actions">
-    <button class="action-btn green" onclick="openLiveChat()">LIVE CHAT</button>
-    <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
-   </div>
+  <div class="featured-logos" id="featuredLogos"></div>
+
+  <div class="section-heading" id="games">
+    <h2>🎮 All Gaming Platforms</h2>
+    <span class="count" id="gameCount">0 platforms</span>
+  </div>
+  <input id="searchBox" class="search-box" type="search" placeholder="🔎 Search your favorite platform..." aria-label="Search platforms">
+  <div class="games-grid" id="gamesGrid"></div>
+  <div class="empty" id="emptyMessage">No platforms found. Try another name.</div>
+
+  <section class="info-section video-review" id="videoReview">
+    <h2>🎬 Video Review</h2>
+    <video controls playsinline preload="metadata" poster="./roll-sweeps-logo.png">
+      <source src="./review-video.mp4" type="video/mp4">
+      Your browser does not support this video.
+    </video>
   </section>
 
- </div>
+  <div class="two-panels">
+    <section class="extra-section" id="wallet">
+      <h2>💳 Payment Information</h2>
+      <div class="payment-list">
+        <span class="payment-chip">Cash App</span>
+        <span class="payment-chip">Venmo</span>
+        <span class="payment-chip">Zelle</span>
+        <span class="payment-chip">Chime</span>
+        <span class="payment-chip">PayPal</span>
+        <span class="payment-chip">Bitcoin</span>
+        <span class="payment-chip">USDT</span>
+      </div>
+      <div class="contact-actions">
+        <button class="action-btn" type="button" onclick="openLiveChat()">ASK SUPPORT</button>
+      </div>
+    </section>
+
+    <section class="extra-section" id="support">
+      <h2>🎧 Need Help?</h2>
+      <div class="contact-actions">
+        <button class="action-btn green" type="button" onclick="openLiveChat()">LIVE CHAT</button>
+        <a class="action-btn blue" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">WHATSAPP</a>
+      </div>
+    </section>
+  </div>
 </main>
 
 <footer>
- <img class="footer-brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps">
- <div class="footer-links">
-  <a href="#home">Home</a>
-  <a href="#games">Platforms</a>
-  <a href="#offers">Promotions</a>
-  <a href="#videoReview">Video Review</a>
-  <a href="#support">Support</a>
- </div>
- <p>© <span id="year"></span> RollSweeps. All rights reserved.</p>
+  <img class="footer-brand-logo" src="./roll-sweeps-logo.png" alt="RollSweeps logo">
+  <div class="footer-links">
+    <a href="#videoReview">Video Review</a>
+    <a href="#videoReview">Video Review</a>
+    <a href="#support">Contact Support</a>
+    <a href="#games">Platforms</a>
+  </div>
+  <p>© <span id="year"></span> RollSweeps. All rights reserved.</p>
 </footer>
 
-<button class="install-float" onclick="installApp()">⬇ INSTALL APP</button>
+<button class="install-float" type="button" onclick="installApp()">⬇ Install App</button>
 
 <div class="floating-buttons">
- <button class="float-btn chat-float" onclick="openLiveChat()" aria-label="Live Chat">💬</button>
- <a class="float-btn whatsapp-float" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">☎</a>
+  <button class="float-btn chat-float" type="button" aria-label="Open Live Chat" onclick="openLiveChat()">💬</button>
+  <a class="float-btn whatsapp-float" aria-label="WhatsApp" href="https://wa.me/14482414979" target="_blank" rel="noopener noreferrer">☎</a>
 </div>
 
-<nav class="mobile-nav">
- <a class="nav-item" href="#home"><span>🏠</span><span>Home</span></a>
- <a class="nav-item" href="#games"><span>🎮</span><span>Games</span></a>
- <a class="nav-item" href="#offers"><span>🎁</span><span>Offers</span></a>
- <a class="nav-item" href="#videoReview"><span>🎬</span><span>Video</span></a>
- <a class="nav-item" href="#support"><span>💬</span><span>Support</span></a>
+<nav class="mobile-nav" aria-label="Mobile navigation">
+  <a class="nav-item active" href="#home"><span>🏠</span><span>Home</span></a>
+  <a class="nav-item" href="#games"><span>🎮</span><span>Games</span></a>
+  <a class="nav-item" href="#support"><span>💬</span><span>Chat</span></a>
+  <a class="nav-item" href="#videoReview"><span>🎬</span><span>Video</span></a>
+  <a class="nav-item" href="#wallet"><span>💳</span><span>Payment</span></a>
 </nav>
 
-<div class="modal" id="notificationModal">
- <div class="modal-box">
-  <h2>🔔 Stay Connected</h2>
-  <p id="notificationMessage">Enable notifications for website updates.</p>
-  <button class="notification-allow" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
-  <button class="notification-later" onclick="hideModal('notificationModal')">NOT NOW</button>
- </div>
+<div class="modal" id="notificationModal" role="dialog" aria-modal="true" aria-labelledby="notificationTitle">
+  <div class="modal-box">
+    <div style="font-size:45px">🔔</div>
+    <h2 id="notificationTitle">Stay Connected</h2>
+    <p id="notificationMessage">Enable notifications to receive website updates.</p>
+    <button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
+    <button class="notification-later" type="button" onclick="hideModal('notificationModal')">NOT NOW</button>
+  </div>
 </div>
 
-<div class="modal" id="installModal">
- <div class="modal-box">
-  <h2>⬇ Install RollSweeps</h2>
-  <p id="installMessage">Install this website on your device.</p>
-  <button class="action-btn" onclick="confirmInstall()">INSTALL NOW</button>
-  <p>Chrome menu ⋮ → Install app or Add to Home screen, if available.</p>
-  <button class="modal-close" onclick="hideModal('installModal')">CLOSE</button>
- </div>
+<div class="modal" id="installModal" role="dialog" aria-modal="true" aria-labelledby="installTitle">
+  <div class="modal-box">
+    <h2 id="installTitle">⬇ Install RollSweeps</h2>
+    <p id="installMessage">If installation is available, use the button below.</p>
+    <button class="action-btn" id="installConfirm" type="button" onclick="confirmInstall()">INSTALL NOW</button>
+    <p><b>Manual method:</b><br>Open this website in Chrome, tap the three dots (⋮), then select “Install app” or “Add to Home screen” if available.</p>
+    <button class="modal-close" type="button" onclick="hideModal('installModal')">CLOSE</button>
+  </div>
+</div>
+
+<div class="modal" id="spinModal" role="dialog" aria-modal="true" aria-labelledby="spinTitle">
+  <div class="modal-box">
+    <h2 id="spinTitle">✦ Spin & Explore</h2>
+    <div style="font-size:60px">🎡</div>
+    <p id="spinResult">Tap to pick a platform category.</p>
+    <button class="action-btn" type="button" onclick="spinWheel()">SPIN NOW</button>
+    <button class="modal-close" type="button" onclick="hideModal('spinModal')">CLOSE</button>
+  </div>
 </div>
 
 <script>
-const games=[
+const games = [
 ["Orion Star","http://start.orionstars.vip:8580/"],
 ["Milkyway","https://milkywayapp.xyz/"],
 ["Juwa","https://dl.juwa777.com/"],
@@ -697,6 +635,8 @@ const games=[
 ["Cash Machine","https://www.cashmachine777.com/"],
 ["Game Room","https://www.gameroom777.com/"],
 ["Vegas Luck","https://start.vegasluck777.com/"],
+["Vegas Sweep Mobile","https://m.lasvegassweeps.com/"],
+["Moolah Mobile","https://moolah.vip:8888/"],
 ["River Pay","https://river777.net/build.30/index.html"],
 ["Loot Game","https://m.lootgame777.com/"],
 ["Para Casino H5","https://h5.paracasino.net/"],
@@ -705,6 +645,7 @@ const games=[
 ["Hukum","https://hukum777.online/"],
 ["Mob.com","https://fpc-mob.com/"],
 ["Highroller","https://www.highroller.com/casino"],
+["Noble 777","https://www.noble777.com/"],
 ["Dragon Crown","https://atlus.com/dragonscrown/"],
 ["Lucky Master","https://lucky-master.net/"],
 ["King of Pop","https://kingofpop777.com/"],
@@ -712,11 +653,17 @@ const games=[
 ["Bigwin","https://bigwplay.com/"],
 ["Thunderseven","https://thunderseven.com/"],
 ["Gem Slots","https://www.gem77777.com/m"],
+["Game Room Online","https://www.gameroom777.com/"],
+["Mr. All in One","https://www.mrallinone777.com/"],
 ["Winner Club","https://www.winnersclub777.com/"],
 ["Cash Frenzy","https://www.cashfrenzy777.com/"],
 ["King of Pop Slots","https://www.slots88888.com/"],
+["Vegas Luck","https://start.vegasluck777.com/"],
+["Cash Machine","https://www.cashmachine777.com/"],
+["Win Star","http://www.winstar99999.com/"],
 ["Joker 777","https://www.joker777.win/"],
 ["Orion Strike","https://start.orionstrike777.com/"],
+["Orion Power Download","http://download.orionpower.games:8008"],
 ["Big Bang","https://www.bigbangcasino.vegas/"],
 ["Lucky Star","https://www.luckystars.games/"],
 ["Stars Galaxy","https://www.starsgalaxy777.com/"],
@@ -727,7 +674,9 @@ const games=[
 ["Sharks Secret 77","https://www.sharksecret777.com/"],
 ["Winwin Vegas","https://winwinvegas777.com/"],
 ["Panda Master","https://pandamaster.vip:8888/"],
+["Cash Frenzy","https://www.cashfrenzy777.com/"],
 ["Ding Ding","https://www.dingdinghouse.com/"],
+["Lucky Paradise","https://www.luckyparadise777.com/"],
 ["Vegas X Pro","https://vegas-x.pro/"],
 ["Blue Dragon Agent","https://agent.bluedragon777.com/Work/com_AccountList.aspx"],
 ["Big Winner","https://bigwplay.com/"],
@@ -739,290 +688,304 @@ const games=[
 
 const grid=document.getElementById("gamesGrid");
 const searchBox=document.getElementById("searchBox");
-const empty=document.getElementById("emptyMessage");
-
-function getLogoSources(url){
- try{
-  const u=new URL(url);
-  return [
-   "https://www.google.com/s2/favicons?domain="+encodeURIComponent(u.hostname)+"&sz=128",
-   "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(u.hostname)+".ico"
-  ];
- }catch(e){return [];}
-}
-
-function loadTickerLogo(box,name,url){
- const img=document.createElement("img");
- img.alt="";
- img.loading="lazy";
- img.referrerPolicy="no-referrer";
- const sources=getLogoSources(url);
- let index=0;
-
- img.onerror=()=>{
-  index++;
-  if(index<sources.length){
-   img.src=sources[index];
-  }else{
-   img.remove();
-   box.textContent=name.substring(0,3).toUpperCase();
-  }
- };
- if(sources.length){
-  box.appendChild(img);
-  img.src=sources[0];
- }else{
-  box.textContent=name.substring(0,3).toUpperCase();
- }
-}
-
-function makeLogo(name,url){
- const box=document.createElement("div");
- box.className="game-logo";
- const img=document.createElement("img");
- img.alt=name+" logo";
- img.loading="lazy";
- img.referrerPolicy="no-referrer";
- const sources=getLogoSources(url);
- let index=0;
-
- img.onerror=()=>{
-  index++;
-  if(index<sources.length){
-   img.src=sources[index];
-  }else{
-   img.remove();
-   box.textContent=name;
-   box.style.fontWeight="bold";
-   box.style.color="#ffe69a";
-  }
- };
- if(sources.length){
-  box.appendChild(img);
-  img.src=sources[0];
- }else{
-  box.textContent=name;
- }
- return box;
-}
-
-function renderGames(filter=""){
- grid.replaceChildren();
- const term=filter.trim().toLowerCase();
- const filtered=games.filter(([name,url])=>
-  (name+" "+url).toLowerCase().includes(term)
- );
-
- filtered.forEach(([name,url])=>{
-  const card=document.createElement("article");
-  card.className="game-card";
-
-  const logo=makeLogo(name,url);
-  const info=document.createElement("div");
-  info.className="game-info";
-
-  const title=document.createElement("div");
-  title.className="game-name";
-  title.textContent=name;
-
-  const actions=document.createElement("div");
-  actions.className="game-actions";
-
-  const open=document.createElement("a");
-  open.className="card-btn";
-  open.textContent="OPEN PLATFORM";
-  open.href=url;
-  open.target="_blank";
-  open.rel="noopener noreferrer";
-
-  const support=document.createElement("button");
-  support.className="card-btn support";
-  support.textContent="CONTACT SUPPORT";
-  support.type="button";
-  support.addEventListener("click",openLiveChat);
-
-  actions.append(open,support);
-  info.append(title,actions);
-  card.append(logo,info);
-  grid.append(card);
- });
-
- document.getElementById("gameCount").textContent=
-  filtered.length+" platforms";
- empty.style.display=filtered.length?"none":"block";
-}
-
-/* BUILD BOTH CONTINUOUS TICKERS */
-function buildTicker(id,second=false){
- const track=document.getElementById(id);
- track.replaceChildren();
-
- for(let repeat=0;repeat<2;repeat++){
-  games.forEach(([name,url])=>{
-   const item=document.createElement("span");
-   item.className="ticker-item";
-
-   const logo=document.createElement("span");
-   logo.className="ticker-logo";
-   loadTickerLogo(logo,name,url);
-
-   const label=document.createElement("strong");
-   label.textContent=second
-    ?name+" • ROLLSWEEPS PLATFORM"
-    :"FEATURED • "+name+" • EXPLORE";
-
-   const separator=document.createElement("span");
-   separator.className="ticker-separator";
-   separator.textContent="✦";
-
-   item.append(logo,label,separator);
-   track.appendChild(item);
-  });
- }
-}
-
-function openLiveChat(){
- if(window.chaport&&typeof window.chaport.q==="function"){
-  window.chaport.q("open");
- }else{
-  alert("Live Chat is loading. Please try again.");
- }
-}
-
-function toggleMenu(){
- document.querySelector(".mobile-nav")?.scrollIntoView({
-  behavior:"smooth",block:"end"
- });
-}
-
-function showModal(id){
- document.getElementById(id).classList.add("show");
-}
-function hideModal(id){
- document.getElementById(id).classList.remove("show");
-}
-
-document.querySelectorAll(".modal").forEach(modal=>{
- modal.addEventListener("click",e=>{
-  if(e.target===modal)modal.classList.remove("show");
- });
-});
-
+const emptyMessage=document.getElementById("emptyMessage");
 let installPrompt=null;
 
-window.addEventListener("beforeinstallprompt",e=>{
- e.preventDefault();
- installPrompt=e;
-});
-
-function installApp(){
- if(installPrompt){
-  installPrompt.prompt();
-  installPrompt.userChoice.finally(()=>installPrompt=null);
- }else{
-  document.getElementById("installMessage").textContent=
-   "Open Chrome menu ⋮ and select Install app or Add to Home screen if available.";
-  showModal("installModal");
- }
-}
-
-async function confirmInstall(){
- if(installPrompt){
-  await installPrompt.prompt();
-  await installPrompt.userChoice;
-  installPrompt=null;
-  hideModal("installModal");
- }else{
-  document.getElementById("installMessage").textContent=
-   "Use Chrome menu ⋮ to add this website to your home screen, if available.";
- }
-}
-
-function openNotificationPrompt(){
- if(!("Notification" in window)){
-  alert("Your browser does not support notifications.");
-  return;
- }
- if(Notification.permission==="granted"){
-  alert("Notifications are already enabled.");
- }else if(Notification.permission==="denied"){
-  alert("Please change notification permissions in browser settings.");
- }else{
-  showModal("notificationModal");
- }
-}
-
-async function enableNotifications(){
- const btn=document.querySelector(".notification-allow");
- const msg=document.getElementById("notificationMessage");
- btn.disabled=true;
- btn.textContent="PLEASE WAIT...";
- try{
-  const OneSignal=await Promise.race([
-   window.PGL_OneSignalReady,
-   new Promise((_,reject)=>
-    setTimeout(()=>reject(new Error("timeout")),15000)
-   )
-  ]);
-  await OneSignal.Notifications.requestPermission();
-
-  if(Notification.permission==="granted"){
-   msg.textContent="Notifications enabled.";
-   hideModal("notificationModal");
+function openLiveChat(){
+  if(window.chaport&&typeof window.chaport.q==="function"){
+    window.chaport.q("open");
   }else{
-   msg.textContent="Permission was not granted.";
+    alert("Live Chat is loading. Please try again in a moment.");
   }
- }catch(e){
-  console.error(e);
-  msg.textContent="Notifications could not load. Please try again.";
- }
- btn.disabled=false;
- btn.textContent="ALLOW NOTIFICATIONS";
+}
+function showModal(id){document.getElementById(id).classList.add("show");}
+function hideModal(id){document.getElementById(id).classList.remove("show");}
+document.querySelectorAll(".modal").forEach(m=>m.addEventListener("click",e=>{
+  if(e.target===m)m.classList.remove("show");
+}));
+function toggleMenu(){
+  document.querySelector(".mobile-nav")?.scrollIntoView({behavior:"smooth",block:"end"});
+}
+function initials(name){
+  return String(name||"GAME").trim().split(/\s+/).filter(Boolean)
+    .map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
+}
+const logoCache=new Map();
+
+function getLogoSources(url){
+  try{
+    const parsed=new URL(url);
+    return [...new Set([
+      new URL("/favicon.ico",parsed.origin).href,
+      "https://www.google.com/s2/favicons?domain="+encodeURIComponent(parsed.hostname)+"&sz=128",
+      "https://icons.duckduckgo.com/ip3/"+encodeURIComponent(parsed.hostname)+".ico"
+    ])];
+  }catch(e){return [];}
+}
+function loadLogo(container,name,url){
+  container.replaceChildren();
+  container.textContent=initials(name);
+  container.setAttribute("role","img");
+  container.setAttribute("aria-label",name+" logo");
+  const sources=logoCache.get(url)||getLogoSources(url);
+  logoCache.set(url,sources);
+  if(!sources.length)return;
+
+  const img=document.createElement("img");
+  img.alt="";
+  img.loading="lazy";
+  img.decoding="async";
+  img.referrerPolicy="no-referrer";
+  let index=0;
+
+  img.onerror=()=>{
+    index++;
+    if(index<sources.length)img.src=sources[index];
+    else{img.remove();container.textContent=initials(name);}
+  };
+  container.appendChild(img);
+  img.src=sources[0];
+}
+function makeLogo(name,url){
+  const logo=document.createElement("div");
+  logo.className="game-logo";
+  loadLogo(logo,name,url);
+  return logo;
+}
+function makeFeaturedLogos(){
+  const featured=[
+    ["Orion Star","http://start.orionstars.vip:8580/"],
+    ["Milkyway","https://milkywayapp.xyz/"],
+    ["Juwa","https://dl.juwa777.com/"],
+    ["Firekirin","https://start.firekirin.xyz:8580/index.html"],
+    ["Game Vault","http://download.gamevault999.com/"],
+    ["Ultra Panda","http://www.ultrapanda.mobi/"]
+  ];
+
+  const strip=document.getElementById("logoStrip");
+  const boxes=document.getElementById("featuredLogos");
+  strip.replaceChildren();
+  boxes.replaceChildren();
+
+  featured.forEach(([name,url])=>{
+    const tile=document.createElement("div");
+    tile.className="logo-tile";
+
+    const logo=document.createElement("div");
+    logo.className="game-logo";
+    loadLogo(logo,name,url);
+
+    const label=document.createElement("span");
+    label.textContent=name;
+    tile.append(logo,label);
+    strip.appendChild(tile);
+
+    const badge=document.createElement("div");
+    badge.className="featured-logo";
+
+    const mark=document.createElement("span");
+    mark.className="mini-mark";
+    loadLogo(mark,name,url);
+
+    const text=document.createElement("span");
+    text.textContent=name.toUpperCase();
+    badge.append(mark,text);
+    boxes.appendChild(badge);
+  });
+}
+function randomIndex(){return Math.floor(600+Math.random()*901);}
+function refreshSpotlightIndexes(){
+  document.querySelectorAll(".game-number").forEach(el=>{
+    el.textContent="SPOTLIGHT INDEX · "+randomIndex();
+  });
+}
+function renderGames(filter=""){
+  grid.replaceChildren();
+  const term=filter.trim().toLowerCase();
+  const filtered=games.filter(([name,url])=>(name+" "+url).toLowerCase().includes(term));
+
+  filtered.forEach(([name,url],index)=>{
+    const card=document.createElement("article");
+    card.className="game-card";
+
+    const logo=makeLogo(name,url);
+    const info=document.createElement("div");
+    info.className="game-info";
+
+    const title=document.createElement("div");
+    title.className="game-name";
+    title.textContent=name;
+
+    const number=document.createElement("div");
+    number.className="game-number";
+    number.textContent="SPOTLIGHT INDEX · "+randomIndex();
+
+    const actions=document.createElement("div");
+    actions.className="card-actions";
+
+    const open=document.createElement("a");
+    open.className="card-btn";
+    open.textContent="OPEN PLATFORM";
+    open.href=url;
+    open.target="_blank";
+    open.rel="noopener noreferrer";
+
+    const support=document.createElement("button");
+    support.className="card-btn support";
+    support.type="button";
+    support.textContent="CONTACT SUPPORT";
+    support.addEventListener("click",openLiveChat);
+
+    actions.append(open,support);
+    info.append(title,number,actions);
+    card.append(logo,info);
+    grid.append(card);
+  });
+
+  document.getElementById("gameCount").textContent=filtered.length+" platforms";
+  emptyMessage.style.display=filtered.length?"none":"block";
+}
+function buildTicker(){
+  const track=document.getElementById("tickerTrack");
+  track.replaceChildren();
+
+  for(let repeat=0;repeat<2;repeat++){
+    games.forEach(([name])=>{
+      const item=document.createElement("span");
+      item.className="ticker-item";
+      item.innerHTML="<strong>✦ SPOTLIGHT</strong> • "+name+" • INDEX "+randomIndex()+" • EXPLORE PLATFORM";
+      track.append(item);
+    });
+  }
+}
+function spinWheel(){
+  const picks=[
+    "Featured platforms",
+    "New platform to explore",
+    "Browse all games",
+    "Visit the support section"
+  ];
+  document.getElementById("spinResult").textContent=
+    picks[Math.floor(Math.random()*picks.length)];
+}
+function installApp(){
+  const msg=document.getElementById("installMessage");
+  const btn=document.getElementById("installConfirm");
+
+  if(installPrompt){
+    installPrompt.prompt();
+    installPrompt.userChoice.finally(()=>{installPrompt=null;});
+    return;
+  }
+
+  const standalone=window.matchMedia("(display-mode: standalone)").matches||
+    window.navigator.standalone===true;
+
+  msg.textContent=standalone
+    ?"RollSweeps is already installed."
+    :"If installation is supported, your browser will show an install option. Otherwise use Chrome menu ⋮ and choose Install app or Add to Home screen.";
+
+  btn.style.display=standalone?"none":"inline-flex";
+  showModal("installModal");
+}
+async function confirmInstall(){
+  if(installPrompt){
+    installPrompt.prompt();
+    await installPrompt.userChoice;
+    installPrompt=null;
+    hideModal("installModal");
+  }else{
+    document.getElementById("installMessage").textContent=
+      "Open this page in Chrome, tap ⋮, then choose Install app or Add to Home screen if available.";
+  }
+}
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault();
+  installPrompt=e;
+});
+window.addEventListener("appinstalled",()=>{
+  installPrompt=null;
+  document.getElementById("installMessage").textContent="RollSweeps was installed successfully.";
+});
+async function enableNotifications(){
+  const btn=document.querySelector(".notification-allow");
+  const msg=document.getElementById("notificationMessage");
+  btn.disabled=true;
+  btn.textContent="PLEASE WAIT...";
+
+  try{
+    const OneSignal=await Promise.race([
+      window.PGL_OneSignalReady,
+      new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))
+    ]);
+    await OneSignal.Notifications.requestPermission();
+
+    if(Notification.permission==="granted"){
+      hideModal("notificationModal");
+      msg.textContent="Notifications enabled.";
+    }else{
+      msg.textContent="Permission was not granted. You can change it in browser site settings.";
+    }
+  }catch(e){
+    console.error(e);
+    msg.textContent="Notifications could not load. Check your connection and try again.";
+  }
+
+  btn.disabled=false;
+  btn.textContent="ALLOW NOTIFICATIONS";
+}
+function openNotificationPrompt(){
+  if(!("Notification"in window)){
+    alert("Your browser does not support notifications.");
+    return;
+  }
+  if(Notification.permission==="granted"){
+    alert("Notifications are already enabled.");
+  }else if(Notification.permission==="denied"){
+    alert("Notifications are blocked. Please change browser site settings.");
+  }else{
+    showModal("notificationModal");
+  }
 }
 
-searchBox.addEventListener("input",()=>{
- renderGames(searchBox.value);
-});
-
-buildTicker("tickerTrack",false);
-buildTicker("tickerTrackTwo",true);
+searchBox.addEventListener("input",()=>renderGames(searchBox.value));
+buildTicker();
 renderGames();
+makeFeaturedLogos();
+document.getElementById("year").textContent=new Date().getFullYear();
+setInterval(refreshSpotlightIndexes,3500);
 
-document.getElementById("year").textContent=
- new Date().getFullYear();
-
-if("serviceWorker" in navigator && location.protocol==="https:"){
- window.addEventListener("load",()=>{
-  navigator.serviceWorker.register("./service-worker.js")
-   .catch(e=>console.log("Service worker registration failed",e));
- });
+/* Keep the existing root service-worker registration. Do not replace the existing
+   service-worker.js or OneSignal worker files when uploading this redesign. */
+if("serviceWorker"in navigator&&location.protocol==="https:"){
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("./service-worker.js").catch(e=>
+      console.log("Service worker registration failed",e)
+    );
+  });
 }
 </script>
 
-<!-- CHAPORT LIVE CHAT -->
+<!-- Chaport: existing account configuration retained -->
 <script>
 (function(w,d,v3){
- w.chaportConfig={
-  appId:"6acef8d367f574f2e93a4357",
-  language:{use:"en"}
- };
- if(w.chaport)return;
- v3=w.chaport={};
- v3._q=[];
- v3._l={};
- v3.q=function(){v3._q.push(arguments);};
- v3.on=function(e,fn){
-  if(!v3._l[e])v3._l[e]=[];
-  v3._l[e].push(fn);
- };
- var s=d.createElement("script");
- s.type="text/javascript";
- s.async=true;
- s.src="https://app.chaport.com/javascripts/insert.js";
- var ss=d.getElementsByTagName("script")[0];
- ss.parentNode.insertBefore(s,ss);
+  w.chaportConfig={appId:"6acef8d367f574f2e93a4357",language:{use:"en"}};
+  if(w.chaport)return;
+  v3=w.chaport={};
+  v3._q=[];
+  v3._l={};
+  v3.q=function(){v3._q.push(arguments);};
+  v3.on=function(e,fn){
+    if(!v3._l[e])v3._l[e]=[];
+    v3._l[e].push(fn);
+  };
+  var s=d.createElement("script");
+  s.type="text/javascript";
+  s.async=true;
+  s.src="https://app.chaport.com/javascripts/insert.js";
+  var ss=d.getElementsByTagName("script")[0];
+  ss.parentNode.insertBefore(s,ss);
 })(window,document);
 </script>
-
 </body>
 </html>
