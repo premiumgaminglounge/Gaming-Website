@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -320,7 +319,7 @@ Platform information and automatically changing display indexes.
 <h2 id="notificationTitle">Stay Connected</h2>
 <p id="notificationMessage">Enable notifications to receive website updates.</p>
 <button class="notification-allow" type="button" onclick="enableNotifications()">ALLOW NOTIFICATIONS</button>
-<button class="notification-later" type="button" onclick="hideModal('notificationModal')">NOT NOW</button>
+<button class="notification-later" type="button" onclick="dismissNotificationPrompt()">NOT NOW</button>
 </div>
 </div>
 
@@ -431,18 +430,49 @@ const countMap=new Map();
 let installPrompt=null;
 
 function openLiveChat(){
-  if(window.chaport && typeof window.chaport.q==="function"){
-    window.chaport.q("open");
-  }else{
-    alert("Chat is loading. Please try again in a moment.");
+  let attempts=0;
+
+  function tryOpen(){
+    if(window.chaport && typeof window.chaport.q==="function"){
+      try{
+        window.chaport.q("open");
+        return;
+      }catch(error){
+        console.error("Chaport open error:",error);
+      }
+    }
+
+    attempts++;
+    if(attempts<12){
+      setTimeout(tryOpen,300);
+    }else{
+      alert("Live Chat is not available right now. Please try again or contact us on WhatsApp.");
+    }
   }
+
+  tryOpen();
 }
 
 function showModal(id){document.getElementById(id).classList.add("show");}
-function hideModal(id){document.getElementById(id).classList.remove("show");}
+
+function hideModal(id){
+  document.getElementById(id).classList.remove("show");
+}
+
+function dismissNotificationPrompt(){
+  try{
+    localStorage.setItem("rollsweeps_notification_prompt_seen","yes");
+  }catch(e){}
+  hideModal("notificationModal");
+}
 
 document.querySelectorAll(".modal").forEach(m=>{
-  m.addEventListener("click",e=>{if(e.target===m)m.classList.remove("show");});
+  m.addEventListener("click",e=>{
+    if(e.target===m){
+      if(m.id==="notificationModal")dismissNotificationPrompt();
+      else m.classList.remove("show");
+    }
+  });
 });
 
 function toggleMenu(){
@@ -660,29 +690,52 @@ window.addEventListener("appinstalled",()=>{
 async function enableNotifications(){
   const btn=document.querySelector(".notification-allow");
   const msg=document.getElementById("notificationMessage");
-  btn.disabled=true;btn.textContent="PLEASE WAIT...";
+
+  if(!("Notification" in window)){
+    msg.textContent="Your browser does not support notifications.";
+    return;
+  }
+
+  if(Notification.permission==="denied"){
+    msg.textContent="Notifications are blocked. Please allow them in your browser site settings.";
+    return;
+  }
+
+  btn.disabled=true;
+  btn.textContent="PLEASE WAIT...";
+
   try{
     const OneSignal=await Promise.race([
       window.PGL_OneSignalReady,
       new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))
     ]);
+
     await OneSignal.Notifications.requestPermission();
+
     if(Notification.permission==="granted"){
-      hideModal("notificationModal");msg.textContent="Notifications enabled.";
+      try{
+        localStorage.setItem("rollsweeps_notification_prompt_seen","yes");
+      }catch(e){}
+      msg.textContent="Notifications enabled successfully!";
+      hideModal("notificationModal");
     }else{
       msg.textContent="Permission was not granted. You can change it in browser site settings.";
     }
   }catch(e){
-    console.error(e);
-    msg.textContent="Notifications could not load. Check your connection and try again.";
+    console.error("OneSignal notification error:",e);
+    msg.textContent="Notifications could not load. Please check your connection and try again.";
   }
-  btn.disabled=false;btn.textContent="ALLOW NOTIFICATIONS";
+
+  btn.disabled=false;
+  btn.textContent="ALLOW NOTIFICATIONS";
 }
 
 function openNotificationPrompt(){
-  if(!("Notification"in window)){
-    alert("Your browser does not support notifications.");return;
+  if(!("Notification" in window)){
+    alert("Your browser does not support notifications.");
+    return;
   }
+
   if(Notification.permission==="granted"){
     alert("Notifications are already enabled.");
   }else if(Notification.permission==="denied"){
@@ -690,6 +743,25 @@ function openNotificationPrompt(){
   }else{
     showModal("notificationModal");
   }
+}
+
+/* Automatically show notification information after 3 seconds */
+function autoNotificationPrompt(){
+  if(!("Notification" in window))return;
+  if(Notification.permission!=="default")return;
+
+  let alreadySeen=false;
+  try{
+    alreadySeen=localStorage.getItem("rollsweeps_notification_prompt_seen")==="yes";
+  }catch(e){}
+
+  if(alreadySeen)return;
+
+  setTimeout(()=>{
+    if(Notification.permission==="default"){
+      showModal("notificationModal");
+    }
+  },3000);
 }
 
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));
@@ -708,29 +780,39 @@ if("serviceWorker"in navigator&&location.protocol==="https:"){
     });
   });
 }
+
+window.addEventListener("load",autoNotificationPrompt);
 </script>
 
-<!-- Chaport chat loader: loaded only once -->
+<!-- Chaport chat loader -->
 <script>
 (function(w,d){
   w.chaportConfig={
     appId:"6acef8d367f574f2e93a4357",
     language:{use:"en"}
   };
+
   if(w.chaport && typeof w.chaport.q==="function")return;
+
   var v3=w.chaport={_q:[],_l:{}};
-  v3.q=function(){v3._q.push(arguments);};
-  v3.on=function(e,fn){
-    if(!v3._l[e])v3._l[e]=[];
-    v3._l[e].push(fn);
+
+  v3.q=function(){
+    v3._q.push(arguments);
   };
+
+  v3.on=function(event,callback){
+    if(!v3._l[event])v3._l[event]=[];
+    v3._l[event].push(callback);
+  };
+
   var s=d.createElement("script");
   s.type="text/javascript";
   s.async=true;
   s.src="https://app.chaport.com/javascripts/insert.js";
   s.dataset.chaportLoader="true";
-  var ss=d.getElementsByTagName("script")[0];
-  ss.parentNode.insertBefore(s,ss);
+
+  var firstScript=d.getElementsByTagName("script")[0];
+  firstScript.parentNode.insertBefore(s,firstScript);
 })(window,document);
 </script>
 
