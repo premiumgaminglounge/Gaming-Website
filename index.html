@@ -18,8 +18,8 @@
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
 <meta property="og:site_name" content="RollSweeps">
-<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
-<meta property="og:image:secure_url" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
+<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2-1.jpg">
+<meta property="og:image:secure_url" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2-1.jpg">
 <meta property="og:image:type" content="image/jpeg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -27,7 +27,7 @@
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="RollSweeps | Install, Chat & WhatsApp">
 <meta name="twitter:description" content="Explore gaming platforms, install our website, use the chatbot, or contact support on WhatsApp.">
-<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
+<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2-1.jpg">
 
 <title>RollSweeps | Gaming Platforms</title>
 
@@ -161,7 +161,7 @@ footer{text-align:center;color:#a9bdce;padding:22px 10px;border-top:1px solid #2
 .modal-box p{line-height:1.7;color:#e3edf0;font-size:14px}
 .modal-close{background:#9c2631;color:white;border:0;padding:10px 16px;border-radius:8px}
 
-/* Poster display: use the exact Facebook poster file */
+/* Featured poster */
 .top-media-wrap{max-width:1100px;margin:16px auto 10px;padding:0 14px}
 .top-media-card{display:grid;grid-template-columns:minmax(0,1fr) minmax(190px,30%);gap:14px;align-items:stretch;padding:12px;border:1px solid #d5aa45;border-radius:20px;background:linear-gradient(135deg,#102b45,#071626);box-shadow:0 8px 24px #0008}
 .top-dp-wrap{grid-column:1;grid-row:1;position:relative;min-width:0;overflow:hidden;border:2px solid #e8bd52;border-radius:16px;background:#071626;min-height:230px;display:flex;align-items:center;justify-content:center}
@@ -240,13 +240,13 @@ header{padding:12px 10px 19px}
 <div class="top-media-card">
 <div class="top-dp-wrap">
 <img class="top-dp"
-src="./rollsweeps-facebook-preview-v2.jpg"
+src="./rollsweeps-facebook-preview-v2-1.jpg"
 alt="RollSweeps Facebook poster"
 onerror="this.onerror=null;this.src='./roll-sweeps-logo.png';">
 <span class="top-dp-label">♛ ROLLSWEEPS • PLAY • WIN • ENJOY</span>
 </div>
 <div class="top-video-frame">
-<video controls playsinline preload="metadata" poster="./rollsweeps-facebook-preview-v2.jpg">
+<video controls playsinline preload="metadata" poster="./rollsweeps-facebook-preview-v2-1.jpg">
 <source src="./front-video.mp4" type="video/mp4">
 Your browser does not support HTML video.
 </video>
@@ -445,7 +445,8 @@ const numberOptions=[500,600,700,800,900,1000,1200,1500,1800,2000];
 const countMap=new Map();
 let installPrompt=null;
 
-/* Chaport open function: queue the open command while the widget loads */
+/* Improved Chaport opening: waits for the widget to become available */
+let chaportOpenTimer=null;
 function openLiveChat(){
   if(window.chaport && typeof window.chaport.q==="function"){
     try{
@@ -455,20 +456,31 @@ function openLiveChat(){
       console.error("Chaport open error:",error);
     }
   }
+
   if(window.chaportLoadFailed){
-    alert("Live Chat could not load. Please try again or contact us on WhatsApp.");
+    alert("Live Chat could not load. Please contact us on WhatsApp.");
     return;
   }
+
+  if(chaportOpenTimer)clearInterval(chaportOpenTimer);
+
   let attempts=0;
-  const waitForChaport=setInterval(function(){
+  chaportOpenTimer=setInterval(function(){
     attempts++;
+
     if(window.chaport && typeof window.chaport.q==="function"){
-      clearInterval(waitForChaport);
-      try{window.chaport.q("open");}
-      catch(error){console.error("Chaport open error:",error);}
-    }else if(window.chaportLoadFailed || attempts>=20){
-      clearInterval(waitForChaport);
-      alert("Live Chat is not available right now. Please try again or contact us on WhatsApp.");
+      clearInterval(chaportOpenTimer);
+      chaportOpenTimer=null;
+      try{
+        window.chaport.q("open");
+      }catch(error){
+        console.error("Chaport open error:",error);
+        alert("Live Chat is not available. Please contact us on WhatsApp.");
+      }
+    }else if(window.chaportLoadFailed || attempts>=30){
+      clearInterval(chaportOpenTimer);
+      chaportOpenTimer=null;
+      alert("Live Chat is not available right now. Please contact us on WhatsApp.");
     }
   },400);
 }
@@ -772,7 +784,7 @@ window.addEventListener("load",autoNotificationPrompt);
 <!-- Keep these files in the same folder as index.html:
      front-video.mp4
      roll-sweeps-logo.png
-     rollsweeps-facebook-preview-v2.jpg
+     rollsweeps-facebook-preview-v2-1.jpg
 -->
 </body>
 </html>
