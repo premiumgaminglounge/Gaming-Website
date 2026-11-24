@@ -11,13 +11,24 @@
 <link rel="manifest" href="./manifest.json">
 <link rel="icon" href="./roll-sweeps-logo.png" type="image/png">
 <link rel="apple-touch-icon" href="./roll-sweeps-logo.png">
-<meta property="og:title" content="RollSweeps | Gaming Platforms">
-<meta property="og:description" content="Explore gaming platforms in one place.">
+
+<!-- Facebook / WhatsApp / Messenger link preview -->
+<meta property="og:title" content="RollSweeps | Install, Chat & WhatsApp">
+<meta property="og:description" content="Visit RollSweeps to explore gaming platforms. Install our website, use the chatbot, or contact support on WhatsApp.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://premiumgaminglounge.github.io/Gaming-Website/">
 <meta property="og:site_name" content="RollSweeps">
-<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/share-preview.jpg">
+<meta property="og:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
+<meta property="og:image:secure_url" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
+<meta property="og:image:type" content="image/jpeg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="RollSweeps poster showing Install Our Website, Use Chatbot and WhatsApp support">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RollSweeps | Install, Chat & WhatsApp">
+<meta name="twitter:description" content="Explore gaming platforms, install our website, use the chatbot, or contact support on WhatsApp.">
+<meta name="twitter:image" content="https://premiumgaminglounge.github.io/Gaming-Website/rollsweeps-facebook-preview-v2.jpg">
+
 <title>RollSweeps | Gaming Platforms</title>
 
 <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
@@ -230,7 +241,7 @@ header{padding:12px 10px 19px}
 <span class="top-dp-label">♛ ROLLSWEEPS • PLAY • WIN • ENJOY</span>
 </div>
 <div class="top-video-frame">
-<video controls playsinline preload="metadata" poster="./share-preview.jpg">
+<video controls playsinline preload="metadata" poster="./rollsweeps-facebook-preview-v2.jpg">
 <source src="./front-video.mp4" type="video/mp4">
 Your browser does not support HTML video.
 </video>
@@ -431,41 +442,23 @@ let installPrompt=null;
 
 function openLiveChat(){
   let attempts=0;
-
   function tryOpen(){
     if(window.chaport && typeof window.chaport.q==="function"){
-      try{
-        window.chaport.q("open");
-        return;
-      }catch(error){
-        console.error("Chaport open error:",error);
-      }
+      try{window.chaport.q("open");return;}
+      catch(error){console.error("Chaport open error:",error);}
     }
-
     attempts++;
-    if(attempts<12){
-      setTimeout(tryOpen,300);
-    }else{
-      alert("Live Chat is not available right now. Please try again or contact us on WhatsApp.");
-    }
+    if(attempts<12){setTimeout(tryOpen,300);}
+    else{alert("Live Chat is not available right now. Please try again or contact us on WhatsApp.");}
   }
-
   tryOpen();
 }
-
 function showModal(id){document.getElementById(id).classList.add("show");}
-
-function hideModal(id){
-  document.getElementById(id).classList.remove("show");
-}
-
+function hideModal(id){document.getElementById(id).classList.remove("show");}
 function dismissNotificationPrompt(){
-  try{
-    localStorage.setItem("rollsweeps_notification_prompt_seen","yes");
-  }catch(e){}
+  try{localStorage.setItem("rollsweeps_notification_prompt_seen","yes");}catch(e){}
   hideModal("notificationModal");
 }
-
 document.querySelectorAll(".modal").forEach(m=>{
   m.addEventListener("click",e=>{
     if(e.target===m){
@@ -474,18 +467,12 @@ document.querySelectorAll(".modal").forEach(m=>{
     }
   });
 });
-
-function toggleMenu(){
-  document.querySelector(".mobile-nav")?.scrollIntoView({behavior:"smooth",block:"end"});
-}
-
+function toggleMenu(){document.querySelector(".mobile-nav")?.scrollIntoView({behavior:"smooth",block:"end"});}
 function initials(name){
   return String(name||"GAME").trim().split(/\s+/).filter(Boolean)
     .map(word=>word[0]||"").join("").slice(0,3).toUpperCase();
 }
-
 const logoCache=new Map();
-
 function getLogoSources(url){
   try{
     const parsed=new URL(url);
@@ -496,7 +483,6 @@ function getLogoSources(url){
     ])];
   }catch(e){return [];}
 }
-
 function loadLogo(container,name,url){
   container.replaceChildren();
   container.textContent=initials(name);
@@ -517,14 +503,12 @@ function loadLogo(container,name,url){
   container.appendChild(img);
   img.src=sources[0];
 }
-
 function makeLogo(name,url){
   const logo=document.createElement("div");
   logo.className="game-logo";
   loadLogo(logo,name,url);
   return logo;
 }
-
 function makeFeaturedLogos(){
   const featured=[
     ["Orion Star","http://start.orionstars.vip:8580/"],
@@ -550,30 +534,25 @@ function makeFeaturedLogos(){
     badge.append(mark,text);boxes.appendChild(badge);
   });
 }
-
 function renderGames(filter=""){
   grid.replaceChildren();
   const term=filter.trim().toLowerCase();
   const filtered=games.filter(([name,url])=>(name+" "+url).toLowerCase().includes(term));
-
   filtered.forEach(([name,url])=>{
     const card=document.createElement("article");
     card.className="game-card";
     const key=name+"|"+url;
     card.dataset.gameKey=key;
-
     if(!countMap.has(key)){
       const originalIndex=games.findIndex(g=>g[0]===name&&g[1]===url);
       countMap.set(key,numberOptions[(originalIndex*3+1)%numberOptions.length]);
     }
-
     const logo=makeLogo(name,url);
     const info=document.createElement("div");info.className="game-info";
     const title=document.createElement("div");title.className="game-name";
     title.textContent=name;
     const number=document.createElement("div");number.className="game-number";
     number.textContent="✦ Platform Index: "+countMap.get(key).toLocaleString();
-
     const actions=document.createElement("div");actions.className="card-actions";
     const open=document.createElement("a");
     open.className="card-btn";open.textContent="OPEN PLATFORM";
@@ -586,11 +565,9 @@ function renderGames(filter=""){
     info.append(title,number,actions);
     card.append(logo,info);grid.append(card);
   });
-
   document.getElementById("gameCount").textContent=filtered.length+" platforms";
   emptyMessage.style.display=filtered.length?"none":"block";
 }
-
 function makeTicker(id){
   const track=document.getElementById(id);
   track.replaceChildren();
@@ -607,40 +584,29 @@ function makeTicker(id){
       if(id==="tickerOne"){
         label.dataset.gameKey=key;
         label.textContent="✦ "+name+" • PLATFORM INDEX: "+countMap.get(key).toLocaleString();
-      }else{
-        label.textContent="✦ "+name+" • GAMING PLATFORM • EXPLORE";
-      }
+      }else{label.textContent="✦ "+name+" • GAMING PLATFORM • EXPLORE";}
       item.append(logo,label);track.appendChild(item);
     });
   }
 }
-
 function updateAnimatedNumbers(){
   countMap.forEach((value,key)=>{
     let next=value;
-    while(next===value){
-      next=numberOptions[Math.floor(Math.random()*numberOptions.length)];
-    }
+    while(next===value){next=numberOptions[Math.floor(Math.random()*numberOptions.length)];}
     countMap.set(key,next);
   });
-
   document.querySelectorAll(".game-number").forEach(el=>{
     const card=el.closest(".game-card");
     if(!card)return;
     const key=card.dataset.gameKey;
-    if(key && countMap.has(key)){
-      el.textContent="✦ Platform Index: "+countMap.get(key).toLocaleString();
-    }
+    if(key && countMap.has(key)){el.textContent="✦ Platform Index: "+countMap.get(key).toLocaleString();}
   });
-
   document.querySelectorAll("#tickerOne [data-game-key]").forEach(el=>{
     const key=el.dataset.gameKey;
     if(!countMap.has(key))return;
-    el.textContent="✦ "+key.split("|")[0]+" • PLATFORM INDEX: "+
-      countMap.get(key).toLocaleString();
+    el.textContent="✦ "+key.split("|")[0]+" • PLATFORM INDEX: "+countMap.get(key).toLocaleString();
   });
 }
-
 function toggleLiveWin(){
   const panel=document.getElementById("liveWinPanel");
   const button=document.getElementById("liveWinButton");
@@ -648,12 +614,10 @@ function toggleLiveWin(){
   button.setAttribute("aria-expanded",String(open));
   button.textContent=open?"✕ CLOSE":"● LIVE WINS";
 }
-
 function spinWheel(){
   const picks=["Featured platforms","New platform to explore","Browse all games","Visit the support section"];
   document.getElementById("spinResult").textContent=picks[Math.floor(Math.random()*picks.length)];
 }
-
 function installApp(){
   const msg=document.getElementById("installMessage");
   const btn=document.getElementById("installConfirm");
@@ -667,7 +631,6 @@ function installApp(){
   btn.style.display=standalone?"none":"inline-flex";
   showModal("installModal");
 }
-
 async function confirmInstall(){
   if(installPrompt){
     installPrompt.prompt();
@@ -678,101 +641,69 @@ async function confirmInstall(){
     document.getElementById("installMessage").textContent="Open this page in Chrome, tap ⋮, then choose Install app or Add to Home screen if available.";
   }
 }
-
-window.addEventListener("beforeinstallprompt",e=>{
-  e.preventDefault();installPrompt=e;
-});
+window.addEventListener("beforeinstallprompt",e=>{e.preventDefault();installPrompt=e;});
 window.addEventListener("appinstalled",()=>{
   installPrompt=null;
   document.getElementById("installMessage").textContent="RollSweeps was installed successfully.";
 });
-
 async function enableNotifications(){
   const btn=document.querySelector(".notification-allow");
   const msg=document.getElementById("notificationMessage");
-
   if(!("Notification" in window)){
     msg.textContent="Your browser does not support notifications.";
     return;
   }
-
   if(Notification.permission==="denied"){
     msg.textContent="Notifications are blocked. Please allow them in your browser site settings.";
     return;
   }
-
   btn.disabled=true;
   btn.textContent="PLEASE WAIT...";
-
   try{
     const OneSignal=await Promise.race([
       window.PGL_OneSignalReady,
       new Promise((_,reject)=>setTimeout(()=>reject(new Error("timeout")),15000))
     ]);
-
     await OneSignal.Notifications.requestPermission();
-
     if(Notification.permission==="granted"){
-      try{
-        localStorage.setItem("rollsweeps_notification_prompt_seen","yes");
-      }catch(e){}
+      try{localStorage.setItem("rollsweeps_notification_prompt_seen","yes");}catch(e){}
       msg.textContent="Notifications enabled successfully!";
       hideModal("notificationModal");
-    }else{
-      msg.textContent="Permission was not granted. You can change it in browser site settings.";
-    }
+    }else{msg.textContent="Permission was not granted. You can change it in browser site settings.";}
   }catch(e){
     console.error("OneSignal notification error:",e);
     msg.textContent="Notifications could not load. Please check your connection and try again.";
   }
-
   btn.disabled=false;
   btn.textContent="ALLOW NOTIFICATIONS";
 }
-
 function openNotificationPrompt(){
   if(!("Notification" in window)){
     alert("Your browser does not support notifications.");
     return;
   }
-
-  if(Notification.permission==="granted"){
-    alert("Notifications are already enabled.");
-  }else if(Notification.permission==="denied"){
-    alert("Notifications are blocked. Please change browser site settings.");
-  }else{
-    showModal("notificationModal");
-  }
+  if(Notification.permission==="granted"){alert("Notifications are already enabled.");}
+  else if(Notification.permission==="denied"){alert("Notifications are blocked. Please change browser site settings.");}
+  else{showModal("notificationModal");}
 }
-
 /* Automatically show notification information after 3 seconds */
 function autoNotificationPrompt(){
   if(!("Notification" in window))return;
   if(Notification.permission!=="default")return;
-
   let alreadySeen=false;
-  try{
-    alreadySeen=localStorage.getItem("rollsweeps_notification_prompt_seen")==="yes";
-  }catch(e){}
-
+  try{alreadySeen=localStorage.getItem("rollsweeps_notification_prompt_seen")==="yes";}catch(e){}
   if(alreadySeen)return;
-
   setTimeout(()=>{
-    if(Notification.permission==="default"){
-      showModal("notificationModal");
-    }
+    if(Notification.permission==="default"){showModal("notificationModal");}
   },3000);
 }
-
 searchBox.addEventListener("input",()=>renderGames(searchBox.value));
-
 makeTicker("tickerOne");
 makeTicker("tickerTwo");
 renderGames();
 makeFeaturedLogos();
 document.getElementById("year").textContent=new Date().getFullYear();
 setInterval(updateAnimatedNumbers,8000);
-
 if("serviceWorker"in navigator&&location.protocol==="https:"){
   window.addEventListener("load",()=>{
     navigator.serviceWorker.register("./service-worker.js").catch(e=>{
@@ -780,7 +711,6 @@ if("serviceWorker"in navigator&&location.protocol==="https:"){
     });
   });
 }
-
 window.addEventListener("load",autoNotificationPrompt);
 </script>
 
@@ -791,26 +721,18 @@ window.addEventListener("load",autoNotificationPrompt);
     appId:"6acef8d367f574f2e93a4357",
     language:{use:"en"}
   };
-
   if(w.chaport && typeof w.chaport.q==="function")return;
-
   var v3=w.chaport={_q:[],_l:{}};
-
-  v3.q=function(){
-    v3._q.push(arguments);
-  };
-
+  v3.q=function(){v3._q.push(arguments);};
   v3.on=function(event,callback){
     if(!v3._l[event])v3._l[event]=[];
     v3._l[event].push(callback);
   };
-
   var s=d.createElement("script");
   s.type="text/javascript";
   s.async=true;
   s.src="https://app.chaport.com/javascripts/insert.js";
   s.dataset.chaportLoader="true";
-
   var firstScript=d.getElementsByTagName("script")[0];
   firstScript.parentNode.insertBefore(s,firstScript);
 })(window,document);
@@ -820,7 +742,7 @@ window.addEventListener("load",autoNotificationPrompt);
      front-video.mp4
      profile-dp.jpg
      roll-sweeps-logo.png
-     share-preview.jpg
+     rollsweeps-facebook-preview-v2.jpg
 -->
 </body>
 </html>
