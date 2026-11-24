@@ -12,7 +12,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
+  group: pages
   cancel-in-progress: false
 
 jobs:
@@ -34,10 +34,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./"
-          name: rollsweeps-pages
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-        with:
-          artifact_name: rollsweeps-pages
